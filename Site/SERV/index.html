@@ -1,0 +1,588 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Source Engine Resources Viewer</title>
+  <meta name="description" content="Source Engine Resources Viewer — a WIP Source resource inspection tool (Windows 95 style site).">
+
+  <style>
+    :root{
+      --desk:#008080;
+      --win:#C0C0C0;
+      --win2:#DCDCDC;
+      --text:#000;
+      --shadow:#808080;
+      --hi:#FFF;
+      --navy:#000080;
+      --navy2:#0015a8;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: Tahoma, Verdana, Segoe UI, system-ui, -apple-system, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--desk);font-family:var(--sans);color:var(--text);overflow:hidden}
+    .pattern{position:fixed;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(180deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:32px 32px;opacity:.25;pointer-events:none}
+
+    .window{
+      position:relative;
+      width:min(1180px, calc(100% - 28px));
+      height:min(760px, calc(100% - 28px));
+      margin:14px auto;
+      background:var(--win);
+      border-top:2px solid var(--hi);
+      border-left:2px solid var(--hi);
+      border-right:2px solid var(--shadow);
+      border-bottom:2px solid var(--shadow);
+      box-shadow: 8px 10px 0 rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+
+    .titlebar{
+      height:32px;
+      background:linear-gradient(90deg,var(--navy),var(--navy2));
+      color:#fff;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 6px 0 8px;
+      font-weight:700;
+      user-select:none;
+    }
+    .titleLeft{display:flex;align-items:center;gap:8px;min-width:0}
+    .appIcon{
+      width:16px;height:16px;
+      background:linear-gradient(135deg,#fff,#bdbdbd);
+      border-top:1px solid var(--hi);
+      border-left:1px solid var(--hi);
+      border-right:1px solid var(--shadow);
+      border-bottom:1px solid var(--shadow);
+    }
+    .titleText{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}
+    .sysBtns{display:flex;gap:4px}
+    .sysBtn{
+      width:20px;height:18px;background:var(--win);
+      border-top:2px solid var(--hi);
+      border-left:2px solid var(--hi);
+      border-right:2px solid var(--shadow);
+      border-bottom:2px solid var(--shadow);
+      display:grid;place-items:center;cursor:pointer;
+      font-family:var(--mono);font-size:11px;line-height:1;color:#000;
+    }
+    .sysBtn:active{
+      border-top:2px solid var(--shadow);
+      border-left:2px solid var(--shadow);
+      border-right:2px solid var(--hi);
+      border-bottom:2px solid var(--hi);
+      transform:translate(1px,1px);
+    }
+
+    .menubar{
+      height:28px;display:flex;align-items:center;gap:6px;
+      padding:0 6px;background:var(--win);
+      border-bottom:1px solid #9e9e9e;user-select:none;
+    }
+    .menuItem{padding:3px 8px;font-size:13px;cursor:pointer}
+    .menuItem:hover{background:#000080;color:#fff}
+
+    .content{
+      height:calc(100% - 32px - 28px - 26px);
+      display:grid;
+      grid-template-columns:290px 1fr;
+      gap:6px;
+      padding:6px;
+    }
+    @media (max-width:980px){
+      body{overflow:auto}
+      .window{height:auto;overflow:visible}
+      .content{grid-template-columns:1fr;height:auto}
+    }
+
+    .pane{
+      background:var(--win2);
+      border-top:2px solid var(--hi);
+      border-left:2px solid var(--hi);
+      border-right:2px solid var(--shadow);
+      border-bottom:2px solid var(--shadow);
+      padding:6px;
+      overflow:auto;
+      min-height:260px;
+    }
+
+    .groupTitle{font-weight:700;font-size:12px;margin:0 0 6px}
+
+    .list{
+      margin:0;padding:0;list-style:none;background:#fff;
+      border-top:1px solid #9e9e9e;border-left:1px solid #9e9e9e;
+      border-right:1px solid #fff;border-bottom:1px solid #fff;
+    }
+    .list li{
+      display:flex;justify-content:space-between;gap:10px;
+      padding:7px 8px;cursor:pointer;font-size:13px;
+      border-bottom:1px solid #e6e6e6;
+    }
+    .list li:last-child{border-bottom:none}
+    .list li.active{background:#000080;color:#fff}
+    .chip{
+      font-family:var(--mono);
+      font-size:11px;padding:1px 6px;border-radius:2px;
+      border-top:1px solid #fff;border-left:1px solid #fff;
+      border-right:1px solid #808080;border-bottom:1px solid #808080;
+      background:var(--win);color:#000;
+    }
+    .list li.active .chip{background:#c0c0c0;color:#000}
+
+    .doc{
+      background:#fff;
+      border-top:1px solid #9e9e9e;border-left:1px solid #9e9e9e;
+      border-right:1px solid #fff;border-bottom:1px solid #fff;
+      padding:12px 12px;
+      min-height:260px;
+    }
+    .doc h1{margin:0 0 6px;font-size:18px}
+    .doc p{margin:8px 0;font-size:13px;line-height:1.55}
+
+    .btn{
+      background:var(--win);
+      border-top:2px solid var(--hi);
+      border-left:2px solid var(--hi);
+      border-right:2px solid var(--shadow);
+      border-bottom:2px solid var(--shadow);
+      padding:6px 10px;font-size:13px;cursor:pointer;font-weight:700;
+    }
+    .btn:active{
+      border-top:2px solid var(--shadow);
+      border-left:2px solid var(--shadow);
+      border-right:2px solid var(--hi);
+      border-bottom:2px solid var(--hi);
+      transform:translate(1px,1px);
+    }
+    .btn.primary{outline:1px dotted #000;outline-offset:-4px}
+
+    .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+
+    .field{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+    .field input{
+      padding:6px 8px;font-size:13px;width:min(520px,100%);
+      border-top:1px solid #808080;border-left:1px solid #808080;
+      border-right:1px solid #fff;border-bottom:1px solid #fff;
+      background:#fff;outline:none;
+    }
+
+    .box{
+      margin-top:10px;background:#f7f7f7;
+      border-top:1px solid #9e9e9e;border-left:1px solid #9e9e9e;
+      border-right:1px solid #fff;border-bottom:1px solid #fff;
+      padding:10px 10px;
+    }
+    .box h2{margin:0 0 6px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+    .mono{
+      font-family:var(--mono);
+      font-size:12px;background:#fff;
+      border-top:1px solid #808080;border-left:1px solid #808080;
+      border-right:1px solid #fff;border-bottom:1px solid #fff;
+      padding:8px;overflow:auto;line-height:1.55;
+    }
+    .table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:13px;
+      background:#fff;
+      border-top:1px solid #808080;border-left:1px solid #808080;
+      border-right:1px solid #fff;border-bottom:1px solid #fff;
+      margin-top:8px;
+    }
+    .table th,.table td{
+      border-bottom:1px solid #e6e6e6;
+      padding:6px 8px;
+      text-align:left;
+      vertical-align:top;
+    }
+    .table th{
+      background:#efefef;
+      border-bottom:1px solid #cfcfcf;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    details{
+      margin-top:8px;
+      border-top:1px solid #9e9e9e;border-left:1px solid #9e9e9e;
+      border-right:1px solid #fff;border-bottom:1px solid #fff;
+      background:#fff;
+    }
+    summary{
+      cursor:pointer;padding:8px 10px;font-weight:700;font-size:13px;list-style:none;user-select:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    .ans{padding:0 10px 10px;font-size:13px;line-height:1.55;color:#222}
+
+    .statusbar{
+      height:26px;display:flex;align-items:center;gap:8px;
+      padding:0 6px;background:var(--win);
+      border-top:1px solid #9e9e9e;
+    }
+    .sbCell{
+      background:var(--win2);
+      border-top:1px solid #fff;border-left:1px solid #fff;
+      border-right:1px solid #808080;border-bottom:1px solid #808080;
+      padding:3px 8px;font-size:12px;color:#111;white-space:nowrap;
+    }
+    .sbGrow{flex:1}
+    mark{background: #ffef7a; padding:0 .15em}
+  </style>
+</head>
+
+<body>
+  <div class="pattern" aria-hidden="true"></div>
+
+  <div class="window" role="application" aria-label="Source Engine Resources Viewer website window">
+    <div class="titlebar">
+      <div class="titleLeft">
+        <div class="appIcon" aria-hidden="true"></div>
+        <div class="titleText">Source Engine Resources Viewer — Pre-release Site</div>
+      </div>
+      <div class="sysBtns">
+        <div class="sysBtn" title="Minimize" onclick="alert('This is a website pretending to be a Win95 window :)');">_</div>
+        <div class="sysBtn" title="Maximize" onclick="alert('This is a website pretending to be a Win95 window :)');">□</div>
+        <div class="sysBtn" title="Close" onclick="alert('Nope 😄');">×</div>
+      </div>
+    </div>
+
+    <div class="menubar" role="menubar">
+      <div class="menuItem" onclick="setPage('overview')">File</div>
+      <div class="menuItem" onclick="setPage('modules')">View</div>
+      <div class="menuItem" onclick="setPage('devlog')">Tools</div>
+      <div class="menuItem" onclick="setPage('faq')">Help</div>
+    </div>
+
+    <div class="content">
+      <aside class="pane" aria-label="Navigation pane">
+        <div class="groupTitle">Navigation</div>
+        <ul class="list" id="navList">
+          <li class="" data-page="overview" onclick="setPage('overview')">Overview <span class="chip">README</span></li>
+          <li data-page="modules" onclick="setPage('modules')" class="active">Modules <span class="chip">PLANNED</span></li>
+          <li data-page="devlog" onclick="setPage('devlog')">Dev Log <span class="chip">WIP</span></li>
+          <li data-page="faq" onclick="setPage('faq')">FAQ <span class="chip">HELP</span></li>
+          <li data-page="downloads" onclick="setPage('downloads')">Downloads <span class="chip">LINKS</span></li>
+        </ul>
+
+        <div class="box">
+          <h2>Disclaimer</h2>
+          <div style="font-size:12px;line-height:1.45">
+            Fan-made tool page. Not affiliated with Valve.
+          </div>
+        </div>
+      </aside>
+
+      <section class="pane" aria-label="Document pane">
+        <div class="doc" id="doc">
+          <h1>Modules (Planned Features)</h1>
+          
+
+          <div class="box">
+            <h2>Planned modules table</h2>
+            <table class="table" aria-label="Planned modules table">
+              <thead>
+                <tr>
+                  <th>Module</th>
+                  <th>What it does</th>
+                  <th>Viewer / Output</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>VTF Viewer</b></td>
+                  <td>Inspect VTF textures and export to other image formats.</td>
+                  <td>Texture preview + export (PNG/JPG/etc.)</td>
+                </tr>
+                <tr>
+                  <td><b>VMT Inspector</b></td>
+                  <td>Inspect VMT material data in a readable way.</td>
+                  <td>Key/value display + referenced texture paths</td>
+                </tr>
+                <tr>
+                  <td><b>VPK Browser</b></td>
+                  <td>Browse VPK like a virtual file system and extract files.</td>
+                  <td>Virtual file browser + extract selected/all</td>
+                </tr>
+                <tr>
+                  <td><b>MDL Inspector</b></td>
+                  <td>Inspect models and preview them in 3D, then export.</td>
+                  <td>3D render preview + export to common 3D formats</td>
+                </tr>
+                <tr>
+                  <td><b>EXE/DLL Inspector</b></td>
+                  <td>Inspect Windows binaries like Resource Hacker.</td>
+                  <td>Metadata + icons + strings + windows/resources</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          
+
+          <div class="row">
+            <button class="btn primary" onclick="setPage('devlog')">Next: Dev Log</button>
+            <button class="btn" onclick="setPage('overview')">Back</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="statusbar" role="status">
+      <div class="sbCell">Status: <span id="sbStatus">Viewing: Modules (Planned Features)</span></div>
+      <div class="sbCell sbGrow" id="sbInfo">Planned features loaded: VTF / VMT / VPK / MDL / EXE-DLL.</div>
+      <div class="sbCell" id="sbDate">Feb 16, 2026</div>
+    </div>
+  </div>
+
+  <script>
+    const PAGES = {
+      overview: {
+        title: "Overview",
+        html: `
+          <h1>Source Engine Resources Viewer</h1>
+          <p>
+            <b>Source Engine Resources Viewer</b> is a work-in-progress tool meant to become a practical
+            <b>resource inspection workbench</b> for Source Engine formats.
+            The project is still evolving, so features may be added or removed before release.
+          </p>
+
+          <div class="box">
+            <h2>Planned formats (current plan)</h2>
+            <p style="margin:0 0 6px">
+              These are the current planned features you shared. You can expand/change them anytime.
+            </p>
+            <div class="mono">Planned:
+- VTF: inspect + preview + export to other image formats
+- VMT: inspect material data
+- VPK: browse like a virtual file system + extract
+- MDL: inspect + 3D render preview + export to common 3D formats
+- EXE/DLL: inspect like Resource Hacker (metadata, icons, strings, windows, etc.)</div>
+
+            <div class="row">
+              <button class="btn primary" onclick="setPage('modules')">View Modules</button>
+              <button class="btn" onclick="setPage('downloads')">Downloads</button>
+              <button class="btn" onclick="alert('https://github.com/sonicFanTech/SourceEngineResourcesViewer')">Project / Repo</button>
+            </div>
+          </div>
+        `
+      },
+
+      modules: {
+        title: "Modules (Planned Features)",
+        html: `
+          <h1>Modules (Planned Features)</h1>
+
+          <div class="box">
+            <h2>Planned modules table</h2>
+            <table class="table" aria-label="Planned modules table">
+              <thead>
+                <tr>
+                  <th>Module</th>
+                  <th>What it does</th>
+                  <th>Viewer / Output</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>VTF Viewer</b></td>
+                  <td>Inspect VTF textures and export to other image formats.</td>
+                  <td>Texture preview + export (PNG/JPG/etc.)</td>
+                </tr>
+                <tr>
+                  <td><b>VMT Inspector</b></td>
+                  <td>Inspect VMT material data in a readable way.</td>
+                  <td>Key/value display + referenced texture paths</td>
+                </tr>
+                <tr>
+                  <td><b>VPK Browser</b></td>
+                  <td>Browse VPK like a virtual file system and extract files.</td>
+                  <td>Virtual file browser + extract selected/all</td>
+                </tr>
+                <tr>
+                  <td><b>MDL Inspector</b></td>
+                  <td>Inspect models and preview them in 3D, then export.</td>
+                  <td>3D render preview + export to common 3D formats</td>
+                </tr>
+                <tr>
+                  <td><b>EXE/DLL Inspector</b></td>
+                  <td>Inspect Windows binaries like Resource Hacker.</td>
+                  <td>Metadata + icons + strings + windows/resources</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row">
+            <button class="btn primary" onclick="setPage('devlog')">Next: Dev Log</button>
+            <button class="btn" onclick="setPage('overview')">Back</button>
+          </div>
+        `
+      },
+
+      devlog: {
+        title: "Dev Log",
+        html: `
+          <h1>Dev Log</h1>
+
+          <div class="box">
+            <h2>Known issues</h2>
+            <p>NOTHING YET.</p>
+          </div>
+
+          <div class="row">
+            <button class="btn" onclick="setPage('faq')">FAQ</button>
+            <button class="btn primary" onclick="setPage('downloads')">Downloads</button>
+          </div>
+        `
+      },
+
+      faq: {
+        title: "FAQ",
+        html: `
+          <h1>FAQ</h1>
+
+          <details>
+            <summary>Is this affiliated with Valve?</summary>
+            <div class="ans">
+              No, this is a fan-made utility.
+            </div>
+          </details>
+
+          <details>
+            <summary>What does the VPK browser mean by “virtual file browser”?</summary>
+            <div class="ans">
+              VPKs are archive files. The browser treats them like a folder tree so you can navigate and extract assets easily.
+            </div>
+          </details>
+
+          <details>
+            <summary>Will the MDL viewer export to Blender-friendly formats?</summary>
+            <div class="ans">
+              That’s the plan: a 3D preview plus exports to formats common 3D tools can open. The exact export targets can be decided during development.
+            </div>
+          </details>
+
+          <div class="row">
+            <button class="btn primary" onclick="setPage('downloads')">Go to Downloads</button>
+          </div>
+        `
+      },
+
+      downloads: {
+        title: "Downloads",
+        html: `
+          <h1>Downloads</h1>
+
+            <div class="row">
+              <button class="btn primary" onclick="alert('Replace with your real download link.')">Download installer - Windows</button>
+			  <button class="btn" onclick="alert('Replace with your repo link.')">protalable - ZIP/7Z</button>
+              <button class="btn" onclick="alert('Replace with your repo link.')">Project / Repo</button>
+            </div>
+          </div>
+          </div>
+
+          <div class="row">
+            <button class="btn" onclick="setPage('overview')">Back to Overview</button>
+          </div>
+        `
+      }
+    };
+
+    const doc = document.getElementById('doc');
+    const sbStatus = document.getElementById('sbStatus');
+    const sbInfo = document.getElementById('sbInfo');
+
+    function setActiveNav(page){
+      document.querySelectorAll('#navList li').forEach(li=>{
+        li.classList.toggle('active', li.dataset.page === page);
+      });
+    }
+
+    function setPage(page){
+      const p = PAGES[page] || PAGES.overview;
+      doc.innerHTML = p.html;
+      setActiveNav(page);
+      sbStatus.textContent = "Viewing: " + p.title;
+      sbInfo.textContent = page === "modules"
+        ? "Planned features loaded: VTF / VMT / VPK / MDL / EXE-DLL."
+        : "Ready.";
+      clearHighlights();
+      document.getElementById('search').value = "";
+    }
+
+    // Search highlight in current page
+    const searchInput = document.getElementById('search');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function clearHighlights(){
+      const marks = doc.querySelectorAll('mark');
+      marks.forEach(m => m.replaceWith(document.createTextNode(m.textContent)));
+    }
+
+    function highlight(q){
+      clearHighlights();
+      if(!q) return 0;
+
+      const nodes = [];
+      const walker = document.createTreeWalker(doc, NodeFilter.SHOW_TEXT, {
+        acceptNode(node){
+          if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if(node.parentElement && ['SCRIPT','STYLE'].includes(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      while(walker.nextNode()) nodes.push(walker.currentNode);
+
+      const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "ig");
+      let hits = 0;
+
+      nodes.forEach(node=>{
+        const val = node.nodeValue;
+        if(!re.test(val)) return;
+        re.lastIndex = 0;
+
+        const frag = document.createDocumentFragment();
+        let last = 0, m;
+        while((m = re.exec(val))){
+          const start = m.index;
+          const end = start + m[0].length;
+          frag.appendChild(document.createTextNode(val.slice(last, start)));
+          const mk = document.createElement('mark');
+          mk.textContent = val.slice(start, end);
+          frag.appendChild(mk);
+          last = end;
+          hits++;
+        }
+        frag.appendChild(document.createTextNode(val.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+
+      return hits;
+    }
+
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim();
+      const hits = highlight(q);
+      sbInfo.textContent = q ? (hits ? `Search hits: ${hits}` : "No matches.") : "Ready.";
+    });
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = "";
+      clearHighlights();
+      sbInfo.textContent = "Ready.";
+      searchInput.focus();
+    });
+
+    // Date
+    (function(){
+      const d = new Date();
+      const opts = { year:'numeric', month:'short', day:'2-digit' };
+      document.getElementById('sbDate').textContent = d.toLocaleDateString(undefined, opts);
+    })();
+
+    // Start
+    setPage('overview');
+  </script>
+
+
+</body></html>

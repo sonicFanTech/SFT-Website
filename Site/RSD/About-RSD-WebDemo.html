@@ -1,0 +1,366 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f1a">
+  <meta name="description" content="About the Roxzned Setup Designer Live Web Demo: what it is, what works, what’s simulated, limitations, and tips.">
+
+  <title>Roxzned Setup Designer — Live Web Demo (About)</title>
+
+  
+  <link rel="stylesheet" href="about.css">
+</head>
+
+<body>
+  <div class="gridfx" aria-hidden="true"></div>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="row">
+        <a class="brand" href="#top" aria-label="Roxzned Setup Designer Live Web Demo About">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div class="brandTitle">Roxzned Setup Designer</div>
+            <div class="brandSub">Live Web Demo • About</div>
+          </div>
+        </a>
+
+        <div class="topActions">
+          <div class="pill" title="This is a prototype demo for previewing the UI">
+            <span class="dot" aria-hidden="true"></span>
+            Prototype Demo
+          </div>
+          <a class="btn ghost" href="index.html" aria-label="Back to main page">← Main Site</a>
+          <a class="btn primary" href="demo.html" aria-label="Start the demo">Start Demo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="heroCard">
+        <div class="heroInner">
+          <div class="heroLeft">
+            <h1>About the Live Web Demo</h1>
+            <p class="lead">
+              This page explains what the Roxzned Setup Designer Live Web Demo is, what’s actually interactive,
+              what’s simulated, and what you should (and shouldn’t) expect while clicking around.
+            </p>
+
+            <div class="chips" aria-label="Highlights">
+              <span class="chip"><i aria-hidden="true"></i>Everything clickable</span>
+              <span class="chip"><i aria-hidden="true"></i>Safe, no real installs</span>
+              <span class="chip"><i aria-hidden="true"></i>UI preview &amp; concept</span>
+              <span class="chip"><i aria-hidden="true"></i>Works in-browser</span>
+            </div>
+
+            <div class="heroActions">
+              <a class="btn primary" href="demo.html">Start Demo</a>
+              <a class="btn" href="index.html">Back to main page</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="banner" role="note" aria-label="Important notice">
+              <span class="badge">IMPORTANT</span>
+              <div>
+                <div style="font-weight:900;">This is a <u>preview demo</u>, not the real desktop app.</div>
+                <div class="muted" style="margin-top:2px;">
+                  Nothing here builds a real installer EXE, runs PyInstaller for real, or writes to your PC.
+                  It’s designed to show the look/feel and planned workflow.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="heroRight">
+            <div class="miniCard">
+              <div class="miniTitle">
+                <b>Quick Demo Facts</b>
+                <span id="buildLabel">Build: WebDemo 2026.01.22</span>
+              </div>
+              <div class="kvs">
+                <div class="kv">
+                  <b>Purpose</b>
+                  <span>Preview the UI + planned features</span>
+                </div>
+                <div class="kv">
+                  <b>Risk level</b>
+                  <span>Safe — no real file actions</span>
+                </div>
+                <div class="kv">
+                  <b>Data saving</b>
+                  <span>Mostly local (your browser)</span>
+                </div>
+                <div class="kv">
+                  <b>Best devices</b>
+                  <span>PC / Laptop recommended</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="miniCard">
+              <div class="miniTitle">
+                <b>Need a reset?</b>
+                <span class="muted">If anything breaks</span>
+              </div>
+              <p class="muted" style="margin:0;">
+                Refresh the page. If you want to fully reset demo data, use the button below.
+              </p>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+                <button class="btn" id="resetBtn" type="button">Reset Demo Data</button>
+                <button class="btn ghost" id="copyLinkBtn" type="button" title="Copy a shareable link to this About page">
+                  Copy Page Link
+                </button>
+              </div>
+              <div id="resetStatus" class="muted" style="margin-top:8px; font-size:12px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHAT YOU CAN DO -->
+  <section>
+    <div class="wrap">
+      <div class="sectionHeader">
+        <h2>What you can do in the demo</h2>
+        <p>Things that should feel real (even if they are simulated).</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="icon">UI</div>
+          <h3>Click everything</h3>
+          <p>Menus, buttons, panels, wizard steps — the demo is made to be “hands-on” so you can explore how it works.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">WD</div>
+          <h3>Try the Wizard Designer flow</h3>
+          <p>Move through pages like a real installer wizard designer: visual layout, page settings, and “preview” behavior.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">BLD</div>
+          <h3>Use the “fake builder”</h3>
+          <p>Open the PyInstaller builder UI and see the planned options — it’s a concept preview, not an actual compiler.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">THE</div>
+          <h3>Change themes + visuals</h3>
+          <p>Try changing colors, page images, and other design settings to see how customization is intended to work.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">PRV</div>
+          <h3>Preview the experience</h3>
+          <p>Use preview panes/screens to understand what an installer could look like after you design it.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">KEY</div>
+          <h3>Keyboard-friendly navigation</h3>
+          <p>Most demo UIs are built to work with keyboard input (Tab, Enter, Esc), similar to desktop apps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU CAN'T DO -->
+  <section>
+    <div class="wrap">
+      <div class="sectionHeader">
+        <h2>What you can’t do (on purpose)</h2>
+        <p>These are disabled so the demo stays safe.</p>
+      </div>
+
+      <div class="callouts">
+        <div class="callout bad">
+          <h3>No real EXE building</h3>
+          <p>
+            The “Build” and “Compile” actions are simulated. The demo won’t run PyInstaller, won’t bundle files,
+            and won’t create installer or uninstaller executables.
+          </p>
+        </div>
+
+        <div class="callout bad">
+          <h3>No real file access</h3>
+          <p>
+            The demo should not read/write your disk like the real desktop app would. Any “Browse…” buttons
+            are typically mocked for preview purposes.
+          </p>
+        </div>
+
+        <div class="callout bad">
+          <h3>No permanent projects (by default)</h3>
+          <p>
+            Some demo versions might store settings in your browser. But it’s not meant as your final project editor.
+            Always expect that refreshing could reset things unless stated otherwise in the demo UI.
+          </p>
+        </div>
+
+        <div class="callout bad">
+          <h3>No 100% perfect accuracy yet</h3>
+          <p>
+            Labels, spacing, and behavior are still evolving. The demo is here to show the direction and the idea.
+            The real app will be more polished and complete.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="wrap">
+      <div class="sectionHeader">
+        <h2>How the demo works</h2>
+        <p>A quick explanation so people know what’s “real” and what’s “mocked.”</p>
+      </div>
+
+      <div class="twoCol">
+        <div class="panel">
+          <h3 style="margin:0 0 6px;">Interactive UI, simulated outcomes</h3>
+          <p class="muted" style="margin:0;">
+            The demo focuses on interaction: menus open, panels change, pages respond, and settings visually update.
+            Some actions (like “Build installer”) show believable results (progress bars, logs, success messages),
+            but they’re not executing real system tasks.
+          </p>
+
+          <ul class="list">
+            <li><b>Goal:</b> make the demo feel like the real app workflow.</li>
+            <li><b>Safe:</b> no writing EXEs, no touching your system.</li>
+            <li><b>Useful:</b> you can see the planned layout + options.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 6px;">Local-only demo data</h3>
+          <p class="muted" style="margin:0;">
+            If the demo saves anything, it should be local to your browser (like LocalStorage).
+            There is no account system required for the demo.
+          </p>
+
+          <ul class="list">
+            <li><b>Usually saved:</b> UI preferences (theme, last tab, toggles).</li>
+            <li><b>Not saved:</b> real files, real projects, sensitive information.</li>
+            <li><b>Reset:</b> use “Reset Demo Data” or clear site data in your browser.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS + SHORTCUTS -->
+  <section>
+    <div class="wrap">
+      <div class="sectionHeader">
+        <h2>Tips &amp; shortcuts</h2>
+        <p>Optional, but makes the demo easier to explore.</p>
+      </div>
+
+      <div class="twoCol">
+        <div class="panel">
+          <h3 style="margin:0 0 6px;">Recommended way to test</h3>
+          <ul class="list">
+            <li><b>Use a desktop/laptop</b> (mouse + keyboard). Mobile may work but can feel cramped.</li>
+            <li><b>Try resizing the page</b> — most UI panels should adapt.</li>
+            <li><b>Click around fast</b> — the demo is meant to be spam-click friendly.</li>
+            <li><b>If something looks stuck</b>, refresh the page or hit the reset button.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 6px;">Common keys</h3>
+          <p class="muted" style="margin:0 0 10px;">These may vary depending on the exact demo build.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="kbd"><b>Tab</b> Next control</span>
+            <span class="kbd"><b>Shift</b> + <b>Tab</b> Back</span>
+            <span class="kbd"><b>Enter</b> Activate</span>
+            <span class="kbd"><b>Esc</b> Close dialog</span>
+          </div>
+          <div class="divider"></div>
+          <p class="muted" style="margin:0;">
+            If your demo has extra hotkeys (like Ctrl+S for “Save”), you can list them here later.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <div class="sectionHeader">
+        <h2>FAQ</h2>
+        <p>Quick answers for people who are trying the demo.</p>
+      </div>
+
+      <details>
+        <summary>Is this the real Roxzned Setup Designer app?</summary>
+        <p>
+          No — this is a web demo made to preview the UI and planned workflow. The real app is a Python desktop tool.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does the demo build real installers?</summary>
+        <p>
+          Not in the web demo. Any build/compile steps are simulated so the demo stays safe and runs in a browser.
+        </p>
+      </details>
+
+      <details>
+        <summary>Will my “project” save?</summary>
+        <p>
+          Some settings may save in your browser, but the demo is not meant as your permanent project editor.
+          Always assume it can reset unless the demo specifically says it supports saving/exporting.
+        </p>
+      </details>
+
+      <details>
+        <summary>What browsers work best?</summary>
+        <p>
+          Chromium-based browsers (Chrome, Edge) usually work best for app-like web UIs. Firefox often works too.
+          If anything looks weird, try another browser or disable strict privacy blockers for the demo site.
+        </p>
+      </details>
+
+      
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footRow">
+        <div class="brand" style="color: var(--ink);">
+          <div class="logo" aria-hidden="true" style="width:28px;height:28px;border-radius:10px;"></div>
+          <div>
+            <div style="font-size:14px; line-height:1; font-weight:900;">Roxzned Setup Designer</div>
+            <div class="muted" style="font-size:12px; margin-top:3px;">Live Web Demo • About</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+          <a class="btn ghost" href="index.html">Main Site</a>
+          <a class="btn primary" href="demo.html">Start Demo</a>
+        </div>
+      </div>
+
+      <div style="margin-top:10px;">
+        © <span id="year">2026</span> sonic Fan Tech. All product names and trademarks belong to their respective owners.
+        <span class="muted">This page is part of a preview demo experience.</span>
+      </div>
+    </div>
+  </footer>
+
+  
+
+  <script src="about.js" defer></script>
+</body></html>

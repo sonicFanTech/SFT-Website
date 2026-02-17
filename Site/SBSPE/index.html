@@ -1,0 +1,932 @@
+<html lang="en" data-darkreader-mode="dynamic" data-darkreader-scheme="dark" data-darkreader-proxy-injected="true"><head><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">@layer {
+html {
+    background-color: var(--darkreader-background-ffffff, #181a1b) !important;
+}
+html {
+    color-scheme: dark !important;
+}
+iframe {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: var(--darkreader-background-ffffff, #181a1b);
+}
+html, body {
+    border-color: var(--darkreader-border-4c4c4c, #736b5e);
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+a {
+    color: var(--darkreader-text-0040ff, #3391ff);
+}
+table {
+    border-color: var(--darkreader-border-808080, #545b5e);
+}
+mark {
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+::placeholder {
+    color: var(--darkreader-text-a9a9a9, #b2aba1);
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: var(--darkreader-background-faffbd, #404400) !important;
+    color: var(--darkreader-text-000000, #e8e6e3) !important;
+}
+::selection {
+    background-color: var(--darkreader-background-0060d4, #004daa) !important;
+    color: var(--darkreader-text-ffffff, #e8e6e3) !important;
+}
+::-moz-selection {
+    background-color: var(--darkreader-background-0060d4, #004daa) !important;
+    color: var(--darkreader-text-ffffff, #e8e6e3) !important;
+}
+}</style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula, a[data-testid="headerMediumLogo"]>svg, .d2l-navigation-link-image-container, .d2l-iframe-loading-container {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-border-short] {
+  border: var(--darkreader-inline-border-short) !important;
+}
+[data-darkreader-inline-border-bottom-short] {
+  border-bottom: var(--darkreader-inline-border-bottom-short) !important;
+}
+[data-darkreader-inline-border-left-short] {
+  border-left: var(--darkreader-inline-border-left-short) !important;
+}
+[data-darkreader-inline-border-right-short] {
+  border-right: var(--darkreader-inline-border-right-short) !important;
+}
+[data-darkreader-inline-border-top-short] {
+  border-top: var(--darkreader-inline-border-top-short) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: var(--darkreader-background-ffffff, #181a1b);
+   --darkreader-neutral-text: var(--darkreader-text-000000, #e8e6e3);
+   --darkreader-selection-background: var(--darkreader-background-0060d4, #004daa);
+   --darkreader-selection-text: var(--darkreader-text-ffffff, #e8e6e3);
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Source BSP Explorer</title>
+  <meta name="description" content="Source BSP Explorer — inspect Source Engine BSP metadata, entities, materials, and render 3D previews with textures &amp; displacements. Export to OBJ and launch PlayTests with saved game arguments.">
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1620;
+      --panel2:#0c121a;
+      --text:#e8eef7;
+      --muted:#a9b7c7;
+      --faint:#6f8297;
+      --brand:#6fe3ff;
+      --brand2:#9b7bff;
+      --ok:#53f3a6;
+      --warn:#ffdf6f;
+      --bad:#ff6f8b;
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 12px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(111,227,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 100% 10%, rgba(155,123,255,.18), transparent 55%),
+        radial-gradient(900px 600px at 40% 120%, rgba(83,243,166,.10), transparent 55%),
+        linear-gradient(180deg, #06080b, var(--bg));
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .wrap{max-width:1150px;margin:0 auto;padding:24px}
+    .topbar{
+      position:sticky;top:0;z-index:30;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(6,8,11,.86), rgba(6,8,11,.55));
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:14px 24px;
+      max-width:1150px;margin:0 auto;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      font-weight:800;letter-spacing:.2px;
+    }
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, rgba(111,227,255,.9), rgba(111,227,255,.1) 60%),
+                  radial-gradient(circle at 70% 70%, rgba(155,123,255,.9), rgba(155,123,255,.1) 60%),
+                  linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,0));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo:after{
+      content:"";
+      position:absolute;inset:-60%;
+      background: conic-gradient(from 180deg, rgba(111,227,255,.0), rgba(111,227,255,.35), rgba(155,123,255,.25), rgba(83,243,166,.18), rgba(111,227,255,.0));
+      animation:spin 10s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .brand span{font-size:15px}
+    .pill{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color:var(--muted);
+      display:inline-flex;gap:8px;align-items:center;
+    }
+    .pill b{color:var(--text)}
+    .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{
+      appearance:none;border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;border-radius:12px;
+      font-weight:650;
+      cursor:pointer;
+      transition:.15s transform,.15s background,.15s border;
+      text-decoration:none;
+      display:inline-flex;align-items:center;gap:10px;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22)}
+    .btn.primary{
+      border-color: rgba(111,227,255,.35);
+      background: linear-gradient(135deg, rgba(111,227,255,.18), rgba(155,123,255,.10));
+    }
+    .btn.primary:hover{border-color: rgba(111,227,255,.55)}
+    .hero{padding:34px 24px 18px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card.pad{padding:20px}
+    h1{
+      margin:0 0 10px;
+      font-size:44px;line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:15px;line-height:1.6;
+      max-width:76ch;
+    }
+    .kpis{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:10px;margin-top:10px;
+    }
+    @media (max-width: 520px){ .kpis{grid-template-columns:1fr} }
+    .kpi{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(12,18,26,.55);
+      border-radius: 14px;
+      padding:12px 12px;
+    }
+    .kpi .big{font-weight:900;font-size:18px}
+    .kpi .small{color:var(--faint);font-size:12px;margin-top:2px}
+    .rightCol{display:flex;flex-direction:column;gap:18px}
+    .panelHeader{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+    }
+    .panelHeader h3{margin:0;font-size:14px;letter-spacing:.3px}
+    .panelBody{padding:14px 16px}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .li{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:10px 10px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(12,18,26,.45);
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;margin-top:4px;
+      background: var(--brand);
+      box-shadow: 0 0 0 6px rgba(111,227,255,.12);
+      flex: 0 0 auto;
+    }
+    .li b{display:block;font-size:13px}
+    .li span{display:block;color:var(--muted);font-size:12px;line-height:1.5;margin-top:2px}
+    .section{padding:14px 24px}
+    .section h2{margin:16px 0 10px;font-size:22px;letter-spacing:-.2px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width: 980px){ .two{grid-template-columns:1fr} }
+    .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+    .tag{
+      font-size:12px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:var(--muted);
+    }
+    .mono{
+      font-family:var(--mono);
+      font-size:12px;
+      color:#d7e7ff;
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding:12px;
+      overflow:auto;
+      line-height:1.55;
+    }
+    .note{
+      border:1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:12px 14px;
+      color:var(--muted);
+      font-size:13px;line-height:1.7;
+    }
+    .note b{color:var(--text)}
+    .ok{color:var(--ok)}
+    .warn{color:var(--warn)}
+    .bad{color:var(--bad)}
+    .smallcaps{letter-spacing:.18em;text-transform:uppercase;font-weight:800;font-size:11px;color:var(--faint)}
+    .hr{height:1px;background:var(--line);margin:14px 0}
+    .searchBar{display:flex;gap:10px;align-items:center;margin-top:10px}
+    .searchBar input{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      outline:none;
+      font-size:13px;
+    }
+    .searchBar input:focus{border-color: rgba(111,227,255,.5)}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      font-size:12px;color:var(--muted);
+    }
+
+    /* Screenshot cards */
+    .shots{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:10px;
+    }
+    @media (max-width: 980px){ .shots{grid-template-columns:1fr} }
+    .shot{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(12,18,26,.45);
+      border-radius: 16px;
+      overflow:hidden;
+    }
+    .shot img{
+      width:100%;
+      display:block;
+      background: rgba(0,0,0,.25);
+    }
+    .shot .cap{
+      padding:10px 12px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.55;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+
+    /* Tables / grids */
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    .kv .row{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(12,18,26,.45);
+      border-radius: 14px;
+      padding:10px 12px;
+    }
+    .kv .row b{display:block;font-size:12px}
+    .kv .row span{display:block;color:var(--muted);font-size:12px;line-height:1.55;margin-top:3px}
+
+    .footer{
+      margin-top:26px;
+      border-top:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      padding:18px 24px;
+      color:var(--faint);
+      font-size:12px;
+    }
+    .footer .row{max-width:1150px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+    .miniLinks{display:flex;gap:12px;flex-wrap:wrap}
+    .miniLinks a{color:var(--muted);text-decoration:none}
+    .miniLinks a:hover{color:var(--text);text-decoration:underline}
+  </style><style class="darkreader darkreader--sync" media="screen"></style>
+<meta name="darkreader" content="0cc1e01b20ff466b955db61ff501e8cc"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: var(--darkreader-background-ffd76e, #684b00) !important;
+    border-color: var(--darkreader-background-c59d00, #9e7e00) !important;
+    color: var(--darkreader-text-302505, #d7d4cf) !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: var(--darkreader-background-add8e6, #1b4958) !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: var(--darkreader-background-cfecf5, #0f3a47) !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+.tou-uknfeu {
+    background-color: var(--darkreader-background-faedda, #432c09) !important;
+}
+.tou-6i3zyv {
+    background-color: var(--darkreader-background-85c3d8, #245d70) !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+select {
+    --darkreader-bg--form-control-background-color: rgba(22, 22, 22, 0) !important;
+}
+body#tumblr {
+    --darkreader-bg--secondary-accent: 31, 32, 34 !important;
+    --darkreader-bg--white: 23, 23, 23 !important;
+    --darkreader-text--black: 228, 224, 218 !important;
+}
+:host {
+    --d2l-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-button-icon-background-color-hover: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-color-ferrite: var(--darkreader-neutral-text) !important;
+    --d2l-color-sylvite: var(--darkreader-bg--d2l-color-sylvite) !important;
+    --d2l-dropdown-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-dropdown-border-color: var(--darkreader-border--d2l-color-mica) !important;
+    --d2l-input-backgroud-color: var(--darkreader-neutral-background) !important;
+    --d2l-menu-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-tooltip-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-tooltip-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+:host([_floating]) .d2l-floating-buttons-container {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-top-color: var(--darkreader-border--d2l-color-mica) !important;
+    opacity: 0.88 !important;
+}
+d2l-card {
+    background: var(--darkreader-neutral-background) !important;
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+d2l-dropdown-content > div,
+d2l-menu-item {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-radius: 10px !important;
+}
+d2l-empty-state-simple {
+    border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-button-filter > ul > li > a.vui-button {
+    border-color: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-label-text:has(.d2l-button-subtle-content):hover,
+.d2l-label-text:has(.d2l-button-subtle-content):focus,
+.d2l-label-text:has(.d2l-button-subtle-content):active {
+    background-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-navigation-centerer {
+    color: inherit !important;
+}
+.d2l-tabs-layout {
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+.d2l-input,
+.d2l-calendar-date,
+.d2l-htmleditor-container {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-collapsible-panel {
+    border: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+    border-radius: 0.4rem !important;
+}
+.d2l-collapsible-panel-divider {
+    border-bottom: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-w2d-flex {
+    border-bottom: 2px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-collapsible-panel scrolled,
+.d2l-collapsible-panel-header,
+.d2l-w2d-collection-fixed {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-loading-spinner-bg {
+    fill: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-loading-spinner-bg-stroke {
+    stroke: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-loading-spinner-wrapper svg path,
+.d2l-loading-spinner-wrapper svg circle {
+    fill: var(--darkreader-neutral-background) !important;
+}
+.d2l-twopanelselector-side.d2l-twopanelselector-side-sep {
+    background: var(--darkreader-bg--d2l-color-mica) !important;
+}
+.d2l-le-TreeAccordionItem-anchor::before {
+    background: var(--darkreader-bg--d2l-color-corundum) !important;
+}
+embed[type="application/pdf"][src="about:blank"] { filter: invert(100%) contrast(90%); }</style></head>
+
+<body>
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <span>Source BSP Explorer</span>
+            <span class="pill"><b>Desktop Tool</b> for Source Engine BSP maps</span>
+          </div>
+          <div class="smallcaps" style="margin-top:2px">Metadata • Entities • Materials • Profiles • 3D Render • OBJ Export • PlayTest</div>
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="btn" href="#features">Features</a>
+        <a class="btn" href="#playtest">PlayTest</a>
+        <a class="btn" href="#renderer">Renderer</a>
+        <a class="btn" href="#workers">Workers</a>
+        <a class="btn primary" href="#download">Get it</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero">
+      <div class="grid">
+        <div class="card pad">
+          <h1>Inspect &amp; render Source BSP maps with dev-style tooling.</h1>
+          <p class="sub">
+            <b>Source BSP Explorer</b> is a tool for exploring Source Engine map files. It can inspect
+            <b>metadata</b>, list &amp; inspect <b>entities</b>, list <b>materials</b>, track resource
+            <b>profiles</b> (VTF/VMT paths), and preview maps in a <b>3D renderer</b> powered by <b>PyOpenGL</b>.
+            You can also <b>export BSP → OBJ</b> and run quick <b>PlayTests</b> by launching a Source game with saved arguments.
+          </p>
+
+          <div class="tagrow">
+            <span class="tag">Metadata inspection</span>
+            <span class="tag">Entity listing + metadata</span>
+            <span class="tag">Material listing</span>
+            <span class="tag">Profiles (VTF/VMT paths)</span>
+            <span class="tag">PyOpenGL 3D Renderer</span>
+            <span class="tag">OBJ Export</span>
+            <span class="tag">PlayTest w/ args</span>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="big">Map structure clarity</div>
+              <div class="small">See what’s inside the BSP and how it’s put together.</div>
+            </div>
+            <div class="kpi">
+              <div class="big">Visual verification</div>
+              <div class="small">Textures + displacements in 3D to spot issues faster.</div>
+            </div>
+            <div class="kpi">
+              <div class="big">Workflow speed</div>
+              <div class="small">Launch PlayTests with saved settings instead of retyping args.</div>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="note">
+            <b>Note:</b> Options marked <span class="warn">[cheats]</span> in PlayTest require <b>sv_cheats 1</b> in many games.
+            Source BSP Explorer can pass launch args / startup commands, but the game may still block some commands.
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+
+    <div class="section" id="features">
+      <h2>Features</h2>
+
+      <div class="two">
+        <div class="card pad">
+          <div class="smallcaps">Inspection &amp; listings</div>
+          <div class="kv">
+            <div class="row">
+              <b>Metadata inspection</b>
+              <span>Inspect map metadata and key structural information at a glance.</span>
+            </div>
+            <div class="row">
+              <b>Entity listing + entity metadata inspection</b>
+              <span>Browse entities and inspect their keyvalues/metadata to understand map logic and setup.</span>
+            </div>
+            <div class="row">
+              <b>Material listing</b>
+              <span>View the materials referenced by the map and how they relate to textures.</span>
+            </div>
+            <div class="row">
+              <b>Profile listing (paths to VTF &amp; VMT)</b>
+              <span>A profile list that shows the paths to the VTF/VMT files used by the map (useful for missing assets + extraction workflows).</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pad">
+          <div class="smallcaps">3D view, export, workflow</div>
+          <div class="kv">
+            <div class="row">
+              <b>3D map view renderer engine</b>
+              <span>Powered by <b>PyOpenGL</b> with camera modes and render-view settings for fast visualization.</span>
+            </div>
+            <div class="row">
+              <b>Textures + displacements in 3D</b>
+              <span>The renderer supports map textures and displacements (via worker parsers described below).</span>
+            </div>
+            <div class="row">
+              <b>Export BSP → OBJ</b>
+              <span>Export the BSP map as an <b>.OBJ</b> for Blender or other 3D software that supports OBJ.</span>
+            </div>
+            <div class="row">
+              <b>PlayTest feature (launch map in-game)</b>
+              <span>Select a Source game EXE, set arguments, save them, and launch the map quickly for testing.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="playtest">
+      <h2>PlayTest feature</h2>
+      <div class="two">
+        <div class="card pad">
+          <div class="smallcaps">What PlayTest does</div>
+          <p style="margin: 10px 0px 0px; color: var(--muted); font-size: 13px; line-height: 1.8; --darkreader-inline-color: var(--darkreader-text--muted, var(--darkreader-text-000000, #e8e6e3));" data-darkreader-inline-color="">
+            The PlayTest window lets you launch a Source Engine game directly into the current map with chosen launch options.
+            Settings can be saved and reset, so you don’t have to retype arguments every time.
+          </p>
+          <div class="hr"></div>
+          <div class="mono" aria-label="PlayTest summary">
+PlayTest Settings:
+  - Choose Game EXE (Browse)
+  - Toggle: Play startup intro
+  - Toggle: Use Vulkan renderer (-vulkan)
+  - Display mode: Windowed / (other modes as you add them)
+  - Window size (resolution): dropdown (example: 1280x720)
+  - In-game debug toggles (console cmds)
+  - Save / Reset / Launch
+          </div>
+        </div>
+
+        <div class="card pad">
+          <div class="smallcaps">Debug toggles (console commands)</div>
+          <p style="margin: 10px 0px 0px; color: var(--muted); font-size: 13px; line-height: 1.8; --darkreader-inline-color: var(--darkreader-text--muted, var(--darkreader-text-000000, #e8e6e3));" data-darkreader-inline-color="">
+            These are quick checkboxes that toggle common Source debug commands.
+            Some are marked <span class="warn">[cheats]</span> because they often require <b>sv_cheats 1</b>.
+          </p>
+
+          <div class="kv">
+            <div class="row"><b>Show triggers</b><span><span style="font-family:var(--mono)">showtriggers 1</span></span></div>
+            <div class="row"><b>Show player position</b><span><span style="font-family:var(--mono)">cl_showpos 1</span></span></div>
+            <div class="row"><b>Disable static prop loading</b><span><span style="font-family:var(--mono)">disable_static_prop_loading 1</span></span></div>
+            <div class="row"><b>3rd person view <span class="warn">[cheats]</span></b><span><span style="font-family:var(--mono)">thirdperson</span></span></div>
+            <div class="row"><b>Developer overlay</b><span><span style="font-family:var(--mono)">developer 1</span></span></div>
+            <div class="row"><b>Disable physics <span class="warn">[cheats]</span></b><span><span style="font-family:var(--mono)">phys_timescale 0</span></span></div>
+            <div class="row"><b>Show budget texture</b><span><span style="font-family:var(--mono)">showbudget_texture 1</span></span></div>
+            <div class="row"><b>Extra player info <span class="warn">[cheats]</span></b><span><span style="font-family:var(--mono)">sv_showhitboxes 1</span></span></div>
+            <div class="row"><b>Wireframes <span class="warn">[cheats]</span></b><span><span style="font-family:var(--mono)">mat_wireframe 1</span></span></div>
+          </div>
+
+          <div class="note" style="margin-top:12px">
+            <b>Note:</b> Source BSP Explorer passes launch args / startup commands.
+            The game may still block some commands depending on game rules, secure settings, or engine branch.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="renderer">
+      <h2>3D Renderer (PyOpenGL)</h2>
+      <div class="two">
+        <div class="card pad">
+          <div class="smallcaps">Renderer engine</div>
+          <p style="margin: 10px 0px 0px; color: var(--muted); font-size: 13px; line-height: 1.8; --darkreader-inline-color: var(--darkreader-text--muted, var(--darkreader-text-000000, #e8e6e3));" data-darkreader-inline-color="">
+            Source BSP Explorer includes a 3D map view renderer built on <b>PyOpenGL</b>.
+            It supports camera modes and render modes, plus visual toggles to help you understand the map.
+          </p>
+
+          <div class="hr"></div>
+
+          <div class="mono" aria-label="Renderer core">
+Renderer:
+  - Camera mode (example: ORBIT)
+  - Render mode (example: SOLID)
+  - Toggle: Textures
+  - Toggle groups (helpers / overlays)
+          </div>
+        </div>
+
+        <div class="card pad">
+          <div class="smallcaps">Render view settings (from your menu)</div>
+          <div class="kv">
+            <div class="row"><b>Camera</b><span>ORBIT (and more modes as you add them)</span></div>
+            <div class="row"><b>Render mode</b><span>SOLID (and more modes as you add them)</span></div>
+            <div class="row"><b>Textures</b><span>Toggle textured rendering on/off</span></div>
+
+            <div class="row"><b>Show Triggers</b><span>Overlay trigger volumes (if enabled/available in the map)</span></div>
+            <div class="row"><b>Show Clips</b><span>Overlay clip brushes/volumes</span></div>
+            <div class="row"><b>Entity Icons</b><span>Show helper icons for entities</span></div>
+            <div class="row"><b>Target Lines</b><span>Visual lines for entity targets</span></div>
+            <div class="row"><b>Parent Lines</b><span>Visual lines for parenting relationships</span></div>
+            <div class="row"><b>Path Tracks</b><span>Visualize path_track chains</span></div>
+            <div class="row"><b>Path Corners</b><span>Visualize path_corner points</span></div>
+            <div class="row"><b>Beams/Lasers</b><span>Render beam/laser helpers (where applicable)</span></div>
+            <div class="row"><b>Ropes</b><span>Render rope helpers (where applicable)</span></div>
+            <div class="row"><b>Facing Arrows</b><span>Show entity facing direction arrows</span></div>
+            <div class="row"><b>Displacements</b><span>Toggle displacement rendering</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pad" style="margin-top:18px">
+        <div class="smallcaps">Why these toggles matter</div>
+        <div class="two" style="margin-top:10px">
+          <div class="note">
+            <b>Hammer-like readability:</b> Triggers, clips, icons, and lines help you “read” a map quickly without digging through raw data.
+          </div>
+          <div class="note">
+            <b>Debug faster:</b> Displacements + textured preview makes it easier to spot broken surfaces, missing textures, or weird geometry.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="workers">
+      <h2>Worker EXE files (required for full rendering)</h2>
+
+      <div class="two">
+        <div class="card pad">
+          <div class="smallcaps">What the workers do</div>
+          <p style="margin: 10px 0px 0px; color: var(--muted); font-size: 13px; line-height: 1.8; --darkreader-inline-color: var(--darkreader-text--muted, var(--darkreader-text-000000, #e8e6e3));" data-darkreader-inline-color="">
+            Source BSP Explorer uses two worker executables to parse specific data needed for the 3D renderer.
+            The main program calls these workers and <b>waits for them to return data</b>. Once the data is received,
+            the renderer can display <b>textures</b> and <b>displacements</b>.
+          </p>
+
+          <div class="hr"></div>
+
+          <div class="mono" aria-label="Workers list">
+Workers:
+  - VParsing.exe
+      Purpose: get / resolve textures (VTF/VMT data paths for rendering)
+  - DisplaceParsing.exe
+      Purpose: parse displacement data for the 3D renderer
+          </div>
+        </div>
+
+        <div class="card pad">
+          <div class="smallcaps">Pipeline overview</div>
+          <div class="mono" aria-label="Worker pipeline">
+1) Main program launches VParsing.exe and DisplaceParsing.exe
+2) Main program waits for returned parsing results (data)
+3) Renderer receives:
+     - texture references / resolved paths
+     - displacement meshes / info
+4) 3D view displays textures + displacements
+          </div>
+
+          <div class="note" style="margin-top:12px">
+            <b>Recommendation for the app:</b> If one or both worker EXEs are missing or crash, show a clear error and close
+            (because the renderer needs both workers to function correctly).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="download">
+      <h2>Get Source BSP Explorer</h2>
+      <div class="two">
+        <div class="card pad">
+          <div class="smallcaps">Downloads</div>
+          <p style="margin: 10px 0px 0px; color: var(--muted); font-size: 13px; line-height: 1.75; --darkreader-inline-color: var(--darkreader-text--muted, var(--darkreader-text-000000, #e8e6e3));" data-darkreader-inline-color="">
+            Replace these buttons with your real links (GitHub Releases, your website, etc.).
+          </p>
+
+          <div class="tagrow" style="margin-top:12px">
+            <a class="btn primary" href="#" onclick="alert('Replace this with your real download link.');return false;">Download (Windows)</a>
+            <a class="btn" href="#" onclick="alert('Replace this with your repo link.');return false;">Project / Repo</a>
+            <a class="btn" href="#features">Read Features</a>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="note">
+            <b>Want this to match your app UI?</b> Tell me your exact theme colors + logo file name, and I’ll reskin the whole site to match.
+          </div>
+        </div>
+
+        <div class="card pad">
+          <div class="smallcaps">System requirements</div>
+          <ul style="margin: 10px 0px 0px; padding-left: 18px; color: var(--muted); font-size: 13px; line-height: 1.75; --darkreader-inline-color: var(--darkreader-text--muted, var(--darkreader-text-000000, #e8e6e3));" data-darkreader-inline-color="">
+            <li><b>OS:</b> Windows 10/11 (edit if you support more)</li>
+            <li><b>GPU:</b> Any GPU suitable for OpenGL rendering (for the 3D renderer)</li>
+            <li><b>RAM:</b> 4GB+ recommended (large maps may need more)</li>
+            <li><b>Disk:</b> Enough space for exported OBJ / extracted resources</li>
+          </ul>
+
+          <div class="hr"></div>
+
+          <div class="note">
+            <b>Disclaimer:</b> Source is Valve’s engine; Source BSP Explorer is a fan-made tool and is not affiliated with Valve.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="row">
+      <div>
+        <b>Source BSP Explorer</b><br>
+        <span>Last updated: <span id="date">February 16, 2026</span></span>
+      </div>
+      <div class="miniLinks">
+        <a href="#features">Features</a>
+        <a href="#playtest">PlayTest</a>
+        <a href="#renderer">Renderer</a>
+        <a href="#workers">Workers</a>
+        <a href="#download">Get it</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Date stamp
+    (function(){
+      const d = new Date();
+      const opts = { year:'numeric', month:'long', day:'numeric' };
+      document.getElementById('date').textContent = d.toLocaleDateString(undefined, opts);
+    })();
+
+    // Lightweight page search: hides non-matching blocks (no libraries)
+    (function(){
+      const input = document.getElementById('search');
+      const clearBtn = document.getElementById('clearBtn');
+      const hint = document.getElementById('searchHint');
+
+      const blocks = Array.from(document.querySelectorAll('.card, .note, .mono, .row, .li, .shot'));
+      const originals = new Map(blocks.map(b => [b, b.style.display || ""]));
+
+      function normalize(s){ return (s || "").toLowerCase(); }
+
+      function applySearch(q){
+        q = normalize(q).trim();
+        if(!q){
+          blocks.forEach(b => b.style.display = originals.get(b));
+          hint.textContent = 'Tip: try “PlayTest”, “Vulkan”, “Displacements”, “VParsing.exe”.';
+          return;
+        }
+        let hits = 0;
+        blocks.forEach(b => {
+          const text = normalize(b.innerText);
+          const match = text.includes(q);
+          b.style.display = match ? originals.get(b) : "none";
+          if(match) hits++;
+        });
+        hint.textContent = hits ? `Found ${hits} matching section(s).` : 'No matches. Try a shorter keyword.';
+      }
+
+      input.addEventListener('input', e => applySearch(e.target.value));
+      clearBtn.addEventListener('click', () => { input.value=""; applySearch(""); input.focus(); });
+    })();
+  </script>
+
+</body></html>

@@ -1,0 +1,6 @@
+<div class="game-card">
+                <h2>FNaF Re-clicked</h2>
+                <p>The first game in the Re-clicked series, remaking the original FNaF.</p>
+                <a class="button" href="https://drive.google.com/file/d/1d_lAimg8uO6XPn2TwoeTTrnYCAbgCTfl/view?usp=sharing">Download Dev Builds</a>
+                <a class="button" href="https://drive.google.com/file/d/1oTH5XxVWCo6CgXbxCLTRj4shsrvA8QJy/view?usp=sharing">Dev Debugging Tool</a>
+            </div>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FNaF Re-clicked - Fan Remakes of the FNaF Series">
+    <title>FNaF Re-clicked Series</title>
+    <link rel="icon" href="images/favicon.ico">
+
+    <style>
+        /* Steam-Inspired Layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1b2838;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #171d25;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #66c0f4;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #2a475e;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .sidebar a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #66c0f4;
+            color: black;
+        }
+        .main-content {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .banner {
+            width: 100%;
+            height: 250px;
+            background: url('images/reclicked-banner.webp') center/cover;
+            border-radius: 10px;
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .game-card {
+            background-color: #2a475e;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.3);
+        }
+        .game-card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .game-card h2 {
+            margin: 10px 0;
+            color: #66c0f4;
+        }
+        .game-card p {
+            font-size: 0.9em;
+            color: #c7d5e0;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 14px;
+            background-color: #66c0f4;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background-color: #4a9edb;
+        }
+        footer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #0e141b;
+            text-align: center;
+        }
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #66c0f4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        FNaF Re-clicked Series
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigation</h3>
+            <a href="#">Home</a>
+            <a href="#">All Games</a>
+            <a href="#">Community</a>
+            <a href="#">Support</a>
+            <a href="https://sonicfantech.org">Back to Main Site</a>
+        </div>
+
+        <div class="main-content">
+            <div class="banner"></div>
+
+            <div class="game-grid">
+                <div class="game-card">
+                    <img src="images/reclicked1.webp" alt="FNaF Re-clicked">
+                    <h2>FNaF Re-clicked</h2>
+                    <p>The first game in the Re-clicked series, remaking the original FNaF with enhanced mechanics.</p>
+                    <a class="button" href="https://gamejolt.com/games/FNaF-Re-clicked-SERIES/936494">Game Jolt</a>
+                    <a class="button" href="https://sonic-fan-tech.itch.io/five-nights-at-freddys-re-clicked">Itch.io</a>
+                </div>
+
+                <div class="game-card">
+                    <img src="images/reclicked2.webp" alt="FNaF 2 Re-clicked">
+                    <h2>FNaF 2 Re-clicked</h2>
+                    <p>Currently in development. More details coming soon!</p>
+                </div>
+
+                <div class="game-card">
+                    <img src="images/reclicked3.webp" alt="FNaF 3 Re-clicked">
+                    <h2>FNaF 3 Re-clicked</h2>
+                    <p>Currently in development. Stay tuned for updates!</p>
+                </div>
+
+                <div class="game-card">
+                    <img src="images/reclicked4.webp" alt="FNaF 4 Re-clicked">
+                    <h2>FNaF 4 Re-clicked</h2>
+                    <p>Currently in development. More info will be available in the future.</p>
+                </div>
+
+                <div class="game-card">
+                    <img src="images/reclicked5.webp" alt="FNaF SL Re-clicked">
+                    <h2>FNaF: Sister Location Re-clicked</h2>
+                    <p>Currently in development. Updates will be posted here when available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sonic Fan Games & The Re-clicked Team</p>
+        <p><strong>Note:</strong> This website is not copyrighted because I am not old enough to register a copyright.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FNaF Re-clicked Community - Discussions and Updates">
+    <title>Community - FNaF Re-clicked</title>
+    <link rel="icon" href="images/favicon.ico">
+
+    <style>
+        /* Steam-Inspired Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1b2838;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #66c0f4;
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        /* Back Button */
+        .back-btn {
+            margin: 20px;
+            padding: 10px 15px;
+            background-color: #66c0f4;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #4a9edb;
+        }
+
+        /* Sections */
+        .container {
+            width: 80%;
+            max-width: 900px;
+            background-color: #2a475e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .container h2 {
+            color: #66c0f4;
+            border-bottom: 2px solid #66c0f4;
+            padding-bottom: 5px;
+        }
+
+        /* Comments Section */
+        .comment-box {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #66c0f4;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+        }
+
+        .submit-btn:hover {
+            background-color: #4a9edb;
+        }
+
+        .comment-list {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #3a3f47;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #0e141b;
+            text-align: center;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            color: #66c0f4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <a class="back-btn" href="https://sonicfantech.org/sonic%20Fan%20Games%20Site/games/re-clicked/re-clicked.html">Back</a>
+
+    <!-- Community Header -->
+    <h1>FNaF Re-clicked Community</h1>
+
+    <!-- Updates Section -->
+    <div class="container">
+        <h2>Game Updates & News</h2>
+        <p>Check here for the latest updates on the *Re-clicked* series!</p>
+        <ul>
+            <li><strong>[March 2025]</strong> - New Dev Debugging Tool added!</li>
+            <li><strong>[February 2025]</strong> - FNaF 2 Re-clicked is in development!</li>
+            <li><strong>[January 2025]</strong> - Official *Re-clicked* site launched!</li>
+        </ul>
+    </div>
+
+    <!-- Discussions Section -->
+<h2>Comments</h2>
+<textarea id="comment-box" placeholder="Write your comment..."></textarea>
+<button onclick="postComment()">Post Comment</button>
+
+<div id="comments-section"></div>
+
+<script>
+function postComment() {
+    var comment = document.getElementById("comment-box").value;
+
+    fetch("post-comment.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "comment=" + encodeURIComponent(comment)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            loadComments();
+        } else {
+            alert(data.message);
+        }
+    });
+}
+
+function loadComments() {
+    fetch("get-comments.php")
+    .then(response => response.json())
+    .then(comments => {
+        var html = "";
+        comments.forEach(c => {
+            html += `<p><b>${c.username}</b>: ${c.comment} <i>(${c.timestamp})</i></p>`;
+        });
+        document.getElementById("comments-section").innerHTML = html;
+    });
+}
+
+loadComments(); // Load comments on page load
+</script>
+
+
+    <footer>
+        <p>&copy; 2025 Sonic Fan Games & The Re-clicked Team</p>
+    </footer>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+</head>
+<body>
+
+    <h2>Game Jolt Login</h2>
+    <label>Username: </label><input type="text" id="gj-username">
+    <label>Token: </label><input type="password" id="gj-token">
+    <button onclick="loginGameJolt()">Login</button>
+
+    <p id="login-status"></p>
+
+    <script>
+        function loginGameJolt() {
+            var username = document.getElementById("gj-username").value;
+            var token = document.getElementById("gj-token").value;
+
+            fetch("gamejolt-login.php?username=" + username + "&token=" + token)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById("login-status").innerText = "Logged in as " + data.username;
+                    } else {
+                        document.getElementById("login-status").innerText = "Login failed!";
+                    }
+                });
+        }
+    </script>
+
+</body>
+</html>
+
+
+</body>
+</html>

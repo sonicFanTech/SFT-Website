@@ -1,0 +1,1330 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141414">
+  <meta name="description" content="Roxzned Setup Designer — Live Web Demo (fully interactive mock UI).">
+  <title>Roxzned Setup Designer — Web Demo</title>
+  <link rel="stylesheet" href="demo.css">
+  <script src="demo.js" defer=""></script>
+</head>
+
+<body style="height: 100vh;">
+  <div class="app" id="appRoot" style="transform: scale(1); transform-origin: left top;">
+
+    <!-- Menu bar -->
+    <div class="menubar" id="menubar">
+      <div class="menu" data-menu="file">File
+        <div class="dropdown">
+          <div class="dd-item" data-act="newProject">New Project<span class="dd-kbd">Ctrl+N</span></div>
+          <div class="dd-item" data-act="openProject">Open Project…<span class="dd-kbd">Ctrl+O</span></div>
+          <div class="dd-item" data-act="saveProject">Save Project<span class="dd-kbd">Ctrl+S</span></div>
+          <div class="dd-sep"></div>
+          <div class="dd-item" data-act="exportInstaller">Export Installer Code…<span class="dd-kbd">Ctrl+E</span></div>
+          <div class="dd-item" data-act="exportUninstaller">Export Uninstaller Code…<span class="dd-kbd">Ctrl+Shift+E</span></div>
+          <div class="dd-sep"></div>
+          <a class="dd-item" href="index.html">Close Demo</a>
+        </div>
+      </div>
+
+      <div class="menu" data-menu="edit">Edit
+        <div class="dropdown">
+          <div class="dd-item" data-act="undo">Undo<span class="dd-kbd">Ctrl+Z</span></div>
+          <div class="dd-item" data-act="redo">Redo<span class="dd-kbd">Ctrl+Y</span></div>
+          <div class="dd-sep"></div>
+          <div class="dd-item" data-act="addWidget">Add Widget…<span class="dd-kbd">Ins</span></div>
+          <div class="dd-item" data-act="deleteWidget">Delete Widget<span class="dd-kbd">Del</span></div>
+          <div class="dd-sep"></div>
+          <div class="dd-item" data-act="bringFront">Bring to Front<span class="dd-kbd">Ctrl+]</span></div>
+          <div class="dd-item" data-act="sendBack">Send to Back<span class="dd-kbd">Ctrl+[</span></div>
+        </div>
+      </div>
+
+      <div class="menu" data-menu="view">View
+        <div class="dropdown">
+          <div class="dd-item" data-act="toggleLineNumbers">Toggle Line Numbers<span class="dd-kbd">Ctrl+L</span></div>
+          <div class="dd-item" data-act="toggleGrid">Toggle Grid<span class="dd-kbd">Ctrl+G</span></div>
+          <div class="dd-sep"></div>
+          <div class="dd-item" data-act="zoomIn">Zoom In<span class="dd-kbd">Ctrl++</span></div>
+          <div class="dd-item" data-act="zoomOut">Zoom Out<span class="dd-kbd">Ctrl+-</span></div>
+          <div class="dd-item" data-act="resetZoom">Reset Zoom<span class="dd-kbd">Ctrl+0</span></div>
+        </div>
+      </div>
+
+      <div class="menu" data-menu="tools">Tools
+        <div class="dropdown">
+          <div class="dd-item" data-act="toggleWizard">Toggle Wizard Maker<span class="dd-kbd">Ctrl+W</span></div>
+          <div class="dd-item" data-act="toggleDark">Toggle Dark/Light<span class="dd-kbd">Ctrl+D</span></div>
+          <div class="dd-item" data-act="runInstaller">Run Generated Installer…<span class="dd-kbd">F5</span></div>
+          <div class="dd-sep"></div>
+          <div class="dd-item" data-act="build">Build (PyInstaller)…<span class="dd-kbd">Ctrl+B</span></div>
+        </div>
+      </div>
+
+      <div class="menu" data-menu="help">Help
+        <div class="dropdown">
+          <div class="dd-item" data-act="help">Help Doc<span class="dd-kbd">F1</span></div>
+          <div class="dd-item" data-act="about">About<span class="dd-kbd">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toolbar row -->
+    <div class="toolbar">
+      <div class="toolIcon" title="New Project" data-act="newProject">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12h14" stroke="#cfcfcf" stroke-width="1.6"></path>
+        </svg>
+      </div>
+
+      <div class="toolIcon" title="Save Project" data-act="saveProject">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M5 4h11l3 3v13H5V4Z" stroke="#cfcfcf" stroke-width="1.6"></path>
+          <path d="M8 4v6h8V4" stroke="#cfcfcf" stroke-width="1.6"></path>
+          <path d="M8 20v-6h8v6" stroke="#cfcfcf" stroke-width="1.6"></path>
+        </svg>
+      </div>
+
+      <div class="toolIcon" title="Open Project" data-act="openProject">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M4 19V6h6l2 2h8v11H4Z" stroke="#cfcfcf" stroke-width="1.6"></path>
+        </svg>
+      </div>
+
+      <div class="toolIcon" title="Build (PyInstaller)" id="buildBtn" data-act="build">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6Z" stroke="#7fd7ff" stroke-width="1.6"></path>
+        </svg>
+      </div>
+
+      <div class="toolSep"></div>
+
+      <div class="toolLink" id="buildLink" data-act="build">Build (PyInstaller)…</div>
+      <div class="toolLink" data-act="exportInstaller">Export Installer .py</div>
+      <div class="toolLink" data-act="exportUninstaller">Export Uninstaller .py</div>
+    </div>
+
+    <!-- Main -->
+    <div class="main" id="main">
+
+      <!-- LEFT: Wizard Maker / Designer -->
+      <div class="leftArea">
+        <div class="sectionTitle">Setup Wizard Maker</div>
+
+        <div class="panel" id="projectPanel">
+          <div class="panelHeader">
+            <span>Project Settings</span>
+            <span class="sub" style="color:#9d9d9d; font-size:12px;">Roxzned Setup Designer (web demo)</span>
+          </div>
+          <div class="panelBody">
+            <div class="gridForm">
+              <div class="lbl">App name:</div>
+              <input class="in" id="appName" value="Vidplayer">
+              <div></div>
+
+              <div class="lbl">Version:</div>
+              <input class="in" id="appVer" value="2.0.9.1">
+              <div></div>
+
+              <div class="lbl">Publisher:</div>
+              <input class="in" id="publisher" value="sonic Fan Tech">
+              <div></div>
+
+              <div class="lbl">Default install dir:</div>
+              <input class="in" id="defaultDir" value="%LOCALAPPDATA%\VidPlayer">
+              <div></div>
+
+              <div class="lbl">Source folder:</div>
+              <input class="in" id="sourceFolder" value="E:/Projects/Project USB/VS Code/Python/Roxzned Setup installer Designer/Source/data">
+              <button class="btn" data-act="browseSource">Browse…</button>
+
+              <div class="lbl">Payload zip:</div>
+              <input class="in" id="payloadZip" value="E:/Projects/Project USB/VS Code/Python/Roxzned Setup installer Designer/Source/payload.zip">
+              <button class="btn" data-act="browsePayload">Browse…</button>
+            </div>
+
+            <div style="height:10px"></div>
+            <div class="lbl" style="margin-bottom:6px;">License Text (used on License page role)</div>
+            <textarea class="ta" id="licenseText">put EULA Here</textarea>
+          </div>
+        </div>
+
+        <div class="splitRow">
+          <!-- Pages list -->
+          <div>
+            <div class="panel" style="margin:0 0 10px 0;">
+              <div class="panelHeader">Objects / Elements</div>
+              <div class="panelBody">
+                <div class="elementList" id="elementList"><div class="elementItem active" data-id="w1"><div class="elementMeta"><div class="elementType">Label</div><div class="elementName">lblTitle — Welcome to the Setup Wizard for Vidplayer v2.0.9.1</div></div><div class="elementBtns"><div class="iconBtn on" title="Hide">👁</div><div class="iconBtn off" title="Lock">🔒</div></div></div><div class="elementItem" data-id="w2"><div class="elementMeta"><div class="elementType">Label</div><div class="elementName">lblBody — This Setup Wizard will setup and install Vidplayer onto your computer, Press the next Button to start</div></div><div class="elementBtns"><div class="iconBtn on" title="Hide">👁</div><div class="iconBtn off" title="Lock">🔒</div></div></div></div>
+
+                
+              </div>
+            </div>
+
+            <div class="panel" style="margin:0;">
+              <div class="panelHeader">Pages</div>
+              <div class="panelBody">
+                <div class="listBox" id="pageList"><div class="pageItem active">Welcome</div><div class="pageItem">License Agreement</div><div class="pageItem">Choose Install Location</div><div class="pageItem">Installing</div><div class="pageItem">Finish</div></div>
+                <div class="rowBtns">
+                  <button class="btn" data-act="addPage">Add</button>
+                  <button class="btn" data-act="dupPage">Duplicate</button>
+                  <button class="btn" data-act="delPage">Delete</button>
+                  <button class="btn" data-act="upPage">Up</button>
+                  <button class="btn" data-act="downPage">Down</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="designerOptions">
+              <div class="sectionTitle" style="padding:0;">Designer Options</div>
+              <label class="chk" style="margin-left:auto;">
+                <input type="checkbox" id="showGrid" checked="">
+                Show grid (snap)
+              </label>
+            </div>
+          </div>
+
+          <!-- Page editor + canvas + properties -->
+          <div>
+            <div class="panel" style="margin:0;">
+              <div class="panelHeader">
+                <span>Page Editor</span>
+                <span style="color:#8f8f8f; font-size:12px;">Drag to move • Use handles to resize • Click to select</span>
+              </div>
+              <div class="panelBody">
+                <div class="pageBar">
+                  <div class="mini">
+                    <span class="tinyLbl">Page title:</span>
+                    <input class="in" id="pageTitle" style="width:220px">
+                  </div>
+                  <div class="mini">
+                    <span class="tinyLbl">Role:</span>
+                    <select class="sel" id="pageRole" style="width:170px">
+                      <option value="welcome">welcome</option>
+                      <option value="license">license</option>
+                      <option value="path">path</option>
+                      <option value="installing">installing</option>
+                      <option value="finish">finish</option>
+                      <option value="custom">custom</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="gridForm" style="grid-template-columns: 160px 1fr 92px;">
+                  <div class="lbl">Background color:</div>
+                  <input class="in" id="bgColor" value="#151515">
+                  <button class="btn" id="pickBg" type="button">Pick…</button>
+
+                  <div class="lbl">Background image:</div>
+                  <input class="in" id="bgImage" value="" placeholder="(optional) select an image or paste a URL/data:">
+                  <button class="btn" data-act="browseBg">Browse…</button>
+                </div>
+
+                <div style="height:10px"></div>
+                <div class="canvasWrap gridOn" id="canvas"><div class="widget selected" data-id="w1" style="left: 24px; top: 24px; width: 520px; height: 36px; font-size: 10px; font-weight: 400; color: rgb(255, 255, 255);">Welcome to the Setup Wizard for Vidplayer v2.0.9.1<div class="handle nw" data-dir="nw"></div><div class="handle n" data-dir="n"></div><div class="handle ne" data-dir="ne"></div><div class="handle e" data-dir="e"></div><div class="handle se" data-dir="se"></div><div class="handle s" data-dir="s"></div><div class="handle sw" data-dir="sw"></div><div class="handle w" data-dir="w"></div></div><div class="widget" data-id="w2" style="left: 24px; top: 74px; width: 680px; height: 50px; font-size: 10px; font-weight: 400; color: rgb(255, 255, 255);">This Setup Wizard will setup and install Vidplayer onto your computer, Press the next Button to start</div></div>
+                <div style="height:10px"></div>
+
+                
+<div style="height:10px"></div>
+
+                <div class="panel" style="margin:0;">
+                  <div class="panelHeader">
+                    <span>Selected Widget Properties</span>
+                    <span class="sub" id="selHint" style="color:#9d9d9d; font-size:12px;">Editing: lblTitle</span>
+                  </div>
+                  <div class="panelBody" id="props">
+                    <div class="gridForm" style="grid-template-columns: 140px 1fr 92px;">
+                      <div class="lbl">Type:</div>
+                      <input class="in" id="wType" disabled="">
+                      <div></div>
+
+                      <div class="lbl">Name:</div>
+                      <input class="in" id="wName">
+                      <div></div>
+
+                      <div class="lbl">Text:</div>
+                      <input class="in" id="wText">
+                      <div></div>
+
+                      <div class="lbl">X:</div>
+                      <input class="in" id="wX" type="number">
+                      <div></div>
+
+                      <div class="lbl">Y:</div>
+                      <input class="in" id="wY" type="number">
+                      <div></div>
+
+                      <div class="lbl">W:</div>
+                      <input class="in" id="wW" type="number">
+                      <div></div>
+
+                      <div class="lbl">H:</div>
+                      <input class="in" id="wH" type="number">
+                      <div></div>
+
+                      <div class="lbl">Font size:</div>
+                      <input class="in" id="wFont" type="number">
+                      <div></div>
+
+                      <div class="lbl">Bold:</div>
+                      <label class="chk"><input type="checkbox" id="wBold"> Bold</label>
+                      <div></div>
+
+                      <div class="lbl">Text color (fg):</div>
+                      <input class="in" id="wFg" value="#ffffff">
+                      <button class="btn" id="pickFg" type="button">Pick…</button>
+
+                      <div class="lbl">Background (bg):</div>
+                      <input class="in" id="wBg" value="#00000000">
+                      <button class="btn" id="pickWBg" type="button">Pick…</button>
+
+                      <div class="lbl">Checked (Checkbox only)</div>
+                      <label class="chk"><input type="checkbox" id="wChecked" disabled=""> Checked</label>
+                      <div></div>
+
+                      <div class="lbl">Enabled</div>
+                      <label class="chk"><input type="checkbox" id="wEnabled" checked=""> Enabled</label>
+                      <div></div>
+
+                      <div class="lbl">Action (Button/Checkbox)</div>
+                      <select class="in" id="wAction">
+                        <option value="none">(none)</option>
+                        <option value="prev">Back a page</option>
+                        <option value="next">Next page</option>
+                        <option value="close">Close installer</option>
+                        <option value="openUrl">Open URL</option>
+                        <option value="startInstall">Start install</option>
+                        <option value="toggleTargets">Checkbox: Enable/Disable targets</option>
+                      </select>
+                      <div></div>
+
+                      <div class="lbl actionParam actionUrl" style="display: none;">URL (Open URL)</div>
+                      <input class="in actionParam actionUrl" id="wActionUrl" placeholder="https://example.com" style="display: none;">
+                      <div class="actionParam actionUrl" style="display: none;"></div>
+
+                      <div class="lbl actionParam actionTargets" style="display: none;">Targets (Checkbox)</div>
+                      <select class="in actionParam actionTargets" id="wActionTargets" multiple="" size="4" style="display: none;"></select>
+                      <div class="actionParam actionTargets" style="display: none;"></div>
+
+                      <div class="actionNote actionParam actionTargets" style="grid-column: 1 / -1; display: none;">
+                        Tip: Pick one or more Buttons/CheckBoxes to enable/disable when this checkbox is toggled.
+                      </div>
+
+                    </div>
+
+                    <div class="propsBtns">
+                      <button class="btn" data-act="deleteWidget" type="button">Delete Selected</button>
+                      <button class="btn" data-act="bringFront" type="button">Bring to Front</button>
+                      <button class="btn" data-act="sendBack" type="button">Send to Back</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Generated code preview -->
+      <div class="rightArea">
+        <div class="codeShell">
+          <div class="codeTop">
+            <div class="title">Auto-generated installer code</div>
+            <div class="codeActions">
+              <button class="btn miniBtn" data-act="copyCode" type="button">Copy</button>
+              <button class="btn miniBtn" data-act="exportInstaller" type="button">Download .py</button>
+              <span class="chip" id="lnChip">Line numbers: ON</span>
+              <span class="chip">Live preview</span>
+            </div>
+          </div>
+
+          <div class="codeArea" id="codeArea">
+            <div class="codeRow" id="codeRow" style="grid-template-columns: 52px 1fr;">
+              <div class="ln" id="ln" style="display: block;"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285</div>
+              <div class="code" id="code"># Auto-generated by Roxzned Setup Designer
+# This is a standalone installer script. Compile it with PyInstaller if you want.
+# Requires: PySide6
+
+import os
+import sys
+import json
+import zipfile
+import traceback
+
+from PySide6.QtCore import Qt, Signal, QThread
+from PySide6.QtWidgets import (
+    QApplication, QWizard, QWizardPage, QLabel, QLineEdit, QPushButton, QHBoxLayout,
+    QVBoxLayout, QTextEdit, QCheckBox, QFileDialog, QMessageBox, QProgressBar, QWidget
+)
+
+PROJECT = {
+  "app_name": "Vidplayer",
+  "version": "2.0.9.1",
+  "publisher": "sonic Fan Tech",
+  "default_install_dir": "%LOCALAPPDATA%\\VidPlayer",
+  "source_folder": "E:/Projects/Project USB/VS Code/Python/Roxzned Setup installer Designer/Source/data",
+  "payload_zip": "E:/Projects/Project USB/VS Code/Python/Roxzned Setup installer Designer/Source/payload.zip",
+  "license_text": "put EULA Here",
+  "pages": [
+    {
+      "title": "Welcome",
+      "role": "welcome",
+      "bg": {
+        "color": "#151515",
+        "image": ""
+      },
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblTitle",
+          "text": "Welcome to the Setup Wizard for Vidplayer v2.0.9.1",
+          "x": 24,
+          "y": 24,
+          "w": 520,
+          "h": 36,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#ffffff",
+            "bg": "#00000000"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "lblBody",
+          "text": "This Setup Wizard will setup and install Vidplayer onto your computer, Press the next Button to start",
+          "x": 24,
+          "y": 74,
+          "w": 680,
+          "h": 50,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#ffffff",
+            "bg": "#00000000"
+          }
+        }
+      ]
+    },
+    {
+      "title": "License Agreement",
+      "role": "license",
+      "bg": {
+        "color": "#151515",
+        "image": ""
+      },
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblLic",
+          "text": "Please read the license agreement below:",
+          "x": 24,
+          "y": 24,
+          "w": 380,
+          "h": 24,
+          "extra": {
+            "font_size": 10,
+            "bold": True,
+            "fg": "#ffffff",
+            "bg": "#00000000"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "lblHint",
+          "text": "(Demo) The real installer shows a scrollable license box here.",
+          "x": 24,
+          "y": 56,
+          "w": 520,
+          "h": 24,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#cfcfcf",
+            "bg": "#00000000"
+          }
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkAgree",
+          "text": "I accept the agreement",
+          "x": 24,
+          "y": 98,
+          "w": 260,
+          "h": 20,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#ffffff",
+            "bg": "#00000000",
+            "checked": False
+          }
+        }
+      ]
+    },
+    {
+      "title": "Choose Install Location",
+      "role": "path",
+      "bg": {
+        "color": "#151515",
+        "image": ""
+      },
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblPath",
+          "text": "Choose where you want to install the program:",
+          "x": 24,
+          "y": 24,
+          "w": 420,
+          "h": 24,
+          "extra": {
+            "font_size": 10,
+            "bold": True,
+            "fg": "#ffffff",
+            "bg": "#00000000"
+          }
+        },
+        {
+          "type": "EditBox",
+          "name": "txtPath",
+          "text": "%LOCALAPPDATA%\\VidPlayer",
+          "x": 24,
+          "y": 60,
+          "w": 420,
+          "h": 26,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#ffffff",
+            "bg": "#111111"
+          }
+        },
+        {
+          "type": "Button",
+          "name": "btnSetPath",
+          "text": "Set Path",
+          "x": 454,
+          "y": 60,
+          "w": 92,
+          "h": 26,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#ffffff",
+            "bg": "#232323"
+          }
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkDesktop",
+          "text": "Make Desktop shortcut",
+          "x": 24,
+          "y": 100,
+          "w": 220,
+          "h": 20,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#ffffff",
+            "bg": "#00000000",
+            "checked": True
+          }
+        }
+      ]
+    },
+    {
+      "title": "Installing",
+      "role": "installing",
+      "bg": {
+        "color": "#151515",
+        "image": ""
+      },
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblInst",
+          "text": "Installing...",
+          "x": 24,
+          "y": 24,
+          "w": 200,
+          "h": 24,
+          "extra": {
+            "font_size": 10,
+            "bold": True,
+            "fg": "#ffffff",
+            "bg": "#00000000"
+          }
+        },
+        {
+          "type": "Label",
+          "name": "lblInst2",
+          "text": "(Demo) Files will be packed + extracted here.",
+          "x": 24,
+          "y": 54,
+          "w": 380,
+          "h": 24,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#cfcfcf",
+            "bg": "#00000000"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Finish",
+      "role": "finish",
+      "bg": {
+        "color": "#151515",
+        "image": ""
+      },
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblDone",
+          "text": "Setup is complete.",
+          "x": 24,
+          "y": 24,
+          "w": 220,
+          "h": 24,
+          "extra": {
+            "font_size": 10,
+            "bold": True,
+            "fg": "#ffffff",
+            "bg": "#00000000"
+          }
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkLaunch",
+          "text": "Launch Vidplayer",
+          "x": 24,
+          "y": 60,
+          "w": 200,
+          "h": 20,
+          "extra": {
+            "font_size": 10,
+            "bold": False,
+            "fg": "#ffffff",
+            "bg": "#00000000",
+            "checked": True
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# (Demo) Real build will generate full UI + install/uninstall logic.
+# • Pages: Welcome / License / Path / Installing / Finish
+# • Widgets: Text, Button, CheckBox, Image, EditBox
+# • Actions: Back/Next/Close/Open URL/Set Path
+# • Packing: payload.zip -&gt; install dir
+
+if __name__ == '__main__':
+    print('Demo: generated script preview only')
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PyInstaller modal -->
+  <div class="modalBack" id="modalBack" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Build Installer with PyInstaller">
+      <div class="modalTitle">
+        <span>Build Installer with PyInstaller</span>
+        <button class="btn" id="closeModalX" title="Close" type="button">✕</button>
+      </div>
+      <div class="modalBody">
+        <div class="modalForm">
+          <div class="lbl">Installer .py:</div>
+          <input class="in" id="mInstaller" value="installer.py">
+          <button class="btn" data-act="browseInstaller" type="button">Browse…</button>
+
+          <div class="lbl">Output folder:</div>
+          <input class="in" id="mOut" value="dist/">
+          <button class="btn" data-act="browseOut" type="button">Browse…</button>
+
+          <div class="lbl">Icon (.ico):</div>
+          <input class="in" id="mIcon" value="icon.ico">
+          <button class="btn" data-act="browseIcon" type="button">Browse…</button>
+
+          <div class="lbl">Payload zip:</div>
+          <input class="in" id="mPayload" value="payload.zip">
+          <button class="btn" data-act="browseMPayload" type="button">Browse…</button>
+        </div>
+
+        <div style="height:10px"></div>
+        <label class="chk"><input type="checkbox" id="mAddData" checked=""> Bundle payload.zip into build (--add-data)</label>
+        <label class="chk"><input type="checkbox" id="mOneFile" checked=""> One-file build (--onefile)</label>
+        <label class="chk"><input type="checkbox" id="mNoConsole" checked=""> Windowed (no console) (--noconsole)</label>
+        <label class="chk"><input type="checkbox" id="mClean" checked=""> Clean build (--clean)</label>
+
+        <div class="logBox" id="buildLog">[Demo] Ready.
+
+Click Build to simulate a PyInstaller run.
+</div>
+      </div>
+      <div class="modalFooter">
+        <button class="btn primary" id="doBuild" type="button">Build</button>
+        <button class="btn" id="closeModal" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Widget modal -->
+  <div class="modalBack" id="addWidgetBack" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Add Widget">
+      <div class="modalTitle">
+        <span>Add Widget</span>
+        <button class="btn" id="closeAddWidgetX" title="Close" type="button">✕</button>
+      </div>
+      <div class="modalBody">
+        <div class="modalForm" style="grid-template-columns: 130px 1fr;">
+          <div class="lbl">Type:</div>
+          <select class="sel" id="awType">
+            <option>Label</option>
+            <option>Button</option>
+            <option>CheckBox</option>
+            <option>EditBox</option>
+            <option>Image</option>
+          </select>
+
+          <div class="lbl">Name:</div>
+          <input class="in" id="awName" value="widget_1">
+
+          <div class="lbl">Text:</div>
+          <input class="in" id="awText" value="New Widget">
+
+          <div class="lbl">Width:</div>
+          <input class="in" id="awW" type="number" value="320">
+
+          <div class="lbl">Height:</div>
+          <input class="in" id="awH" type="number" value="24">
+        </div>
+        <div class="mutedNote">Tip: After adding, click the widget and use the resize handles to fine-tune it.</div>
+      </div>
+      <div class="modalFooter">
+        <button class="btn primary" id="doAddWidget" type="button">Add</button>
+        <button class="btn" id="closeAddWidget" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- About modal -->
+  <div class="modalBack" id="aboutBack" aria-hidden="true" style="display:none;">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="About Roxzned Setup Designer Web Demo">
+      <div class="modalTitle">
+        <span>About — Roxzned Setup Designer (Web Demo)</span>
+        <button class="btn" id="closeAboutX" title="Close" type="button">✕</button>
+      </div>
+      <div class="modalBody">
+        <div class="helpText">
+          <b>What this is</b>
+          <ul>
+            <li>A <b>fully interactive</b> web demo that previews how Roxzned Setup Designer will work.</li>
+            <li>It’s safe: it does <b>not</b> build real EXEs or install anything on your PC.</li>
+            <li>The “Run Generated Installer” feature is a <b>simulated</b> wizard preview that updates live.</li>
+          </ul>
+
+          <b>What’s real vs simulated</b>
+          <ul>
+            <li><b>Real:</b> designing pages, adding widgets, moving/resizing, colors/images, actions wiring.</li>
+            <li><b>Simulated:</b> building/compiling, file system access, installing, uninstaller behavior.</li>
+          </ul>
+
+          <b>Made by</b>
+          <ul>
+            <li>sonic Fan Tech</li>
+          </ul>
+
+          <div class="mutedNote">
+            Tip: Press <span class="kbd"><b>F5</b></span> to run the simulated installer preview.
+          </div>
+        </div>
+      </div>
+      <div class="modalFooter">
+        <button class="btn" id="closeAbout" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Help modal -->
+  <div class="modalBack" id="helpBack" aria-hidden="true" style="display: none;">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Help">
+      <div class="modalTitle">
+        <span>Help (Web Demo)</span>
+        <button class="btn" id="closeHelpX" title="Close" type="button">✕</button>
+      </div>
+      <div class="modalBody">
+
+<div class="helpText">
+  <h3 style="margin:0 0 8px 0;">Roxzned Setup Designer — Live Web Demo Help</h3>
+  <div class="mutedNote" style="margin-bottom:10px;">
+    This is a <b>safe, simulated</b> web demo. It shows how the real Roxzned Setup Designer will feel and work,
+    but it does <b>not</b> install anything on your computer and it does <b>not</b> produce a real EXE installer.
+  </div>
+
+  <details open="">
+    <summary><b>1) What the Live Web Demo is</b></summary>
+    <div style="margin-top:8px;">
+      <ul>
+        <li>A browser-based “preview build” of the Roxzned Setup Designer interface.</li>
+        <li>Everything is interactive: you can design pages, place UI elements, set colors/images, wire actions, and preview a simulated installer.</li>
+        <li>Saving/loading projects works using your browser (downloads/upload of a JSON file).</li>
+        <li>“Generated code” is a <b>starter Python stub</b> (PySide6) meant to demonstrate what export will look like.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details open="">
+    <summary><b>2) Quick start</b></summary>
+    <div style="margin-top:8px;">
+      <ol>
+        <li>Create or select a page from the page list.</li>
+        <li>Add elements by dragging them from the <b>Elements</b> panel onto the canvas (or right‑click the canvas and choose <b>Add</b>).</li>
+        <li>Select an element to edit its properties (text, size, colors, etc.).</li>
+        <li>Optionally wire <b>Actions</b> for Buttons/CheckBoxes to make a working installer flow.</li>
+        <li>Press <span class="kbd"><b>F5</b></span> or open <b>Tools → Run Generated Installer…</b> to preview the simulated installer.</li>
+        <li>Use <b>File → Save Project</b> to download your project JSON.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details open="">
+    <summary><b>3) What you CAN do in the demo (fully working)</b></summary>
+    <div style="margin-top:8px;">
+      <ul>
+        <li><b>Page Designer</b>
+          <ul>
+            <li>Create pages and switch between them.</li>
+            <li>Set <b>Background Color</b> per page.</li>
+            <li>Set <b>Background Image</b> per page (image picker; stored as a browser URL / data URL depending on selection).</li>
+          </ul>
+        </li>
+
+        <li><b>Elements / Widgets</b>
+          <ul>
+            <li>Add elements by dragging from the Elements list or using right‑click menu.</li>
+            <li>Select elements, move them (drag), resize them (handles), and nudge with arrow keys.</li>
+            <li>Edit common properties: text, size, position, foreground/background colors, font size, bold, etc.</li>
+            <li>Supported widget types in this demo:
+              <ul>
+                <li>Label</li>
+                <li>Button</li>
+                <li>CheckBox</li>
+                <li>EditBox (text input)</li>
+                <li>Image</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li><b>Objects / Element List</b>
+          <ul>
+            <li>See a list of all elements on the current page.</li>
+            <li>Click an item to select that element on the canvas.</li>
+            <li>Delete/duplicate/reorder via right‑click or hotkeys.</li>
+          </ul>
+        </li>
+
+        <li><b>Right‑click menus</b>
+          <ul>
+            <li>Right‑click the canvas to add new elements at the cursor location.</li>
+            <li>Right‑click a widget to duplicate, delete, or change layer order (front/back).</li>
+          </ul>
+        </li>
+
+        <li><b>Undo / Redo</b>
+          <ul>
+            <li><span class="kbd"><b>Ctrl+Z</b></span> Undo</li>
+            <li><span class="kbd"><b>Ctrl+Y</b></span> Redo</li>
+          </ul>
+        </li>
+
+        <li><b>Saving / Loading projects</b>
+          <ul>
+            <li><b>Save Project</b> downloads a JSON file representing the whole project.</li>
+            <li><b>Open Project</b> loads a JSON file back into the demo.</li>
+            <li>The demo also keeps a browser auto-save snapshot (so refreshing usually won’t lose your work).</li>
+          </ul>
+        </li>
+
+        <li><b>Generate Installer Code</b>
+          <ul>
+            <li>The code panel outputs Python that embeds your project data as JSON and loads it safely.</li>
+            <li>No broken JSON booleans (<code>false/true/null</code>) — it uses <code>json.loads</code> correctly.</li>
+          </ul>
+        </li>
+
+        <li><b>Simulated Installer Preview</b>
+          <ul>
+            <li>Press <span class="kbd"><b>F5</b></span> or use <b>Tools → Run Generated Installer…</b> to open the installer preview.</li>
+            <li>The preview renders your current page layout and widgets.</li>
+            <li>It updates <b>live</b> while you edit in the designer.</li>
+            <li>Buttons/CheckBoxes are interactive and actions work (details below).</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </details>
+
+  <details open="">
+    <summary><b>4) Actions (how Buttons/CheckBoxes work)</b></summary>
+    <div style="margin-top:8px;">
+      <p>
+        In the real Roxzned Setup Designer, you’ll be able to connect controls to behaviors. The demo includes the same idea:
+        select a Button or CheckBox and configure an <b>Action</b> in the properties panel.
+      </p>
+
+      <b>Button Actions (supported in the demo)</b>
+      <ul>
+        <li><b>Back a page</b> — moves to the previous page in the installer preview.</li>
+        <li><b>Next page</b> — moves to the next page in the installer preview.</li>
+        <li><b>Close installer</b> — closes the installer preview window.</li>
+        <li><b>Open URL</b> — opens a URL in a new tab (enter the URL in the Action settings).</li>
+        <li><b>Start install</b> — starts a simulated install (progress + log) and/or jumps to the page with role <b>installing</b> if your project has it.</li>
+      </ul>
+
+      <b>CheckBox Actions (supported in the demo)</b>
+      <ul>
+        <li><b>Enable/Disable targets</b> — pick one or more target Buttons/CheckBoxes. When checked, targets become enabled; when unchecked, targets become disabled.</li>
+      </ul>
+
+      <div class="mutedNote">
+        Tip: This is the easiest way to show off a “real” flow: build a Welcome page → License page (checkbox enables Next button) → Installing page → Finish page.
+      </div>
+    </div>
+  </details>
+
+  <details open="">
+    <summary><b>5) Background Color &amp; Background Image behavior</b></summary>
+    <div style="margin-top:8px;">
+      <ul>
+        <li><b>Background Color</b> applies to the page canvas in the designer and the installer preview.</li>
+        <li><b>Background Image</b> visually sits on top of the color (so if an image is set, it can “hide” the color underneath).</li>
+        <li>If you don’t see your background color, clear the background image for that page.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details open="">
+    <summary><b>6) What you CAN’T do in the demo (limitations)</b></summary>
+    <div style="margin-top:8px;">
+      <ul>
+        <li><b>No real EXE output</b> — the demo cannot compile to an installer executable.</li>
+        <li><b>No real install/uninstall</b> — the “install” step is simulated (progress/log only).</li>
+        <li><b>No real file copying</b> — it does not copy files to Program Files/AppData, create real shortcuts, or touch the registry.</li>
+        <li><b>No full feature set yet</b> — advanced widgets, advanced conditions, scripting, localization, etc. are not implemented here.</li>
+        <li><b>Browser sandbox</b> — file access is limited to what your browser allows (you can pick files, but the demo can’t freely read/write your disk).</li>
+      </ul>
+
+      <div class="mutedNote">
+        The goal is to show the <b>UI/UX and workflow</b> — not to replace the real desktop app.
+      </div>
+    </div>
+  </details>
+
+  <details open="">
+    <summary><b>7) Keyboard shortcuts</b></summary>
+    <div style="margin-top:8px;">
+      <ul>
+        <li><span class="kbd"><b>Ctrl+Z</b></span> Undo</li>
+        <li><span class="kbd"><b>Ctrl+Y</b></span> Redo</li>
+        <li><span class="kbd"><b>Delete</b></span> Delete selected widget</li>
+        <li><span class="kbd"><b>Arrow Keys</b></span> Nudge selected widget</li>
+        <li><span class="kbd"><b>Shift + Arrow Keys</b></span> Nudge faster (if enabled in your build)</li>
+        <li><span class="kbd"><b>F5</b></span> Run Generated Installer Preview</li>
+        <li><span class="kbd"><b>Esc</b></span> Close open menus/modals</li>
+      </ul>
+    </div>
+  </details>
+
+  <details open="">
+    <summary><b>8) Tips, best practices, and “showcase” ideas</b></summary>
+    <div style="margin-top:8px;">
+      <ul>
+        <li><b>Make navigation buttons yourself</b> and assign actions. This matches how the real program will work.</li>
+        <li><b>Use a License checkbox</b> to enable a “Next” button (shows off checkbox actions).</li>
+        <li><b>Add a “Visit Website” button</b> with Open URL action (shows off external action).</li>
+        <li><b>Create an Installing page</b> (role = <code>installing</code>) and wire “Install” to Start install action.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details open="">
+    <summary><b>9) Privacy / safety</b></summary>
+    <div style="margin-top:8px;">
+      <ul>
+        <li>The demo runs locally in your browser.</li>
+        <li>It does not upload your files anywhere.</li>
+        <li>Project saving is a normal download of a JSON file.</li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+</div>
+      <div class="modalFooter">
+        <button class="btn" id="closeHelp" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context menu (right-click) -->
+  <div class="ctx" id="ctx" style="display:none;">
+    <div class="ctxTitle">Add element</div>
+    <div class="ctxItem" data-ctx="add" data-type="Label">Add Label</div>
+    <div class="ctxItem" data-ctx="add" data-type="Button">Add Button</div>
+    <div class="ctxItem" data-ctx="add" data-type="CheckBox">Add CheckBox</div>
+    <div class="ctxItem" data-ctx="add" data-type="EditBox">Add EditBox</div>
+    <div class="ctxItem" data-ctx="add" data-type="Image">Add Image…</div>
+    <div class="ctxSep"></div>
+    <div class="ctxItem" data-ctx="delete">Delete Selected</div>
+    <div class="ctxItem" data-ctx="duplicate">Duplicate Selected</div>
+    <div class="ctxSep"></div>
+    <div class="ctxItem" data-act="bringFront">Bring to Front</div>
+    <div class="ctxItem" data-act="sendBack">Send to Back</div>
+  </div>
+
+  
+  <!-- Installer Preview modal -->
+  <div class="modalBack" id="instBack" aria-hidden="true" style="display:none;">
+    <div class="modal instModal" role="dialog" aria-modal="true" aria-label="Run Generated Installer">
+      <div class="modalTitle">
+        <span id="instTitle">Installer Preview</span>
+        <button class="btn" id="closeInstX" title="Close" type="button">✕</button>
+      </div>
+
+      <div class="instShell">
+        <div class="instHeader">
+          <div class="instHeaderTitle" id="instHeaderTitle">Setup Wizard</div>
+          <div class="instHeaderSub" id="instHeaderSub">Simulated preview — updates live while you edit</div>
+        </div>
+
+        <div class="instPage" id="instPage">
+          <div class="instPageCanvas" id="instPageCanvas"></div>
+
+          <div class="instProgressWrap" id="instProgressWrap" style="display:none;">
+            <div class="instProgressRow">
+              <div class="instProgressLabel" id="instProgressLabel">Installing…</div>
+              <div class="instProgressPct" id="instProgressPct">0%</div>
+            </div>
+            <div class="instPbar"><div class="instPfill" id="instPfill"></div></div>
+            <div class="instLog" id="instLog">[Demo] Ready.</div>
+          </div>
+        </div>
+
+        <div class="instFooter">
+          <div class="instFooterHint">Use your own buttons (with Actions) for Back / Next / Close / Start Install.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Toast -->
+  <div class="toast" id="toast" style="display: none;"><b>Web Demo</b> loaded — click around, drag &amp; resize widgets!</div>
+
+  <!-- Hidden pickers -->
+  <input id="fileOpenProject" type="file" accept=".json,application/json" style="position:fixed; left:-9999px;">
+  <input id="filePickZip" type="file" accept=".zip,application/zip" style="position:fixed; left:-9999px;">
+  <input id="filePickImage" type="file" accept="image/*" style="position:fixed; left:-9999px;">
+  <input id="filePickIcon" type="file" accept=".ico" style="position:fixed; left:-9999px;">
+  <input id="folderPick" type="file" webkitdirectory="" directory="" style="position:fixed; left:-9999px;">
+
+<input type="color" style="position: fixed; left: -9999px;"><input type="color" style="position: fixed; left: -9999px;"><input type="color" style="position: fixed; left: -9999px;"></body></html>

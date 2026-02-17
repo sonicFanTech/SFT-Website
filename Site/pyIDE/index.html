@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SFT PyIDE — a lightweight, tab-based Python IDE with interpreter selection, run output panel, external console modes, and a built-in PyInstaller compiler window." />
+  <title>SFT PyIDE — Lightweight Python IDE</title>
+
+  <meta property="og:title" content="SFT PyIDE — Lightweight Python IDE" />
+  <meta property="og:description" content="Tabbed editor • Interpreter manager • Run inside PyIDE or in external console • Built-in PyInstaller compiler • Settings + autosave." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --panel: #0f1621;
+      --panel2: #0c121b;
+      --text: #e7eef7;
+      --muted: #a9b6c6;
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+
+      --brand: #6aa9ff;
+      --brand2: #9b7bff;
+      --ok: #52d7a8;
+      --warn: #ffcc66;
+    }
+    [data-theme="light"]{
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --panel2: #f1f5fb;
+      --text: #0e1621;
+      --muted: #445468;
+      --line: rgba(14,22,33,.12);
+      --shadow: 0 12px 40px rgba(14,22,33,.12);
+      --brand: #2b6bff;
+      --brand2: #6d43ff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: radial-gradient(1200px 700px at 15% -10%, rgba(106,169,255,.22), transparent 55%),
+                  radial-gradient(900px 600px at 95% 0%, rgba(155,123,255,.18), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 80px}
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .dot{
+      width:12px; height:12px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 0 6px color-mix(in oklab, var(--brand) 15%, transparent);
+    }
+    .nav a{ text-decoration:none; }
+    .navlinks{
+      display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .navlinks a:hover{color:var(--text)}
+    .btn{
+      appearance:none;
+      border: 1px solid var(--line);
+      background: color-mix(in oklab, var(--panel) 88%, transparent);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow: var(--shadow);
+      cursor:pointer;
+    }
+    .btn.primary{
+      border-color: color-mix(in oklab, var(--brand) 55%, var(--line));
+      background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 28%, var(--panel)), color-mix(in oklab, var(--brand2) 20%, var(--panel)));
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+    .hero{
+      padding: 34px 0 10px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:22px}
+    }
+    .card{
+      background: color-mix(in oklab, var(--panel) 92%, transparent);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-main{padding: 26px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      font-weight: 800;
+      color: color-mix(in oklab, var(--brand) 80%, var(--text));
+      letter-spacing: .2px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    h1{
+      margin: 10px 0 10px;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.6px;
+    }
+    .lead{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top: 16px}
+    .mini{
+      padding: 22px;
+      display:grid;
+      gap: 12px;
+    }
+    .mini .stat{
+      padding: 14px;
+      border-radius: 14px;
+      background: color-mix(in oklab, var(--panel2) 94%, transparent);
+      border: 1px solid var(--line);
+    }
+    .stat .t{font-weight:900}
+    .stat .d{color:var(--muted); font-size: 14px; margin-top: 3px}
+    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin-top: 12px}
+    .pill{
+      font-size: 12px;
+      font-weight: 800;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: color-mix(in oklab, var(--muted) 90%, var(--text));
+      background: color-mix(in oklab, var(--panel2) 92%, transparent);
+    }
+
+    section{margin-top: 22px}
+    .section-head{
+      display:flex; align-items:end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin: 26px 0 12px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -0.2px;
+    }
+    .section-head p{margin:0; color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr 1fr} }
+    @media (max-width: 560px){ .grid{grid-template-columns:1fr} }
+    .feature{
+      padding: 16px;
+      border-radius: 16px;
+      background: color-mix(in oklab, var(--panel2) 94%, transparent);
+      border: 1px solid var(--line);
+    }
+    .feature h3{
+      margin: 0 0 6px;
+      font-size: 15px;
+      letter-spacing: -.1px;
+    }
+    .feature p{margin:0; color:var(--muted); font-size: 14px}
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 900px){ .gallery{grid-template-columns:1fr 1fr} }
+    @media (max-width: 560px){ .gallery{grid-template-columns:1fr} }
+    figure{
+      margin:0;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      background: color-mix(in oklab, var(--panel2) 94%, transparent);
+      cursor: zoom-in;
+      box-shadow: var(--shadow);
+    }
+    figure img{width:100%; height:auto; display:block}
+    figcaption{
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    .cols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 900px){ .cols{grid-template-columns:1fr} }
+    .box{padding: 18px}
+    .box h3{margin:0 0 8px; font-size: 16px}
+    .box p{margin:0; color:var(--muted)}
+    .code{
+      margin-top: 10px;
+      background: color-mix(in oklab, var(--panel2) 94%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      overflow:auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      color: color-mix(in oklab, var(--text) 85%, white);
+      white-space: pre;
+    }
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .list li{margin: 6px 0}
+    .faq details{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: color-mix(in oklab, var(--panel2) 94%, transparent);
+      padding: 14px 16px;
+      margin: 10px 0;
+    }
+    .faq summary{
+      cursor:pointer;
+      font-weight: 900;
+      list-style: none;
+    }
+    .faq summary::-webkit-details-marker{display:none}
+    .faq .ans{color:var(--muted); margin-top: 8px; font-size: 14px}
+    footer{
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 50;
+    }
+    .lightbox.open{display:flex}
+    .lightbox .frame{
+      max-width: min(1100px, 96vw);
+      max-height: 88vh;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 25px 90px rgba(0,0,0,.55);
+      background: #0b0f14;
+    }
+    .lightbox img{
+      max-width: 100%;
+      max-height: 88vh;
+      display:block;
+    }
+    .lightbox .bar{
+      display:flex; justify-content:space-between; align-items:center;
+      padding: 10px 12px;
+      color: rgba(255,255,255,.9);
+      font-size: 13px;
+      background: rgba(0,0,0,.35);
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .xbtn{
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.92);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+  
+    .langwrap{display:inline-flex; align-items:center; gap:8px}
+    .langsel{
+      appearance:none;
+      border: 1px solid var(--line);
+      background: color-mix(in oklab, var(--panel) 88%, transparent);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor:pointer;
+    }
+    .langsel:focus{outline: 2px solid color-mix(in oklab, var(--brand) 55%, transparent); outline-offset: 2px}
+    .sr{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
+    }
+    html[dir="rtl"] body{direction: rtl}
+    html[dir="rtl"] .nav-inner{flex-direction: row-reverse}
+    html[dir="rtl"] .navlinks{flex-direction: row-reverse}
+    html[dir="rtl"] .cta{justify-content:flex-start}
+    html[dir="rtl"] .feature, html[dir="rtl"] .box, html[dir="rtl"] .hero-main, html[dir="rtl"] .mini{ text-align: right }
+
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="SFT PyIDE Home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>SFT PyIDE</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a>
+        <a href="#download" data-i18n="nav_download">Download</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <div class="langwrap" aria-label="Language selector">
+          <label for="langSelect" class="sr" data-i18n="nav_language">Language</label>
+          <select id="langSelect" class="langsel" title="Language">
+            <option value="auto" data-i18n="lang_auto">Auto</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="he">עברית</option>
+            <option value="it">Italiano</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="pl">Polski</option>
+            <option value="pt">Português</option>
+            <option value="ru">Русский</option>
+            <option value="es">Español</option>
+            <option value="tr">Türkçe</option>
+          </select>
+        </div>
+        <button id="themeBtn" class="btn" type="button" title="Toggle theme" data-i18n="nav_theme">Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <div class="hero">
+      <div class="card hero-main">
+        <div class="kicker">
+          <span class="pill" style="border-color: color-mix(in oklab, var(--brand) 35%, var(--line)); color: color-mix(in oklab, var(--brand) 70%, var(--text));">Windows</span>
+          <span class="pill" style="border-color: color-mix(in oklab, var(--ok) 40%, var(--line)); color: color-mix(in oklab, var(--ok) 70%, var(--text));">PySide6</span>
+          <span class="pill">Tabbed IDE</span>
+        </div>
+
+        <h1 data-i18n="hero_title">Lightweight Python IDE with the tools you actually use.</h1>
+        <p class="lead" data-i18n="hero_lead">SFT PyIDE is a clean, tab-based Python IDE with a project file tree, recent files, autosave, interpreter selection, and two run modes (inside PyIDE or in a real external console).</p>
+
+        <div class="cta" id="download">
+          <a class="btn primary" id="downloadBtn" href="https://github.com/sonicFanTech/pyIDE/releases/tag/v1.2.0" target="_blank" rel="noreferrer" data-i18n="cta_download">Download Setup (v1.2.0)</a>
+          <a class="btn" href="https://github.com/sonicFanTech/pyIDE" target="_blank" rel="noreferrer" data-i18n="cta_source">View Source on GitHub</a>
+          <a class="btn" href="#quickstart" data-i18n="cta_quickstart">Quick Start</a>
+                  <div id="dlNote" style="margin-top:10px; color: var(--muted); font-size: 13px;" data-i18n="dl_note">Selected installer will download here.</div>
+        </div>
+
+        <div class="pillrow" aria-label="Highlights">
+          <span class="pill">Run inside IDE or external console</span>
+          <span class="pill">Interpreter manager</span>
+          <span class="pill">Built-in PyInstaller compiler window</span>
+          <span class="pill">Dark/Light themes + settings</span>
+        </div>
+      </div>
+
+      <aside class="card mini" aria-label="At a glance">
+        <div class="stat">
+          <div class="t">Two Run Modes</div>
+          <div class="d">Run in the output panel, or launch a real terminal for CLI/curses apps.</div>
+        </div>
+        <div class="stat">
+          <div class="t">Interpreter Manager</div>
+          <div class="d">Pick which Python runs your script. Add/remove/re-discover interpreters.</div>
+        </div>
+        <div class="stat">
+          <div class="t">Developer Tools</div>
+          <div class="d">Syntax check (py_compile) + a built-in PyInstaller compiler window.</div>
+        </div>
+        <div class="stat">
+          <div class="t">Settings + Autosave</div>
+          <div class="d">Theme, autosave interval, recent limit, autocomplete, external console defaults.</div>
+        </div>
+      </aside>
+    </div>
+
+    <section id="features">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="features_title">Everything PyIDE has & can do</h2>
+          <p data-i18n="features_sub">Full feature list (in plain English).</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="feature">
+          <h3 data-i18n="feat_t_01">Tabbed code editor</h3>
+          <p data-i18n="feat_p_01">Open multiple .py files at once. Unsaved tabs show a “*” indicator. Supports new/untitled files.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_02">Line numbers</h3>
+          <p data-i18n="feat_p_02">A line-number gutter makes it easy to track code locations and errors.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_03">Find + replace</h3>
+          <p data-i18n="feat_p_03">Ctrl+F and Ctrl+H, find next/prev, replace, replace all.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_04">Project file manager (dockable)</h3>
+          <p data-i18n="feat_p_04">Folder tree for a project root with right-click actions (new, rename, delete, open in Explorer). Hide/show anytime.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_05">Recent files</h3>
+          <p data-i18n="feat_p_05">File → Recent Files list with a configurable limit and “Clear Recent Files”.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_06">Auto-save</h3>
+          <p data-i18n="feat_p_06">Auto-saves open files on an interval (default 45 seconds). Can be disabled/changed. Saves only files with a path.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_07">Dark mode + light mode</h3>
+          <p data-i18n="feat_p_07">Dark mode by default, switch themes in Settings.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_08">Python interpreter manager</h3>
+          <p data-i18n="feat_p_08">Choose which Python runs your script. Add/remove/re-discover interpreter paths.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_09">Run inside PyIDE</h3>
+          <p data-i18n="feat_p_09">Output goes to the Run Output panel, includes stdin input, and a Stop button (Shift+F5).</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_10">Run in external console</h3>
+          <p data-i18n="feat_p_10">Best for CLI/curses apps. Choose cmd, PowerShell, pwsh, Windows Terminal variants, or custom consoles.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_11">Autocomplete</h3>
+          <p data-i18n="feat_p_11">Ctrl+Space completion. Optional Jedi support for smarter suggestions.</p>
+        </div>
+        <div class="feature">
+          <h3 data-i18n="feat_t_12">Syntax check + compiler window</h3>
+          <p data-i18n="feat_p_12">Quick py_compile syntax check (Ctrl+K) and a built-in PyInstaller compiler window.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="shots_title">Screenshots</h2>
+          <p data-i18n="shots_sub">Click any image to zoom.</p>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <figure  data-shot="1" data-cap-key="shot_desc_01" data-full="assets/screenshots/language/EN/1.png" data-cap="Main window (tabs, project tree, run output panel)">
+          <img src="assets/screenshots/language/EN/1.png" alt="PyIDE main window" loading="lazy">
+          <figcaption data-i18n="shot_cap_01">Main window</figcaption>
+        </figure>
+
+        <figure  data-shot="2" data-cap-key="shot_desc_02" data-full="assets/screenshots/language/EN/2.png" data-cap="Line numbers in the editor">
+          <img src="assets/screenshots/language/EN/2.png" alt="Line numbers in PyIDE" loading="lazy">
+          <figcaption data-i18n="shot_cap_02">Line numbers</figcaption>
+        </figure>
+
+        <figure  data-shot="3" data-cap-key="shot_desc_03" data-full="assets/screenshots/language/EN/3.png" data-cap="Find / Replace dialog">
+          <img src="assets/screenshots/language/EN/3.png" alt="Find replace dialog" loading="lazy">
+          <figcaption data-i18n="shot_cap_03">Find + Replace</figcaption>
+        </figure>
+
+        <figure  data-shot="4" data-cap-key="shot_desc_04" data-full="assets/screenshots/language/EN/4.png" data-cap="Project file manager with right-click actions">
+          <img src="assets/screenshots/language/EN/4.png" alt="Project manager menu" loading="lazy">
+          <figcaption data-i18n="shot_cap_04">Project manager</figcaption>
+        </figure>
+
+        <figure  data-shot="5" data-cap-key="shot_desc_05" data-full="assets/screenshots/language/EN/5.png" data-cap="Recent Files menu">
+          <img src="assets/screenshots/language/EN/5.png" alt="Recent files menu" loading="lazy">
+          <figcaption data-i18n="shot_cap_05">Recent files</figcaption>
+        </figure>
+
+        <figure  data-shot="6" data-cap-key="shot_desc_06" data-full="assets/screenshots/language/EN/6.png" data-cap="Interpreter selection dropdown">
+          <img src="assets/screenshots/language/EN/6.png" alt="Interpreter selection" loading="lazy">
+          <figcaption data-i18n="shot_cap_06">Interpreter manager</figcaption>
+        </figure>
+
+        <figure  data-shot="7" data-cap-key="shot_desc_07" data-full="assets/screenshots/language/EN/7.png" data-cap="External console selection menu">
+          <img src="assets/screenshots/language/EN/7.png" alt="External console selection" loading="lazy">
+          <figcaption data-i18n="shot_cap_07">External console</figcaption>
+        </figure>
+
+        <figure  data-shot="8" data-cap-key="shot_desc_08" data-full="assets/screenshots/language/EN/8.png" data-cap="Built-in PyInstaller compiler window">
+          <img src="assets/screenshots/language/EN/8.png" alt="PyInstaller compiler window" loading="lazy">
+          <figcaption data-i18n="shot_cap_08">Compiler (PyInstaller)</figcaption>
+        </figure>
+
+        <figure  data-shot="9" data-cap-key="shot_desc_09" data-full="assets/screenshots/language/EN/9.png" data-cap="Settings window (theme, autosave, recent files, autocomplete)">
+          <img src="assets/screenshots/language/EN/9.png" alt="Settings window" loading="lazy">
+          <figcaption data-i18n="shot_cap_09">Settings</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="quickstart" class="cols">
+      <div class="card box">
+        <h3 data-i18n="qs_title">Quick Start (from source)</h3>
+        <p data-i18n="qs_sub">Install dependencies, then run the script.</p>
+        <div class="code">pip install PySide6
+python PyIDE.py</div>
+        <ul class="list">
+          <li data-i18n="qs_li_01">Optional: <b>Jedi</b> for smarter autocomplete: <code>pip install jedi</code></li>
+          <li data-i18n="qs_li_02">Optional: <b>PyInstaller</b> if you want to build EXEs: <code>pip install pyinstaller</code></li>
+        </ul>
+      </div>
+
+      <div class="card box">
+        <h3 data-i18n="req_title">Requirements</h3>
+        <p data-i18n="req_sub">Recommended environment.</p>
+        <ul class="list">
+          <li data-i18n="qs_li_03">Windows 10 or Windows 11</li>
+          <li data-i18n="qs_li_04">At least one Python interpreter installed (python.exe)</li>
+          <li data-i18n="qs_li_05">PySide6</li>
+          <li data-i18n="qs_li_06">Optional: Windows Terminal for wt console options</li>
+        </ul>
+
+        <h3 style="margin-top:14px">Settings file</h3>
+        <p>PyIDE stores settings/recent files in <code>pyide_config.json</code>.</p>
+        <ul class="list">
+          <li data-i18n="qs_li_07">Tries the same folder as the EXE first</li>
+          <li data-i18n="qs_li_08">If not writable (ex: Program Files), falls back to <code>%LOCALAPPDATA%\SFT_PyIDE\pyide_config.json</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="shortcuts" class="card box">
+      <h3 data-i18n="keys_title">Keyboard shortcuts</h3>
+      <div class="cols">
+        <div>
+          <div class="code">File
+Ctrl+N  New
+Ctrl+O  Open
+Ctrl+S  Save
+Ctrl+Shift+S  Save As</div>
+        </div>
+        <div>
+          <div class="code">Edit
+Ctrl+F  Find
+Ctrl+H  Replace
+
+Run
+F5      Run
+Ctrl+F5 Run in External Console
+Shift+F5 Stop
+
+Tools
+Ctrl+K  Check Syntax (py_compile)</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="section-head">
+        <div>
+          <h2 data-i18n="faq_title">FAQ</h2>
+          <p data-i18n="faq_sub">Common questions.</p>
+        </div>
+      </div>
+
+      <details open>
+        <summary data-i18n="faq_q_01">My program uses curses / needs a real console. What should I use?</summary>
+        <div class="ans" data-i18n-html="faq_a_01">Use <b>Run in External Console</b>. It launches your script in a real terminal window (cmd/PowerShell/pwsh/Windows Terminal/custom).</div>
+      </details>
+
+      <details>
+        <summary data-i18n="faq_q_02">Does PyIDE support multiple Python installs?</summary>
+        <div class="ans" data-i18n-html="faq_a_02">Yes — you can select an interpreter per run, and add/remove/re-discover interpreter paths in the tools menu.</div>
+      </details>
+
+      <details>
+        <summary data-i18n="faq_q_03">Where are my settings saved?</summary>
+        <div class="ans" data-i18n-html="faq_a_03">In <code>pyide_config.json</code>. PyIDE tries next to the EXE first, then falls back to <code>%LOCALAPPDATA%\SFT_PyIDE</code> if needed.</div>
+      </details>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> sonicFanTech — SFT PyIDE</div>
+      <div>
+        <a href="https://github.com/sonicFanTech/pyIDE" target="_blank" rel="noreferrer">GitHub</a>
+        &nbsp;•&nbsp;
+        <a href="https://github.com/sonicFanTech/pyIDE/releases" target="_blank" rel="noreferrer">Releases</a>
+        &nbsp;•&nbsp;
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="frame" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+      <img id="lightboxImg" src="" alt="" />
+      <div class="bar">
+        <div id="lightboxCap"></div>
+        <button class="xbtn" id="lightboxClose" type="button" data-i18n="lb_close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme
+    const key = "pyide_site_theme";
+    const btn = document.getElementById("themeBtn");
+    const saved = localStorage.getItem(key);
+    if(saved){ document.documentElement.setAttribute("data-theme", saved); }
+    btn.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") || "dark";
+      const next = cur === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem(key, next);
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Lightbox
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lightboxImg");
+    const lbCap = document.getElementById("lightboxCap");
+    const closeBtn = document.getElementById("lightboxClose");
+
+    function openLB(src, cap, alt){
+      lb.classList.add("open");
+      lb.setAttribute("aria-hidden", "false");
+      lbImg.src = src;
+      lbImg.alt = alt || "Screenshot";
+      lbCap.textContent = cap || "";
+    }
+    function closeLB(){
+      lb.classList.remove("open");
+      lb.setAttribute("aria-hidden", "true");
+      lbImg.src = "";
+      lbImg.alt = "";
+      lbCap.textContent = "";
+    }
+
+    document.querySelectorAll("figure[data-full]").forEach(fig => {
+      fig.addEventListener("click", () => {
+        openLB(fig.dataset.full, fig.dataset.cap, fig.querySelector("img")?.alt);
+      });
+    });
+
+    closeBtn.addEventListener("click", closeLB);
+    lb.addEventListener("click", (e) => { if(e.target === lb) closeLB(); });
+    window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeLB(); });
+
+
+    // --------
+    // Language + per-language download (v1.2.0)
+    // --------
+    const REL_TAG = "v1.2.0";
+    const GH_BASE = `https://github.com/sonicFanTech/pyIDE/releases/download/${REL_TAG}/`;
+
+    // Filenames as uploaded to the release assets (spaces are OK; we URL-encode them).
+    const installers = {
+      en: "pyIDE v1.2.0 - EN.exe",
+      ar: "pyIDE v1.2.0 - AR.exe",
+      fr: "pyIDE v1.2.0 - FR.exe",
+      de: "pyIDE v1.2.0 - DE.exe",
+      he: "pyIDE v1.2.0 - HE.exe",
+      it: "pyIDE v1.2.0 - IT.exe",
+      ja: "pyIDE v1.2.0 - JA.exe",
+      ko: "pyIDE v1.2.0 - KO.exe",
+      pl: "pyIDE v1.2.0 - PL.exe",
+      pt: "pyIDE v1.2.0 - PT.exe",
+      ru: "pyIDE v1.2.0 - RU.exe",
+      es: "pyIDE v1.2.0 - ES.exe",
+      tr: "pyIDE v1.2.0 - TR.exe",
+    };
+
+    const rtlLangs = new Set(["ar", "he"]);
+
+    const langSelect = document.getElementById("langSelect");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const dlNote = document.getElementById("dlNote");
+    const LANG_KEY = "pyide_site_lang";
+
+    function normalizeLang(input){
+      if(!input) return "en";
+      const s = String(input).toLowerCase();
+      const short = s.split("-")[0];
+      if(installers[short]) return short;
+      return "en";
+    }
+
+    function pickAutoLang(){
+      return normalizeLang(navigator.language || navigator.userLanguage || "en");
+    }
+
+    // Core UI translations (you can expand this anytime)
+    const T = {
+      en: {
+        nav_features: "Features",
+        nav_screenshots: "Screenshots",
+        nav_download: "Download",
+        nav_faq: "FAQ",
+        nav_theme: "Theme",
+        nav_language: "Language",
+        lang_auto: "Auto",
+        hero_title: "Lightweight Python IDE with the tools you actually use.",
+        hero_lead: "SFT PyIDE is a clean, tab-based Python IDE with a project file tree, recent files, autosave, interpreter selection, and two run modes (inside PyIDE or in a real external console).",
+        cta_download: "Download Setup (v1.2.0)",
+        cta_source: "View Source on GitHub",
+        cta_quickstart: "Quick Start",
+        dl_note: "Selected installer will download here.",
+        features_title: "Everything PyIDE has & can do",
+        features_sub: "Full feature list (in plain English).",
+        shots_title: "Screenshots",
+        shots_sub: "Click any image to zoom.",
+        qs_title: "Quick Start (from source)",
+        qs_sub: "Install dependencies, then run the script.",
+        req_title: "Requirements",
+        req_sub: "Recommended environment.",
+        keys_title: "Keyboard shortcuts",
+        faq_title: "FAQ",
+        faq_sub: "Common questions.",
+        lb_close: "Close",
+      },
+      ar: { nav_features:"الميزات", nav_screenshots:"لقطات الشاشة", nav_download:"تنزيل", nav_faq:"الأسئلة الشائعة", nav_theme:"السمة", nav_language:"اللغة", lang_auto:"تلقائي",
+        hero_title:"بيئة تطوير بايثون خفيفة بالأدوات التي تحتاجها فعلاً.", hero_lead:"SFT PyIDE هي بيئة تطوير بايثون نظيفة بعلامات تبويب مع شجرة ملفات للمشروع والملفات الأخيرة والحفظ التلقائي واختيار المفسّر وطريقتين للتشغيل (داخل PyIDE أو في وحدة تحكم خارجية حقيقية).",
+        cta_download:"تنزيل المُثبّت (v1.2.0)", cta_source:"عرض المصدر على GitHub", cta_quickstart:"بدء سريع", dl_note:"سيتم تنزيل المُثبّت المحدد هنا.",
+        features_title:"كل ما يملكه PyIDE ويمكنه فعله", features_sub:"قائمة كاملة بالميزات.", shots_title:"لقطات الشاشة", shots_sub:"انقر على أي صورة للتكبير.",
+        qs_title:"بدء سريع (من المصدر)", qs_sub:"ثبّت الاعتمادات ثم شغّل السكربت.", req_title:"المتطلبات", req_sub:"بيئة موصى بها.", keys_title:"اختصارات لوحة المفاتيح",
+        faq_title:"الأسئلة الشائعة", faq_sub:"أسئلة متكررة.", lb_close:"إغلاق" },
+      fr: { nav_features:"Fonctionnalités", nav_screenshots:"Captures", nav_download:"Télécharger", nav_faq:"FAQ", nav_theme:"Thème", nav_language:"Langue", lang_auto:"Auto",
+        hero_title:"Un IDE Python léger avec les outils que vous utilisez vraiment.", hero_lead:"SFT PyIDE est un IDE Python propre à onglets avec arbre de projet, fichiers récents, sauvegarde auto, sélection d’interpréteur et deux modes d’exécution (dans PyIDE ou dans une console externe).",
+        cta_download:"Télécharger l’installeur (v1.2.0)", cta_source:"Voir le code sur GitHub", cta_quickstart:"Démarrage rapide", dl_note:"L’installeur sélectionné se télécharge ici.",
+        features_title:"Tout ce que PyIDE peut faire", features_sub:"Liste complète des fonctionnalités.", shots_title:"Captures d’écran", shots_sub:"Cliquez pour zoomer.",
+        qs_title:"Démarrage rapide (depuis le code)", qs_sub:"Installez les dépendances, puis lancez le script.", req_title:"Configuration requise", req_sub:"Environnement recommandé.", keys_title:"Raccourcis clavier",
+        faq_title:"FAQ", faq_sub:"Questions fréquentes.", lb_close:"Fermer" },
+      de: { nav_features:"Funktionen", nav_screenshots:"Screenshots", nav_download:"Download", nav_faq:"FAQ", nav_theme:"Theme", nav_language:"Sprache", lang_auto:"Auto",
+        hero_title:"Leichtgewichtige Python‑IDE mit den Tools, die du wirklich nutzt.", hero_lead:"SFT PyIDE ist eine übersichtliche Tab‑IDE mit Projektbaum, zuletzt verwendeten Dateien, Autosave, Interpreter‑Auswahl und zwei Run‑Modi (im PyIDE‑Output oder in einer echten externen Konsole).",
+        cta_download:"Setup herunterladen (v1.2.0)", cta_source:"Quellcode auf GitHub", cta_quickstart:"Schnellstart", dl_note:"Der ausgewählte Installer wird hier heruntergeladen.",
+        features_title:"Alles, was PyIDE kann", features_sub:"Vollständige Funktionsliste.", shots_title:"Screenshots", shots_sub:"Zum Zoomen klicken.",
+        qs_title:"Schnellstart (aus Source)", qs_sub:"Abhängigkeiten installieren, dann Skript starten.", req_title:"Voraussetzungen", req_sub:"Empfohlene Umgebung.", keys_title:"Tastenkürzel",
+        faq_title:"FAQ", faq_sub:"Häufige Fragen.", lb_close:"Schließen" },
+      he: { nav_features:"תכונות", nav_screenshots:"צילומי מסך", nav_download:"הורדה", nav_faq:"שאלות נפוצות", nav_theme:"ערכת נושא", nav_language:"שפה", lang_auto:"אוטומטי",
+        hero_title:"סביבת פיתוח פייתון קלה עם הכלים שבאמת משתמשים בהם.", hero_lead:"SFT PyIDE היא סביבת פיתוח עם לשוניות, עץ פרויקט, קבצים אחרונים, שמירה אוטומטית, בחירת מפרש ושני מצבי הרצה (בתוך PyIDE או בקונסול חיצוני אמיתי).",
+        cta_download:"הורדת מתקין (v1.2.0)", cta_source:"צפייה בקוד ב‑GitHub", cta_quickstart:"התחלה מהירה", dl_note:"המתקין שנבחר יורד כאן.",
+        features_title:"כל מה ש‑PyIDE יודע לעשות", features_sub:"רשימת תכונות מלאה.", shots_title:"צילומי מסך", shots_sub:"לחצו על תמונה כדי להגדיל.",
+        qs_title:"התחלה מהירה (מהמקור)", qs_sub:"התקינו תלות ואז הריצו את הסקריפט.", req_title:"דרישות", req_sub:"סביבת עבודה מומלצת.", keys_title:"קיצורי מקלדת",
+        faq_title:"שאלות נפוצות", faq_sub:"שאלות מתבקשות.", lb_close:"סגור" },
+      it: { nav_features:"Funzioni", nav_screenshots:"Screenshot", nav_download:"Download", nav_faq:"FAQ", nav_theme:"Tema", nav_language:"Lingua", lang_auto:"Auto",
+        hero_title:"IDE Python leggero con gli strumenti che usi davvero.", hero_lead:"SFT PyIDE è un IDE a schede con albero progetto, file recenti, salvataggio automatico, scelta interprete e due modalità di esecuzione (dentro PyIDE o in una console esterna).",
+        cta_download:"Scarica installer (v1.2.0)", cta_source:"Vedi sorgente su GitHub", cta_quickstart:"Avvio rapido", dl_note:"L’installer selezionato verrà scaricato qui.",
+        features_title:"Tutto ciò che PyIDE può fare", features_sub:"Elenco completo delle funzioni.", shots_title:"Screenshot", shots_sub:"Clicca per ingrandire.",
+        qs_title:"Avvio rapido (dal sorgente)", qs_sub:"Installa le dipendenze, poi esegui lo script.", req_title:"Requisiti", req_sub:"Ambiente consigliato.", keys_title:"Scorciatoie da tastiera",
+        faq_title:"FAQ", faq_sub:"Domande comuni.", lb_close:"Chiudi" },
+      ja: { nav_features:"機能", nav_screenshots:"スクリーンショット", nav_download:"ダウンロード", nav_faq:"FAQ", nav_theme:"テーマ", nav_language:"言語", lang_auto:"自動",
+        hero_title:"実際に使うツールに絞った軽量 Python IDE。", hero_lead:"SFT PyIDE はタブ式の Python IDE。プロジェクトツリー、最近使ったファイル、自動保存、インタープリタ選択、2つの実行方法（IDE内 / 外部コンソール）を備えています。",
+        cta_download:"セットアップをダウンロード (v1.2.0)", cta_source:"GitHubでソースを見る", cta_quickstart:"クイックスタート", dl_note:"選択した言語のインストーラをここからダウンロードします。",
+        features_title:"PyIDE の機能一覧", features_sub:"機能をわかりやすくまとめています。", shots_title:"スクリーンショット", shots_sub:"クリックで拡大。",
+        qs_title:"クイックスタート（ソース）", qs_sub:"依存関係を入れて実行します。", req_title:"要件", req_sub:"推奨環境。", keys_title:"ショートカット",
+        faq_title:"FAQ", faq_sub:"よくある質問。", lb_close:"閉じる" },
+      ko: { nav_features:"기능", nav_screenshots:"스크린샷", nav_download:"다운로드", nav_faq:"FAQ", nav_theme:"테마", nav_language:"언어", lang_auto:"자동",
+        hero_title:"정말 필요한 도구만 담은 가벼운 Python IDE.", hero_lead:"SFT PyIDE는 탭 기반 Python IDE로, 프로젝트 트리/최근 파일/자동 저장/인터프리터 선택/2가지 실행 모드(IDE 내부 또는 외부 콘솔)를 제공합니다.",
+        cta_download:"설치 파일 다운로드 (v1.2.0)", cta_source:"GitHub에서 소스 보기", cta_quickstart:"빠른 시작", dl_note:"선택한 언어 설치 파일이 여기에서 다운로드됩니다.",
+        features_title:"PyIDE 기능", features_sub:"기능 목록.", shots_title:"스크린샷", shots_sub:"클릭해서 확대.",
+        qs_title:"빠른 시작(소스)", qs_sub:"의존성 설치 후 실행.", req_title:"요구 사항", req_sub:"권장 환경.", keys_title:"키보드 단축키",
+        faq_title:"FAQ", faq_sub:"자주 묻는 질문.", lb_close:"닫기" },
+      pl: { nav_features:"Funkcje", nav_screenshots:"Zrzuty ekranu", nav_download:"Pobierz", nav_faq:"FAQ", nav_theme:"Motyw", nav_language:"Język", lang_auto:"Auto",
+        hero_title:"Lekki Python IDE z narzędziami, których naprawdę używasz.", hero_lead:"SFT PyIDE to IDE z kartami, drzewem projektu, ostatnimi plikami, autozapisem, wyborem interpretera i dwoma trybami uruchamiania (w IDE lub w zewnętrznej konsoli).",
+        cta_download:"Pobierz instalator (v1.2.0)", cta_source:"Zobacz kod na GitHub", cta_quickstart:"Szybki start", dl_note:"Wybrany instalator pobierze się tutaj.",
+        features_title:"Wszystko, co potrafi PyIDE", features_sub:"Pełna lista funkcji.", shots_title:"Zrzuty ekranu", shots_sub:"Kliknij, aby powiększyć.",
+        qs_title:"Szybki start (ze źródeł)", qs_sub:"Zainstaluj zależności i uruchom skrypt.", req_title:"Wymagania", req_sub:"Zalecane środowisko.", keys_title:"Skróty klawiszowe",
+        faq_title:"FAQ", faq_sub:"Najczęstsze pytania.", lb_close:"Zamknij" },
+      pt: { nav_features:"Recursos", nav_screenshots:"Capturas", nav_download:"Baixar", nav_faq:"FAQ", nav_theme:"Tema", nav_language:"Idioma", lang_auto:"Auto",
+        hero_title:"IDE Python leve com as ferramentas que você realmente usa.", hero_lead:"SFT PyIDE é uma IDE com abas, árvore de projeto, arquivos recentes, salvamento automático, seleção de interpretador e dois modos de execução (no PyIDE ou em um console externo real).",
+        cta_download:"Baixar instalador (v1.2.0)", cta_source:"Ver código no GitHub", cta_quickstart:"Início rápido", dl_note:"O instalador selecionado será baixado aqui.",
+        features_title:"Tudo o que o PyIDE pode fazer", features_sub:"Lista completa de recursos.", shots_title:"Capturas de tela", shots_sub:"Clique para ampliar.",
+        qs_title:"Início rápido (do código)", qs_sub:"Instale dependências e execute o script.", req_title:"Requisitos", req_sub:"Ambiente recomendado.", keys_title:"Atalhos de teclado",
+        faq_title:"FAQ", faq_sub:"Perguntas comuns.", lb_close:"Fechar" },
+      ru: { nav_features:"Функции", nav_screenshots:"Скриншоты", nav_download:"Скачать", nav_faq:"FAQ", nav_theme:"Тема", nav_language:"Язык", lang_auto:"Авто",
+        hero_title:"Лёгкая Python IDE с инструментами, которые вы действительно используете.", hero_lead:"SFT PyIDE — табовая IDE с деревом проекта, недавними файлами, автосохранением, выбором интерпретатора и двумя режимами запуска (внутри PyIDE или во внешней консоли).",
+        cta_download:"Скачать установщик (v1.2.0)", cta_source:"Исходники на GitHub", cta_quickstart:"Быстрый старт", dl_note:"Выбранный установщик будет скачан здесь.",
+        features_title:"Возможности PyIDE", features_sub:"Полный список функций.", shots_title:"Скриншоты", shots_sub:"Нажмите для увеличения.",
+        qs_title:"Быстрый старт (из исходников)", qs_sub:"Установите зависимости и запустите скрипт.", req_title:"Требования", req_sub:"Рекомендуемая среда.", keys_title:"Горячие клавиши",
+        faq_title:"FAQ", faq_sub:"Частые вопросы.", lb_close:"Закрыть" },
+      es: { nav_features:"Funciones", nav_screenshots:"Capturas", nav_download:"Descargar", nav_faq:"FAQ", nav_theme:"Tema", nav_language:"Idioma", lang_auto:"Auto",
+        hero_title:"IDE de Python ligero con las herramientas que realmente usas.", hero_lead:"SFT PyIDE es un IDE con pestañas, árbol de proyecto, archivos recientes, autoguardado, selección de intérprete y dos modos de ejecución (dentro de PyIDE o en una consola externa real).",
+        cta_download:"Descargar instalador (v1.2.0)", cta_source:"Ver código en GitHub", cta_quickstart:"Inicio rápido", dl_note:"El instalador seleccionado se descargará aquí.",
+        features_title:"Todo lo que PyIDE puede hacer", features_sub:"Lista completa de funciones.", shots_title:"Capturas de pantalla", shots_sub:"Haz clic para ampliar.",
+        qs_title:"Inicio rápido (desde el código)", qs_sub:"Instala dependencias y ejecuta el script.", req_title:"Requisitos", req_sub:"Entorno recomendado.", keys_title:"Atajos de teclado",
+        faq_title:"FAQ", faq_sub:"Preguntas comunes.", lb_close:"Cerrar" },
+      tr: { nav_features:"Özellikler", nav_screenshots:"Ekran Görüntüleri", nav_download:"İndir", nav_faq:"SSS", nav_theme:"Tema", nav_language:"Dil", lang_auto:"Otomatik",
+        hero_title:"Gerçekten kullandığın araçlarla hafif bir Python IDE.", hero_lead:"SFT PyIDE; proje ağacı, son dosyalar, otomatik kaydetme, yorumlayıcı seçimi ve iki çalıştırma modu (PyIDE içinde veya gerçek harici konsol) sunan sekmeli bir IDE’dir.",
+        cta_download:"Kurulum indir (v1.2.0)", cta_source:"GitHub’da kaynak", cta_quickstart:"Hızlı Başlangıç", dl_note:"Seçilen kurulum dosyası buradan indirilecek.",
+        features_title:"PyIDE neler yapabilir?", features_sub:"Tam özellik listesi.", shots_title:"Ekran Görüntüleri", shots_sub:"Yakınlaştırmak için tıkla.",
+        qs_title:"Hızlı Başlangıç (kaynak)", qs_sub:"Bağımlılıkları kur ve çalıştır.", req_title:"Gereksinimler", req_sub:"Önerilen ortam.", keys_title:"Klavye kısayolları",
+        faq_title:"SSS", faq_sub:"Sık sorulan sorular.", lb_close:"Kapat" },
+    };
+    // ---- Extra translations (features, screenshots, FAQ, etc.) ----
+    (function extendTranslations(){
+      const extra = {
+
+        "ar": {
+          "feat_t_01": "محرر كود بعلامات تبويب",
+          "feat_p_01": "افتح عدة ملفات ‎.py‎ مرة واحدة. تظهر علامة “*” للملفات غير المحفوظة. يدعم ملفات جديدة/بدون اسم.",
+          "feat_t_02": "أرقام الأسطر",
+          "feat_p_02": "شريط أرقام أسطر يساعدك على تتبّع مواقع الكود والأخطاء بسهولة.",
+          "feat_t_03": "بحث + استبدال",
+          "feat_p_03": "Ctrl+F و Ctrl+H، بحث التالي/السابق، استبدال، واستبدال الكل.",
+          "feat_t_04": "فحص بناء الجملة",
+          "feat_p_04": "زر فحص سريع (py_compile) للتأكد من أن ملفك بلا أخطاء تركيبية.",
+          "feat_t_05": "حفظ تلقائي",
+          "feat_p_05": "اختياري—يحفظ الملفات المفتوحة كل X ثانية. يمكن تغييره في الإعدادات.",
+          "feat_t_06": "إكمال تلقائي",
+          "feat_p_06": "إكمال أساسي مع Ctrl+Space (ومع Jedi يصبح أفضل).",
+          "feat_t_07": "الوضع الداكن + الفاتح",
+          "feat_p_07": "داكن افتراضيًا، ويمكنك تبديل السمات من الإعدادات.",
+          "feat_t_08": "إدارة مفسّر بايثون",
+          "feat_p_08": "اختر أي Python يشغّل سكربتك. أضف/احذف/أعد اكتشاف مسارات المفسر.",
+          "feat_t_09": "تشغيل داخل PyIDE",
+          "feat_p_09": "يظهر الإخراج في لوحة Run Output، مع إدخال stdin وزر إيقاف (Shift+F5).",
+          "feat_t_10": "تشغيل في وحدة تحكم خارجية",
+          "feat_p_10": "شغّل في cmd/PowerShell/Windows Terminal حتى تعمل برامج CLI/curses بشكل صحيح.",
+          "feat_t_11": "مُجمِّع (PyInstaller)",
+          "feat_p_11": "واجهة بسيطة لبناء EXE. يزيل المسافات/النقاط الخطرة تلقائيًا في اسم الملف قبل البناء.",
+          "feat_t_12": "استعادة الجلسة",
+          "feat_p_12": "يعيد فتح علامات التبويب الأخيرة عند بدء التشغيل (يمكن تعطيله من الإعدادات).",
+          "shot_cap_01": "النافذة الرئيسية",
+          "shot_cap_02": "أرقام الأسطر",
+          "shot_cap_03": "شجرة المشروع",
+          "shot_cap_04": "قائمة File",
+          "shot_cap_05": "الإكمال التلقائي",
+          "shot_cap_06": "المصحّح",
+          "shot_cap_07": "وحدة تحكم خارجية",
+          "shot_cap_08": "المُجمِّع (PyInstaller)",
+          "shot_cap_09": "الإعدادات",
+          "shot_desc_01": "النافذة الرئيسية (علامات تبويب، شجرة مشروع، لوحة الإخراج)",
+          "shot_desc_02": "أرقام الأسطر في المحرر",
+          "shot_desc_03": "شجرة الملفات/المشروع مع إجراءات النقر بالزر الأيمن",
+          "shot_desc_04": "قائمة File (فتح/حفظ/حديثة/بناء)",
+          "shot_desc_05": "إكمال الكود (Ctrl+Space)",
+          "shot_desc_06": "المصحّح (نقاط توقف + خطوات)",
+          "shot_desc_07": "تشغيل في وحدة تحكم خارجية",
+          "shot_desc_08": "نافذة المُجمِّع (PyInstaller)",
+          "shot_desc_09": "نافذة الإعدادات (السمة، الحفظ التلقائي، الملفات الأخيرة، ...)",
+          "qs_li_01": "اختياري: <b>Jedi</b> لإكمال أفضل: <code>pip install jedi</code>",
+          "qs_li_02": "اختياري: <b>PyInstaller</b> لبناء ملفات EXE: <code>pip install pyinstaller</code>",
+          "qs_li_03": "Windows 10 أو Windows 11",
+          "qs_li_04": "على الأقل مفسر Python واحد مثبت (python.exe)",
+          "qs_li_05": "PySide6",
+          "qs_li_06": "اختياري: Windows Terminal لخيارات wt",
+          "qs_li_07": "مستحسن: Notepad++ (إضافي)",
+          "qs_li_08": "تخزين الإعدادات في ملف JSON بجانب EXE إن أمكن",
+          "faq_q_01": "برنامجي يستخدم curses / يحتاج وحدة تحكم حقيقية. ماذا أستخدم؟",
+          "faq_a_01": "استخدم <b>Run in External Console</b>. سيشغّل سكربتك في نافذة طرفية حقيقية (cmd/PowerShell/pwsh/Windows Terminal/مخصص).",
+          "faq_q_02": "هل يدعم PyIDE أكثر من تثبيت Python؟",
+          "faq_a_02": "نعم — يمكنك اختيار المفسر لكل تشغيل، وإضافة/حذف/إعادة اكتشاف مسارات المفسر من قائمة Tools.",
+          "faq_q_03": "أين تُحفظ إعداداتي؟",
+          "faq_a_03": "في <code>pyide_config.json</code>. يحاول PyIDE حفظه بجانب EXE أولًا، ثم يستخدم <code>%LOCALAPPDATA%\\SFT_PyIDE</code> عند الحاجة.",
+        },
+        "fr": {
+          "feat_t_01": "Éditeur à onglets",
+          "feat_p_01": "Ouvrez plusieurs fichiers .py. Les onglets non enregistrés affichent “*”. Fichiers nouveaux/sans nom pris en charge.",
+          "feat_t_02": "Numéros de ligne",
+          "feat_p_02": "Une gouttière de numéros de ligne aide à repérer rapidement le code et les erreurs.",
+          "feat_t_03": "Rechercher + remplacer",
+          "feat_p_03": "Ctrl+F et Ctrl+H, suivant/précédent, remplacer, tout remplacer.",
+          "feat_t_04": "Vérification de syntaxe",
+          "feat_p_04": "Bouton rapide (py_compile) pour vérifier que le fichier n’a pas d’erreurs.",
+          "feat_t_05": "Sauvegarde automatique",
+          "feat_p_05": "Optionnel — sauvegarde toutes les X secondes. Paramétrable dans les réglages.",
+          "feat_t_06": "Autocomplétion",
+          "feat_p_06": "Autocomplétion de base avec Ctrl+Espace (meilleure avec Jedi).",
+          "feat_t_07": "Mode sombre + clair",
+          "feat_p_07": "Sombre par défaut, changez le thème dans Settings.",
+          "feat_t_08": "Gestion des interpréteurs Python",
+          "feat_p_08": "Choisissez quel Python exécute le script. Ajouter/supprimer/redétecter des interprètes.",
+          "feat_t_09": "Exécuter dans PyIDE",
+          "feat_p_09": "Sortie dans le panneau Run Output, avec stdin et bouton Stop (Shift+F5).",
+          "feat_t_10": "Exécuter dans une console externe",
+          "feat_p_10": "Lancez dans cmd/PowerShell/Windows Terminal pour les apps CLI/curses.",
+          "feat_t_11": "Compilateur (PyInstaller)",
+          "feat_p_11": "Interface simple pour générer un EXE. Nettoie automatiquement les noms de fichier problématiques.",
+          "feat_t_12": "Restauration de session",
+          "feat_p_12": "Réouvre les onglets au démarrage (désactivable dans Settings).",
+          "shot_cap_01": "Fenêtre principale",
+          "shot_cap_02": "Numéros de ligne",
+          "shot_cap_03": "Arborescence du projet",
+          "shot_cap_04": "Menu Fichier",
+          "shot_cap_05": "Autocomplétion",
+          "shot_cap_06": "Débogueur",
+          "shot_cap_07": "Console externe",
+          "shot_cap_08": "Compilateur (PyInstaller)",
+          "shot_cap_09": "Paramètres",
+          "shot_desc_01": "Fenêtre principale (onglets, arbre de projet, sortie)",
+          "shot_desc_02": "Numéros de ligne dans l’éditeur",
+          "shot_desc_03": "Arborescence avec actions clic droit",
+          "shot_desc_04": "Menu Fichier (ouvrir/enregistrer/récents/build)",
+          "shot_desc_05": "Autocomplétion (Ctrl+Espace)",
+          "shot_desc_06": "Débogueur (points d’arrêt + pas à pas)",
+          "shot_desc_07": "Exécution en console externe",
+          "shot_desc_08": "Fenêtre du compilateur (PyInstaller)",
+          "shot_desc_09": "Fenêtre des paramètres (thème, autosave, récents, ...)",
+          "qs_li_01": "Optionnel : <b>Jedi</b> pour une meilleure autocomplétion : <code>pip install jedi</code>",
+          "qs_li_02": "Optionnel : <b>PyInstaller</b> pour créer des EXE : <code>pip install pyinstaller</code>",
+          "qs_li_03": "Windows 10 ou Windows 11",
+          "qs_li_04": "Au moins un interpréteur Python installé (python.exe)",
+          "qs_li_05": "PySide6",
+          "qs_li_06": "Optionnel : Windows Terminal pour l’option wt",
+          "qs_li_07": "Recommandé : Notepad++ (facultatif)",
+          "qs_li_08": "Les réglages sont stockés dans un JSON à côté de l’EXE si possible",
+          "faq_q_01": "Mon programme utilise curses / a besoin d’une vraie console. Que dois‑je utiliser ?",
+          "faq_a_01": "Utilisez <b>Run in External Console</b>. Cela lance le script dans une vraie console (cmd/PowerShell/pwsh/Windows Terminal/personnalisée).",
+          "faq_q_02": "PyIDE prend‑il en charge plusieurs installations de Python ?",
+          "faq_a_02": "Oui — vous pouvez choisir l’interpréteur à chaque exécution et gérer les chemins dans le menu Tools.",
+          "faq_q_03": "Où sont enregistrés mes paramètres ?",
+          "faq_a_03": "Dans <code>pyide_config.json</code>. PyIDE essaie d’abord à côté de l’EXE, puis utilise <code>%LOCALAPPDATA%\\SFT_PyIDE</code> si nécessaire.",
+        },
+        "de": {
+          "feat_t_01": "Tabbed‑Editor",
+          "feat_p_01": "Mehrere .py‑Dateien gleichzeitig. Ungespeicherte Tabs zeigen “*”. Neue/Unbenannte Dateien unterstützt.",
+          "feat_t_02": "Zeilennummern",
+          "feat_p_02": "Eine Zeilennummern‑Leiste hilft beim Finden von Code‑Stellen und Fehlern.",
+          "feat_t_03": "Suchen + Ersetzen",
+          "feat_p_03": "Ctrl+F und Ctrl+H, nächstes/vorheriges, ersetzen, alles ersetzen.",
+          "feat_t_04": "Syntax prüfen",
+          "feat_p_04": "Schnellprüfung (py_compile) um Syntaxfehler zu finden.",
+          "feat_t_05": "Auto‑Save",
+          "feat_p_05": "Optional — speichert alle X Sekunden. Einstellbar in Settings.",
+          "feat_t_06": "Autovervollständigung",
+          "feat_p_06": "Basis‑Autocomplete mit Ctrl+Space (besser mit Jedi).",
+          "feat_t_07": "Dark + Light Mode",
+          "feat_p_07": "Standard: Dark. Theme in Settings wechseln.",
+          "feat_t_08": "Python‑Interpreter‑Manager",
+          "feat_p_08": "Wähle, welches Python dein Skript ausführt. Pfade hinzufügen/entfernen/neu finden.",
+          "feat_t_09": "In PyIDE ausführen",
+          "feat_p_09": "Ausgabe im Run‑Output, mit stdin und Stop (Shift+F5).",
+          "feat_t_10": "In externer Konsole ausführen",
+          "feat_p_10": "Starte in cmd/PowerShell/Windows Terminal für CLI/curses‑Apps.",
+          "feat_t_11": "Compiler (PyInstaller)",
+          "feat_p_11": "Einfaches GUI zum EXE‑Build. Säubert problematische Dateinamen automatisch.",
+          "feat_t_12": "Session‑Wiederherstellung",
+          "feat_p_12": "Letzte Tabs beim Start wieder öffnen (abschaltbar).",
+        },
+        "es": {
+          "feat_t_01": "Editor con pestañas",
+          "feat_p_01": "Abre varios archivos .py. Las pestañas sin guardar muestran “*”. Soporta archivos nuevos/sin nombre.",
+          "feat_t_02": "Números de línea",
+          "feat_p_02": "La barra de números ayuda a ubicar código y errores fácilmente.",
+          "feat_t_03": "Buscar + reemplazar",
+          "feat_p_03": "Ctrl+F y Ctrl+H, siguiente/anterior, reemplazar, reemplazar todo.",
+          "feat_t_04": "Comprobar sintaxis",
+          "feat_p_04": "Botón rápido (py_compile) para verificar errores de sintaxis.",
+          "feat_t_05": "Autoguardado",
+          "feat_p_05": "Opcional: guarda cada X segundos. Se cambia en Settings.",
+          "feat_t_06": "Autocompletado",
+          "feat_p_06": "Autocompletado básico con Ctrl+Espacio (mejor con Jedi).",
+          "feat_t_07": "Modo oscuro + claro",
+          "feat_p_07": "Oscuro por defecto, cambia el tema en Settings.",
+          "feat_t_08": "Gestor de intérpretes",
+          "feat_p_08": "Elige qué Python ejecuta tu script. Agrega/borra/redescubre rutas.",
+          "feat_t_09": "Ejecutar dentro de PyIDE",
+          "feat_p_09": "Salida en Run Output, con stdin y botón Stop (Shift+F5).",
+          "feat_t_10": "Ejecutar en consola externa",
+          "feat_p_10": "Ejecuta en cmd/PowerShell/Windows Terminal para apps CLI/curses.",
+          "feat_t_11": "Compilador (PyInstaller)",
+          "feat_p_11": "GUI simple para crear EXE. Limpia nombres con espacios/puntos peligrosos.",
+          "feat_t_12": "Restaurar sesión",
+          "feat_p_12": "Reabre pestañas al iniciar (se puede desactivar).",
+        },
+      };
+
+      Object.keys(extra).forEach(l => {
+        T[l] = Object.assign({}, T[l] || {}, extra[l]);
+      });
+    })();
+
+
+    function applyI18n(lang){
+      const dict = T[lang] || T.en;
+      // plain text replacements
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const k = el.getAttribute("data-i18n");
+        if(dict[k]) el.textContent = dict[k];
+      });
+      // HTML replacements (safe: we control strings)
+      document.querySelectorAll("[data-i18n-html]").forEach(el => {
+        const k = el.getAttribute("data-i18n-html");
+        if(dict[k]) el.innerHTML = dict[k];
+      });
+    });
+    }
+
+    function setDirAndLang(lang){
+      document.documentElement.setAttribute("dir", rtlLangs.has(lang) ? "rtl" : "ltr");
+      document.documentElement.setAttribute("lang", lang);
+    }
+
+    function setDownload(lang){
+      const fname = installers[lang] || installers.en;
+      const url = GH_BASE + encodeURIComponent(fname);
+      if(downloadBtn){
+        downloadBtn.href = url;
+        downloadBtn.target = "_blank";
+      }
+
+    function setScreenshots(lang){
+      const folderMap = {
+        en:"EN", es:"ES", fr:"FR", de:"DE", ja:"JA", ko:"KO", pl:"PL", pt:"PT", ru:"RU", it:"IT", tr:"TR", he:"HE", ar:"EN"
+      };
+      const folder = folderMap[lang] || "EN";
+      const base = `assets/screenshots/language/${folder}/`;
+      document.querySelectorAll('figure[data-shot]').forEach(fig => {
+        const n = fig.getAttribute("data-shot");
+        const img = fig.querySelector("img");
+        const url = base + n + ".png";
+        fig.dataset.full = url;
+        if(img) img.src = url;
+
+        // update lightbox caption (data-cap) from translation dict
+        const capKey = fig.getAttribute("data-cap-key");
+        const dict = T[lang] || T.en;
+        if(capKey && dict[capKey]) fig.dataset.cap = dict[capKey];
+      });
+    }
+      if(dlNote){
+        const dict = T[lang] || T.en;
+        dlNote.textContent = `${dict.dl_note} (${fname})`;
+      }
+    }
+
+    function setLanguage(choice, persist=true){
+      const use = (choice === "auto") ? pickAutoLang() : normalizeLang(choice);
+      setDirAndLang(use);
+      applyI18n(use);
+      setDownload(use);
+      setScreenshots(use);
+      if(langSelect) langSelect.value = (choice === "auto") ? "auto" : use;
+      if(persist && langSelect) localStorage.setItem(LANG_KEY, langSelect.value);
+    }
+
+    (function initLang(){
+      const params = new URLSearchParams(location.search);
+      const urlLang = params.get("lang");
+      const saved = localStorage.getItem(LANG_KEY);
+
+      if(urlLang){
+        setLanguage(urlLang, false);
+      }else if(saved){
+        setLanguage(saved, false);
+      }else{
+        setLanguage("auto", false);
+      }
+
+      if(langSelect){
+        langSelect.addEventListener("change", () => setLanguage(langSelect.value, true));
+      }
+    })();
+
+
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if(!id || id === "#") return;
+        const el = document.querySelector(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:"smooth", block:"start"});
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,845 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b3f8a">
+  <meta name="description" content="Roxzned Setup Designer is an upcoming Python tool that lets you visually design custom setup installers, auto-generate installer + uninstaller code, and build EXEs with PyInstaller.">
+
+  <title>Roxzned Setup Designer — Coming Soon</title>
+
+  
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="row">
+        <a class="brand" href="#top" aria-label="Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div class="brandTitle">Roxzned Setup Designer</div>
+            <div class="brandSub">Python • Custom Installer Designer</div>
+          </div>
+        </a>
+
+        <nav aria-label="Primary">
+          <a class="navlink" href="#features">Features</a>
+          <a class="navlink" href="#designer">Designer</a>
+          <a class="navlink" href="#build">Build &amp; Export</a>
+          <a class="navlink" href="#screens">Screenshots</a>
+          <a class="navlink" href="#faq">FAQ</a>
+        </nav>
+
+        <div class="cta">
+          <span class="pill"><span class="dot" aria-hidden="true"></span> Coming Soon</span>
+          <a class="btn dark" href="About-RSD-WebDemo.html">Try Web Demo</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div class="card">
+          <div class="cardTopBar">
+            <b>Roxzned Setup Designer</b>
+            <span>Visual installer builder • Auto-generated code • EXE output</span>
+          </div>
+
+          <div class="heroLeft">
+            <div class="heroBadges">
+              <span class="tag">Real-time code generation</span>
+              <span class="tag">Wizard designer (drag &amp; drop)</span>
+              <span class="tag">Built-in PyInstaller GUI</span>
+              <span class="tag">Auto-uninstaller generator</span>
+            </div>
+
+            <h1>Build a custom setup wizard visually, then compile it into an EXE.</h1>
+
+            <p class="lead">
+              Roxzned Setup Designer is an upcoming Python program that lets you create and customize a full setup wizard for your own apps:
+              choose colors, fonts, layouts, images per page, add/remove pages, connect UI elements to actions,
+              and auto-generate installer + uninstaller code in real time.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn primary" href="#features">Explore features</a>
+              <a class="btn dark" href="#screens">See screenshots</a>
+              <a class="btn secondary" href="About-RSD-WebDemo.html">Try Web Demo</a>
+            </div>
+
+            <div class="mini">
+              Tip: You can host this on GitHub Pages and later drop the Web Demo page at <span style="font-family:var(--mono)">About-RSD-WebAbout-RSD-WebAbout-RSD-WebAbout-RSD-WebAbout-RSD-WebDemo.html</span>.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardTopBar">
+            <b>Preview</b>
+            <span>Replace with your UI screenshots</span>
+          </div>
+
+          <div class="heroRight">
+            <div class="shot">
+              <div class="shotInner">
+                <div class="shotFrame">
+                  <!-- Replace placeholder with an image:
+                       <img src="assets/hero.png" alt="Roxzned Setup Designer UI preview">
+                  -->
+                  <div class="placeholder">
+                    <div>
+                      <div style="font-weight:800;">Add your hero screenshot here</div>
+                      <div class="muted" style="margin-top:6px; font-family:var(--mono);">assets/hero.png</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="statRow">
+              <div class="stat">
+                <b>Custom Wizard Designer</b>
+                <span>Pages, layout, colors, fonts, images</span>
+              </div>
+              <div class="stat">
+                <b>Actions &amp; Logic</b>
+                <span>Buttons + checkboxes wired to behaviors</span>
+              </div>
+              <div class="stat">
+                <b>Export &amp; Build</b>
+                <span>Export scripts, compile with PyInstaller</span>
+              </div>
+              <div class="stat">
+                <b>Uninstaller</b>
+                <span>Auto-generated uninstall script included</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Everything it can do</h2>
+        <p>Based on your current feature list</p>
+      </div>
+
+      <div class="grid3">
+        <div class="feature">
+          <div class="icon">UI</div>
+          <h3>Custom Setup Wizard Designer</h3>
+          <p>Change background color, per-page images, text size/color/fonts, object positions, page order, and installer window size.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">DD</div>
+          <h3>Drag &amp; Drop Elements</h3>
+          <p>Add elements from an object list or right-click menu. Delete elements anytime. Supports Text, Button, Check Box, Image, and Edit Box.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">FX</div>
+          <h3>Connect Objects to Actions</h3>
+          <p>Wire UI to behaviors: Back/Next page, Close installer, Open URL, and Set Path logic. Checkboxes can toggle options and targets.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">PT</div>
+          <h3>Smart Install Path Control</h3>
+          <p>When you add an Edit Box, the designer can auto-add a “Set Path” button and auto-connect the logic for choosing install location.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">RC</div>
+          <h3>Real-time Code Generation</h3>
+          <p>Installer Python code updates live while you design. View it in a code editor with line numbers and run it without building first (temp file).</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">EX</div>
+          <h3>Export + Build Later</h3>
+          <p>Export the generated installer code (required for building later), then compile into an EXE using the built-in PyInstaller GUI window.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">UN</div>
+          <h3>Auto Uninstaller Generator</h3>
+          <p>Generates a separate uninstall program after the installer design is finished. Export and build the uninstaller EXE, then bundle it.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">PK</div>
+          <h3>Install Logic + Packing</h3>
+          <p>Includes install logic and file/folder packing so installers can ship your program files and install them to the chosen directory.</p>
+        </div>
+
+        <div class="feature">
+          <div class="icon">MD</div>
+          <h3>Installer Metadata</h3>
+          <p>Set installer name, program version, and publisher (plus more metadata later).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGNER DETAILS -->
+  <section id="designer">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Designer highlights</h2>
+        <p>Visual setup wizard creation</p>
+      </div>
+
+      <div class="twoCol">
+        <div class="panel">
+          <h3 style="margin:0 0 8px;">Customize every page</h3>
+          <ul class="list">
+            <li>Background color + theming</li>
+            <li>Per-page images (different image for each page)</li>
+            <li>Text size, text color, and custom fonts</li>
+            <li>Precise positioning of every object</li>
+            <li>Add / remove / rename pages</li>
+            <li>Change installer window size</li>
+          </ul>
+
+          <h3 style="margin:14px 0 8px;">Objects you can add</h3>
+          <ul class="list">
+            <li><b>Text</b> (labels, headings, descriptions)</li>
+            <li><b>Button</b> (navigation + actions)</li>
+            <li><b>Check Box</b> (options + toggles)</li>
+            <li><b>Image</b> (logos, banners, page art)</li>
+            <li><b>Edit Box</b> (install path control + auto “Set Path” button)</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 8px;">Actions you can connect</h3>
+          <ul class="list">
+            <li><b>Button actions:</b> Back page, Next page, Close installer, Open URL, Open Set Path</li>
+            <li><b>Check box actions:</b> Enable/Disable targeted buttons or check boxes</li>
+            <li><b>Shortcuts:</b> Make Desktop shortcut, Make Start Menu shortcut</li>
+            <li><b>Finish behavior:</b> Auto-open installed program after install completes</li>
+          </ul>
+
+          <h3 style="margin:14px 0 8px;">Menu Bar + Help</h3>
+          <ul class="list">
+            <li>Menu Bar: File, Edit, View, Help</li>
+            <li>Built-in Help Doc listing everything the program can do (full detail)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILD -->
+  <section id="build">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>Build &amp; export workflow</h2>
+        <p>Design → Generate → Export → EXE</p>
+      </div>
+
+      <div class="twoCol">
+        <div class="panel">
+          <h3 style="margin:0 0 8px;">How it works</h3>
+          <ol class="list" style="padding-left:18px;">
+            <li>Design your installer wizard pages and UI elements.</li>
+            <li>The program generates installer code in real time.</li>
+            <li>Run the generated installer instantly (saved temporarily to a temp file).</li>
+            <li><b>Export</b> the installer code so you can build it later.</li>
+            <li>Use the built-in <b>PyInstaller GUI</b> to compile into an EXE.</li>
+            <li>Generate + export the <b>uninstaller</b> script, compile it, and bundle it.</li>
+          </ol>
+        </div>
+
+        <div class="panel">
+          <div class="codeTop">
+            <span>Real Auto Generated installer code - RUNABLE</span>
+            <button class="copyBtn" id="copyBtn" type="button">Copy</button>
+          </div>
+
+          <pre id="codeBlock"># Auto-generated by Roxzned Setup Designer
+# This is a standalone installer script. Compile it with PyInstaller if you want.
+# Requires: PySide6
+
+import os
+import sys
+import json
+import zipfile
+import traceback
+
+from PySide6.QtCore import Qt, Signal, QThread
+from PySide6.QtWidgets import (
+    QApplication, QWizard, QWizardPage, QLabel, QLineEdit, QPushButton, QHBoxLayout,
+    QVBoxLayout, QTextEdit, QCheckBox, QFileDialog, QMessageBox, QProgressBar, QWidget
+)
+
+PROJECT = {
+  "app_name": "My App",
+  "version": "1.0.0",
+  "publisher": "",
+  "default_install_dir": "%LOCALAPPDATA%\\My App",
+  "source_folder": "",
+  "payload_zip": "",
+  "license_text": "Put your license text here.\n\n(You can edit this in the Wizard Maker.)",
+  "pages": [
+    {
+      "title": "Welcome",
+      "role": "welcome",
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblTitle",
+          "text": "Welcome to the Setup Wizard",
+          "x": 24,
+          "y": 24,
+          "w": 520,
+          "h": 36,
+          "extra": {}
+        },
+        {
+          "type": "Label",
+          "name": "lblBody",
+          "text": "This wizard will guide you through installing the application.",
+          "x": 24,
+          "y": 74,
+          "w": 680,
+          "h": 50,
+          "extra": {}
+        }
+      ],
+      "extra": {}
+    },
+    {
+      "title": "License Agreement",
+      "role": "license",
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblLicense",
+          "text": "Please review the license below:",
+          "x": 24,
+          "y": 20,
+          "w": 520,
+          "h": 26,
+          "extra": {}
+        }
+      ],
+      "extra": {}
+    },
+    {
+      "title": "Choose Install Location",
+      "role": "install_dir",
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblDir",
+          "text": "Choose where to install:",
+          "x": 24,
+          "y": 20,
+          "w": 520,
+          "h": 26,
+          "extra": {}
+        }
+      ],
+      "extra": {}
+    },
+    {
+      "title": "Installing",
+      "role": "installing",
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblInstalling",
+          "text": "Installing... please wait.",
+          "x": 24,
+          "y": 20,
+          "w": 520,
+          "h": 26,
+          "extra": {}
+        }
+      ],
+      "extra": {}
+    },
+    {
+      "title": "Finish",
+      "role": "finish",
+      "items": [
+        {
+          "type": "Label",
+          "name": "lblDone",
+          "text": "Install complete!",
+          "x": 24,
+          "y": 24,
+          "w": 520,
+          "h": 30,
+          "extra": {}
+        },
+        {
+          "type": "CheckBox",
+          "name": "chkRun",
+          "text": "Run the app after closing",
+          "x": 24,
+          "y": 70,
+          "w": 320,
+          "h": 28,
+          "extra": {
+            "checked": false
+          }
+        }
+      ],
+      "extra": {}
+    }
+  ]
+}
+
+def apply_item_style(w, extra: dict):
+    """Apply basic widget styling from the designer (fg/bg/font_size/bold)."""
+    if not isinstance(extra, dict):
+        extra = {}
+    fg = str(extra.get("fg", "")).strip()
+    bg = str(extra.get("bg", "")).strip()
+    fs = extra.get("font_size", None)
+    bold = bool(extra.get("bold", False))
+
+    try:
+        if isinstance(fs, int) and fs &gt; 0:
+            f = w.font(); f.setPointSize(fs); f.setBold(bold); w.setFont(f)
+        else:
+            f = w.font(); f.setBold(bold); w.setFont(f)
+    except Exception:
+        pass
+
+    parts = []
+    if fg:
+        parts.append(f"color: {fg};")
+    if bg:
+        parts.append(f"background-color: {bg};")
+    if parts:
+        w.setStyleSheet(" ".join(parts))
+
+def apply_canvas_style(canvas: QWidget, page_extra: dict):
+    """Apply page background color/image."""
+    if not isinstance(page_extra, dict):
+        page_extra = {}
+    bg = str(page_extra.get("bg_color", "#141414")).strip() or "#141414"
+    img = str(page_extra.get("bg_image", "")).strip()
+    if img:
+        url = img.replace("\", "/")
+        canvas.setStyleSheet(
+            f"background-color: {bg};"
+            f"background-image: url({url});"
+            "background-repeat: no-repeat;"
+            "background-position: center;"
+        )
+    else:
+        canvas.setStyleSheet(f"background: {bg};")
+
+def expand_install_dir(s: str) -&gt; str:
+    # Expand environment vars like %LOCALAPPDATA%
+    if not s:
+        return s
+    # First expand ~
+    s = os.path.expanduser(s)
+    # Expand Windows-style %VAR%
+    s = os.path.expandvars(s)
+    return s
+
+def payload_path() -&gt; str:
+    # Prefer bundled files when running from a PyInstaller one-file/one-dir build
+    base = getattr(sys, "_MEIPASS", None) or os.path.dirname(os.path.abspath(sys.argv[0]))
+    configured = PROJECT.get("payload_zip", "").strip()
+    if configured:
+        # If user configured an absolute path, prefer that
+        cfg = expand_install_dir(configured)
+        if os.path.isabs(cfg) and os.path.isfile(cfg):
+            return cfg
+        # If relative, treat as next to exe
+        cand = os.path.join(base, cfg)
+        if os.path.isfile(cand):
+            return cand
+    # default
+    cand = os.path.join(base, "payload.zip")
+    return cand
+
+class InstallWorker(QThread):
+    progress = Signal(int)
+    log = Signal(str)
+    done = Signal(bool, str)
+
+    def __init__(self, install_dir: str, parent=None):
+        super().__init__(parent)
+        self.install_dir = install_dir
+
+    def run(self):
+        try:
+            zip_path = payload_path()
+            if not os.path.isfile(zip_path):
+                raise FileNotFoundError(f"payload.zip not found: {zip_path}")
+
+            os.makedirs(self.install_dir, exist_ok=True)
+
+            with zipfile.ZipFile(zip_path, "r") as zf:
+                names = zf.namelist()
+                total = max(1, len(names))
+                for i, name in enumerate(names, start=1):
+                    zf.extract(name, self.install_dir)
+                    pct = int(i * 100 / total)
+                    self.progress.emit(pct)
+                    self.log.emit(f"Extracted: {name}")
+
+            self.done.emit(True, "Install complete.")
+        except Exception as e:
+            tb = traceback.format_exc()
+            self.done.emit(False, f"Install failed: {e}\n\n{tb}")
+
+class GenericPage(QWizardPage):
+    def __init__(self, spec: dict):
+        super().__init__()
+        self.spec = spec
+        self.setTitle(spec.get("title", "Page"))
+
+        outer = QVBoxLayout(self)
+        canvas = QWidget()
+        canvas.setMinimumSize(760, 420)
+        apply_canvas_style(canvas, (spec.get("extra", {}) or {}))
+        outer.addWidget(canvas)
+
+        # Place widgets absolutely on canvas
+        for item in spec.get("items", []):
+            w = make_widget(item, canvas)
+            w.setGeometry(item.get("x", 20), item.get("y", 20), item.get("w", 180), item.get("h", 28))
+            w.show()
+
+class LicensePage(QWizardPage):
+    def __init__(self, spec: dict, license_text: str):
+        super().__init__()
+        self.spec = spec
+        self.setTitle(spec.get("title", "License"))
+
+        outer = QVBoxLayout(self)
+
+        # Canvas for user-designed items
+        canvas = QWidget()
+        canvas.setMinimumSize(760, 220)
+        apply_canvas_style(canvas, (spec.get("extra", {}) or {}))
+        for item in spec.get("items", []):
+            w = make_widget(item, canvas)
+            w.setGeometry(item.get("x", 20), item.get("y", 20), item.get("w", 180), item.get("h", 28))
+            w.show()
+        outer.addWidget(canvas)
+
+        self.text = QTextEdit()
+        self.text.setReadOnly(True)
+        self.text.setPlainText(license_text or "")
+        outer.addWidget(self.text, 1)
+
+        self.accept = QCheckBox("I accept the terms of the license agreement")
+        outer.addWidget(self.accept)
+        self.registerField("acceptLicense*", self.accept)
+
+class InstallDirPage(QWizardPage):
+    def __init__(self, spec: dict, default_dir: str):
+        super().__init__()
+        self.spec = spec
+        self.setTitle(spec.get("title", "Install Location"))
+
+        outer = QVBoxLayout(self)
+
+        canvas = QWidget()
+        canvas.setMinimumSize(760, 160)
+        apply_canvas_style(canvas, (spec.get("extra", {}) or {}))
+        for item in spec.get("items", []):
+            w = make_widget(item, canvas)
+            w.setGeometry(item.get("x", 20), item.get("y", 20), item.get("w", 180), item.get("h", 28))
+            w.show()
+        outer.addWidget(canvas)
+
+        row = QHBoxLayout()
+        self.dir_edit = QLineEdit(expand_install_dir(default_dir))
+        btn = QPushButton("Browse…")
+        btn.clicked.connect(self.pick_dir)
+        row.addWidget(self.dir_edit, 1)
+        row.addWidget(btn)
+        outer.addLayout(row)
+
+        self.registerField("installDir*", self.dir_edit)
+
+    def pick_dir(self):
+        start = self.dir_edit.text().strip() or os.path.expanduser("~")
+        p = QFileDialog.getExistingDirectory(self, "Select install directory", start)
+        if p:
+            self.dir_edit.setText(p)
+
+class InstallingPage(QWizardPage):
+    def __init__(self, spec: dict):
+        super().__init__()
+        self.spec = spec
+        self.setTitle(spec.get("title", "Installing"))
+        self.worker = None
+        self._started = False
+
+        outer = QVBoxLayout(self)
+
+        canvas = QWidget()
+        canvas.setMinimumSize(760, 120)
+        apply_canvas_style(canvas, (spec.get("extra", {}) or {}))
+        for item in spec.get("items", []):
+            w = make_widget(item, canvas)
+            w.setGeometry(item.get("x", 20), item.get("y", 20), item.get("w", 180), item.get("h", 28))
+            w.show()
+        outer.addWidget(canvas)
+
+        self.bar = QProgressBar()
+        self.bar.setRange(0, 100)
+        outer.addWidget(self.bar)
+
+        self.log = QTextEdit()
+        self.log.setReadOnly(True)
+        self.log.setMinimumHeight(180)
+        outer.addWidget(self.log, 1)
+
+    def initializePage(self):
+        # Start install once when page is shown
+        if self._started:
+            return
+        self._started = True
+
+        wiz = self.wizard()
+        install_dir = wiz.field("installDir")
+        if not install_dir:
+            install_dir = os.path.join(os.path.expanduser("~"), "App")
+
+        self.worker = InstallWorker(install_dir)
+        self.worker.progress.connect(self.bar.setValue)
+        self.worker.log.connect(lambda s: self.log.append(s))
+        self.worker.done.connect(self._done)
+        self.worker.start()
+
+    def _done(self, ok: bool, msg: str):
+        if ok:
+            self.log.append("\n" + msg)
+            self.wizard().setButtonText(QWizard.NextButton, "Next")
+            self.completeChanged.emit()
+        else:
+            QMessageBox.critical(self, "Install failed", msg)
+            self.log.append("\n" + msg)
+            self.wizard().reject()
+
+    def isComplete(self) -&gt; bool:
+        # Allow Next when progress finished
+        return self.bar.value() &gt;= 100
+
+class FinishPage(QWizardPage):
+    def __init__(self, spec: dict):
+        super().__init__()
+        self.spec = spec
+        self.setTitle(spec.get("title", "Finish"))
+
+        outer = QVBoxLayout(self)
+        canvas = QWidget()
+        canvas.setMinimumSize(760, 260)
+        apply_canvas_style(canvas, (spec.get("extra", {}) or {}))
+        outer.addWidget(canvas)
+
+        self.chk_run = None
+
+        for item in spec.get("items", []):
+            w = make_widget(item, canvas)
+            w.setGeometry(item.get("x", 20), item.get("y", 20), item.get("w", 180), item.get("h", 28))
+            w.show()
+            # If the user made a checkbox named chkRun, we capture it for later
+            if item.get("type") == "CheckBox" and item.get("name") == "chkRun":
+                self.chk_run = w
+
+def make_widget(item: dict, parent: QWidget):
+    t = item.get("type", "Label")
+    text = item.get("text", "")
+
+    if t == "Label":
+        w = QLabel(text, parent)
+        w.setStyleSheet("color: white;")
+        apply_item_style(w, (item.get("extra") or {}))
+        return w
+    if t == "Button":
+        w = QPushButton(text or "Button", parent)
+        apply_item_style(w, (item.get("extra") or {}))
+        return w
+    if t == "CheckBox":
+        cb = QCheckBox(text or "CheckBox", parent)
+        cb.setChecked(bool((item.get("extra") or {}).get("checked", False)))
+        cb.setStyleSheet("color: white;")
+        apply_item_style(cb, (item.get("extra") or {}))
+        return cb
+    if t == "LineEdit":
+        le = QLineEdit(parent)
+        le.setPlaceholderText(text or "")
+        apply_item_style(le, (item.get("extra") or {}))
+        return le
+    if t == "TextBox":
+        te = QTextEdit(parent)
+        te.setPlainText(text or "")
+        apply_item_style(te, (item.get("extra") or {}))
+        return te
+    if t == "Image":
+        lbl = QLabel(parent)
+        lbl.setStyleSheet("color: #cccccc; border: 1px solid #444;")
+        lbl.setAlignment(Qt.AlignCenter)
+        path = (text or "").strip()
+        if path and os.path.exists(path):
+            from PySide6.QtGui import QPixmap
+            pm = QPixmap(path)
+            if not pm.isNull():
+                lbl.setPixmap(pm.scaled(item.get("w", 220), item.get("h", 140), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+            else:
+                lbl.setText("Image load failed")
+        else:
+            lbl.setText(path or "Image")
+        apply_item_style(lbl, (item.get("extra") or {}))
+        return lbl
+
+    w = QLabel(text or t, parent)
+    w.setStyleSheet("color: white;")
+    apply_item_style(w, (item.get("extra") or {}))
+    return w
+
+def build_wizard():
+    wiz = QWizard()
+    wiz.setWindowTitle(f"{PROJECT.get('app_name','App')} Setup")
+    wiz.setWizardStyle(QWizard.ModernStyle)
+
+    # Optional dark-ish palette
+    wiz.setStyleSheet("""
+        QWizard { background: #0f0f0f; }
+        QLabel { color: white; }
+        QWizardPage { background: #0f0f0f; }
+        QTextEdit, QLineEdit { background: #1b1b1b; color: white; border: 1px solid #333; }
+        QPushButton { padding: 6px 10px; }
+        QProgressBar { height: 16px; }
+    """)
+
+    pages = PROJECT.get("pages", [])
+    license_text = PROJECT.get("license_text", "")
+    default_dir = PROJECT.get("default_install_dir", r"%LOCALAPPDATA%\App")
+
+    for p in pages:
+        role = p.get("role", "generic")
+        if role == "license":
+            wiz.addPage(LicensePage(p, license_text))
+        elif role == "install_dir":
+            wiz.addPage(InstallDirPage(p, default_dir))
+        elif role == "installing":
+            wiz.addPage(InstallingPage(p))
+        elif role == "finish":
+            wiz.addPage(FinishPage(p))
+        else:
+            wiz.addPage(GenericPage(p))
+
+    # Make sure buttons look sane
+    wiz.setOption(QWizard.NoCancelButton, False)
+    return wiz
+
+def main():
+    app = QApplication(sys.argv)
+    wiz = build_wizard()
+    wiz.show()
+    sys.exit(app.exec())
+
+if __name__ == "__main__":
+    main()
+</pre>
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  
+
+  <!-- GET UPDATES -->
+  
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <h2>FAQ</h2>
+        <p>Common questions</p>
+      </div>
+
+      <details>
+        <summary>Is this like Inno Setup?</summary>
+        <p>
+          It’s a different approach: Roxzned Setup Designer is a Python-based visual wizard designer that generates
+          runnable Python installer code in real time, then lets you compile it into an EXE using PyInstaller.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I customize every page?</summary>
+        <p>
+          Yes — background color, per-page images, text size/color/fonts, object positions, page order/names,
+          and the overall window size are all part of the designer plan.
+        </p>
+      </details>
+
+      <details>
+        <summary>How does the install path control work?</summary>
+        <p>
+          Add an Edit Box to a page and the designer can auto-add a “Set Path” button and wire the logic automatically.
+          You can also connect that action manually if you want full control.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does it generate an uninstaller?</summary>
+        <p>
+          Yes — after finishing the main installer design, it auto-generates a separate uninstaller script
+          that you can export, build into an EXE, and package with the main installer.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footRow">
+        <div class="brand" style="color: var(--ink);">
+          
+          <div>
+            <div style="font-size:14px; line-height:1; font-weight:800;">Roxzned Setup Designer</div>
+            
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <span class="k"><b>Tech:</b> Python</span>
+          <span class="k"><b>Build:</b> PyInstaller</span>
+          <span class="k"><b>Status:</b> In Development</span>
+        </div>
+      </div>
+
+      <div style="margin-top:10px; color: rgba(68,82,122,0.95);">
+        © <span id="year">2026</span> sonic Fan Tech. All product names and trademarks belong to their respective owners.
+      </div>
+    </div>
+  </footer>
+
+  
+
+  <script src="index.js" defer></script>
+</body></html>
