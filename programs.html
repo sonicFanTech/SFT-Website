@@ -1,636 +1,307 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Programs — sonic Fan Tech</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programs — sonic Fan Tech</title>
+  <link rel="icon" href="https://sonicfast2017.github.io/images/favicon.ico">
 
-<!-- inline CSS -->
-<style>
-  :root{
-    --bg:#0f1620;
-    --card:#0f1724;
-    --muted:#9aa6b2;
-    --accent:#2ea3ff;
-    --glass: rgba(255,255,255,0.03);
-    --card-radius:12px;
-    --nav-height:64px;
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  }
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  html,body{
-    height:100%;
-    margin:0;
-    background:linear-gradient(180deg,#08101a 0%, #0b1a28 100%);
-    color:#e6eef6;
-  }
+  <script>
+    tailwind.config = { content: [], theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } }
+  </script>
 
-  body{
-    padding-top:var(--nav-height);
-  }
-
-  /* TOP GLOBAL NAV (from original programs.html) */
-  .navbar{
-    position:fixed;
-    top:0;left:0;right:0;
-    height:var(--nav-height);
-    display:flex;
-    align-items:center;
-    padding:8px 20px;
-    background:linear-gradient(180deg, rgba(8,16,26,0.95), rgba(8,16,26,0.85));
-    backdrop-filter: blur(10px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.6);
-    z-index:50;
-  }
-  .nav-inner{
-    max-width:1150px;
-    margin:0 auto;
-    width:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    text-decoration:none;
-    color:#e6eef6;
-  }
-  .brand img{
-    width:36px;
-    height:36px;
-    border-radius:8px;
-    display:block;
-  }
-  .brand h1{
-    font-size:16px;
-    margin:0;
-    font-weight:700;
-    letter-spacing:0.2px;
-  }
-  .nav-actions{
-    display:flex;
-    gap:8px;
-    align-items:center;
-  }
-  .navbar nav ul{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:flex;
-    gap:8px;
-    align-items:center;
-  }
-  .navbar nav a{
-    color:var(--muted);
-    text-decoration:none;
-    padding:8px 12px;
-    border-radius:8px;
-    font-weight:600;
-    font-size:14px;
-  }
-  .navbar nav a:hover{
-    background:rgba(255,255,255,0.06);
-    color:#e6eef6;
-  }
-  .hamburger{
-    display:none;
-    background:transparent;
-    border:0;
-    color:#e6eef6;
-    font-size:20px;
-    cursor:pointer;
-  }
-  .sr-only{
-    position:absolute;
-    width:1px;
-    height:1px;
-    padding:0;
-    margin:-1px;
-    overflow:hidden;
-    clip:rect(0,0,0,0);
-    white-space:nowrap;
-    border:0;
-  }
-
-  @media (max-width:880px){
-    .hamburger{display:inline-flex;}
-    .navbar nav ul{
-      display:none;
-      position:absolute;
-      right:20px;
-      top:var(--nav-height);
-      background:#0f1724;
-      border-radius:8px;
-      padding:12px;
-      flex-direction:column;
-      min-width:220px;
-      box-shadow:0 18px 40px rgba(0,0,0,0.7);
-    }
-    .navbar nav ul.show{display:flex;}
-  }
-
-  /* PAGE WRAP (Software.html style) */
-  .wrap{
-    max-width:1150px;
-    margin:28px auto;
-    padding:20px;
-  }
-
-  header.site{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    margin-bottom:18px;
-  }
-  .logo{
-    width:56px;
-    height:56px;
-    border-radius:10px;
-    background:var(--glass);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    color:var(--accent);
-    font-size:24px;
-    box-shadow:0 6px 18px rgba(2,10,20,0.6);
-  }
-  h1{
-    margin:0;
-    font-size:20px;
-  }
-  .sub{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:4px;
-  }
-
-  /* small header nav */
-  nav.topnav{
-    display:flex;
-    gap:10px;
-    margin-top:10px;
-    align-items:center;
-    flex-wrap:wrap;
-  }
-  .btn{
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.06);
-    padding:8px 12px;
-    border-radius:8px;
-    color:var(--muted);
-    text-decoration:none;
-    font-size:14px;
-  }
-  .btn.primary{
-    background:linear-gradient(180deg, rgba(46,163,255,0.14), rgba(46,163,255,0.08));
-    border-color:rgba(46,163,255,0.25);
-    color:var(--accent);
-    font-weight:600;
-  }
-
-  /* info bar */
-  .info{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:18px 0;
-    padding:12px;
-    border-radius:10px;
-    background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border:1px solid rgba(255,255,255,0.03);
-    gap:16px;
-    flex-wrap:wrap;
-  }
-  .info .left{
-    display:flex;
-    gap:12px;
-    align-items:center;
-  }
-  .author{
-    color:var(--muted);
-    font-size:14px;
-  }
-
-  /* grid & cards */
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    gap:16px;
-    margin-top:14px;
-  }
-  .card{
-    background:var(--card);
-    padding:12px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,0.03);
-    box-shadow:0 6px 20px rgba(0,0,0,0.5);
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 18px 40px rgba(0,0,0,0.6);
-  }
-  .thumb{
-    height:140px;
-    border-radius:8px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--muted);
-    font-size:13px;
-    text-align:center;
-    padding:8px;
-  }
-  .title{
-    font-weight:700;
-    font-size:16px;
-  }
-  .desc{
-    color:var(--muted);
-    font-size:13px;
-    flex:1;
-  }
-  .meta{
-    display:flex;
-    gap:8px;
-    align-items:center;
-    font-size:13px;
-    color:var(--muted);
-    flex-wrap:wrap;
-  }
-  .meta .ver{
-    padding:4px 8px;
-    border-radius:6px;
-    background:rgba(255,255,255,0.02);
-    border:1px solid rgba(255,255,255,0.02);
-  }
-  .card .actions{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-  }
-  .smallbtn{
-    padding:8px 10px;
-    border-radius:8px;
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.04);
-    color:var(--muted);
-    text-decoration:none;
-    font-size:13px;
-  }
-  .smallbtn.download{
-    background:linear-gradient(180deg, rgba(46,163,255,0.12), rgba(46,163,255,0.06));
-    border-color:rgba(46,163,255,0.22);
-    color:var(--accent);
-    font-weight:600;
-  }
-
-  footer{
-    margin-top:30px;
-    padding:12px;
-    text-align:center;
-    color:var(--muted);
-    font-size:13px;
-  }
-
-  @media (max-width:520px){
-    .thumb{height:110px;}
-  }
-
-  .abs-date{
-    opacity: 0.75;
-    font-size: 12px;
-    margin-left: 6px;
-  }
-
-</style>
+  <style>
+    body { background-image: url('https://i.imgur.com/UMYi74W.jpeg'); }
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); }
+    .card-hover { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 50px -10px #1E90FF; }
+  </style>
 </head>
-<body>
 
-  <!-- GLOBAL NAVBAR FROM ORIGINAL PROGRAMS PAGE -->
-  <header class="navbar" role="banner">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <img src="https://sonicfast2017.github.io/images/logo.png" alt="sonic Fan Tech logo">
+<body class="font-sans bg-cover bg-center bg-fixed min-h-screen text-slate-200">
+  <!-- Overlay -->
+  <div class="fixed inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 pointer-events-none z-0"></div>
+
+  <!-- Navbar (same as new home page) -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="https://sonicfast2017.github.io/images/logo.png" alt="sonic Fan Tech logo" class="w-10 h-10 rounded-xl transition-transform group-hover:scale-110">
         <div>
-          <h1>sonic Fan Tech</h1>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px">
-            Projects • Software • Games
-          </div>
+          <h1 class="font-bold text-2xl tracking-tighter">sonic Fan Tech</h1>
+          <p class="text-xs text-slate-400 -mt-1">Projects • Software • Games</p>
         </div>
       </a>
 
-      <div class="nav-actions">
-        <nav aria-label="Primary navigation">
-          <button class="hamburger" aria-expanded="false" aria-controls="primary-menu" id="menuBtn">
-            ☰ <span class="sr-only">Open menu</span>
-          </button>
-          <ul id="primary-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="Site/SFG/Site/SFG-main.html">Games</a></li>
-            <li><a href="credits.html">Credits</a></li>
-            <li><a href="archives.html">Archive</a></li>
-            <li><a href="socials.html">Socials</a></li>
-            <li><a href="mailto:sonicfantech@sonicfantech.org">Contact</a></li>
-          </ul>
-        </nav>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-white transition">Home</a>
+        <a href="programs.html" class="text-[#1E90FF] font-semibold">Programs</a>
+        <a href="Site/SFG/index.html" class="hover:text-white transition">Games</a>
+        <a href="credits.html" class="hover:text-white transition">Credits</a>
+        <a href="archives.html" class="hover:text-white transition">Archive</a>
+        <a href="socials.html" class="hover:text-white transition">Socials</a>
       </div>
-    </div>
-  </header>
 
-  <!-- MAIN CONTENT USING SOFTWARE.HTML STYLE -->
-  <div class="wrap">
-    <header class="site">
-      <div class="logo">SF</div>
-      <div>
-        <h1>Programs</h1>
-        <div class="sub">Tools &amp; programs made with Python or Clickteam Fusion.</div>
-        <nav class="topnav">
-          <a href="https://sonicfantech.org/" class="btn">← Back to main site</a>
-          <a href="https://sonicfantech.org/sonic%20Fan%20Games%20Site/SFG-main.html" class="btn">→ Go to Games</a>
-        </nav>
-      </div>
-    </header>
-
-    <div class="info">
-      <div class="left">
-        <div style="font-weight:700">Creator</div>
-        <div class="author">Made by: <strong id="creator-name">sonic Fan Tech</strong></div>
-      </div>
-      <div class="right" style="color:var(--muted);font-size:13px">
-        Tip: Click a card to download or open more details.
+      <div class="flex items-center gap-4">
+        <a href="mailto:sonicfan1348@gmail.com" class="hidden sm:block text-sm font-medium hover:text-white transition">Contact</a>
+        <button id="menuBtn" class="md:hidden text-3xl leading-none">☰</button>
       </div>
     </div>
 
-    <!-- GRID OF PROGRAM CARDS -->
-    <section class="grid">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 py-6">
+      <div class="flex flex-col items-center gap-6 text-lg font-medium">
+        <a href="index.html">Home</a>
+        <a href="programs.html" class="text-[#1E90FF]">Programs</a>
+        <a href="Site/SFG/Site/SFG-main.html">Games</a>
+        <a href="credits.html">Credits</a>
+        <a href="archives.html">Archive</a>
+        <a href="socials.html">Socials</a>
+        <a href="mailto:sonicfan1348@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 pt-28 pb-20 max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h1 class="text-6xl font-bold tracking-tighter text-white mb-3">Programs</h1>
+      <p class="text-2xl text-slate-300">Tools &amp; programs made with Python or Clickteam Fusion</p>
+
+      <div class="flex flex-wrap justify-center gap-4 mt-10">
+        <a href="index.html" 
+           class="glass hover:bg-white/20 border border-white/20 px-8 py-4 rounded-3xl font-semibold flex items-center gap-2 transition">
+          ← Back to Home
+        </a>
+        <a href="Site/SFG/Site/SFG-main.html" 
+           class="glass hover:bg-white/20 border border-white/20 px-8 py-4 rounded-3xl font-semibold flex items-center gap-2 transition">
+          🎮 Go to Games →
+        </a>
+      </div>
+    </div>
+
+    <!-- Info Banner -->
+    <div class="glass rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row gap-6 items-center">
+      <div class="flex-1">
+        <div class="uppercase text-xs tracking-widest text-slate-400">Made by</div>
+        <div class="text-2xl font-semibold text-white">sonic Fan Tech</div>
+      </div>
+      <div class="text-slate-300 text-sm max-w-md">
+        Tip: All downloads are free. Click the blue buttons for the latest release!
+      </div>
+    </div>
+
+    <!-- Programs Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- DVDxPlayer -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">DVDxPlayer</div>
-        <div class="desc">
-          About: DVDxPlayer is a simple video, audio, and DVD player. It supports most
-          common formats, including:<br>
-          <strong>Video:</strong> MPEG, AVI, WMV — <strong>Audio:</strong> MP3, WAV, OGG.
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-          <div class="ver">v1.0</div>
-          <div>•</div>
-          <div class="ver">Updated: <span class="rel-time" data-date="2025-08-31"></span></div>
+        <h3 class="font-semibold text-xl mb-3">DVDxPlayer</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+          Simple video, audio &amp; DVD player. Supports MPEG, AVI, WMV, MP3, WAV, OGG and more.
+        </p>
+        <div class="flex gap-2 text-xs mb-6">
+          <span class="px-3 py-1 bg-white/10 rounded-full">v1.0</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full">Updated: <span class="rel-time" data-date="2025-08-31"></span></span>
         </div>
-        <div class="actions">
-          <a class="smallbtn download" href="https://github.com/sonicFanTech/DVDxPlayer/releases/download/Software/DVDxPlayer.exe" download>Download</a>
-          <a class="smallbtn" href="https://github.com/sonicFanTech/DVDxPlayer?tab=readme-ov-file">View on GitHub</a>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/sonicFanTech/DVDxPlayer/releases/download/Software/DVDxPlayer.exe" download
+             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
+          <a href="https://github.com/sonicFanTech/DVDxPlayer?tab=readme-ov-file" 
+             class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
         </div>
       </article>
 
       <!-- SERV -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">Source Engine Resources Viewer</div>
-        <div class="desc">
-          About: go to the Source Engine Resources Viewer Website to get more info about this project.
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-          <div class="ver">v1</div>
-          <div>•</div>
-          <div class="ver">Added: <span class="rel-time" data-date="NA"></span></div>
+        <h3 class="font-semibold text-xl mb-3">Source Engine Resources Viewer</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">Go to the website for full info.</p>
+        <div class="flex gap-2 text-xs mb-6">
+          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
         </div>
-        <div class="actions">
-           <a class="smallbtn" href="Site/SERV/index.html">go to Website</a>
-        </div>
+        <a href="Site/SERV/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
       </article>
 
       <!-- SBSPE -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">Source BSP Explorer</div>
-        <div class="desc">
-          About: go to the Source BSP Explorer  Website to get more info about this project.
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-          <div class="ver">v1</div>
-          <div>•</div>
-          <div class="ver">Added: <span class="rel-time" data-date="NA"></span></div>
+        <h3 class="font-semibold text-xl mb-3">Source BSP Explorer</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">Go to the website for full info.</p>
+        <div class="flex gap-2 text-xs mb-6">
+          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
         </div>
-        <div class="actions">
-           <a class="smallbtn" href="Site/SBSPE/index.html">go to Website</a>
-        </div>
+        <a href="Site/SBSPE/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
       </article>
 
       <!-- RSD -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">Roxzned Setup Designer</div>
-        <div class="desc">
-          About: go to the RSD Website to get more info about this up-coming project.
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-          <div class="ver">v1</div>
-          <div>•</div>
-          <div class="ver">Added: <span class="rel-time" data-date="NA"></span></div>
+        <h3 class="font-semibold text-xl mb-3">Roxzned Setup Designer</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">Upcoming project — check the website.</p>
+        <div class="flex gap-2 text-xs mb-6">
+          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
         </div>
-        <div class="actions">
-           <a class="smallbtn" href="Site/RSD/index.html">go to Website</a>
-        </div>
+        <a href="Site/RSD/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
       </article>
-      
+
       <!-- pyIDE -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">pyIDE</div>
-        <div class="desc">
-          About: Lightweight Python IDE with the tools you actually use.
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-          <div class="ver">v1</div>
-          <div>•</div>
-          <div class="ver">Added: <span class="rel-time" data-date="NA"></span></div>
+        <h3 class="font-semibold text-xl mb-3">pyIDE</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">Lightweight Python IDE with the tools you actually use.</p>
+        <div class="flex gap-2 text-xs mb-6">
+          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
         </div>
-        <div class="actions">
-          <a class="smallbtn download" href="https://github.com/sonicFanTech/pyIDE/releases/download/v1.1.0/pyIDE.Setup.exe" download>Download latest release</a>
-          <a class="smallbtn" href="https://github.com/sonicFanTech/pyIDE">View on GitHub</a>
-           <a class="smallbtn" href="Site/pyIDE/index.html">go to Website</a>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/sonicFanTech/pyIDE/releases/download/v1.1.0/pyIDE.Setup.exe" download
+             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
+          <a href="https://github.com/sonicFanTech/pyIDE" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
+          <a href="Site/pyIDE/index.html" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Website</a>
         </div>
       </article>
 
       <!-- NoxenFE -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">NoxenFE</div>
-        <div class="desc">
-          About: A tabbed, Windows‑Explorer‑style file manager built with Python + PySide6 for Windows 10/11.
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-          <div class="ver">v1</div>
-          <div>•</div>
-          <div class="ver">Added: <span class="rel-time" data-date="NA"></span></div>
+        <h3 class="font-semibold text-xl mb-3">NoxenFE</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">Tabbed Windows-Explorer-style file manager built with Python + PySide6.</p>
+        <div class="flex gap-2 text-xs mb-6">
+          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
         </div>
-        <div class="actions">
-          <a class="smallbtn download" href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/R3/NoxenFE.exe" download>Download latest release</a>
-          <a class="smallbtn" href="https://github.com/sonicFanTech/Noxen-File-explorer">View on GitHub</a>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/R3/NoxenFE.exe" download
+             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
+          <a href="https://github.com/sonicFanTech/Noxen-File-explorer" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
         </div>
       </article>
-      
+
       <!-- EveryPlay -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">EveryPlay</div>
-        <div class="desc">
-          About: EveryPlay is a Windows media player built with Python + PySide6 (Qt for Python)
-          that uses VLC’s libVLC runtime (DLLs + plugins) for playback — meaning it can play
-          almost any video/audio format that VLC supports. It also ships with several
-          custom-made companion tools (also written in Python) for converting, tagging,
-          disc playback/ripping, and detailed media/codec inspection.
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-          <div class="ver">v1</div>
-          <div>•</div>
-          <div class="ver">Added: <span class="rel-time" data-date="2025-12-18"></span></div>
+        <h3 class="font-semibold text-xl mb-3">EveryPlay</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">Powerful media player with VLC backend + custom tools.</p>
+        <div class="flex gap-2 text-xs mb-6">
+          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="2025-12-18"></span></span>
         </div>
-        <div class="actions">
-          <a class="smallbtn download" href="https://github.com/sonicFanTech/EveryPlay/releases/download/v1/EveryPlay.7z" download>Download latest release</a>
-          <a class="smallbtn" href="https://github.com/sonicFanTech/EveryPlay">View on GitHub</a>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/sonicFanTech/EveryPlay/releases/download/v1/EveryPlay.7z" download
+             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
+          <a href="https://github.com/sonicFanTech/EveryPlay" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
         </div>
       </article>
 
       <!-- vidplayer -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">vidplayer</div>
-        <div class="desc">
-          About: VidPlayer is a modern, lightweight, and fully featured audio player built
-          with Python and PySide6. It combines a clean interface, powerful playlist
-          management, customizable themes (including authentic Windows 7 Aero Glass visuals),
-          and Discord Rich Presence integration, making it both nostalgic and modern.
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-          <div class="ver">v2.0.9 BETA 4.2</div>
-          <div>•</div>
-          <div class="ver">Updated: <span class="rel-time" data-date="2025-12-16"></span></div>
+        <h3 class="font-semibold text-xl mb-3">vidplayer</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">Modern audio player with playlist, themes &amp; Discord Rich Presence.</p>
+        <div class="flex gap-2 text-xs mb-6">
+          <span class="px-3 py-1 bg-white/10 rounded-full">v2.0.9 BETA 4.2</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full">Updated: <span class="rel-time" data-date="2025-12-16"></span></span>
         </div>
-        <div class="actions">
-          <a class="smallbtn download" href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.8.1/vidplayer_2.0.8.1.exe" download>Download latest release</a>
-          <a class="smallbtn download" href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9-BETA-4.2-X64/vidplayer_v2.0.9-BETA4_2.7z" download>Download latest BETA</a>
-          <a class="smallbtn" href="https://github.com/sonicFanTech/vidplayer">View on GitHub</a>
-          <a class="smallbtn" href="Site/vidplayer/index.html">Go to vidplayer website</a>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.8.1/vidplayer_2.0.8.1.exe" download
+             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition text-sm">Stable</a>
+          <a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9-BETA-4.2-X64/vidplayer_v2.0.9-BETA4_2.7z" download
+             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition text-sm">Beta</a>
+          <a href="https://github.com/sonicFanTech/vidplayer" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
+          <a href="Site/vidplayer/index.html" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Website</a>
         </div>
       </article>
 
-      <!-- Windows Vista Winver installer -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">Windows Vista Winver installer [Made by just joey]</div>
-        <div class="desc">
-          About: the Windows Vista Winver.
+      <!-- Windows Vista Winver -->
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-        </div>
-        <div class="actions">
-          <a class="smallbtn download" href="https://sonicfantech.org/download/VistaWinver%5BJust%20Joey%5D.zip" download>Download</a>
-        </div>
+        <h3 class="font-semibold text-xl mb-3">Windows Vista Winver installer</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">Made by just joey</p>
+        <a href="https://sonicfantech.org/download/VistaWinver%5BJust%20Joey%5D.zip" download
+           class="block text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
       </article>
 
       <!-- GMData -->
-      <article class="card">
-        <div class="thumb">Thumbnail / Screenshot</div>
-        <div class="title">GMData</div>
-        <div class="desc">
-          About: A tool to view the data in the Data.win/.wim file for any GameMaker game
-          (no editing; use UMT / UndertaleModTool for editing GM data files).
+      <article class="glass rounded-3xl p-7 card-hover">
+        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
+          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
         </div>
-        <div class="meta">
-        </div>
-        <div class="actions">
-          <a class="smallbtn" href="https://github.com/sonicFanTech/GMData">View on GitHub</a>
-        </div>
+        <h3 class="font-semibold text-xl mb-3">GMData</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">View Data.win/.wim files from any GameMaker game.</p>
+        <a href="https://github.com/sonicFanTech/GMData" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
       </article>
 
     </section>
 
-    <footer>
-      &copy; <span id="year"></span> sonic Fan Tech — Programs
+    <footer class="mt-20 text-center text-slate-400 text-sm">
+      © <span id="year"></span> sonic Fan Tech — Programs
     </footer>
-  </div>
+  </main>
 
   <script>
-    // Set creator name once
-    const SITE_CREATOR = "sonic Fan Tech";
-    const creatorEl = document.getElementById('creator-name');
-    if (creatorEl) creatorEl.textContent = SITE_CREATOR;
-
-    // Navbar mobile toggle
+    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('primary-menu');
-    if (menuBtn && menu){
-      menuBtn.addEventListener('click', ()=>{
-        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-        menuBtn.setAttribute('aria-expanded', String(!expanded));
-        menu.classList.toggle('show');
-      });
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-      document.addEventListener('click', (e)=>{
-        if (!menu.contains(e.target) && !menuBtn.contains(e.target) && menu.classList.contains('show')){
-          menu.classList.remove('show');
-          menuBtn.setAttribute('aria-expanded','false');
-        }
-      });
-    }
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
 
-    // Footer year
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-  </script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  <script>
-    // --- Auto "Added/Updated" relative time labels (no internet needed) ---
+    // Relative time (cleaned & fixed)
     function relTimeFromDate(dateStr) {
-      // Accept YYYY-MM-DD
+      if (!dateStr || dateStr === "NA") return "N/A";
       const d = new Date(dateStr + "T00:00:00");
       if (isNaN(d)) return dateStr;
 
       const now = new Date();
-      const ms = now - d;
-      const days = Math.floor(ms / (1000 * 60 * 60 * 24));
+      const days = Math.floor((now - d) / (1000 * 60 * 60 * 24));
 
       if (days <= 0) return "today";
       if (days === 1) return "yesterday";
       if (days < 7) return `${days} days ago`;
-
-      const weeks = Math.floor(days / 7);
-      if (weeks < 5) return `${weeks} week${weeks===1?"":"s"} ago`;
-
-      const months = Math.floor(days / 30);
-      if (months < 12) return `${months} month${months===1?"":"s"} ago`;
-
-      const years = Math.floor(days / 365);
-      return `${years} year${years===1?"":"s"} ago`;
+      if (days < 30) return `${Math.floor(days/7)} week${days/7>1?"s":""} ago`;
+      if (days < 365) return `${Math.floor(days/30)} month${days/30>1?"s":""} ago`;
+      return `${Math.floor(days/365)} year${days/365>1?"s":""} ago`;
     }
 
-    // Fill spans like: <span class="rel-time" data-date="2025-12-18"></span>
     document.querySelectorAll(".rel-time").forEach(el => {
-      const dateStr = (el.dataset.date || "").trim();
-      if (!dateStr) return;
-
+      const dateStr = el.dataset.date?.trim() || "";
       const rel = relTimeFromDate(dateStr);
-      // Show both: "2 days ago (2025-12-16)"
-      el.innerHTML = `${rel}<span class="abs-date">(${dateStr})</span>`;
-      // Exact date on hover too
+      el.innerHTML = `${rel}<span class="text-[10px] opacity-75 ml-1">(${dateStr})</span>`;
       el.title = dateStr;
     });
-    });
   </script>
-
 </body>
 </html>
-
-
