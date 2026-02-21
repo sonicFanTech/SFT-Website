@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community — FNaF Re-clicked</title>
+  <link rel="icon" href="images/favicon.ico">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+
+  <style>
+    body { background: linear-gradient(to bottom, #1b2838, #0f1a2a); }
+    .glass { background: rgba(42,71,94,0.85); backdrop-filter: blur(16px); border: 1px solid rgba(102,192,244,0.2); }
+    .neon-blue { text-shadow: 0 0 15px #66c0f4; }
+  </style>
+</head>
+<body class="font-sans text-white min-h-screen">
+
+  <div class="max-w-4xl mx-auto px-6 py-12">
+
+    <!-- Back Button -->
+    <a href="re-clicked.html" 
+       class="inline-flex items-center gap-3 bg-[#66c0f4] hover:bg-[#4a9edb] text-black font-bold px-8 py-4 rounded-2xl transition mb-12">
+      ← Back to Game Page
+    </a>
+
+    <h1 class="text-6xl font-bold text-center neon-blue mb-3">FNaF Re-clicked Community</h1>
+    <p class="text-center text-xl text-slate-300 mb-16">Discuss • Share • Stay Updated</p>
+
+    <!-- Updates -->
+    <div class="glass rounded-3xl p-10 mb-12">
+      <h2 class="text-4xl font-semibold text-[#66c0f4] mb-8">Game Updates & News</h2>
+      <div class="space-y-8 text-lg">
+        <div class="flex gap-6">
+          <div class="font-mono text-[#66c0f4] shrink-0 w-28">March 2025</div>
+          <div>New Dev Debugging Tool added!</div>
+        </div>
+        <div class="flex gap-6">
+          <div class="font-mono text-[#66c0f4] shrink-0 w-28">February 2025</div>
+          <div>FNaF 2 Re-clicked is now in development!</div>
+        </div>
+        <div class="flex gap-6">
+          <div class="font-mono text-[#66c0f4] shrink-0 w-28">January 2025</div>
+          <div>Official Re-clicked site launched!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comments (works instantly, saved in your browser) -->
+    <div class="glass rounded-3xl p-10">
+      <h2 class="text-4xl font-semibold text-[#66c0f4] mb-8">Community Comments</h2>
+      
+      <textarea id="comment-input" rows="4" 
+        class="w-full bg-[#171a21] border border-[#66c0f4]/30 rounded-3xl p-8 text-lg placeholder:text-slate-400 focus:outline-none focus:border-[#66c0f4]"
+        placeholder="What do you think? Post your thoughts..."></textarea>
+
+      <button onclick="postComment()" 
+        class="mt-6 bg-[#66c0f4] hover:bg-white text-black font-bold px-12 py-5 rounded-3xl transition text-lg">
+        Post Comment
+      </button>
+
+      <div id="comments-list" class="mt-12 space-y-6"></div>
+    </div>
+
+    <!-- GameJolt Connect (demo that actually works) -->
+    <div class="glass rounded-3xl p-10 mt-12">
+      <h2 class="text-4xl font-semibold text-[#66c0f4] mb-8">Connect GameJolt</h2>
+      <p class="mb-8 text-slate-300">Log in (demo mode) to feel connected to the community.</p>
+
+      <div class="flex flex-col sm:flex-row gap-6 items-end">
+        <div class="flex-1">
+          <label class="block text-sm mb-3 text-slate-400">GameJolt Username</label>
+          <input id="gj-username" type="text" 
+                 class="w-full bg-[#171a21] border border-[#66c0f4]/30 rounded-3xl px-8 py-6 text-lg focus:outline-none focus:border-[#66c0f4]"
+                 placeholder="Your GameJolt username">
+        </div>
+        <button onclick="loginGameJolt()" 
+          class="bg-[#66c0f4] hover:bg-white text-black font-bold px-12 py-6 rounded-3xl transition text-lg">
+          Connect
+        </button>
+      </div>
+
+      <p id="login-status" class="mt-8 text-xl font-medium min-h-[28px]"></p>
+    </div>
+
+  </div>
+
+  <footer class="bg-[#0e141b] py-10 text-center text-slate-400">
+    <p>© 2025 Sonic Fan Games & The Re-clicked Team</p>
+    <p class="text-sm mt-3">For inquiries: <a href="mailto:reclickedteam@gmail.com" class="hover:text-[#66c0f4]">reclickedteam@gmail.com</a></p>
+  </footer>
+
+  <script>
+    // Comments (localStorage - works instantly)
+    function loadComments() {
+      const comments = JSON.parse(localStorage.getItem('reclickedComments') || '[]');
+      const container = document.getElementById('comments-list');
+      container.innerHTML = '';
+      comments.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'glass p-8 rounded-3xl';
+        div.innerHTML = `
+          <div class="flex justify-between text-sm text-slate-400 mb-3">
+            <span>@${c.user}</span>
+            <span>${c.time}</span>
+          </div>
+          <p class="text-lg">${c.text}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function postComment() {
+      const input = document.getElementById('comment-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const comments = JSON.parse(localStorage.getItem('reclickedComments') || '[]');
+      comments.unshift({
+        user: 'You',
+        text: text,
+        time: new Date().toLocaleString()
+      });
+      localStorage.setItem('reclickedComments', JSON.stringify(comments));
+      input.value = '';
+      loadComments();
+    }
+
+    // GameJolt demo login
+    function loginGameJolt() {
+      const username = document.getElementById('gj-username').value.trim();
+      const status = document.getElementById('login-status');
+      if (username) {
+        localStorage.setItem('gjUser', username);
+        status.innerHTML = `✅ Logged in as <strong class="text-[#66c0f4]">${username}</strong> on GameJolt!`;
+      } else {
+        status.textContent = 'Please enter a username';
+      }
+    }
+
+    // Load saved data
+    window.onload = () => {
+      loadComments();
+      const saved = localStorage.getItem('gjUser');
+      if (saved) {
+        document.getElementById('login-status').innerHTML = `✅ Logged in as <strong class="text-[#66c0f4]">${saved}</strong> on GameJolt!`;
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+@font-face {
+    font-family: Pixel Emulator;
+    src: url(font/PixelEmulator-xq08.ttf);
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Pixel Emulator, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h2, h3 {
+    color: #ffcc00;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.game-links, .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.button {
+    display: inline-block;
+    background-color: #0094FF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    background-color: red;
+}
+
+a {
+    color: #0094FF;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    color: red;
+    border-bottom: 1px solid red;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 5px 0;
+}
