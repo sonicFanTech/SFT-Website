@@ -376,13 +376,13 @@
                   <td>Hex + strings + token scan</td>
                 </tr>
                 <tr>
-                  <td><b>BIK Helper</b></td>
-                  <td>Launch .bik videos using your installed player.</td>
-                  <td>External player launch + quick info</td>
+                  <td><b>EveryPlay (Video Player)</b></td>
+                  <td>Video player helper used for video previews (including <span class="mono">.bik</span> Bink videos).</td>
+                  <td>Video playback + audio + seek</td>
                 </tr>
                 <tr>
-                  <td><b>VidPlayer Lite</b></td>
-                  <td>Light audio player used for sound previews.</td>
+                  <td><b>VidPlayer (Audio Player)</b></td>
+                  <td>Audio player helper used for sound previews.</td>
                   <td>Play audio + recent files + artwork</td>
                 </tr>
               </tbody>
@@ -399,7 +399,7 @@
 
     <div class="statusbar" role="status">
       <div class="sbCell">Status: <span id="sbStatus">Viewing: Modules (Tools List)</span></div>
-      <div class="sbCell sbGrow" id="sbInfo">Tools listed: Hub / VTF / VMT / VPK / MDL / EXE-DLL / PCF / RES / NUT / VCD / LMP / SAV / SND / SWATCH / BIK / VidPlayer Lite.</div>
+      <div class="sbCell sbGrow" id="sbInfo">Tools listed: Hub / VTF / VMT / VPK / MDL / EXE-DLL / PCF / RES / NUT / VCD / LMP / SAV / SND / SWATCH / EveryPlay / VidPlayer.</div>
       <div class="sbCell" id="sbDate">Feb 28, 2026</div>
     </div>
   </div>
@@ -417,9 +417,19 @@
           </p>
 
           <div class="box">
+            <h2>Media helpers</h2>
+            <p style="margin:0">
+              <b>Audio:</b> VidPlayer &nbsp; • &nbsp;
+              <b>Video:</b> EveryPlay (including <span class="mono">.bik</span>)
+            </p>
+          </div>
+
+
+          <div class="box">
             <h2>Planned formats (current plan)</h2>
+            <p style="margin:6px 0 0"><mark>Beta build (B1) is now available in the Downloads tab.</mark></p>
             <p style="margin:0 0 6px">
-              These are the current planned features you shared. You can expand/change them anytime.
+              These are the current planned features.
             </p>
             <div class="mono">Current tools:
 - SERV Hub: launcher for all tools
@@ -434,13 +444,13 @@
 - VCD: text/binary inspector + referenced files list
 - LMP: hex + strings + token scan
 - SAV/SND/SWATCH: hex + strings + token scan (format varies)
-- BIK Helper: external player launcher
-- VidPlayer Lite: audio playback helper</div>
+- EveryPlay: video playback helper (plays .bik Bink videos too)
+- VidPlayer: audio playback helper</div>
 
             <div class="row">
               <button class="btn primary" onclick="setPage('modules')">View Modules</button>
               <button class="btn" onclick="setPage('downloads')">Downloads</button>
-              <button class="btn" onclick="alert('https://github.com/sonicFanTech/SourceEngineResourcesViewer')">Project / Repo</button>
+              <button class="btn" onclick="window.open('https://github.com/sonicFanTech/SourceEngineResourcesViewer','_blank')">Project / Repo</button>
             </div>
           </div>
         `
@@ -486,7 +496,7 @@
                 </tr>
                 <tr>
                   <td><b>BSP (External)</b></td>
-                  <td>BSP support is covered by: Source BSP Explorer.</td>
+                  <td>BSP support is covered by your separate tool: Source BSP Explorer.</td>
                   <td>Open Source BSP Explorer for .bsp files</td>
                 </tr>
                 <tr>
@@ -540,13 +550,13 @@
                   <td>Hex + strings + token scan</td>
                 </tr>
                 <tr>
-                  <td><b>BIK Helper</b></td>
-                  <td>Launch .bik videos using your installed player.</td>
-                  <td>External player launch + quick info</td>
+                  <td><b>EveryPlay (Video Player)</b></td>
+                  <td>Video player helper used for video previews (including <span class="mono">.bik</span> Bink videos).</td>
+                  <td>Video playback + audio + seek</td>
                 </tr>
                 <tr>
-                  <td><b>VidPlayer Lite</b></td>
-                  <td>Light audio player used for sound previews.</td>
+                  <td><b>VidPlayer (Audio Player)</b></td>
+                  <td>Audio player helper used for sound previews.</td>
                   <td>Play audio + recent files + artwork</td>
                 </tr>
               </tbody>
@@ -614,12 +624,35 @@
         html: `
           <h1>Downloads</h1>
 
-            <div class="row">
-              <button class="btn primary" onclick="alert('Replace with your real download link.')">Download installer - Windows</button>
-			  <button class="btn" onclick="alert('Replace with your repo link.')">protalable - ZIP/7Z</button>
-              <button class="btn" onclick="alert('Replace with your repo link.')">Project / Repo</button>
-            </div>
+          <div class="box">
+            <h2>Beta build ready</h2>
+            <p style="margin:0">
+              <b>Beta build (B1) is now ready for download.</b>
+              If anything breaks, report it on the GitHub repo page.
+            </p>
           </div>
+
+          <div class="box">
+            <h2>Download links</h2>
+            <p style="margin:0 0 8px">
+              Choose the installer (recommended) or the portable build:
+            </p>
+            <div class="row">
+              <button class="btn primary" type="button"
+                onclick="window.open('https://github.com/sonicFanTech/SourceEngineResourcesViewer/releases/download/B1/SERV.Setup.exe','_blank')">
+                Download installer - Windows
+              </button>
+
+              <button class="btn" type="button"
+                onclick="window.open('https://github.com/sonicFanTech/SourceEngineResourcesViewer/releases/download/B1/SERV.7z','_blank')">
+                Portable - 7Z
+              </button>
+
+              <button class="btn" type="button"
+                onclick="window.open('https://github.com/sonicFanTech/SourceEngineResourcesViewer','_blank')">
+                Project / Repo
+              </button>
+            </div>
           </div>
 
           <div class="row">
@@ -627,6 +660,7 @@
           </div>
         `
       }
+
     };
 
     const doc = document.getElementById('doc');
@@ -645,7 +679,7 @@
       setActiveNav(page);
       sbStatus.textContent = "Viewing: " + p.title;
       sbInfo.textContent = page === "modules"
-        ? "Tools listed: Hub / VTF / VMT / VPK / MDL / EXE-DLL / PCF / RES / NUT / VCD / LMP / SAV / SND / SWATCH / BIK / VidPlayer Lite."
+        ? "Tools listed: Hub / VTF / VMT / VPK / MDL / EXE-DLL / PCF / RES / NUT / VCD / LMP / SAV / SND / SWATCH / EveryPlay / VidPlayer."
         : "Ready.";
       clearHighlights();
       document.getElementById('search').value = "";
@@ -727,4 +761,3 @@
 
 
 </body></html>
-
