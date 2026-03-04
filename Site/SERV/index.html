@@ -251,6 +251,7 @@
       <div class="menuItem" onclick="setPage('modules')">View</div>
       <div class="menuItem" onclick="setPage('devlog')">Tools</div>
       <div class="menuItem" onclick="setPage('faq')">Help</div>
+      <div class="menuItem" onclick="setPage('legal')">Legal</div>
     </div>
 
     <div class="content">
@@ -258,9 +259,10 @@
         <div class="groupTitle">Navigation</div>
         <ul class="list" id="navList">
           <li class="" data-page="overview" onclick="setPage('overview')">Overview <span class="chip">README</span></li>
-          <li data-page="modules" onclick="setPage('modules')" class="active">Modules <span class="chip">TOOLS</span></li>
+          <li data-page="modules" onclick="setPage('modules')" class="">Modules <span class="chip">TOOLS</span></li>
           <li data-page="devlog" onclick="setPage('devlog')" class="">Dev Log <span class="chip">WIP</span></li>
           <li data-page="faq" onclick="setPage('faq')">FAQ <span class="chip">HELP</span></li>
+          <li data-page="legal" onclick="setPage('legal')" class="active">Legal <span class="chip">INFO</span></li>
           <li data-page="downloads" onclick="setPage('downloads')">Downloads <span class="chip">LINKS</span></li>
         </ul>
 
@@ -285,122 +287,58 @@
 
       <section class="pane" aria-label="Document pane">
         <div class="doc" id="doc">
-          <h1>Modules (Tools List)</h1>
+          <h1>Legal</h1>
 
           <div class="box">
-            <h2>Planned modules table</h2>
-            <table class="table" aria-label="Planned modules table">
-              <thead>
-                <tr>
-                  <th>Module</th>
-                  <th>What it does</th>
-                  <th>Viewer / Output</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-                
-                <tr>
-                  <td><b>SERV Hub</b></td>
-                  <td>Launcher that lists and opens all SERV tools.</td>
-                  <td>Tool list + launch buttons</td>
-                </tr>
-                <tr>
-                  <td><b>VTF Viewer</b></td>
-                  <td>Inspect VTF textures and export to other image formats.</td>
-                  <td>Texture preview + export (PNG/JPG/etc.)</td>
-                </tr>
-                <tr>
-                  <td><b>VMT Inspector</b></td>
-                  <td>Inspect VMT material data in a readable way.</td>
-                  <td>Key/value display + referenced texture paths</td>
-                </tr>
-                <tr>
-                  <td><b>VPK Browser</b></td>
-                  <td>Browse VPK like a virtual file system and extract files.</td>
-                  <td>Virtual file browser + extract selected/all</td>
-                </tr>
-                <tr>
-                  <td><b>BSP (External)</b></td>
-                  <td>BSP support is covered by: Source BSP Explorer.</td>
-                  <td>Open Source BSP Explorer for .bsp files</td>
-                </tr>
-                <tr>
-                  <td><b>MDL Inspector</b></td>
-                  <td>Inspect models and preview them in 3D, then export.</td>
-                  <td>3D render preview + export (planned/partial)</td>
-                </tr>
-                <tr>
-                  <td><b>EXE/DLL Inspector</b></td>
-                  <td>Inspect Windows binaries like Resource Hacker (limited).</td>
-                  <td>Metadata + icons + strings + resources</td>
-                </tr>
-                <tr>
-                  <td><b>PCF Inspector</b></td>
-                  <td>Inspect Source particle system files.</td>
-                  <td>Inspector + strings/refs</td>
-                </tr>
-                <tr>
-                  <td><b>RES Inspector</b></td>
-                  <td>Inspect Source .res resource list files.</td>
-                  <td>Text view + referenced files list</td>
-                </tr>
-                <tr>
-                  <td><b>NUT Viewer</b></td>
-                  <td>Inspect Squirrel scripts (text or compiled).</td>
-                  <td>Text view + function list / strings view</td>
-                </tr>
-                <tr>
-                  <td><b>VCD Viewer</b></td>
-                  <td>Inspect choreography scene files.</td>
-                  <td>Text/binary view + referenced files list</td>
-                </tr>
-                <tr>
-                  <td><b>LMP Viewer</b></td>
-                  <td>Inspect .lmp files (varies by game).</td>
-                  <td>Hex + strings + token scan</td>
-                </tr>
-                <tr>
-                  <td><b>SAV Inspector</b></td>
-                  <td>Inspect .sav files (game-specific).</td>
-                  <td>Hex + strings + token scan</td>
-                </tr>
-                <tr>
-                  <td><b>SND Inspector</b></td>
-                  <td>Inspect .snd files (game-specific).</td>
-                  <td>Hex + strings + token scan</td>
-                </tr>
-                <tr>
-                  <td><b>SWATCH Inspector</b></td>
-                  <td>Inspect .swatch files (format varies).</td>
-                  <td>Hex + strings + token scan</td>
-                </tr>
-                <tr>
-                  <td><b>EveryPlay (Video Player)</b></td>
-                  <td>Video player helper used for video previews (including <span class="mono">.bik</span> Bink videos).</td>
-                  <td>Video playback + audio + seek</td>
-                </tr>
-                <tr>
-                  <td><b>VidPlayer (Audio Player)</b></td>
-                  <td>Audio player helper used for sound previews.</td>
-                  <td>Play audio + recent files + artwork</td>
-                </tr>
-              </tbody>
-            </table>
+            <h2>Resource Hacker (third-party)</h2>
+            <p style="margin:0 0 6px">
+              <b>Resource Hacker</b> is Copyright © Angus Johnson.
+              SERV may optionally include Resource Hacker for user convenience.
+              Resource Hacker files are distributed <b>unchanged</b> and with the original license included.
+            </p>
+            <div class="mono" style="margin-top:8px">
+Quick summary:
+- Optional component (Windows-only)
+- Not sold / not paywalled
+- Included unchanged
+- Credit + license included
+- Redistribution permission granted by the author via email for this distribution method
+            </div>
+          </div>
+
+          <div class="box">
+            <h2>Permission email screenshots</h2>
+            
+
+            <div id="rhShots" class="row" style="gap:12px;align-items:flex-start"><div style="width: min(520px, 100%);"><img alt="Permission request email (screenshot)" loading="lazy" src="permission_Request.png" style="max-width: 100%; height: auto; border-width: 1px; border-style: solid; border-color: rgb(128, 128, 128) rgb(255, 255, 255) rgb(255, 255, 255) rgb(128, 128, 128); background: rgb(255, 255, 255);"><div style="font-size: 12px; margin-top: 6px;">Permission request email (screenshot)</div></div><div style="width: min(520px, 100%);"><img alt="Permission granted email (screenshot)" loading="lazy" src="permission_GOT.png" style="max-width: 100%; height: auto; border-width: 1px; border-style: solid; border-color: rgb(128, 128, 128) rgb(255, 255, 255) rgb(255, 255, 255) rgb(128, 128, 128); background: rgb(255, 255, 255);"><div style="font-size: 12px; margin-top: 6px;">Permission granted email (screenshot)</div></div></div>
+            
+          </div>
+
+          <div class="box">
+            <h2>Resource Hacker license / EULA</h2>
+Licence to Use - Terms and Conditions:
+
+This Resource HackerTM software is released as freeware provided that you agree to the following terms and conditions:
+This software is not to be distributed via any website domain or any other media without the prior written approval of the copyright owner.
+This software is not to be used in any way to illegally modify software.
+DISCLAIMER: A user of this Resource HackerTM software acknowledges that he or she is receiving this software on an "as is" basis and the user is not relying on the accuracy or functionality of the software for any purpose. The user further acknowledges that any use of this software will be at the user's own risk and the copyright owner accepts no responsibility whatsoever arising from the use or application of the software.
+
+The above licence terms constitute "copyright management information" within the meaning of Section 1202 of Title 17 of the United States Code and must not be altered or removed from the licensed works. Their alteration or removal from the licensed works, and the distribution of licensed works without all the above licence terms in an unaltered way, may contravene Section 1202 and give rise civil and/or criminal consequences.
+    
           </div>
 
           <div class="row">
-            <button class="btn primary" onclick="setPage('devlog')">Next: Dev Log</button>
-            <button class="btn" onclick="setPage('overview')">Back</button>
+            <button class="btn" onclick="setPage('modules')">Back to Modules</button>
+            <button class="btn primary" onclick="setPage('downloads')">Downloads</button>
           </div>
         </div>
       </section>
     </div>
 
     <div class="statusbar" role="status">
-      <div class="sbCell">Status: <span id="sbStatus">Viewing: Modules (Tools List)</span></div>
-      <div class="sbCell sbGrow" id="sbInfo">Tools listed: Hub / VTF / VMT / VPK / MDL / EXE-DLL / PCF / RES / NUT / VCD / LMP / SAV / SND / SWATCH / EveryPlay / VidPlayer.</div>
-      <div class="sbCell" id="sbDate">Feb 28, 2026</div>
+      <div class="sbCell">Status: <span id="sbStatus">Viewing: Legal</span></div>
+      <div class="sbCell sbGrow" id="sbInfo">Legal: Resource Hacker permission + license (loads from local files).</div>
+      <div class="sbCell" id="sbDate">Mar 02, 2026</div>
     </div>
   </div>
 
@@ -445,7 +383,8 @@
 - LMP: hex + strings + token scan
 - SAV/SND/SWATCH: hex + strings + token scan (format varies)
 - EveryPlay: video playback helper (plays .bik Bink videos too)
-- VidPlayer: audio playback helper</div>
+- VidPlayer: audio playback helper
+- Resource Hacker (3rd-party): optional full Windows resource viewer/editor (included unchanged + license)</div>
 
             <div class="row">
               <button class="btn primary" onclick="setPage('modules')">View Modules</button>
@@ -508,6 +447,11 @@
                   <td><b>EXE/DLL Inspector</b></td>
                   <td>Inspect Windows binaries like Resource Hacker (limited).</td>
                   <td>Metadata + icons + strings + resources</td>
+                </tr>
+                <tr>
+                  <td><b>Resource Hacker (3rd-party)</b></td>
+                  <td>Full Windows resource viewer/editor (dialogs/menus/etc.). Included as an optional tool for convenience.</td>
+                  <td>Launches external app (unchanged files + original license included)</td>
                 </tr>
                 <tr>
                   <td><b>PCF Inspector</b></td>
@@ -619,6 +563,59 @@
         `
       },
 
+
+      legal: {
+        title: "Legal",
+        html: `
+          <h1>Legal</h1>
+
+          <div class="box">
+            <h2>Resource Hacker (third-party)</h2>
+            <p style="margin:0 0 6px">
+              <b>Resource Hacker</b> is Copyright © Angus Johnson.
+              SERV may optionally include Resource Hacker for user convenience.
+              Resource Hacker files are distributed <b>unchanged</b> and with the original license included.
+            </p>
+            <div class="mono" style="margin-top:8px">
+Quick summary:
+- Optional component (Windows-only)
+- Not sold / not paywalled
+- Included unchanged
+- Credit + license included
+- Redistribution permission granted by the author via email for this distribution method
+            </div>
+          </div>
+
+          <div class="box">
+            <h2>Permission email screenshots</h2>
+            <p style="margin:0 0 8px">
+              These load from files next to this HTML page (same folder).
+              If you don't see them, make sure the files exist:
+              <span class="mono">permission_Request.png</span> and <span class="mono">permission_GOT.png</span>
+            </p>
+
+            <div id="rhShots" class="row" style="gap:12px;align-items:flex-start"></div>
+            <div id="rhShotsMsg" style="font-size:12px;line-height:1.45;margin-top:8px"></div>
+          </div>
+
+          <div class="box">
+            <h2>Resource Hacker license / EULA</h2>
+            <p style="margin:0 0 8px">
+              This loads from <span class="mono">RH-Licence.txt</span> next to this HTML file.
+              If it doesn't show, make sure the name matches exactly (spelling + uppercase/lowercase).
+            </p>
+
+            <div class="mono" id="rhLicenseBox" style="max-height:320px;white-space:pre-wrap"></div>
+            <div id="rhLicenseMsg" style="font-size:12px;line-height:1.45;margin-top:8px"></div>
+          </div>
+
+          <div class="row">
+            <button class="btn" onclick="setPage('modules')">Back to Modules</button>
+            <button class="btn primary" onclick="setPage('downloads')">Downloads</button>
+          </div>
+        `
+      },
+
       downloads: {
         title: "Downloads",
         html: `
@@ -677,10 +674,14 @@
       const p = PAGES[page] || PAGES.overview;
       doc.innerHTML = p.html;
       setActiveNav(page);
+      if(page === "legal") loadLegalResourceHacker();
       sbStatus.textContent = "Viewing: " + p.title;
-      sbInfo.textContent = page === "modules"
-        ? "Tools listed: Hub / VTF / VMT / VPK / MDL / EXE-DLL / PCF / RES / NUT / VCD / LMP / SAV / SND / SWATCH / EveryPlay / VidPlayer."
-        : "Ready.";
+      sbInfo.textContent =
+        page === "modules"
+          ? "Tools listed: Hub / VTF / VMT / VPK / MDL / EXE-DLL / PCF / RES / NUT / VCD / LMP / SAV / SND / SWATCH / EveryPlay / VidPlayer / Resource Hacker."
+          : page === "legal"
+            ? "Legal: Resource Hacker permission + license (loads from local files)."
+            : "Ready.";
       clearHighlights();
       document.getElementById('search').value = "";
     }
@@ -747,6 +748,81 @@
       sbInfo.textContent = "Ready.";
       searchInput.focus();
     });
+
+
+    async function loadImageInto(container, src, caption){
+      const wrap = document.createElement('div');
+      wrap.style.width = "min(520px, 100%)";
+
+      const img = document.createElement('img');
+      img.alt = caption;
+      img.style.maxWidth = "100%";
+      img.style.height = "auto";
+      img.style.borderTop = "1px solid #808080";
+      img.style.borderLeft = "1px solid #808080";
+      img.style.borderRight = "1px solid #fff";
+      img.style.borderBottom = "1px solid #fff";
+      img.style.background = "#fff";
+      img.loading = "lazy";
+
+      const cap = document.createElement('div');
+      cap.textContent = caption;
+      cap.style.fontSize = "12px";
+      cap.style.marginTop = "6px";
+
+      wrap.appendChild(img);
+      wrap.appendChild(cap);
+      container.appendChild(wrap);
+
+      return new Promise((resolve) => {
+        img.onload = () => resolve({ok:true});
+        img.onerror = () => resolve({ok:false});
+        img.src = src;
+      });
+    }
+
+    async function loadTextFile(path){
+      const r = await fetch(path, { cache: "no-store" });
+      if(!r.ok) throw new Error("HTTP " + r.status);
+      return await r.text();
+    }
+
+    async function loadLegalResourceHacker(){
+      const shots = document.getElementById('rhShots');
+      const shotsMsg = document.getElementById('rhShotsMsg');
+      const licBox = document.getElementById('rhLicenseBox');
+      const licMsg = document.getElementById('rhLicenseMsg');
+      if(!shots || !shotsMsg || !licBox || !licMsg) return;
+
+      // Screenshots
+      shots.innerHTML = "";
+      shotsMsg.textContent = "Loading screenshots…";
+
+      const a = await loadImageInto(shots, "permission_Request.png", "Permission request email (screenshot)");
+      const b = await loadImageInto(shots, "permission_GOT.png", "Permission granted email (screenshot)");
+
+      if(a.ok && b.ok){
+        shotsMsg.textContent = "Screenshots loaded from local files next to this HTML page.";
+      }else{
+        const missing = [];
+        if(!a.ok) missing.push("permission_Request.png");
+        if(!b.ok) missing.push("permission_GOT.png");
+        shotsMsg.textContent = "Missing file(s): " + missing.join(", ") + " — put them next to this HTML file.";
+      }
+
+      // License
+      licBox.textContent = "Loading RH-Licence.txt…";
+      licMsg.textContent = "";
+
+      try{
+        const txt = await loadTextFile("RH-Licence.txt");
+        licBox.textContent = txt;
+        licMsg.textContent = "License loaded from RH-Licence.txt.";
+      }catch(e){
+        licBox.textContent = "";
+        licMsg.textContent = "Could not load RH-Licence.txt — put it next to this HTML file. (" + e.message + ")";
+      }
+    }
 
     // Date
     (function(){
