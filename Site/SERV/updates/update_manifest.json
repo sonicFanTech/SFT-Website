@@ -1,0 +1,46 @@
+{
+  "manifest_version": 1,
+  "product": "SERV",
+  "channel": "stable",
+  "published_utc": "2026-03-04T00:00:00Z",
+
+  "components": [
+    {
+      "id": "hub",
+      "name": "SERV Hub",
+      "version": "1.2.0",
+      "type": "file",
+      "target_path": "SERV.exe",
+      "url": "https://sonicfantech.org/Site/SERV/downloads/SERV.exe",
+      "sha256": "PUT_SHA256_HERE",
+      "size": 12345678
+    },
+
+    {
+      "id": "vtf_viewer",
+      "name": "VTF Viewer",
+      "version": "1.2.0",
+      "type": "file",
+      "target_path": "Tools\\VTFViewer.exe",
+      "url": "https://sonicfantech.org/Site/SERV/downloads/Tools/VTFViewer.exe",
+      "sha256": "PUT_SHA256_HERE"
+    },
+
+    {
+      "id": "serv_tools_pack",
+      "name": "SERV Tools Pack",
+      "version": "1.2.0",
+      "type": "zip",
+      "extract_to": ".",
+      "url": "https://sonicfantech.org/Site/SERV/downloads/SERV_Tools.zip",
+      "sha256": "PUT_SHA256_HERE"
+    },
+
+    {
+      "id": "resource_hacker",
+      "name": "Resource Hacker",
+      "version": "N/A",
+      "exclude": true
+    }
+  ]
+}
