@@ -1,1 +1,14 @@
-TEMP
+FlacLight Disk Manager
+Short EULA
+
+By installing or using FlacLight Disk Manager, you agree that this software is provided by sonic Fan Tech under a limited, non-exclusive, revocable license.
+
+FlacLight Disk Manager is closed-source. You may not copy, modify, reverse engineer, decompile, redistribute, mirror, re-upload, resell, or share the software, installer, or related files without written permission from sonic Fan Tech.
+
+This software is a disk and partition management tool and may affect drives, partitions, file systems, and stored data. You use it entirely at your own risk. Always back up important data before use.
+
+The software is provided “AS IS”, without warranties of any kind. sonic Fan Tech is not liable for data loss, corruption, boot failure, partition damage, drive issues, or any other damages resulting from use of the software.
+
+Using the software means you accept these terms.
+
+Contact: sonicfantech@sonicfantech.org
