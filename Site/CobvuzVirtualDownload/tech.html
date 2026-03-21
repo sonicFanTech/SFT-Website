@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architecture — Cobvuz Virtual</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body class="bg-[#0d0f1a] text-white overflow-x-hidden">
+<canvas id="particles-canvas"></canvas>
+<div id="page-transition"></div>
+<nav id="navbar"></nav>
+<main>
+
+<div class="page-hero scanline">
+  <div class="reveal-up inline-block bg-white/5 accent-text text-xs font-mono tracking-widest px-6 py-3 rounded-full border border-blue-500/20 mb-5">UNDER THE HOOD</div>
+  <h1 class="reveal-up stagger-1 text-6xl font-bold tracking-tighter logo-font accent-glow">Engineered clean.<br>Built for 2026.</h1>
+  <p class="reveal-up stagger-2 text-gray-400 text-xl mt-4 max-w-2xl mx-auto">Every line hand-written. No frameworks. No bloat. Just Windows APIs, C++17, and 3 DLLs that each do one job perfectly.</p>
+</div>
+
+<section class="max-w-screen-xl mx-auto px-8 py-20">
+
+  <!-- Architecture diagram -->
+  <div class="reveal-up mb-20">
+    <h2 class="text-3xl font-bold tracking-tight logo-font text-center mb-10">How it fits together</h2>
+    <div class="max-w-3xl mx-auto">
+      <!-- EXE layer -->
+      <div class="glass-blue rounded-2xl p-5 text-center mb-4 feature-card">
+        <div class="font-mono text-blue-300 text-lg font-semibold">CobvuzVirtual.exe</div>
+        <div class="text-gray-500 text-sm mt-1">Win32 GUI · MainWindow · VMCreationWizard · 6 .cpp source files</div>
+      </div>
+      <!-- Arrow -->
+      <div class="text-center text-gray-600 text-2xl mb-4">↓ calls ↓</div>
+      <!-- DLL layer -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div class="glass rounded-2xl p-5 text-center feature-card border border-blue-500/20">
+          <div class="font-mono text-blue-300 text-sm font-semibold">HyperVBridge.dll</div>
+          <div class="text-gray-500 text-xs mt-2">VM lifecycle · WMI calls · VHDX creation</div>
+        </div>
+        <div class="glass rounded-2xl p-5 text-center feature-card border border-purple-500/20">
+          <div class="font-mono text-purple-300 text-sm font-semibold">FirmwareManager.dll</div>
+          <div class="text-gray-500 text-xs mt-2">SeaBIOS / OVMF · path · validation</div>
+        </div>
+        <div class="glass rounded-2xl p-5 text-center feature-card border border-amber-500/20">
+          <div class="font-mono text-amber-300 text-sm font-semibold">VMStorage.dll</div>
+          <div class="text-gray-500 text-xs mt-2">.cvm configs · VM folders · VHDX paths</div>
+        </div>
+      </div>
+      <!-- Arrow -->
+      <div class="text-center text-gray-600 text-2xl mb-4">↓ talks to ↓</div>
+      <!-- Windows layer -->
+      <div class="glass rounded-2xl p-5 text-center feature-card border border-white/10">
+        <div class="font-mono text-white text-sm font-semibold">Windows Hyper-V · root\virtualization\v2 WMI</div>
+        <div class="text-gray-500 text-xs mt-2">Msvm_ComputerSystem · Msvm_VirtualSystemManagementService · Msvm_ImageManagementService</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DLL deep dives -->
+  <div class="space-y-10">
+    <div class="reveal-up grid grid-cols-1 lg:grid-cols-2 gap-8 items-start glass-blue rounded-3xl p-8">
+      <div>
+        <div class="text-xs font-mono text-blue-400 tracking-widest mb-2">DLL 1</div>
+        <h3 class="text-3xl font-bold tracking-tight logo-font mb-4">HyperVBridge.dll</h3>
+        <p class="text-gray-400 leading-relaxed mb-4">The core of the application. Wraps the entire Hyper-V WMI surface so the main EXE doesn't need to link WMI headers directly. Manages COM connection, proxy blanket security, and async state changes.</p>
+        <p class="text-gray-400 leading-relaxed">Key design decision: every exported function that calls <span class="dll-chip">s_pSvc</span> calls <span class="dll-chip">SetupThreadCOM()</span> first, ensuring the proxy blanket is valid on any thread that invokes it — fixing the <span class="text-red-400 font-mono text-sm">0x800401f0</span> error that occurs when worker threads call COM without initialising first.</p>
+      </div>
+      <div class="font-mono text-xs space-y-1 bg-black/40 rounded-xl p-5">
+        <div class="text-gray-500 mb-2">// Internal flow for HVB_StartVM(guid)</div>
+        <div class="text-blue-300">1. CoInitializeEx(COINIT_APARTMENTTHREADED)</div>
+        <div class="text-blue-300">2. SetupThreadCOM() → CoSetProxyBlanket</div>
+        <div class="text-blue-300">3. Get Msvm_ComputerSystem by GUID</div>
+        <div class="text-blue-300">4. ExecMethod("RequestStateChange", state=2)</div>
+        <div class="text-blue-300">5. CoUninitialize()</div>
+      </div>
+    </div>
+
+    <div class="reveal-up grid grid-cols-1 lg:grid-cols-2 gap-8 items-start glass rounded-3xl p-8 border border-purple-500/15">
+      <div>
+        <div class="text-xs font-mono text-purple-400 tracking-widest mb-2">DLL 2</div>
+        <h3 class="text-3xl font-bold tracking-tight logo-font mb-4">FirmwareManager.dll</h3>
+        <p class="text-gray-400 leading-relaxed mb-4">Manages the two firmware files stored in the <span class="dll-chip">firmware\</span> subfolder next to the EXE. Validates that each file exists and has a sane size (SeaBIOS ≥ 64 KB, OVMF ≥ 1 MB).</p>
+        <p class="text-gray-400 leading-relaxed">Used by the wizard to verify firmware before creating a VM, and can deploy (copy) firmware into a VM's working directory for per-VM isolation.</p>
+      </div>
+      <div class="font-mono text-xs space-y-1 bg-black/40 rounded-xl p-5">
+        <div class="text-gray-500 mb-2">// Firmware file locations</div>
+        <div class="text-purple-300">firmware\seabios.bin     ← from bios.bin (QEMU)</div>
+        <div class="text-purple-300">firmware\OVMF.fd         ← edk2-x86_64-code.fd</div>
+        <div class="text-gray-500 mt-3 mb-2">// Validation</div>
+        <div class="text-purple-300">SeaBIOS: size ≥ 65,536 bytes</div>
+        <div class="text-purple-300">OVMF:    size ≥ 1,048,576 bytes</div>
+      </div>
+    </div>
+
+    <div class="reveal-up grid grid-cols-1 lg:grid-cols-2 gap-8 items-start glass rounded-3xl p-8 border border-amber-500/15">
+      <div>
+        <div class="text-xs font-mono text-amber-400 tracking-widest mb-2">DLL 3</div>
+        <h3 class="text-3xl font-bold tracking-tight logo-font mb-4">VMStorage.dll</h3>
+        <p class="text-gray-400 leading-relaxed mb-4">Manages all on-disk VM data. Each VM gets its own folder inside the storage root (default: <span class="dll-chip">Documents\Cobvuz VMs\</span>). Configs are stored as plain key=value <span class="dll-chip">.cvm</span> files — human-readable and easy to back up.</p>
+        <p class="text-gray-400 leading-relaxed">The storage root is configurable in Settings. Changing it takes effect immediately — existing VMs in the new folder are discovered on next launch.</p>
+      </div>
+      <div class="font-mono text-xs space-y-1 bg-black/40 rounded-xl p-5">
+        <div class="text-gray-500 mb-2">// Folder structure</div>
+        <div class="text-amber-300">Documents\Cobvuz VMs\</div>
+        <div class="text-amber-300">  Windows 10\</div>
+        <div class="text-amber-300">    Windows 10.cvm   ← config</div>
+        <div class="text-amber-300">    Windows 10.vhdx  ← disk</div>
+        <div class="text-amber-300">  Ubuntu 24\</div>
+        <div class="text-amber-300">    Ubuntu 24.cvm</div>
+        <div class="text-amber-300">    Ubuntu 24.vhdx</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Build info -->
+  <div class="reveal-up mt-16 glass rounded-2xl p-8">
+    <h3 class="text-2xl font-bold tracking-tight logo-font mb-6 text-center">Build Information</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 text-center">
+      <div class="bg-white/4 rounded-xl p-4"><div class="font-mono text-blue-300 text-lg font-semibold">C++17</div><div class="text-gray-500 text-xs mt-1">Language standard</div></div>
+      <div class="bg-white/4 rounded-xl p-4"><div class="font-mono text-blue-300 text-lg font-semibold">v143</div><div class="text-gray-500 text-xs mt-1">MSVC toolset</div></div>
+      <div class="bg-white/4 rounded-xl p-4"><div class="font-mono text-blue-300 text-lg font-semibold">10.0.26100</div><div class="text-gray-500 text-xs mt-1">Windows SDK</div></div>
+      <div class="bg-white/4 rounded-xl p-4"><div class="font-mono text-blue-300 text-lg font-semibold">x64</div><div class="text-gray-500 text-xs mt-1">Target platform</div></div>
+      <div class="bg-white/4 rounded-xl p-4"><div class="font-mono text-blue-300 text-lg font-semibold">4 / 1</div><div class="text-gray-500 text-xs mt-1">Projects / Solution</div></div>
+    </div>
+  </div>
+
+</section>
+</main>
+<div id="footer-placeholder"></div>
+<script src="shared.js"></script>
+</body>
+</html>

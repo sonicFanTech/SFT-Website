@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download — Cobvuz Virtual</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+.req-row { display:flex; align-items:center; gap:1rem; padding:.9rem 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+.req-row:last-child { border-bottom:none; }
+.step-num { width:36px;height:36px;border-radius:10px;background:rgba(82,130,255,0.15);border:1px solid rgba(82,130,255,0.3);display:flex;align-items:center;justify-content:center;font-weight:700;color:#5282ff;flex-shrink:0;font-size:.95rem; }
+</style>
+</head>
+<body class="bg-[#0d0f1a] text-white overflow-x-hidden">
+<canvas id="particles-canvas"></canvas>
+<div id="page-transition"></div>
+<nav id="navbar"></nav>
+<main>
+
+<div class="page-hero scanline">
+  <div class="reveal-up inline-flex items-center gap-x-3 bg-black border border-amber-400/25 rounded-full px-6 py-3 text-amber-400 text-sm mb-6">
+    <i class="fas fa-clock"></i><span class="font-medium">Early Access · Not available yet</span>
+  </div>
+  <h1 class="reveal-up stagger-1 text-6xl font-bold tracking-tighter logo-font" style="text-shadow:0 0 40px rgba(255,185,60,0.3)">Real VMs are coming soon</h1>
+  <p class="reveal-up stagger-2 text-gray-400 text-xl mt-4">v1.0 · Built by sonic Fan Tech (SFT)</p>
+  <div class="reveal-up stagger-3 flex flex-wrap gap-4 justify-center mt-8">
+    <button onclick="showComingSoon()" class="px-10 py-5 rounded-2xl text-xl font-semibold flex items-center gap-x-4 btn-disabled">
+      <i class="fas fa-download"></i><span>Download Installer</span>
+    </button>
+    <a href="https://github.com/sonicFanTech" target="_blank"
+       class="px-10 py-5 border border-white/20 hover:border-white rounded-2xl text-xl font-medium flex items-center gap-x-4 transition-all">
+      <i class="fab fa-github"></i><span>GitHub Profile</span>
+    </a>
+  </div>
+  <div class="reveal-up stagger-4 text-xs font-mono text-gray-600 mt-6">Source will be public on GitHub · Follow for release date</div>
+</div>
+
+<section class="max-w-screen-xl mx-auto px-8 py-20">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+    <!-- Requirements -->
+    <div class="reveal-up glass rounded-3xl p-8">
+      <h2 class="text-2xl font-bold tracking-tight logo-font mb-6">System Requirements</h2>
+      <div>
+        <div class="req-row"><i class="fas fa-windows text-blue-400 w-5 text-center shrink-0"></i><div><div class="font-medium text-gray-200">OS</div><div class="text-gray-500 text-sm">Windows 10/11 Pro, Enterprise, or Education</div></div></div>
+        <div class="req-row"><i class="fas fa-microchip text-amber-400 w-5 text-center shrink-0"></i><div><div class="font-medium text-gray-200">CPU</div><div class="text-gray-500 text-sm">Intel VT-x or AMD-V enabled in BIOS/UEFI</div></div></div>
+        <div class="req-row"><i class="fas fa-memory text-emerald-400 w-5 text-center shrink-0"></i><div><div class="font-medium text-gray-200">RAM</div><div class="text-gray-500 text-sm">8 GB host RAM recommended</div></div></div>
+        <div class="req-row"><i class="fas fa-hdd text-purple-400 w-5 text-center shrink-0"></i><div><div class="font-medium text-gray-200">Architecture</div><div class="text-gray-500 text-sm">64-bit (x64) only</div></div></div>
+        <div class="req-row"><i class="fas fa-shield-alt text-blue-400 w-5 text-center shrink-0"></i><div><div class="font-medium text-gray-200">Hyper-V</div><div class="text-gray-500 text-sm">Must be enabled — comes free with Windows Pro</div></div></div>
+        <div class="req-row"><i class="fas fa-user-shield text-red-400 w-5 text-center shrink-0"></i><div><div class="font-medium text-gray-200">Privileges</div><div class="text-gray-500 text-sm">Must run as Administrator</div></div></div>
+      </div>
+    </div>
+
+    <!-- Setup steps -->
+    <div class="reveal-up stagger-1 glass rounded-3xl p-8">
+      <h2 class="text-2xl font-bold tracking-tight logo-font mb-6">Setup Steps (after release)</h2>
+      <div class="space-y-5">
+        <div class="flex gap-x-4">
+          <div class="step-num">1</div>
+          <div><div class="font-medium text-gray-200 mb-1">Enable Hyper-V</div><div class="text-gray-500 text-sm font-mono">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All</div></div>
+        </div>
+        <div class="flex gap-x-4">
+          <div class="step-num">2</div>
+          <div><div class="font-medium text-gray-200 mb-1">Get firmware files</div><div class="text-gray-500 text-sm">Copy <span class="font-mono">bios.bin → seabios.bin</span> and <span class="font-mono">edk2-x86_64-code.fd → OVMF.fd</span> from a QEMU install into <span class="font-mono">firmware\</span></div></div>
+        </div>
+        <div class="flex gap-x-4">
+          <div class="step-num">3</div>
+          <div><div class="font-medium text-gray-200 mb-1">Create a virtual switch</div><div class="text-gray-500 text-sm">Open Hyper-V Manager → Virtual Switch Manager → New External switch for internet access</div></div>
+        </div>
+        <div class="flex gap-x-4">
+          <div class="step-num">4</div>
+          <div><div class="font-medium text-gray-200 mb-1">Run as Administrator</div><div class="text-gray-500 text-sm">Right-click CobvuzVirtual.exe → Run as administrator (required for Hyper-V WMI)</div></div>
+        </div>
+        <div class="flex gap-x-4">
+          <div class="step-num shrink-0" style="background:rgba(72,199,142,0.15);border-color:rgba(72,199,142,0.3);color:#48c78e">✓</div>
+          <div><div class="font-medium text-emerald-300 mb-1">You're ready!</div><div class="text-gray-500 text-sm">Click + New VM in the toolbar and follow the 6-step wizard</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Notify CTA -->
+  <div class="reveal-up mt-16 text-center glass rounded-3xl p-12 max-w-2xl mx-auto">
+    <div class="text-4xl mb-4">🔔</div>
+    <h3 class="text-3xl font-bold tracking-tight logo-font mb-3">Get notified at launch</h3>
+    <p class="text-gray-400 mb-8">Follow sonic Fan Tech (SFT) on any of these platforms to be the first to know when Cobvuz Virtual is available.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="https://www.youtube.com/@sonicfantech" target="_blank" class="page-link flex items-center gap-x-2 px-5 py-3 glass rounded-xl hover:border-white/20 border border-white/10 transition-all text-sm font-medium">
+        <i class="fab fa-youtube text-red-500"></i> YouTube
+      </a>
+      <a href="https://github.com/sonicFanTech" target="_blank" class="flex items-center gap-x-2 px-5 py-3 glass rounded-xl hover:border-white/20 border border-white/10 transition-all text-sm font-medium">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://x.com/sonicfantech" target="_blank" class="flex items-center gap-x-2 px-5 py-3 glass rounded-xl hover:border-white/20 border border-white/10 transition-all text-sm font-medium">
+        <i class="fab fa-x-twitter"></i> X / Twitter
+      </a>
+    </div>
+  </div>
+
+</section>
+</main>
+<div id="footer-placeholder"></div>
+<script src="shared.js"></script>
+</body>
+</html>

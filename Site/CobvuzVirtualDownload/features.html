@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features — Cobvuz Virtual</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body class="bg-[#0d0f1a] text-white overflow-x-hidden">
+<canvas id="particles-canvas"></canvas>
+<div id="page-transition"></div>
+<nav id="navbar"></nav>
+<main>
+
+<div class="page-hero scanline">
+  <div class="reveal-up inline-block bg-white/5 accent-text text-xs font-mono tracking-widest px-6 py-3 rounded-full border border-blue-500/20 mb-5">ALL FEATURES</div>
+  <h1 class="reveal-up stagger-1 text-6xl font-bold tracking-tighter logo-font accent-glow">Everything Cobvuz Virtual can do</h1>
+  <p class="reveal-up stagger-2 text-gray-400 text-xl mt-4 max-w-2xl mx-auto">Six feature categories. Zero compromises. All built in pure C++17 with no third-party frameworks.</p>
+</div>
+
+<section class="max-w-screen-xl mx-auto px-8 py-20 space-y-16">
+
+  <!-- Feature block 1 -->
+  <div class="reveal-up grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="text-xs font-mono text-blue-400 tracking-widest mb-3">01 — ENGINE</div>
+      <h2 class="text-4xl font-bold tracking-tighter logo-font mb-4">Hyper-V WMI Engine</h2>
+      <p class="text-gray-400 leading-relaxed text-lg mb-6">Cobvuz Virtual talks directly to Windows Hyper-V through the <span class="dll-chip">root\virtualization\v2</span> WMI namespace. Every VM operation — create, start, stop, pause, save, delete — goes through <span class="dll-chip">HyperVBridge.dll</span>, a custom wrapper that handles COM initialisation on every thread, proxy blanket setup, and WMI query marshalling.</p>
+      <ul class="space-y-2 text-gray-300">
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> No QEMU, no KVM, no third-party hypervisor</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> Uses your existing Windows built-in hypervisor</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> Background threads keep the UI responsive</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> CoInitializeEx called per worker thread (no 0x800401f0)</li>
+      </ul>
+    </div>
+    <div class="glass-blue rounded-2xl p-8 font-mono text-sm space-y-2 feature-card">
+      <div class="text-gray-500 text-xs mb-4">// HyperVBridge.dll — exported API</div>
+      <div class="text-blue-300">HVB_Init()</div>
+      <div class="text-blue-300">HVB_CreateVM( name, cpu, ram, vhdx, switch, uefi )</div>
+      <div class="text-blue-300">HVB_StartVM( guid )</div>
+      <div class="text-blue-300">HVB_StopVM( guid, force )</div>
+      <div class="text-blue-300">HVB_PauseVM( guid ) / HVB_ResumeVM( guid )</div>
+      <div class="text-blue-300">HVB_SaveVM( guid )</div>
+      <div class="text-blue-300">HVB_DeleteVM( guid )</div>
+      <div class="text-blue-300">HVB_CreateVHDX( path, sizeGB )</div>
+      <div class="text-blue-300">HVB_ListVMs( buf, count )</div>
+      <div class="text-blue-300">HVB_ListSwitches( buf, chars )</div>
+    </div>
+  </div>
+
+  <hr class="border-white/8">
+
+  <!-- Feature block 2 -->
+  <div class="reveal-up grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div class="order-2 lg:order-1">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="glass rounded-2xl p-6 text-center feature-card">
+          <div class="text-3xl mb-3">💾</div>
+          <div class="font-semibold text-gray-300">SeaBIOS</div>
+          <div class="text-xs text-gray-500 mt-1">seabios.bin · 128 KB</div>
+          <div class="text-xs text-amber-300 mt-3">DOS, Win 9x, XP</div>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center feature-card">
+          <div class="text-3xl mb-3">🔒</div>
+          <div class="font-semibold text-purple-300">OVMF</div>
+          <div class="text-xs text-gray-500 mt-1">edk2-x86_64-code.fd · 3.48 MB</div>
+          <div class="text-xs text-purple-300 mt-3">Win 7–10, Linux</div>
+        </div>
+        <div class="glass rounded-2xl p-5 col-span-2 feature-card">
+          <div class="text-xs font-mono text-gray-500 mb-2">// FirmwareManager.dll</div>
+          <div class="text-sm font-mono text-emerald-300">FWM_ValidateFirmware( type ) → bool</div>
+          <div class="text-sm font-mono text-emerald-300 mt-1">FWM_DeployFirmware( type, destDir )</div>
+          <div class="text-sm font-mono text-emerald-300 mt-1">FWM_GetFirmwarePath( type ) → path</div>
+        </div>
+      </div>
+    </div>
+    <div class="order-1 lg:order-2">
+      <div class="text-xs font-mono text-purple-400 tracking-widest mb-3">02 — FIRMWARE</div>
+      <h2 class="text-4xl font-bold tracking-tighter logo-font mb-4">Dual Firmware Support</h2>
+      <p class="text-gray-400 leading-relaxed text-lg mb-6">Every VM gets its own firmware choice, made right in the creation wizard. The wizard even auto-suggests the right firmware based on the OS you select — picks SeaBIOS for Windows XP or older, OVMF for Windows 7 and up.</p>
+      <ul class="space-y-2 text-gray-300">
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> SeaBIOS — open-source legacy BIOS for vintage OSes</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> OVMF — open-source UEFI for modern systems</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> Optional Secure Boot toggle (UEFI only)</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> Firmware validated on first use by FirmwareManager.dll</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="border-white/8">
+
+  <!-- Feature block 3 -->
+  <div class="reveal-up grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="text-xs font-mono text-emerald-400 tracking-widest mb-3">03 — WIZARD</div>
+      <h2 class="text-4xl font-bold tracking-tighter logo-font mb-4">6-Step VM Creation Wizard</h2>
+      <p class="text-gray-400 leading-relaxed text-lg mb-6">Creating a VM takes under a minute. The wizard walks you through every setting with sensible defaults, auto-fills the VHDX path, and shows a full summary before anything is written to disk.</p>
+      <div class="space-y-3">
+        <div class="flex items-center gap-x-4 glass rounded-xl px-5 py-3"><span class="text-blue-400 font-bold font-mono w-6">1</span><span class="text-gray-300">Name &amp; OS type (auto-selects firmware)</span></div>
+        <div class="flex items-center gap-x-4 glass rounded-xl px-5 py-3"><span class="text-blue-400 font-bold font-mono w-6">2</span><span class="text-gray-300">Hardware — CPU cores, RAM (256 MB–128 GB), VRAM</span></div>
+        <div class="flex items-center gap-x-4 glass rounded-xl px-5 py-3"><span class="text-blue-400 font-bold font-mono w-6">3</span><span class="text-gray-300">Storage — VHDX size, path, boot ISO</span></div>
+        <div class="flex items-center gap-x-4 glass rounded-xl px-5 py-3"><span class="text-blue-400 font-bold font-mono w-6">4</span><span class="text-gray-300">Network — Hyper-V virtual switch or none</span></div>
+        <div class="flex items-center gap-x-4 glass rounded-xl px-5 py-3"><span class="text-blue-400 font-bold font-mono w-6">5</span><span class="text-gray-300">Firmware — SeaBIOS or OVMF, Secure Boot toggle</span></div>
+        <div class="flex items-center gap-x-4 glass rounded-xl px-5 py-3"><span class="text-emerald-400 font-bold font-mono w-6">6</span><span class="text-gray-300">Summary — review everything, then Finish</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="text-xs font-mono text-amber-400 tracking-widest mb-3">04 — STORAGE</div>
+      <h2 class="text-4xl font-bold tracking-tighter logo-font mb-4">Dynamic VHDX Disks</h2>
+      <p class="text-gray-400 leading-relaxed text-lg mb-6">VM configs are saved as lightweight <span class="dll-chip">.cvm</span> files alongside the VHDX. VMStorage.dll handles creation, listing, and deletion of per-VM folders under your chosen storage root (default: Documents\Cobvuz VMs).</p>
+      <ul class="space-y-2 text-gray-300">
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> Dynamic VHDX — only uses disk space as needed</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> 1 GB to 65,536 GB disk size range</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> Configurable storage root in Settings</li>
+        <li class="flex items-center gap-x-3"><i class="fas fa-check text-emerald-400 text-sm"></i> ISO attach for OS installation</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="border-white/8">
+
+  <!-- Feature block 4 -->
+  <div class="reveal-up">
+    <div class="text-xs font-mono text-pink-400 tracking-widest mb-3 text-center">05 + 06 — GUI &amp; CONTROL</div>
+    <h2 class="text-4xl font-bold tracking-tighter logo-font mb-10 text-center">Native GUI &amp; Full VM Control</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="feature-card glass rounded-2xl p-7">
+        <div class="text-2xl mb-4 icon-bounce">🎨</div>
+        <h3 class="font-semibold text-lg mb-2">Dark Win32 Theme</h3>
+        <p class="text-gray-400 text-sm">Custom dark palette with DWM dark title bar, per-monitor DPI awareness, GDI rendering, and animated progress bar in the wizard.</p>
+      </div>
+      <div class="feature-card glass rounded-2xl p-7">
+        <div class="text-2xl mb-4 icon-bounce">⚙️</div>
+        <h3 class="font-semibold text-lg mb-2">VM Lifecycle</h3>
+        <p class="text-gray-400 text-sm">Start · Stop · Pause · Resume · Save · Delete — all from the main window toolbar. State refreshes live from Hyper-V.</p>
+      </div>
+      <div class="feature-card glass rounded-2xl p-7">
+        <div class="text-2xl mb-4 icon-bounce">📋</div>
+        <h3 class="font-semibold text-lg mb-2">VM List View</h3>
+        <p class="text-gray-400 text-sm">Columns for VM Name, OS, State, RAM (MB), CPUs, and Firmware type. Dark-themed ListView with full-row select.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+</main>
+<div id="footer-placeholder"></div>
+<script src="shared.js"></script>
+</body>
+</html>

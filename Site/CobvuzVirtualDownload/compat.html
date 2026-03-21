@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OS Compatibility — Cobvuz Virtual</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body class="bg-[#0d0f1a] text-white overflow-x-hidden">
+<canvas id="particles-canvas"></canvas>
+<div id="page-transition"></div>
+<nav id="navbar"></nav>
+<main>
+
+<div class="page-hero scanline">
+  <div class="reveal-up inline-block bg-white/5 accent-text text-xs font-mono tracking-widest px-6 py-3 rounded-full border border-blue-500/20 mb-5">GUEST OS SUPPORT</div>
+  <h1 class="reveal-up stagger-1 text-6xl font-bold tracking-tighter logo-font accent-glow">Windows 1.0 to 10.<br>And Linux.</h1>
+  <p class="reveal-up stagger-2 text-gray-400 text-xl mt-4 max-w-2xl mx-auto">Every OS below is supported. Firmware is auto-suggested in the wizard — you can always override it.</p>
+</div>
+
+<section class="max-w-screen-xl mx-auto px-8 py-20">
+
+  <!-- Filter tabs -->
+  <div class="reveal-up flex flex-wrap gap-3 justify-center mb-14">
+    <button onclick="filterOS('all')"    id="tab-all"     class="os-tab active-tab px-5 py-2 rounded-full text-sm font-medium border border-blue-500/40 text-blue-300 bg-blue-500/10 transition-all">All OSes</button>
+    <button onclick="filterOS('modern')" id="tab-modern"  class="os-tab px-5 py-2 rounded-full text-sm font-medium border border-white/15 text-gray-400 hover:border-white/30 transition-all">Modern Windows</button>
+    <button onclick="filterOS('classic')" id="tab-classic" class="os-tab px-5 py-2 rounded-full text-sm font-medium border border-white/15 text-gray-400 hover:border-white/30 transition-all">Classic Windows</button>
+    <button onclick="filterOS('linux')"  id="tab-linux"   class="os-tab px-5 py-2 rounded-full text-sm font-medium border border-white/15 text-gray-400 hover:border-white/30 transition-all">Linux</button>
+    <button onclick="filterOS('dos')"    id="tab-dos"     class="os-tab px-5 py-2 rounded-full text-sm font-medium border border-white/15 text-gray-400 hover:border-white/30 transition-all">DOS / Other</button>
+  </div>
+
+  <div id="os-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+  </div>
+
+  <!-- Note box -->
+  <div class="reveal-up mt-12 glass rounded-2xl p-7 max-w-2xl mx-auto">
+    <div class="flex items-start gap-x-4">
+      <i class="fas fa-triangle-exclamation text-amber-400 text-xl mt-0.5 shrink-0"></i>
+      <div>
+        <div class="font-semibold text-amber-300 mb-1">Windows 11 not supported as a guest</div>
+        <p class="text-gray-400 text-sm">Windows 11 requires TPM 2.0. While Hyper-V Gen 2 VMs can emulate a virtual TPM, full Windows 11 guest support requires additional configuration beyond Cobvuz Virtual's current scope. Windows 10 is the recommended modern Windows guest.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+</main>
+<div id="footer-placeholder"></div>
+<script src="shared.js"></script>
+<script>
+const OS_DATA = [
+  { name:'Windows 10 (64-bit)', cat:'modern', fw:'UEFI',   ram:'2048 MB+', status:'Best experience',     icon:'🪟', color:'blue'   },
+  { name:'Windows 10 (32-bit)', cat:'modern', fw:'UEFI',   ram:'1024 MB+', status:'Works great',         icon:'🪟', color:'blue'   },
+  { name:'Windows 8.1 (64-bit)',cat:'modern', fw:'UEFI',   ram:'1024 MB+', status:'Works great',         icon:'🪟', color:'blue'   },
+  { name:'Windows 8 (64-bit)',  cat:'modern', fw:'UEFI',   ram:'1024 MB+', status:'Works great',         icon:'🪟', color:'blue'   },
+  { name:'Windows 7 (64-bit)',  cat:'modern', fw:'Either', ram:'512 MB+',  status:'UEFI or Legacy',      icon:'🪟', color:'purple' },
+  { name:'Windows 7 (32-bit)',  cat:'modern', fw:'Either', ram:'512 MB+',  status:'UEFI or Legacy',      icon:'🪟', color:'purple' },
+  { name:'Windows Vista (32-bit)',cat:'modern',fw:'Legacy', ram:'512 MB+', status:'Legacy recommended',  icon:'🪟', color:'purple' },
+  { name:'Windows XP (32-bit)', cat:'classic',fw:'Legacy', ram:'256 MB+', status:'Works well',          icon:'💾', color:'amber'  },
+  { name:'Windows 2000',        cat:'classic',fw:'Legacy', ram:'128 MB+', status:'Stable',              icon:'💾', color:'amber'  },
+  { name:'Windows ME',          cat:'classic',fw:'Legacy', ram:'64–256 MB','status':'Low RAM recommended',icon:'💾',color:'amber' },
+  { name:'Windows 98 SE',       cat:'classic',fw:'Legacy', ram:'64–128 MB',status:'Works',              icon:'💾', color:'amber'  },
+  { name:'Windows 95',          cat:'classic',fw:'Legacy', ram:'16–64 MB', status:'Works',              icon:'💾', color:'amber'  },
+  { name:'Windows 3.x',         cat:'classic',fw:'Legacy', ram:'4–16 MB',  status:'Historical',         icon:'💾', color:'amber'  },
+  { name:'Windows 1.0',         cat:'classic',fw:'Legacy', ram:'1–4 MB',   status:'Historical',         icon:'💾', color:'amber'  },
+  { name:'Ubuntu / Debian',     cat:'linux',  fw:'Either', ram:'1024 MB+', status:'Both firmware work', icon:'🐧', color:'emerald'},
+  { name:'Fedora / RHEL',       cat:'linux',  fw:'Either', ram:'1024 MB+', status:'Both firmware work', icon:'🐧', color:'emerald'},
+  { name:'Arch Linux',          cat:'linux',  fw:'UEFI',   ram:'512 MB+',  status:'UEFI recommended',   icon:'🐧', color:'emerald'},
+  { name:'CentOS / Rocky',      cat:'linux',  fw:'Either', ram:'1024 MB+', status:'Both firmware work', icon:'🐧', color:'emerald'},
+  { name:'Other Linux',         cat:'linux',  fw:'Either', ram:'512 MB+',  status:'Distro dependent',   icon:'🐧', color:'emerald'},
+  { name:'MS-DOS',              cat:'dos',    fw:'Legacy', ram:'16–32 MB', status:'Works',              icon:'📟', color:'gray'   },
+  { name:'FreeDOS',             cat:'dos',    fw:'Legacy', ram:'16–32 MB', status:'Works',              icon:'📟', color:'gray'   },
+];
+
+const FW_COLOR = { 'UEFI':'text-purple-300 bg-purple-500/10 border-purple-500/20', 'Legacy':'text-amber-300 bg-amber-500/10 border-amber-500/20', 'Either':'text-blue-300 bg-blue-500/10 border-blue-500/20' };
+const CARD_COLOR = { blue:'border-blue-500/20 hover:border-blue-500/40', purple:'border-purple-500/20 hover:border-purple-500/40', amber:'border-amber-500/20 hover:border-amber-500/40', emerald:'border-emerald-500/20 hover:border-emerald-500/40', gray:'border-white/10 hover:border-white/20' };
+
+function renderOS(filter) {
+  const grid = document.getElementById('os-grid');
+  const items = filter === 'all' ? OS_DATA : OS_DATA.filter(o => o.cat === filter);
+  grid.innerHTML = items.map((o,i) => `
+    <div class="reveal-up feature-card glass rounded-2xl p-6 border ${CARD_COLOR[o.color]}" style="transition-delay:${(i%3)*0.08}s">
+      <div class="flex items-start justify-between mb-4">
+        <div class="flex items-center gap-x-3">
+          <span class="text-2xl">${o.icon}</span>
+          <span class="font-semibold text-gray-200">${o.name}</span>
+        </div>
+        <span class="os-badge border ${FW_COLOR[o.fw]}">${o.fw}</span>
+      </div>
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-gray-500 font-mono">${o.ram} RAM</span>
+        <span class="text-emerald-400">✓ ${o.status}</span>
+      </div>
+    </div>`).join('');
+  // re-trigger reveal
+  setTimeout(() => {
+    document.querySelectorAll('#os-grid .reveal-up').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 50);
+    });
+  }, 50);
+}
+
+function filterOS(cat) {
+  document.querySelectorAll('.os-tab').forEach(t => {
+    t.classList.remove('active-tab','border-blue-500/40','text-blue-300','bg-blue-500/10');
+    t.classList.add('border-white/15','text-gray-400');
+  });
+  const active = document.getElementById('tab-' + cat);
+  active.classList.add('active-tab','border-blue-500/40','text-blue-300','bg-blue-500/10');
+  active.classList.remove('border-white/15','text-gray-400');
+  renderOS(cat);
+}
+
+document.addEventListener('DOMContentLoaded', () => { renderOS('all'); });
+</script>
+</body>
+</html>

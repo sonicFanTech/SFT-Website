@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect — Cobvuz Virtual</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+.social-card { text-decoration:none; color:inherit; display:flex; flex-direction:column; align-items:center; gap:.75rem; padding:2rem 1.5rem; border-radius:20px; transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; }
+.social-card:hover { transform:scale(1.08) translateY(-5px); }
+.social-icon { font-size:2.5rem; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+.social-card:hover .social-icon { transform: rotate(-8deg) scale(1.15); }
+</style>
+</head>
+<body class="bg-[#0d0f1a] text-white overflow-x-hidden">
+<canvas id="particles-canvas"></canvas>
+<div id="page-transition"></div>
+<nav id="navbar"></nav>
+<main>
+
+<div class="page-hero scanline">
+  <div class="reveal-up inline-block bg-white/5 accent-text text-xs font-mono tracking-widest px-6 py-3 rounded-full border border-blue-500/20 mb-5">MADE BY</div>
+  <h1 class="reveal-up stagger-1 text-6xl font-bold tracking-tighter logo-font accent-glow">sonic Fan Tech (SFT)</h1>
+  <p class="reveal-up stagger-2 text-gray-400 text-xl mt-4 max-w-xl mx-auto">Follow for updates, VM tutorials, behind-the-scenes dev content, and the official Cobvuz Virtual release.</p>
+</div>
+
+<section class="max-w-screen-xl mx-auto px-8 py-20">
+
+  <!-- Main socials grid -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-4xl mx-auto mb-20">
+
+    <div class="reveal-up">
+      <a href="https://www.youtube.com/@sonicfantech" target="_blank"
+         class="social-card glass" style="box-shadow:0 0 0 rgba(239,68,68,0)">
+        <i class="fab fa-youtube social-icon text-red-500"></i>
+        <div class="text-center">
+          <div class="font-semibold text-lg">YouTube</div>
+          <div class="text-xs text-gray-500">@sonicfantech</div>
+          <div class="text-xs text-red-400 mt-2">VM tutorials &amp; dev content</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal-up stagger-1">
+      <a href="https://github.com/sonicFanTech" target="_blank"
+         class="social-card glass">
+        <i class="fab fa-github social-icon text-white"></i>
+        <div class="text-center">
+          <div class="font-semibold text-lg">GitHub</div>
+          <div class="text-xs text-gray-500">@sonicFanTech</div>
+          <div class="text-xs text-gray-400 mt-2">Source · Releases</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal-up stagger-2">
+      <a href="https://x.com/sonicfantech" target="_blank"
+         class="social-card glass">
+        <i class="fab fa-x-twitter social-icon text-white"></i>
+        <div class="text-center">
+          <div class="font-semibold text-lg">X (Twitter)</div>
+          <div class="text-xs text-gray-500">@sonicfantech</div>
+          <div class="text-xs text-gray-400 mt-2">Dev updates &amp; news</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal-up stagger-3">
+      <a href="https://www.reddit.com/user/sonicfantech/" target="_blank"
+         class="social-card glass">
+        <i class="fab fa-reddit social-icon text-orange-500"></i>
+        <div class="text-center">
+          <div class="font-semibold text-lg">Reddit</div>
+          <div class="text-xs text-gray-500">u/sonicfantech</div>
+          <div class="text-xs text-gray-400 mt-2">Community</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal-up stagger-1">
+      <a href="https://bsky.app/profile/sonic-fan-tech.bsky.social" target="_blank"
+         class="social-card glass">
+        <div class="w-10 h-10 bg-sky-400/20 rounded-xl flex items-center justify-center text-2xl border border-sky-400/20 social-icon" style="font-size:1.5rem">🦋</div>
+        <div class="text-center">
+          <div class="font-semibold text-lg">Bluesky</div>
+          <div class="text-xs text-gray-500">sonic-fan-tech</div>
+          <div class="text-xs text-sky-400 mt-2">Short updates</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal-up stagger-2">
+      <a href="https://www.tiktok.com/@sonicfantech_tiktok" target="_blank"
+         class="social-card glass">
+        <i class="fab fa-tiktok social-icon text-pink-400"></i>
+        <div class="text-center">
+          <div class="font-semibold text-lg">TikTok</div>
+          <div class="text-xs text-gray-500">@sonicfantech_tiktok</div>
+          <div class="text-xs text-pink-400 mt-2">Short video clips</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal-up stagger-3 col-span-2 md:col-span-1">
+      <a href="mailto:sonicfantech@example.com"
+         class="social-card glass">
+        <i class="fas fa-envelope social-icon accent-text"></i>
+        <div class="text-center">
+          <div class="font-semibold text-lg">E-mail</div>
+          <div class="text-xs text-gray-500">sonicfantech</div>
+          <div class="text-xs text-blue-400 mt-2">Business inquiries</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- About section -->
+  <div class="reveal-up max-w-3xl mx-auto glass rounded-3xl p-10 text-center">
+    <div class="text-5xl mb-5">🎬</div>
+    <h2 class="text-3xl font-bold tracking-tight logo-font mb-4">About sonic Fan Tech (SFT)</h2>
+    <p class="text-gray-400 text-lg leading-relaxed mb-6">sonic Fan Tech is an independent creator and developer building custom software for fun, learning, and YouTube content. Cobvuz Virtual was created as a personal VM management tool and YouTube demonstration project — showcasing what you can build with pure C++17 and Windows APIs.</p>
+    <p class="text-gray-400 text-lg leading-relaxed">No frameworks. No bloat. Just code, APIs, and curiosity.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm">
+      <span class="px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-300">C++ Developer</span>
+      <span class="px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-300">YouTube Creator</span>
+      <span class="px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-300">VM Enthusiast</span>
+      <span class="px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-300">Windows Native Dev</span>
+    </div>
+  </div>
+
+</section>
+</main>
+<div id="footer-placeholder"></div>
+<script src="shared.js"></script>
+</body>
+</html>
