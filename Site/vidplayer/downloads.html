@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VidPlayer Downloads — All Versions</title>
+  <meta name="description" content="Complete download archive for all VidPlayer versions: modern Sonic Fan Tech builds and axel613's retro editions.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="vidplayer.css">
+</head>
+<body>
+<canvas id="starfield"></canvas>
+
+<div id="wrapper">
+
+  <div id="header">
+    <div id="header-grid"></div>
+    <div id="header-gfx"></div>
+    <div id="header-inner">
+      <div id="logo-area">
+        <div id="logo-icon">
+          <img src="logo.png" alt="VidPlayer Logo" onerror="this.style.display='none';this.parentElement.textContent='▶'">
+        </div>
+        <div id="logo-text">
+          <h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1>
+          <div class="tagline">// COMPLETE DOWNLOAD ARCHIVE</div>
+        </div>
+      </div>
+      <div id="header-right">
+        <div id="header-note">WARNING: MAY CAUSE EXTREME NOSTALGIA</div>
+        <div class="header-badges">
+          <span class="hbadge hbadge-cyan">ALL BUILDS</span>
+          <span class="hbadge hbadge-purple">WIN 95–11</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="downloads.html" class="active">Downloads</a></li>
+      <li><a href="screenshots.html">Screenshots</a></li>
+      <li><a href="changelogs.html">Changelogs</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="manuals.html">Manuals</a></li>
+      <li><a href="about.html">About / Credits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <div id="main">
+
+      <div class="panel">
+        <h2>All VidPlayer Downloads</h2>
+        <p>
+          Every public VidPlayer build — modern 64-bit releases from GitHub, plus
+          axel613's retro fork and source code.
+        </p>
+        <p class="small-note">
+          TIP: Want something that just works on a modern PC? Grab the latest
+          <span class="badge badge-modern">Modern</span> build at the top.
+          Retro &amp; archive builds are for old hardware and historical interest.
+        </p>
+      </div>
+
+      <!-- MODERN BUILDS -->
+      <div class="panel" id="modern">
+        <h2>Modern Sonic Fan Tech Releases</h2>
+        <table class="downloads">
+          <tr>
+            <th>Version</th>
+            <th>Status</th>
+            <th>OS / Arch</th>
+            <th>Notes</th>
+            <th>GitHub</th>
+            <th>Download</th>
+          </tr>
+          <tr>
+            <td>v2.0.9 Release-X64</td>
+            <td><span class="badge badge-modern">Modern</span></td>
+            <td>Win 10 / 11 (x64)</td>
+            <td>Playlist search · FFT visualizer · fixed autoplay · Aero Glass removed for stability</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.9-Release-X64" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9-Release/vidplayer_2.0.9-Release.7z" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.9-BETA-4.2-X64</td>
+            <td><span class="badge badge-beta">Beta</span> <span class="badge badge-modern">Modern</span></td>
+            <td>Win 10 / 11 (x64 &amp; x86)</td>
+            <td>CD ripping via FFmpeg, experimental VLC-based audio CD playback</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.9-BETA-4.2-X64" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9-BETA-4.2-X64/vidplayer_v2.0.9_BETA4.2_x64-N-x86.7z" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.9-BETA-4.1-X64</td>
+            <td><span class="badge badge-beta">Beta</span> <span class="badge badge-modern">Modern</span></td>
+            <td>Win 10 / 11 (x64)</td>
+            <td>Fixes updater freeze at 100%, improved updater asset handling and JSON paths</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.9-BETA-4.1-X64" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9-BETA-4.1-X64/vidplayer_v2.0.9-BETA4_1.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.9-B</td>
+            <td><span class="badge badge-beta">Beta</span> <span class="badge badge-modern">Modern</span></td>
+            <td>Win 10 / 11</td>
+            <td>First PySide6/Qt GUI build · new File Info window · Aero Glass theme · fullscreen artwork in View menu</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.9-B" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9-B/vidplay_2.0.9_BETA.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.8.1</td>
+            <td><span class="badge badge-modern">Modern Stable</span></td>
+            <td>Win 7 / 8.1 / 10 / 11</td>
+            <td>External artwork saved across restarts · Prev/Next in fullscreen overlay · auto-hide overlay with mouse-move wake</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.8.1" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.8.1/vidplayer_2.0.8.1.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.8</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>Discord RPC toggle · Always on Top setting · Full Screen mode · fullscreen artwork window</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/V2.0.8" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.8/vidplayer_2.0.8.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.7</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>Added Discord RPC · default volume changed to 50.0</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.7" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.7/vidplayer_2.0.7.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.6.1</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>Updated license · text-file-based License/Features tabs · auto-check for updates on startup</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.6.1" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.6.1/vidplayer_2.0.6.1.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.6</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>New Features / Log tab in About window</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.6" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.6/vidplayer_2.0.6.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.5</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>Loading progress window (buggy) · improved About window with 3 tabs</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.5" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.5/vidplayer_v2.0.5.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.4.1</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>Artwork display support · settings window · early playlist + auto-play-next</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/V2.0.4.1" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.4.1/vidplayer_2.0.4.1.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.4 <span class="small-note">(skipped 2.0.3)</span></td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>Artwork display support · settings window · early playlist + auto-play-next</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/V2.0.4.1" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/V2.0.4/vidplayer_v2.0.4.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.2</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>Artwork support · settings · playlist support · experimental volume slider</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.2" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.2/vidplayer_2.0.2.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.1</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>UI redone again · Light/Dark mode · recent files list</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.1" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.1/vidplayer_v2.0.1.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v2.0.0 — Re-Code</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+            <td>Windows 7+</td>
+            <td>First re-coded version — new window/UI compared to the very first build</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/update-1" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.1/vidplayer_v2.0.1.exe" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>v11 — VERY OLD</td>
+            <td><span class="badge badge-archive">Very Old</span></td>
+            <td>Windows (unspecified)</td>
+            <td>The very first VidPlayer build. Missing tons of stuff — mainly here for history.</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/Audio-player" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/Audio-player/VidPlay.exe" target="_blank">Download</a></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- RETRO BUILDS -->
+      <div class="panel" id="retro">
+        <h2>axel613's Retro Fork (Win 95–3.1)</h2>
+
+        <h3>CD-ROM Style Editions (Win 95–7)</h3>
+        <table class="downloads">
+          <tr>
+            <th>Version</th>
+            <th>Status</th>
+            <th>Target OS</th>
+            <th>Media</th>
+            <th>Notes</th>
+            <th>Download</th>
+          </tr>
+          <tr>
+            <td>VidPlayer Retro BETA 4.2</td>
+            <td><span class="badge badge-beta">Beta</span> <span class="badge badge-retro">Retro</span></td>
+            <td>Win 95 / 98 / NT / ME / 2000 / XP / 7</td>
+            <td>CD ISO (setup.exe, manual, box)</td>
+            <td>Reprogrammed core · CD support · Aero-style effects on Windows 7</td>
+            <td><em style="color:var(--accent4)">Coming soon (CD / ISO)</em></td>
+          </tr>
+        </table>
+
+        <h3>Windows 3.1 Shareware</h3>
+        <table class="downloads">
+          <tr>
+            <th>Version</th>
+            <th>Status</th>
+            <th>Target OS</th>
+            <th>Media</th>
+            <th>Notes</th>
+            <th>Download</th>
+          </tr>
+          <tr>
+            <td>VidPlayer for Windows 3.1</td>
+            <td><span class="badge badge-retro">Shareware</span></td>
+            <td>Windows 3.1 + Win32s</td>
+            <td>Floppy disk image</td>
+            <td>MIDI-only support · ultra-compressed MP3s planned</td>
+            <td><em style="color:var(--accent4)">Coming soon (floppy image)</em></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- SOURCE CODE -->
+      <div class="panel" id="source">
+        <h2>Source Code</h2>
+        <p>VidPlayer is source-available. Fork it, study it, build your own version — just follow the <a href="LICENSE.html">license rules</a>.</p>
+        <table class="downloads">
+          <tr>
+            <th>Repo / Snapshot</th>
+            <th>Type</th>
+            <th>Notes</th>
+            <th>Link</th>
+          </tr>
+          <tr>
+            <td>GitHub Repository</td>
+            <td>Online repo</td>
+            <td>Latest code, issues, development history</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer" target="_blank">Open on GitHub</a></td>
+          </tr>
+          <tr>
+            <td>Source ZIP (main branch)</td>
+            <td>ZIP archive</td>
+            <td>Full source snapshot from latest main branch</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/archive/refs/heads/main.zip" target="_blank">Download Source</a></td>
+          </tr>
+        </table>
+        <p class="small-note" style="margin-top:6px;">
+          Remember to follow the <a href="LICENSE.html">LICENSE</a> rules on credits, forks, and redistribution.
+        </p>
+      </div>
+
+      <!-- WEIRD BUILDS NOTE -->
+      <div class="panel">
+        <p>
+          Looking for an older or experimental build not listed here?
+          Check the <a href="archive.html">Experimental Archive</a> for weird, one-off, and legacy builds.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+      <div class="panel">
+        <h2>Download Tips</h2>
+        <ul>
+          <li>Modern PC? → <span class="badge badge-modern">Modern Stable</span> or latest Beta</li>
+          <li>Real retro hardware? → <span class="badge badge-retro">Retro</span> section</li>
+          <li>Archiving? → Check the old rows</li>
+          <li>Dev? → Grab source code</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Legend</h2>
+        <p class="small-note">
+          <span class="badge badge-modern">Modern</span> Sonic Fan Tech builds<br><br>
+          <span class="badge badge-retro">Retro</span> axel613's old-OS fork<br><br>
+          <span class="badge badge-beta">Beta</span> Experimental builds<br><br>
+          <span class="badge badge-archive">Archive</span> Old, kept for history
+        </p>
+      </div>
+      <div class="panel">
+        <h2>Having Issues?</h2>
+        <p class="small-note">
+          Check the <a href="faq.html">FAQ</a> first.<br>
+          Still broken? Send a bug report via the
+          <a href="contact.html">Contact</a> page — include your OS,
+          VidPlayer version, and what happened.
+        </p>
+      </div>
+      <div class="panel">
+        <h2>Physical Copies</h2>
+        <p class="small-note">
+          <span class="badge badge-physical">SOON</span><br><br>
+          Real CD-ROM + manual + box coming very soon!
+          Watch <a href="https://github.com/sonicFanTech/vidplayer" target="_blank">GitHub</a> for announcements.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    &copy; 2000–2025 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech &amp; axel613 &nbsp;·&nbsp;
+    All product names used for fun, not for profit.
+    <a href="LICENSE.html" style="margin-left:8px">License</a>
+  </div>
+</div>
+
+<script src="vidplayer.js"></script>
+</body>
+</html>
