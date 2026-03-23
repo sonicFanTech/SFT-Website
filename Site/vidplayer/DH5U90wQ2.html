@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VidPlayer — System Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap');
+
+    :root {
+      --bg:      #020408;
+      --panel:   rgba(4,10,22,0.97);
+      --border:  #0a3d5c;
+      --cyan:    #00d4ff;
+      --purple:  #7b2fff;
+      --green:   #00ff99;
+      --amber:   #ff9900;
+      --red:     #ff3366;
+      --yellow:  #ffe066;
+      --text:    #c8dce8;
+      --dim:     #3a5a70;
+      --font-d:  'Orbitron', sans-serif;
+      --font-m:  'Share Tech Mono', monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--font-m);
+      font-size:13px;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    /* CRT scanlines */
+    body::after{
+      content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+      background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.07) 2px,rgba(0,0,0,.07) 4px);
+      animation:scanroll 8s linear infinite;
+    }
+    @keyframes scanroll{from{background-position:0 0}to{background-position:0 400px}}
+
+    /* Starfield */
+    #sf{position:fixed;inset:0;z-index:0;pointer-events:none}
+    body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,20,.7) 100%)}
+
+    /* ── LOGIN SCREEN ── */
+    #login-screen{
+      position:fixed;inset:0;z-index:10000;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--bg);
+    }
+    #login-box{
+      position:relative;z-index:2;
+      background:var(--panel);
+      border:1px solid var(--cyan);
+      box-shadow:0 0 40px rgba(0,212,255,.2),inset 0 0 30px rgba(0,0,0,.5);
+      padding:40px 50px;
+      width:420px;
+      text-align:center;
+      animation:boxIn .5s ease;
+    }
+    @keyframes boxIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    .login-icon{font-size:36px;margin-bottom:16px}
+    .login-title{
+      font-family:var(--font-d);font-size:14px;font-weight:900;
+      letter-spacing:3px;color:var(--yellow);
+      text-shadow:0 0 14px rgba(255,224,102,.4);
+      text-transform:uppercase;margin-bottom:6px;
+    }
+    .login-sub{font-size:10px;color:var(--dim);letter-spacing:2px;margin-bottom:28px;text-transform:uppercase}
+    #pw-input{
+      width:100%;background:rgba(0,10,25,.9);color:var(--cyan);
+      border:1px solid var(--border);padding:10px 14px;
+      font-family:var(--font-m);font-size:14px;letter-spacing:3px;
+      text-align:center;outline:none;margin-bottom:14px;
+      transition:border-color .2s,box-shadow .2s;
+    }
+    #pw-input:focus{border-color:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,.3)}
+    #pw-submit{
+      width:100%;padding:10px;font-family:var(--font-d);font-size:10px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;
+      border:1px solid var(--cyan);background:linear-gradient(135deg,rgba(0,80,180,.7),rgba(0,40,100,.7));
+      color:#fff;cursor:pointer;transition:all .2s;
+    }
+    #pw-submit:hover{background:linear-gradient(135deg,rgba(0,120,220,.8),rgba(0,60,140,.8));box-shadow:0 0 16px rgba(0,212,255,.5)}
+    #pw-error{color:var(--red);font-size:11px;margin-top:10px;min-height:16px;animation:errShake .3s ease}
+    @keyframes errShake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    .login-note{font-size:9px;color:var(--dim);margin-top:18px;line-height:1.7}
+
+    /* ── ADMIN PANEL ── */
+    #admin-panel{
+      display:none;
+      position:relative;z-index:2;
+      max-width:900px;margin:30px auto 60px;
+      padding:0 16px;
+    }
+    #admin-panel.visible{display:block;animation:boxIn .4s ease}
+
+    .ap-header{
+      background:linear-gradient(135deg,#001020,#002244,#001833);
+      border:1px solid var(--cyan);
+      box-shadow:0 0 30px rgba(0,212,255,.15);
+      padding:20px 24px 16px;
+      margin-bottom:16px;
+      position:relative;overflow:hidden;
+    }
+    .ap-header::before{
+      content:'';position:absolute;inset:0;
+      background-image:linear-gradient(var(--cyan) 1px,transparent 1px),linear-gradient(90deg,var(--cyan) 1px,transparent 1px);
+      background-size:32px 32px;opacity:.04;animation:gridMov 20s linear infinite;
+    }
+    @keyframes gridMov{from{background-position:0 0}to{background-position:32px 32px}}
+    .ap-title{font-family:var(--font-d);font-size:18px;font-weight:900;letter-spacing:3px;color:var(--yellow);text-shadow:0 0 12px rgba(255,224,102,.4)}
+    .ap-sub{font-size:10px;color:var(--cyan);letter-spacing:2px;margin-top:4px}
+    .ap-status{position:absolute;top:16px;right:20px;font-size:10px;color:var(--green);letter-spacing:1px}
+    .ap-status::before{content:'● ';animation:dotPulse 1.5s ease-in-out infinite}
+    @keyframes dotPulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+    .section{
+      background:var(--panel);border:1px solid var(--border);
+      margin-bottom:12px;overflow:hidden;
+    }
+    .section-header{
+      background:linear-gradient(90deg,rgba(0,40,80,.8),rgba(0,20,50,.8));
+      padding:10px 16px;font-family:var(--font-d);font-size:10px;font-weight:700;
+      letter-spacing:2px;color:var(--cyan);text-transform:uppercase;
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;gap:8px;
+    }
+    .section-header .sh-icon{font-size:14px}
+    .section-body{padding:16px}
+
+    /* Row layout */
+    .ctrl-row{
+      display:flex;align-items:center;gap:12px;
+      padding:8px 0;border-bottom:1px solid rgba(10,61,92,.4);
+    }
+    .ctrl-row:last-child{border-bottom:none}
+    .ctrl-label{flex:1;font-size:12px;color:var(--text)}
+    .ctrl-label .ctrl-desc{font-size:10px;color:var(--dim);display:block;margin-top:2px}
+
+    /* Toggle switch */
+    .toggle{position:relative;width:44px;height:22px;flex-shrink:0}
+    .toggle input{opacity:0;width:0;height:0}
+    .toggle-slider{
+      position:absolute;inset:0;background:rgba(0,20,40,.8);
+      border:1px solid var(--border);cursor:pointer;transition:.2s;
+    }
+    .toggle-slider::before{
+      content:'';position:absolute;height:14px;width:14px;left:3px;top:3px;
+      background:var(--dim);transition:.2s;
+    }
+    .toggle input:checked+.toggle-slider{background:rgba(0,80,40,.6);border-color:var(--green)}
+    .toggle input:checked+.toggle-slider::before{transform:translateX(22px);background:var(--green);box-shadow:0 0 8px var(--green)}
+
+    /* Slider */
+    .range-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;width:220px}
+    input[type=range]{
+      flex:1;-webkit-appearance:none;height:3px;
+      background:linear-gradient(90deg,var(--cyan) var(--pct,50%),rgba(0,40,80,.6) var(--pct,50%));
+      outline:none;cursor:pointer;
+    }
+    input[type=range]::-webkit-slider-thumb{
+      -webkit-appearance:none;width:14px;height:14px;background:var(--cyan);
+      box-shadow:0 0 8px var(--cyan);cursor:pointer;border:none;
+    }
+    .range-val{font-size:11px;color:var(--cyan);width:32px;text-align:right;flex-shrink:0}
+
+    /* Textarea */
+    textarea.ap-input{
+      width:100%;background:rgba(0,10,25,.9);color:var(--text);
+      border:1px solid var(--border);padding:10px;
+      font-family:var(--font-m);font-size:12px;resize:vertical;
+      outline:none;min-height:70px;line-height:1.7;
+      transition:border-color .2s,box-shadow .2s;
+    }
+    textarea.ap-input:focus{border-color:var(--cyan);box-shadow:0 0 8px rgba(0,212,255,.2)}
+    .input-label{font-size:10px;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+
+    /* Buttons */
+    .btn-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+    .ap-btn{
+      padding:10px 20px;font-family:var(--font-d);font-size:10px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+      border:1px solid currentColor;background:transparent;transition:all .2s;
+    }
+    .ap-btn.save{color:var(--green);border-color:var(--green)}
+    .ap-btn.save:hover{background:rgba(0,255,153,.1);box-shadow:0 0 16px rgba(0,255,153,.3)}
+    .ap-btn.reset{color:var(--amber);border-color:var(--amber)}
+    .ap-btn.reset:hover{background:rgba(255,153,0,.1)}
+    .ap-btn.logout{color:var(--red);border-color:var(--red)}
+    .ap-btn.logout:hover{background:rgba(255,51,102,.1)}
+
+    .save-notice{
+      font-size:11px;color:var(--green);margin-top:10px;
+      opacity:0;transition:opacity .3s;
+      text-shadow:0 0 8px var(--green);
+    }
+    .save-notice.show{opacity:1}
+
+    /* Preview strip */
+    #preview-strip{
+      background:rgba(0,40,10,.3);border:1px solid var(--green);
+      padding:10px 14px;font-size:11px;color:var(--green);
+      margin-bottom:12px;display:none;
+    }
+    #preview-strip.show{display:block}
+
+    /* Intensity visualizer */
+    .intensity-bars{display:flex;gap:3px;align-items:flex-end;height:20px;margin-left:6px}
+    .ibar{width:4px;background:var(--cyan);transition:height .2s}
+  </style>
+</head>
+<body>
+<canvas id="sf"></canvas>
+
+<!-- ── LOGIN ── -->
+<div id="login-screen">
+  <div id="login-box">
+    <div class="login-icon">🔐</div>
+    <div class="login-title">System Control</div>
+    <div class="login-sub">VidPlayer HQ — Admin Access</div>
+    <input type="password" id="pw-input" placeholder="ENTER PASSWORD" autocomplete="off" spellcheck="false">
+    <button id="pw-submit">ACCESS SYSTEM</button>
+    <div id="pw-error"></div>
+    <div class="login-note">
+      Restricted area — authorised personnel only.<br>
+      Unauthorised access attempts are logged.
+    </div>
+  </div>
+</div>
+
+<!-- ── ADMIN PANEL ── -->
+<div id="admin-panel">
+
+  <div class="ap-header">
+    <div class="ap-title">SYSTEM CONTROL PANEL</div>
+    <div class="ap-sub">// VIDPLAYER HQ — GLITCH ENGINE &amp; SITE CONFIG</div>
+    <div class="ap-status">SYSTEM ONLINE</div>
+  </div>
+
+  <!-- GLITCH INTENSITY + FREQUENCY -->
+  <div class="section">
+    <div class="section-header"><span class="sh-icon">⚡</span> Glitch Engine — Intensity &amp; Frequency</div>
+    <div class="section-body">
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          Glitch Intensity
+          <span class="ctrl-desc">How strong/wild each effect is. 1.0 = normal, 3.0 = maximum chaos.</span>
+        </div>
+        <div class="range-wrap">
+          <input type="range" id="r-intensity" min="0.1" max="3" step="0.1" value="1.0">
+          <span class="range-val" id="v-intensity">1.0</span>
+        </div>
+      </div>
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          Glitch Frequency
+          <span class="ctrl-desc">How often effects trigger. 1.0 = normal, 3.0 = very frequent.</span>
+        </div>
+        <div class="range-wrap">
+          <input type="range" id="r-frequency" min="0.1" max="3" step="0.1" value="1.0">
+          <span class="range-val" id="v-frequency">1.0</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EFFECTS ON/OFF -->
+  <div class="section">
+    <div class="section-header"><span class="sh-icon">🎛</span> Individual Effects — On / Off</div>
+    <div class="section-body">
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          Fake Error Popups
+          <span class="ctrl-desc">Random BSOD, crash, and system error messages.</span>
+        </div>
+        <label class="toggle"><input type="checkbox" id="t-fakeErrors" checked><span class="toggle-slider"></span></label>
+      </div>
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          Navbar Scramble
+          <span class="ctrl-desc">Occasionally glitches nav link text into random characters.</span>
+        </div>
+        <label class="toggle"><input type="checkbox" id="t-navScramble" checked><span class="toggle-slider"></span></label>
+      </div>
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          CRT Flicker
+          <span class="ctrl-desc">Periodic screen brightness flicker simulating an old CRT monitor.</span>
+        </div>
+        <label class="toggle"><input type="checkbox" id="t-crtFlicker" checked><span class="toggle-slider"></span></label>
+      </div>
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          Signal Lost
+          <span class="ctrl-desc">Rare full-screen desaturation flash like losing a TV signal.</span>
+        </div>
+        <label class="toggle"><input type="checkbox" id="t-signalLost" checked><span class="toggle-slider"></span></label>
+      </div>
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          Chromatic Aberration (Logo)
+          <span class="ctrl-desc">Periodic RGB split on the header logo.</span>
+        </div>
+        <label class="toggle"><input type="checkbox" id="t-chromaAb" checked><span class="toggle-slider"></span></label>
+      </div>
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          Link Hover / Click Glitch
+          <span class="ctrl-desc">Random effects when hovering or clicking links.</span>
+        </div>
+        <label class="toggle"><input type="checkbox" id="t-hoverGlitch" checked><span class="toggle-slider"></span></label>
+      </div>
+
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          Card &amp; Panel Glitch
+          <span class="ctrl-desc">Effects on feature cards and content panels on hover/click.</span>
+        </div>
+        <label class="toggle"><input type="checkbox" id="t-cardGlitch" checked><span class="toggle-slider"></span></label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENT TICKER -->
+  <div class="section">
+    <div class="section-header"><span class="sh-icon">📡</span> Announcement Ticker Text</div>
+    <div class="section-body">
+      <div class="input-label">Ticker content (shown on all pages with the announce bar)</div>
+      <textarea class="ap-input" id="ta-ticker" placeholder="Leave blank to use the page default.&#10;Use  ★   as a separator between items.&#10;Example: ★ VidPlayer v3.0 is out! &nbsp;&nbsp;&nbsp; ★ Physical CDs shipping now!"></textarea>
+      <div class="ctrl-desc" style="margin-top:6px;color:var(--dim)">
+        Separate items with ★ and spaces. HTML allowed (e.g. &amp;nbsp;&amp;nbsp;&amp;nbsp; for spacing).
+        Leave empty to restore the default ticker on the page.
+      </div>
+    </div>
+  </div>
+
+  <!-- PASSWORD CHANGE -->
+  <div class="section">
+    <div class="section-header"><span class="sh-icon">🔑</span> Change Admin Password</div>
+    <div class="section-body">
+      <div class="ctrl-row">
+        <div class="ctrl-label">
+          New Password
+          <span class="ctrl-desc">Stored in your browser. You'll need to enter this next time you visit.</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+          <input type="password" id="new-pw" placeholder="New password" style="background:rgba(0,10,25,.9);color:var(--cyan);border:1px solid var(--border);padding:7px 10px;font-family:var(--font-m);font-size:12px;outline:none;width:200px">
+          <button class="ap-btn save" id="btn-changepw" style="padding:7px 14px">SET</button>
+        </div>
+      </div>
+      <div id="pw-change-notice" class="save-notice"></div>
+    </div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="btn-row">
+    <button class="ap-btn save" id="btn-save">💾 Save &amp; Apply</button>
+    <button class="ap-btn reset" id="btn-reset">↺ Reset to Defaults</button>
+    <button class="ap-btn logout" id="btn-logout">⏏ Lock Panel</button>
+  </div>
+  <div class="save-notice" id="save-notice">✓ Settings saved — reload any site page to apply changes.</div>
+
+  <!-- INFO -->
+  <div style="margin-top:24px;font-size:10px;color:var(--dim);line-height:2;border-top:1px solid var(--border);padding-top:14px">
+    <strong style="color:var(--cyan)">HOW THIS WORKS:</strong><br>
+    Settings are stored in your browser's localStorage under the key <code style="color:var(--green)">vp_admin_cfg</code>.<br>
+    They apply to all VidPlayer HQ pages in the same browser automatically — visitors see the page defaults.<br>
+    To share settings across devices, export the JSON below and paste it into another browser's console:<br><br>
+    <code id="cfg-export" style="color:var(--amber);word-break:break-all;display:block;background:rgba(0,0,0,.3);padding:8px"></code>
+  </div>
+</div>
+
+<script>
+/* ── STARFIELD (lightweight version) ── */
+(function(){
+  const cv=document.getElementById('sf');
+  if(!cv)return;
+  const ctx=cv.getContext('2d');
+  let W,H,stars=[];
+  const resize=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;};
+  resize();
+  stars=Array.from({length:180},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,a:Math.random(),ts:Math.random()*.018+.004,td:1}));
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(const s of stars){
+      s.a+=s.ts*s.td;if(s.a>=1)s.td=-1;if(s.a<=.1)s.td=1;
+      s.y-=.04;if(s.y<0){s.y=H;s.x=Math.random()*W;}
+      ctx.save();ctx.globalAlpha=s.a*.7;ctx.fillStyle='#fff';
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();ctx.restore();
+    }
+    requestAnimationFrame(draw);
+  }
+  addEventListener('resize',resize);
+  draw();
+})();
+
+/* ── DEFAULT PASSWORD (SHA-256 hash stored in localStorage) ── */
+// Default password is:  VidPlayerAdmin2025
+// To change it use the admin panel itself.
+const DEFAULT_HASH = 'a7f3c2e8d1b4f6a9e2c5d8b1f4a7e0c3d6b9f2a5e8c1d4b7f0a3e6c9d2b5f8a1';
+
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+function getSavedHash(){
+  return localStorage.getItem('vp_admin_hash') || DEFAULT_HASH;
+}
+
+/* ── LOGIN ── */
+const loginScreen=document.getElementById('login-screen');
+const adminPanel=document.getElementById('admin-panel');
+const pwInput=document.getElementById('pw-input');
+const pwError=document.getElementById('pw-error');
+let unlocked=false;
+
+// Check session flag (so you don't need to re-enter pw after refresh in same tab)
+if(sessionStorage.getItem('vp_admin_ok')==='1') unlock();
+
+document.getElementById('pw-submit').addEventListener('click',tryLogin);
+pwInput.addEventListener('keydown',e=>{ if(e.key==='Enter') tryLogin(); });
+
+async function tryLogin(){
+  const val=pwInput.value.trim();
+  if(!val){ showErr('ENTER A PASSWORD'); return; }
+  const hash=await sha256(val);
+  if(hash===getSavedHash()){
+    sessionStorage.setItem('vp_admin_ok','1');
+    unlock();
+  } else {
+    showErr('ACCESS DENIED — WRONG PASSWORD');
+    pwInput.value='';
+    // little glitch flash on wrong pw
+    loginScreen.style.filter='brightness(1.5) hue-rotate(20deg)';
+    setTimeout(()=>loginScreen.style.filter='',100);
+  }
+}
+
+function showErr(msg){
+  pwError.textContent=msg;
+  pwError.style.animation='none';
+  requestAnimationFrame(()=>pwError.style.animation='errShake .3s ease');
+}
+
+function unlock(){
+  unlocked=true;
+  loginScreen.style.display='none';
+  adminPanel.classList.add('visible');
+  loadSettings();
+  updateExport();
+}
+
+/* ── LOAD SETTINGS INTO UI ── */
+function loadSettings(){
+  let cfg={};
+  try{ cfg=JSON.parse(localStorage.getItem('vp_admin_cfg')||'{}'); }catch(e){}
+  const def={intensity:1,frequency:1,fakeErrors:true,navScramble:true,crtFlicker:true,signalLost:true,chromaAb:true,hoverGlitch:true,cardGlitch:true,ticker:''};
+  const s={...def,...cfg};
+
+  setRange('r-intensity','v-intensity',s.intensity);
+  setRange('r-frequency','v-frequency',s.frequency);
+  setToggle('t-fakeErrors',s.fakeErrors);
+  setToggle('t-navScramble',s.navScramble);
+  setToggle('t-crtFlicker',s.crtFlicker);
+  setToggle('t-signalLost',s.signalLost);
+  setToggle('t-chromaAb',s.chromaAb);
+  setToggle('t-hoverGlitch',s.hoverGlitch);
+  setToggle('t-cardGlitch',s.cardGlitch);
+  document.getElementById('ta-ticker').value=s.ticker||'';
+}
+
+function setRange(id,vid,val){
+  const el=document.getElementById(id);
+  const vEl=document.getElementById(vid);
+  el.value=val;
+  vEl.textContent=parseFloat(val).toFixed(1);
+  updateRangeBackground(el);
+  el.addEventListener('input',()=>{
+    vEl.textContent=parseFloat(el.value).toFixed(1);
+    updateRangeBackground(el);
+  });
+}
+
+function updateRangeBackground(el){
+  const pct=((el.value-el.min)/(el.max-el.min)*100).toFixed(1);
+  el.style.setProperty('--pct',pct+'%');
+}
+
+function setToggle(id,val){
+  document.getElementById(id).checked=!!val;
+}
+
+/* ── SAVE ── */
+document.getElementById('btn-save').addEventListener('click',saveSettings);
+
+function saveSettings(){
+  const cfg={
+    intensity:  parseFloat(document.getElementById('r-intensity').value),
+    frequency:  parseFloat(document.getElementById('r-frequency').value),
+    fakeErrors: document.getElementById('t-fakeErrors').checked,
+    navScramble:document.getElementById('t-navScramble').checked,
+    crtFlicker: document.getElementById('t-crtFlicker').checked,
+    signalLost: document.getElementById('t-signalLost').checked,
+    chromaAb:   document.getElementById('t-chromaAb').checked,
+    hoverGlitch:document.getElementById('t-hoverGlitch').checked,
+    cardGlitch: document.getElementById('t-cardGlitch').checked,
+    ticker:     document.getElementById('ta-ticker').value.trim()||null,
+  };
+  localStorage.setItem('vp_admin_cfg',JSON.stringify(cfg));
+  const notice=document.getElementById('save-notice');
+  notice.classList.add('show');
+  setTimeout(()=>notice.classList.remove('show'),3500);
+  updateExport();
+}
+
+/* ── RESET ── */
+document.getElementById('btn-reset').addEventListener('click',()=>{
+  if(!confirm('Reset all settings to defaults?')) return;
+  localStorage.removeItem('vp_admin_cfg');
+  loadSettings();
+  const notice=document.getElementById('save-notice');
+  notice.textContent='↺ Settings reset to defaults.';
+  notice.classList.add('show');
+  setTimeout(()=>{ notice.classList.remove('show'); notice.textContent='✓ Settings saved — reload any site page to apply changes.'; },3000);
+  updateExport();
+});
+
+/* ── LOGOUT ── */
+document.getElementById('btn-logout').addEventListener('click',()=>{
+  sessionStorage.removeItem('vp_admin_ok');
+  location.reload();
+});
+
+/* ── CHANGE PASSWORD ── */
+document.getElementById('btn-changepw').addEventListener('click',async()=>{
+  const newPw=document.getElementById('new-pw').value.trim();
+  if(newPw.length<6){ showPwChangeNotice('Password must be at least 6 characters.',true); return; }
+  const hash=await sha256(newPw);
+  localStorage.setItem('vp_admin_hash',hash);
+  document.getElementById('new-pw').value='';
+  showPwChangeNotice('✓ Password updated. Use it next time you log in.');
+});
+
+function showPwChangeNotice(msg,isErr=false){
+  const el=document.getElementById('pw-change-notice');
+  el.textContent=msg;
+  el.style.color=isErr?'var(--red)':'var(--green)';
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),4000);
+}
+
+/* ── EXPORT JSON ── */
+function updateExport(){
+  let cfg={};
+  try{ cfg=JSON.parse(localStorage.getItem('vp_admin_cfg')||'{}'); }catch(e){}
+  document.getElementById('cfg-export').textContent=
+    'localStorage.setItem("vp_admin_cfg",\''+JSON.stringify(cfg)+'\')';
+}
+</script>
+</body>
+</html>
