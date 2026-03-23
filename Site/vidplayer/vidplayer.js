@@ -336,3 +336,48 @@ function doGlitchSlices(intensity) {
   },{threshold:0.06});
   document.querySelectorAll('.panel').forEach(p=>{ p.classList.add('panel-hidden'); obs.observe(p); });
 })();
+
+/* ── FEATURE CARD HOVER GLITCH ── */
+(function(){
+  // Also hook panels generally for a subtle effect
+  document.querySelectorAll('.feature-card, .panel').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      // Feature cards get a stronger, more reliable glitch
+      const isFeatureCard = card.classList.contains('feature-card');
+      const chance = isFeatureCard ? 0.75 : 0.2;
+      const intensity = isFeatureCard ? 0.55 : 0.25;
+      if (Math.random() < chance) {
+        doGlitchSlices(intensity);
+
+        // Also do a quick chromatic aberration on the card title
+        const title = card.querySelector('.fc-title, h2, h3');
+        if (title) {
+          const orig = title.style.textShadow;
+          const rx = (Math.random()-0.5)*10, ry=(Math.random()-0.5)*4;
+          const bx = (Math.random()-0.5)*10, by=(Math.random()-0.5)*4;
+          title.style.textShadow = `${rx}px ${ry}px 0 rgba(255,0,80,0.8), ${bx}px ${by}px 0 rgba(0,212,255,0.8)`;
+          // brief pixel-shift on the whole card
+          card.style.transition = 'none';
+          card.style.transform = `translate(${(Math.random()-0.5)*5}px,${(Math.random()-0.5)*3}px) skewX(${(Math.random()-0.5)*2}deg)`;
+          setTimeout(() => {
+            title.style.textShadow = orig || '';
+            card.style.transform = '';
+          }, 80 + Math.random() * 60);
+        }
+      }
+    });
+
+    // On click/mousedown: bigger burst
+    card.addEventListener('mousedown', () => {
+      const isFeatureCard = card.classList.contains('feature-card');
+      if (Math.random() < (isFeatureCard ? 0.9 : 0.35)) {
+        doGlitchSlices(isFeatureCard ? 1.1 : 0.6);
+        // shake the card itself
+        card.style.transition = 'none';
+        const sx = (Math.random()-0.5)*8, sy=(Math.random()-0.5)*4;
+        card.style.transform = `translate(${sx}px,${sy}px)`;
+        setTimeout(() => { card.style.transform = ''; }, 100);
+      }
+    });
+  });
+})();
