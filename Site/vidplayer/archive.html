@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VidPlayer Experimental Archive</title>
+  <meta name="description" content="Weird and experimental VidPlayer builds not on GitHub.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="vidplayer.css">
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<div id="wrapper">
+  <div id="header">
+    <div id="header-grid"></div><div id="header-gfx"></div>
+    <div id="header-inner">
+      <div id="logo-area">
+        <div id="logo-icon"><img src="logo.png" alt="VidPlayer Logo" onerror="this.style.display='none';this.parentElement.textContent='▶'"></div>
+        <div id="logo-text"><h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1><div class="tagline">// EXPERIMENTAL ARCHIVE</div></div>
+      </div>
+      <div id="header-right">
+        <div id="header-note">HERE BE DRAGONS</div>
+        <div class="header-badges"><span class="hbadge hbadge-cyan">ARCHIVE</span><span class="hbadge hbadge-purple">WEIRD</span></div>
+      </div>
+    </div>
+  </div>
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+      <li><a href="screenshots.html">Screenshots</a></li>
+      <li><a href="changelogs.html">Changelogs</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="manuals.html">Manuals</a></li>
+      <li><a href="about.html">About / Credits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div id="main">
+      <div class="panel">
+        <h2>Experimental Archive</h2>
+        <p>
+          This page lists <strong>every</strong> weird, experimental, and one-off build of VidPlayer
+          that isn't on the main GitHub releases page. These are not guaranteed to be stable.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h2>Archive Builds</h2>
+        <table class="downloads">
+          <tr>
+            <th>Version</th>
+            <th>OS / Arch</th>
+            <th>Notes</th>
+            <th>GitHub</th>
+            <th>Download</th>
+          </tr>
+          <tr>
+            <td>v2.0.9.1 experimental</td>
+            <td>Win 10 / 11 (x64)</td>
+            <td>
+              Visualizer update — experimental. Settings now has its own Visualizer tab.
+              Color system uses built-in presets + custom HEX presets saved in JSON.
+              Multiple FFT-based styles: Bars, Waveform-ish, WMP-ish, Spectrogram.
+            </td>
+            <td><em style="color:var(--text-dim)">N/A</em></td>
+            <td><em style="color:var(--text-dim)">N/A</em></td>
+          </tr>
+          <tr>
+            <td>v2.0.9 BETA 4.1 Legacy</td>
+            <td>Windows 7+ (x64)</td>
+            <td>
+              Legacy version of v2.0.9 BETA 4.1 — has everything the non-Legacy build has,
+              but NO Aero Glass. Uses older tkinter for the UI instead of PySide6.
+            </td>
+            <td><em style="color:var(--text-dim)">N/A</em></td>
+            <td><em style="color:var(--text-dim)">N/A</em></td>
+          </tr>
+        </table>
+        <p class="small-note" style="margin-top:8px;">
+          Download links for archive builds will be added when available.
+          Check back or watch the <a href="https://github.com/sonicFanTech/vidplayer" target="_blank">GitHub repo</a>.
+        </p>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <div class="panel">
+        <h2>Main Downloads</h2>
+        <ul>
+          <li><a href="downloads.html">All official builds</a></li>
+          <li><a href="https://github.com/sonicFanTech/vidplayer" target="_blank">GitHub Repository</a></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Note</h2>
+        <p class="small-note">
+          Archive builds are experimental and may be unstable, incomplete,
+          or missing features compared to official releases.
+          Use at your own risk.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="footer">&copy; 2000–2025 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech &amp; axel613 &nbsp;·&nbsp; Weird builds of VidPlayer.</div>
+</div>
+<script src="vidplayer.js"></script>
+</body>
+</html>
