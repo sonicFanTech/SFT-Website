@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact the VidPlayer Team</title>
+  <meta name="description" content="Contact VidPlayer — bug reports, feature requests, and general questions.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="vidplayer.css">
+</head>
+<body>
+<canvas id="starfield"></canvas>
+
+<div id="wrapper">
+
+  <div id="header">
+    <div id="header-grid"></div>
+    <div id="header-gfx"></div>
+    <div id="header-inner">
+      <div id="logo-area">
+        <div id="logo-icon">
+          <img src="logo.png" alt="VidPlayer Logo" onerror="this.style.display='none';this.parentElement.textContent='▶'">
+        </div>
+        <div id="logo-text">
+          <h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1>
+          <div class="tagline">// CONTACT / BUG REPORTS</div>
+        </div>
+      </div>
+      <div id="header-right">
+        <div id="header-note">QUESTIONS? BUGS? FEATURE IDEAS? SEND 'EM HERE</div>
+        <div class="header-badges">
+          <span class="hbadge hbadge-cyan">FEEDBACK</span>
+          <span class="hbadge hbadge-green">BUG REPORTS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+      <li><a href="screenshots.html">Screenshots</a></li>
+      <li><a href="changelogs.html">Changelogs</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="manuals.html">Manuals</a></li>
+      <li><a href="about.html">About / Credits</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <div id="main">
+
+      <div class="panel">
+        <h2>How to Reach the VidPlayer Devs</h2>
+        <p>
+          Found a bug, have an idea, or just want to say "this is sick"?
+          You can reach the VidPlayer team through any of the channels below.
+        </p>
+
+        <h3>Email</h3>
+        <p>
+          <strong>Sonic Fan Tech / Sonic Fan Games</strong><br>
+          <a href="/cdn-cgi/l/email-protection#592a3637303a3f3837686a6d61193e34383035773a3634"><span class="__cf_email__" data-cfemail="6f1c0001060c090e015e5c5b572f08020e0603410c0002">[email&#160;protected]</span></a>
+        </p>
+
+        <h3>Discord</h3>
+        <ul>
+          <li><strong>Sonic Fan Tech:</strong> <code>sonic_fan_games</code></li>
+          <li><strong>axel613:</strong> <code>axel613613</code></li>
+        </ul>
+        <p class="small-note">
+          DM either account about VidPlayer, bugs, ideas, or the retro fork.
+        </p>
+
+        <h3>GitHub Issues</h3>
+        <p>
+          The best way to report bugs if you have a GitHub account:
+        </p>
+        <ul>
+          <li><a href="https://github.com/sonicFanTech/vidplayer/issues" target="_blank">Open an issue on the VidPlayer repo</a></li>
+        </ul>
+        <p class="small-note">
+          Please include your Windows version, VidPlayer version, and what you did right before it broke.
+        </p>
+      </div>
+
+      <!-- RETRO FEEDBACK FORM — KEPT AS-IS -->
+      <div class="panel">
+        <h2>Retro Feedback Form</h2>
+        <p>
+          In true early-2000s fashion, here's a classic feedback form.
+          It actually works — it sends your message to the devs via Formspree.
+        </p>
+
+        <form action="https://formspree.io/f/mzzqablg" method="POST">
+          <input type="hidden" name="_subject" value="VidPlayer website feedback">
+
+          <label for="name">Name / Handle:</label>
+          <input type="text" id="name" name="name" placeholder="YourNameHere">
+
+          <label for="email">Email (optional):</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com">
+
+          <label for="os">Windows version:</label>
+          <input type="text" id="os" name="os" placeholder="Windows 7, Windows 10 IoT LTSC 2021, etc.">
+
+          <label for="version">VidPlayer version:</label>
+          <input type="text" id="version" name="vidplayer_version" placeholder="v2.0.9-BETA-4.2-X64">
+
+          <label for="message">Message (bug report, idea, or feedback):</label>
+          <textarea id="message" name="message" placeholder="Tell us what happened or what you'd like to see next..."></textarea>
+
+          <input type="submit" value="Send Feedback">
+        </form>
+
+        <p class="small-note" style="margin-top:10px;">
+          This form uses Formspree so it works on GitHub Pages — no server needed.<br>
+          Your email is optional and only used if we need to follow up.
+        </p>
+      </div>
+
+    </div>
+
+    <div id="sidebar">
+      <div class="panel">
+        <h2>Before Sending a Bug...</h2>
+        <ul>
+          <li>Check you're on the latest version — see <a href="downloads.html">Downloads</a>.</li>
+          <li>Try a different audio file to see if it's file-specific.</li>
+          <li>Note any error messages or weird behavior.</li>
+          <li>Include your Windows version and VidPlayer version.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="downloads.html">Download all versions</a></li>
+          <li><a href="https://github.com/sonicFanTech/vidplayer" target="_blank">VidPlayer on GitHub</a></li>
+          <li><a href="about.html">About / Credits</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    &copy; 2000–2025 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech &amp; Aur
