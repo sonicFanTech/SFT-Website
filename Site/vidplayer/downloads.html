@@ -23,6 +23,12 @@
     .section-stack{display:grid;gap:16px}
     .empty-build{padding:14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.12)}
     @media (max-width: 980px){ .downloads-intro-grid{grid-template-columns:1fr} }
+  </style><style>
+    @keyframes errIn  { from{opacity:0;transform:translateY(-8px) skewX(2deg)} to{opacity:1;transform:none} }
+    @keyframes errOut { from{opacity:1} to{opacity:0;transform:skewX(-3deg) scaleX(0.97)} }
+    @keyframes scanRoll { from{background-position:0 0} to{background-position:0 400px} }
+    .panel-hidden  { opacity:0; transform:translateX(-10px); transition:opacity .4s ease,transform .4s ease }
+    .panel-visible { opacity:1; transform:none }
   </style></head>
 <body style="">
 <canvas id="starfield" width="1365" height="969"></canvas>
@@ -36,7 +42,7 @@
       <div id="logo-area">
         <div id="logo-icon">▶</div>
         <div id="logo-text">
-          <h1 data-glitch="VIDPLAYER HQ" style="text-shadow: rgba(255, 0, 80, 0.85) 1.91978px 1.27271px 0px, rgba(0, 212, 255, 0.85) -7.97173px -2.89959px 0px;">VIDPLAYER HQ</h1>
+          <h1 data-glitch="VIDPLAYER HQ" style="text-shadow: 0 0 10px var(--accent1),0 0 30px rgba(0,180,255,0.3);">VIDPLAYER HQ</h1>
           <div class="tagline">// COMPLETE DOWNLOAD ARCHIVE</div>
         </div>
       </div>
@@ -66,7 +72,7 @@
   <div id="content">
     <div id="main">
 
-      <div class="panel panel-hidden panel-visible">
+      <div class="panel panel-hidden panel-visible" style="">
         <h2>VidPlayer Download Archive</h2>
         <div class="downloads-intro-grid">
           <div>
@@ -76,8 +82,8 @@
               the <strong>C++ port</strong>, <strong>retro builds</strong>, and <strong>source code</strong>.
             </p>
             <div class="tab-bar" id="download-tabs">
-              <button class="tab-btn active" data-tab="python-release">Python Releases</button>
-              <button class="tab-btn" data-tab="python-beta">Python Betas</button>
+              <button class="tab-btn" data-tab="python-release">Python Releases</button>
+              <button class="tab-btn active" data-tab="python-beta">Python Betas</button>
               <button class="tab-btn" data-tab="python-prerelease">Python Pre-Releases</button>
               <button class="tab-btn" data-tab="cpp-port">C++ Port</button>
               <button class="tab-btn" data-tab="retro-builds">Retro Builds</button>
@@ -95,11 +101,11 @@
       </div>
 
       <div class="section-stack">
-        <section class="tab-panel active" id="tab-python-release">
+        <section class="tab-panel" id="tab-python-release">
           <div class="panel panel-hidden panel-visible">
             <h2 id="python-release">Python Releases</h2>
             <table class="downloads">
-              <tr>
+              <tbody><tr>
                 <th>Version</th>
                 <th>Status</th>
                 <th>OS / Arch</th>
@@ -117,7 +123,7 @@
           </tr>
           <tr>
             <td>v2.0.8.1</td>
-            <td><span class="badge badge-modern">Modern Stable</span></td>
+            <td><span class="badge badge-modern" style="">Modern Stable</span></td>
             <td>Win 7 / 8.1 / 10 / 11</td>
             <td>External artwork saved across restarts · Prev/Next in fullscreen overlay · auto-hide overlay with mouse-move wake</td>
             <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.8.1" target="_blank">Release page</a></td>
@@ -231,15 +237,15 @@
             <td>Full source snapshot from latest main branch</td>
             <td><a href="https://github.com/sonicFanTech/vidplayer/archive/refs/heads/main.zip" target="_blank">Download Source</a></td>
           </tr>
-            </table>
+            </tbody></table>
           </div>
         </section>
 
-        <section class="tab-panel" id="tab-python-beta">
+        <section class="tab-panel active" id="tab-python-beta">
           <div class="panel panel-hidden panel-visible">
-            <h2 id="python-beta">Python Betas</h2>
+            <h2 id="python-beta" style="">Python Betas</h2>
             <table class="downloads">
-              <tr>
+              <tbody><tr>
                 <th>Version</th>
                 <th>Status</th>
                 <th>OS / Arch</th>
@@ -271,15 +277,8 @@
             <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.9-B" target="_blank">Release page</a></td>
             <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9-B/vidplay_2.0.9_BETA.exe" target="_blank">Download</a></td>
           </tr>
-          <tr>
-            <td>VidPlayer Retro BETA 4.2</td>
-            <td><span class="badge badge-beta">Beta</span> <span class="badge badge-retro">Retro</span></td>
-            <td>Win 95 / 98 / NT / ME / 2000 / XP / 7</td>
-            <td>CD ISO (setup.exe, manual, box)</td>
-            <td>Reprogrammed core · CD support · Aero-style effects on Windows 7</td>
-            <td><em style="color:var(--accent4)">Coming soon (CD / ISO)</em></td>
-          </tr>
-            </table>
+          
+            </tbody></table>
           </div>
         </section>
 
@@ -287,7 +286,7 @@
           <div class="panel panel-hidden panel-visible">
             <h2 id="python-prerelease">Python Pre-Releases</h2>
             <table class="downloads">
-              <tr>
+              <tbody><tr>
                 <th>Version</th>
                 <th>Status</th>
                 <th>OS / Arch</th>
@@ -298,20 +297,25 @@
           <tr>
             <td colspan="6">
               <div class="empty-build">
-                No separate Python pre-release entries are listed in the current archive yet.
-                This tab is ready for them whenever you add them.
-              </div>
-            </td>
+          </div></td></tr><tr>
+            <td>v2.0.9.1 pre-release</td>
+            <td><span class="badge badge-modern" style="">Modern</span></td>
+            <td>Win 10 / 11 (x64)</td>
+            <td>go to the GitHub Release page for the List of NEW FEATURES</td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/tag/v2.0.9.1-PRE-Release-X64" target="_blank">Release page</a></td>
+            <td><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9.1-PRE-Release-X64/vidplayer.v2.0.9.1.pre-release.SETUP.exe" target="_blank" style="">Download</a></td>
           </tr>
-            </table>
+            
+          
+            </tbody></table>
           </div>
         </section>
 
         <section class="tab-panel" id="tab-cpp-port">
           <div class="panel panel-hidden panel-visible">
-            <h2 id="cpp-port">C++ Port</h2>
+            <h2 id="cpp-port" style="">C++ Port</h2>
             <table class="downloads">
-              <tr>
+              <tbody><tr>
                 <th>Build</th>
                 <th>Status</th>
                 <th>Target</th>
@@ -327,7 +331,7 @@
                 <td><a href="https://github.com/sonicFanTech/vidplayer" target="_blank">GitHub Repository</a></td>
                 <td><em style="color:var(--accent4)">Add public build link here when ready</em></td>
               </tr>
-            </table>
+            </tbody></table>
           </div>
         </section>
 
@@ -336,7 +340,7 @@
             <h2 id="retro-builds">Retro Builds</h2>
             <h3>CD-ROM Style Editions (Win 95–7)</h3>
             <table class="downloads">
-              <tr>
+              <tbody><tr>
                 <th>Version</th>
                 <th>Status</th>
                 <th>Target OS</th>
@@ -352,11 +356,11 @@
                 <td>Reprogrammed core · CD support · Aero-style effects on Windows 7</td>
                 <td><em style="color:var(--accent4)">Coming soon (CD / ISO)</em></td>
               </tr>
-            </table>
+            </tbody></table>
 
             <h3>Windows 3.1 Shareware</h3>
             <table class="downloads">
-              <tr>
+              <tbody><tr>
                 <th>Version</th>
                 <th>Status</th>
                 <th>Target OS</th>
@@ -372,7 +376,7 @@
                 <td>MIDI-only support · ultra-compressed MP3s planned</td>
                 <td><em style="color:var(--accent4)">Coming soon (floppy image)</em></td>
               </tr>
-            </table>
+            </tbody></table>
           </div>
         </section>
 
@@ -380,7 +384,7 @@
           <div class="panel panel-hidden panel-visible">
             <h2 id="source-code">Source Code</h2>
             <table class="downloads">
-              <tr>
+              <tbody><tr>
                 <th>Repo / Snapshot</th>
                 <th>Type</th>
                 <th>Notes</th>
@@ -398,7 +402,7 @@
                 <td>Latest source snapshot from the main branch.</td>
                 <td><a href="https://github.com/sonicFanTech/vidplayer/archive/refs/heads/main.zip" target="_blank">Download Source</a></td>
               </tr>
-            </table>
+            </tbody></table>
           </div>
         </section>
       </div>
@@ -427,7 +431,7 @@
       </div>
       <div class="panel panel-hidden panel-visible">
         <h2>Need Help?</h2>
-        <p class="small-note">
+        <p class="small-note" style="">
           Check the <a href="faq.html">FAQ</a> first.<br>
           Still broken? Use the <a href="contact.html">Contact</a> page and include your OS and version.
         </p>
@@ -441,7 +445,7 @@
   </div>
 </div>
 
-<script src="vidplayer.js"></script><div style="position: fixed; inset: 0px; z-index: 9990; pointer-events: none; opacity: 0;"><div style="position:absolute;inset:0;background:rgba(0,212,255,0.04)"></div></div><div style="position: fixed; inset: 0px; z-index: 99998; background: rgba(0, 8, 20, 0); pointer-events: none; transition: background 0.18s;"></div><div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 99999; pointer-events: none; opacity: 0; font-family: monospace; font-size: 12px; color: rgb(0, 212, 255); letter-spacing: 2px; text-align: center; text-shadow: rgb(0, 212, 255) 0px 0px 8px; line-height: 1.9; white-space: pre;"></div>
+<script src="vidplayer.js"></script><div style="position: fixed; inset: 0px; z-index: 9990; pointer-events: none; opacity: 0;"><div style="position:absolute;left:0;right:0;top:72.8%;height:4.1%;background:rgba(255,80,0,0.16);transform:translateX(-26.7px)"></div><div style="position:absolute;left:0;right:0;top:30.0%;height:0.7%;background:rgba(255,200,0,0.11);transform:translateX(15.4px)"></div><div style="position:absolute;left:0;right:0;top:62.0%;height:2.9%;background:rgba(123,47,255,0.12);transform:translateX(15.1px)"></div><div style="position:absolute;left:0;right:0;top:53.5%;height:1.8%;background:rgba(255,0,80,0.16);transform:translateX(27.3px)"></div><div style="position:absolute;left:0;right:0;top:68.4%;height:4.6%;background:rgba(0,212,255,0.10);transform:translateX(-15.4px)"></div><div style="position:absolute;left:0;right:0;top:61.0%;height:1.8%;background:rgba(0,255,153,0.16);transform:translateX(-18.7px)"></div><div style="position:absolute;left:0;right:0;top:9.4%;height:4.6%;background:rgba(0,255,153,0.05);transform:translateX(9.1px)"></div></div><div style="position: fixed; inset: 0px; z-index: 99998; background: rgba(0, 8, 20, 0); pointer-events: none; transition: background 0.18s;"></div><div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 99999; pointer-events: none; opacity: 0; font-family: monospace; font-size: 12px; color: rgb(0, 212, 255); letter-spacing: 2px; text-align: center; text-shadow: rgb(0, 212, 255) 0px 0px 8px; line-height: 1.9; white-space: pre;"></div><div style="position: fixed; inset: 0px; z-index: 9990; pointer-events: none; opacity: 0;"><div style="position:absolute;inset:0;background:rgba(0,212,255,0.04)"></div></div><div style="position: fixed; inset: 0px; z-index: 99998; background: rgba(0, 8, 20, 0); pointer-events: none; transition: background 0.18s;"></div><div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 99999; pointer-events: none; opacity: 0; font-family: monospace; font-size: 12px; color: rgb(0, 212, 255); letter-spacing: 2px; text-align: center; text-shadow: rgb(0, 212, 255) 0px 0px 8px; line-height: 1.9; white-space: pre;"></div>
 
 
 <script>
