@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VidPlayer — System Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap');
+    :root{--bg:#020408;--panel:rgba(4,10,22,0.97);--border:#0a3d5c;--cyan:#00d4ff;--purple:#7b2fff;--green:#00ff99;--amber:#ff9900;--red:#ff3366;--yellow:#ffe066;--text:#c8dce8;--dim:#3a5a70;--font-d:'Orbitron',sans-serif;--font-m:'Share Tech Mono',monospace;--font-b:'Rajdhani',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:14px;min-height:100vh;overflow-x:hidden;}
+    body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.07) 2px,rgba(0,0,0,.07) 4px);animation:scanroll 8s linear infinite;}
+    @keyframes scanroll{from{background-position:0 0}to{background-position:0 400px}}
+    body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,20,.7) 100%)}
+    #sf{position:fixed;inset:0;z-index:0;pointer-events:none}
+    #panel{position:relative;z-index:2;max-width:920px;margin:28px auto 60px;padding:0 16px;animation:fadeIn .5s ease;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    .ap-header{background:linear-gradient(135deg,#001020,#002244,#001833);border:1px solid var(--cyan);box-shadow:0 0 40px rgba(0,212,255,.15);padding:22px 26px 18px;margin-bottom:14px;position:relative;overflow:hidden;}
+    .ap-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--cyan) 1px,transparent 1px),linear-gradient(90deg,var(--cyan) 1px,transparent 1px);background-size:32px 32px;opacity:.04;animation:gm 20s linear infinite;}
+    @keyframes gm{from{background-position:0 0}to{background-position:32px 32px}}
+    .ap-hi{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .ap-title{font-family:var(--font-d);font-size:17px;font-weight:900;letter-spacing:3px;color:var(--yellow);text-shadow:0 0 14px rgba(255,224,102,.4)}
+    .ap-sub{font-family:var(--font-m);font-size:10px;color:var(--cyan);letter-spacing:2px;margin-top:4px}
+    .ap-status{font-family:var(--font-m);font-size:10px;color:var(--green);letter-spacing:1px;display:flex;align-items:center;gap:6px}
+    .sdot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:dp 1.5s ease-in-out infinite}
+    @keyframes dp{0%,100%{opacity:1}50%{opacity:.3}}
+    .section{background:var(--panel);border:1px solid var(--border);margin-bottom:12px;overflow:hidden;transition:border-color .3s}
+    .section:hover{border-color:rgba(0,212,255,.25)}
+    .sh{background:linear-gradient(90deg,rgba(0,40,80,.8),rgba(0,20,50,.8));padding:10px 18px;font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+    .sb{padding:16px 18px}
+    .cr{display:flex;align-items:center;gap:14px;padding:9px 0;border-bottom:1px solid rgba(10,61,92,.4)}
+    .cr:last-child{border-bottom:none}
+    .cl{flex:1}
+    .cl strong{display:block;font-size:13px;color:var(--text);font-weight:600}
+    .cl span{display:block;font-size:11px;color:var(--dim);font-family:var(--font-m);margin-top:2px}
+    .toggle{position:relative;width:46px;height:24px;flex-shrink:0;cursor:pointer}
+    .toggle input{opacity:0;width:0;height:0;position:absolute}
+    .ts{position:absolute;inset:0;background:rgba(0,20,40,.9);border:1px solid var(--border);transition:.25s;cursor:pointer}
+    .ts::before{content:'';position:absolute;height:14px;width:14px;left:4px;top:4px;background:var(--dim);transition:.25s}
+    .toggle input:checked~.ts{background:rgba(0,60,30,.7);border-color:var(--green)}
+    .toggle input:checked~.ts::before{transform:translateX(22px);background:var(--green);box-shadow:0 0 8px var(--green)}
+    .rw{display:flex;align-items:center;gap:10px;flex-shrink:0;width:240px}
+    input[type=range]{flex:1;-webkit-appearance:none;height:3px;outline:none;cursor:pointer;background:linear-gradient(90deg,var(--cyan) var(--pct,50%),rgba(0,40,80,.6) var(--pct,50%));}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);cursor:pointer;border:none}
+    input[type=range]::-moz-range-thumb{width:15px;height:15px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);border:none;cursor:pointer}
+    .rv{font-family:var(--font-m);font-size:11px;color:var(--cyan);width:34px;text-align:right;flex-shrink:0}
+    .meter{display:flex;gap:3px;align-items:flex-end;height:18px;margin-right:4px}
+    .mbar{width:5px;min-height:3px;transition:height .15s,background .15s}
+    .il{font-family:var(--font-m);font-size:10px;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+    textarea.at{width:100%;background:rgba(0,10,25,.9);color:var(--text);border:1px solid var(--border);padding:10px 12px;font-family:var(--font-m);font-size:12px;resize:vertical;outline:none;min-height:72px;line-height:1.75;transition:border-color .2s,box-shadow .2s;}
+    textarea.at:focus{border-color:var(--cyan);box-shadow:0 0 10px rgba(0,212,255,.2)}
+    .th{font-family:var(--font-m);font-size:10px;color:var(--dim);margin-top:6px;line-height:1.7}
+    .br{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .ab{padding:10px 22px;font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:1px solid currentColor;background:transparent;transition:all .2s;}
+    .ab.save{color:var(--green)}.ab.save:hover{background:rgba(0,255,153,.1);box-shadow:0 0 18px rgba(0,255,153,.3)}
+    .ab.rst{color:var(--amber)}.ab.rst:hover{background:rgba(255,153,0,.1)}
+    .ab.tst{color:var(--cyan)}.ab.tst:hover{background:rgba(0,212,255,.1)}
+    .notice{font-family:var(--font-m);font-size:11px;margin-top:10px;min-height:18px;opacity:0;transition:opacity .3s;}
+    .notice.show{opacity:1}
+    .notice.ok{color:var(--green);text-shadow:0 0 8px var(--green)}
+    .pb{background:linear-gradient(90deg,rgba(123,47,255,.15),rgba(0,100,255,.15));border:1px solid var(--purple);padding:9px 16px;font-family:var(--font-m);font-size:11px;color:var(--cyan);display:flex;align-items:center;gap:10px;margin-bottom:12px;overflow:hidden;}
+    .pbt{background:var(--purple);color:#fff;padding:2px 8px;font-family:var(--font-d);font-size:8px;font-weight:700;letter-spacing:2px;flex-shrink:0}
+    .eb{background:rgba(0,0,0,.4);border:1px solid var(--border);padding:10px 12px;font-family:var(--font-m);font-size:10px;color:var(--amber);word-break:break-all;margin-top:10px;line-height:1.8;}
+    code{font-family:var(--font-m);font-size:11px;background:rgba(0,40,80,.5);border:1px solid var(--border);padding:1px 6px;color:var(--green)}
+  </style>
+</head>
+<body>
+<canvas id="sf"></canvas>
+<div id="panel">
+  <div class="ap-header">
+    <div class="ap-hi">
+      <div><div class="ap-title">SYSTEM CONTROL PANEL</div><div class="ap-sub">// VIDPLAYER HQ — GLITCH ENGINE &amp; SITE CONFIG</div></div>
+      <div class="ap-status"><span class="sdot"></span>AUTHENTICATED VIA CLOUDFLARE ACCESS</div>
+    </div>
+  </div>
+
+  <div class="pb"><span class="pbt">TICKER PREVIEW</span><span id="pvt">Loading...</span></div>
+
+  <div class="section">
+    <div class="sh">⚡ Glitch Engine — Intensity &amp; Frequency</div>
+    <div class="sb">
+      <div class="cr">
+        <div class="cl"><strong>Glitch Intensity</strong><span>How strong/wild each effect is. 0.1 = barely visible · 1.0 = normal · 3.0 = maximum chaos</span></div>
+        <div class="meter" id="m-i"></div>
+        <div class="rw"><input type="range" id="r-i" min="0.1" max="3" step="0.1" value="1"><span class="rv" id="v-i">1.0</span></div>
+      </div>
+      <div class="cr">
+        <div class="cl"><strong>Glitch Frequency</strong><span>How often effects trigger. 0.1 = very rare · 1.0 = normal · 3.0 = very frequent</span></div>
+        <div class="meter" id="m-f"></div>
+        <div class="rw"><input type="range" id="r-f" min="0.1" max="3" step="0.1" value="1"><span class="rv" id="v-f">1.0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sh">🎛 Individual Effects — On / Off</div>
+    <div class="sb">
+      <div class="cr"><div class="cl"><strong>Fake Error Popups</strong><span>Random BSOD, crash, and system error messages</span></div><label class="toggle"><input type="checkbox" id="t-fe" checked><span class="ts"></span></label></div>
+      <div class="cr"><div class="cl"><strong>Navbar Scramble</strong><span>Nav link text occasionally scrambles into random characters</span></div><label class="toggle"><input type="checkbox" id="t-ns" checked><span class="ts"></span></label></div>
+      <div class="cr"><div class="cl"><strong>CRT Screen Flicker</strong><span>Periodic brightness flicker like an old CRT monitor</span></div><label class="toggle"><input type="checkbox" id="t-cf" checked><span class="ts"></span></label></div>
+      <div class="cr"><div class="cl"><strong>Signal Lost</strong><span>Rare full-screen desaturation flash like losing a TV signal</span></div><label class="toggle"><input type="checkbox" id="t-sl" checked><span class="ts"></span></label></div>
+      <div class="cr"><div class="cl"><strong>Chromatic Aberration (Logo)</strong><span>Periodic red/cyan RGB split on the header logo</span></div><label class="toggle"><input type="checkbox" id="t-ca" checked><span class="ts"></span></label></div>
+      <div class="cr"><div class="cl"><strong>Link Hover &amp; Click Glitch</strong><span>Random effects when hovering or clicking links</span></div><label class="toggle"><input type="checkbox" id="t-hg" checked><span class="ts"></span></label></div>
+      <div class="cr"><div class="cl"><strong>Card &amp; Panel Glitch</strong><span>Glitch effects on feature cards and panels on hover/click</span></div><label class="toggle"><input type="checkbox" id="t-cg" checked><span class="ts"></span></label></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sh">📡 Announcement Ticker</div>
+    <div class="sb">
+      <div class="il">Ticker text — shown on all pages with the announcement bar</div>
+      <textarea class="at" id="ta-t" placeholder="Leave blank to use each page's default ticker.&#10;&#10;Example:&#10;★ VidPlayer v3.0 out now!   ★ Physical CDs shipping!   ★ C++ Port in development!"></textarea>
+      <div class="th">Separate items with <code>★</code> and spaces. Use <code>&amp;nbsp;&amp;nbsp;&amp;nbsp;</code> for wider gaps. Leave empty to restore page defaults.</div>
+    </div>
+  </div>
+
+  <div class="br">
+    <button class="ab save" id="b-save">💾 Save &amp; Apply</button>
+    <button class="ab rst"  id="b-rst">↺ Reset Defaults</button>
+    <button class="ab tst"  id="b-tst">⚡ Test Glitch</button>
+  </div>
+  <div class="notice" id="mn"></div>
+
+  <div class="section" style="margin-top:20px">
+    <div class="sh">ℹ How It Works &amp; Export</div>
+    <div class="sb">
+      <p style="font-size:13px;margin-bottom:8px;line-height:1.7">Settings are saved in <strong>your browser's localStorage</strong> as <code>vp_admin_cfg</code> and apply automatically to all VidPlayer HQ pages in this browser. Visitors always see the page defaults.</p>
+      <p style="font-size:13px;margin-bottom:8px;line-height:1.7">To apply settings on another device, paste this line into that browser's DevTools console (<kbd>F12</kbd> → Console):</p>
+      <div class="eb" id="cfg-exp">Loading...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){const cv=document.getElementById('sf');if(!cv)return;const ctx=cv.getContext('2d');let W,H,s=[];const r=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;};r();s=Array.from({length:160},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,a:Math.random(),ts:Math.random()*.016+.004,td:1}));function draw(){ctx.clearRect(0,0,W,H);for(const p of s){p.a+=p.ts*p.td;if(p.a>=1)p.td=-1;if(p.a<=.1)p.td=1;p.y-=.035;if(p.y<0){p.y=H;p.x=Math.random()*W;}ctx.save();ctx.globalAlpha=p.a*.7;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();ctx.restore();}requestAnimationFrame(draw);}addEventListener('resize',r);draw();})();
+
+const DEF={intensity:1,frequency:1,fakeErrors:true,navScramble:true,crtFlicker:true,signalLost:true,chromaAb:true,hoverGlitch:true,cardGlitch:true,ticker:''};
+const load=()=>{try{return{...DEF,...JSON.parse(localStorage.getItem('vp_admin_cfg')||'{}')};}catch(e){return{...DEF};}};
+const save=c=>localStorage.setItem('vp_admin_cfg',JSON.stringify(c));
+
+function setRange(rid,vid,mid,val){
+  const r=document.getElementById(rid),v=document.getElementById(vid),m=document.getElementById(mid);
+  r.value=val;v.textContent=parseFloat(val).toFixed(1);upRng(r);upMeter(m,val,3);
+  r.addEventListener('input',()=>{const n=parseFloat(r.value);v.textContent=n.toFixed(1);upRng(r);upMeter(m,n,3);});
+}
+function upRng(el){el.style.setProperty('--pct',((el.value-el.min)/(el.max-el.min)*100).toFixed(1)+'%');}
+function upMeter(el,val,max){if(!el)return;const b=8,f=Math.round((val/max)*b);el.innerHTML=Array.from({length:b},(_,i)=>{const h=4+i*2,on=i<f,col=on?(val>2?'var(--red)':val>1.5?'var(--amber)':'var(--cyan)'):'rgba(10,61,92,0.6)';return`<div class="mbar" style="height:${h}px;background:${col}"></div>`;}).join('');}
+function setChk(id,v){document.getElementById(id).checked=!!v;}
+function upPreview(t){document.getElementById('pvt').textContent=t?t.replace(/&nbsp;/g,' '):'(using page default ticker)';}
+function upExport(cfg){document.getElementById('cfg-exp').textContent='localStorage.setItem("vp_admin_cfg",\''+JSON.stringify(cfg)+'\')';}
+
+function populate(cfg){
+  setRange('r-i','v-i','m-i',cfg.intensity);
+  setRange('r-f','v-f','m-f',cfg.frequency);
+  setChk('t-fe',cfg.fakeErrors);setChk('t-ns',cfg.navScramble);
+  setChk('t-cf',cfg.crtFlicker);setChk('t-sl',cfg.signalLost);
+  setChk('t-ca',cfg.chromaAb); setChk('t-hg',cfg.hoverGlitch);
+  setChk('t-cg',cfg.cardGlitch);
+  document.getElementById('ta-t').value=cfg.ticker||'';
+  upPreview(cfg.ticker);upExport(cfg);
+}
+
+function collect(){
+  return{intensity:parseFloat(document.getElementById('r-i').value),frequency:parseFloat(document.getElementById('r-f').value),
+    fakeErrors:document.getElementById('t-fe').checked,navScramble:document.getElementById('t-ns').checked,
+    crtFlicker:document.getElementById('t-cf').checked,signalLost:document.getElementById('t-sl').checked,
+    chromaAb:document.getElementById('t-ca').checked,hoverGlitch:document.getElementById('t-hg').checked,
+    cardGlitch:document.getElementById('t-cg').checked,ticker:document.getElementById('ta-t').value.trim()||null};
+}
+
+function notice(msg){const el=document.getElementById('mn');el.textContent=msg;el.className='notice ok show';clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),4000);}
+
+document.getElementById('ta-t').addEventListener('input',e=>upPreview(e.target.value.trim()));
+document.getElementById('b-save').addEventListener('click',()=>{const c=collect();save(c);upExport(c);notice('✓  Saved — reload any site page to apply.');});
+document.getElementById('b-rst').addEventListener('click',()=>{if(!confirm('Reset all to defaults?'))return;localStorage.removeItem('vp_admin_cfg');populate({...DEF});notice('↺  Reset to defaults.');});
+document.getElementById('b-tst').addEventListener('click',()=>{
+  const p=document.getElementById('panel');
+  p.style.transition='none';p.style.transform=`translate(${((Math.random()-.5)*16).toFixed(1)}px,${((Math.random()-.5)*6).toFixed(1)}px) skewX(${((Math.random()-.5)*2).toFixed(2)}deg)`;
+  setTimeout(()=>{p.style.transform='';p.style.transition='';},80);
+  const ov=document.createElement('div');ov.style.cssText='position:fixed;inset:0;z-index:9990;pointer-events:none';
+  let h='';for(let i=0;i<12;i++){h+=`<div style="position:absolute;left:0;right:0;top:${(Math.random()*100).toFixed(1)}%;height:${(Math.random()*5+.5).toFixed(1)}%;background:rgba(0,212,255,${(Math.random()*.12+.04).toFixed(2)});transform:translateX(${((Math.random()-.5)*60).toFixed(1)}px)"></div>`;}
+  ov.innerHTML=h;document.body.appendChild(ov);setTimeout(()=>ov.remove(),150);
+  notice('⚡  Test glitch fired!');
+});
+
+populate(load());
+</script>
+</body>
+</html>

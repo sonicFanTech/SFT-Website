@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VPTheme Editor — VidPlayer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download page and feature overview for the VidPlayer VPTheme Editor.">
+  <link rel="stylesheet" href="vidplayer.css">
+  <style>
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .mini-panel{padding:14px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}
+    .feature-list{margin:0;padding-left:18px;line-height:1.7}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+    .hero-btn{display:inline-block;padding:11px 16px;border-radius:12px;text-decoration:none;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05)}
+    .hero-btn:hover{transform:translateY(-2px)}
+    .path-box{font-family:var(--font-mono,monospace);font-size:12px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);margin-top:10px;word-break:break-all}
+    @media (max-width:980px){.feature-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<div id="wrapper">
+  <div id="header">
+    <div id="header-grid"></div>
+    <div id="header-gfx"></div>
+    <div id="header-inner">
+      <div id="logo-area">
+        <div id="logo-icon">🎨</div>
+        <div id="logo-text">
+          <h1 data-glitch="VPTHEME EDITOR">VPTHEME EDITOR</h1>
+          <div class="tagline">// CUSTOMIZE VIDPLAYER THEMES</div>
+        </div>
+      </div>
+      <div id="header-right">
+        <div id="header-note">BUILD CUSTOM LOOKS, ICONS, FONTS, AND UI SOUNDS</div>
+        <div class="header-badges">
+          <span class="hbadge hbadge-cyan">THEME TOOL</span>
+          <span class="hbadge hbadge-purple">VIDPLAYER</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+      <li><a href="vptheme-editor.html" class="active">VPTheme Editor</a></li>
+      <li><a href="theme-packs.html">Theme Packs</a></li>
+      <li><a href="screenshots.html">Screenshots</a></li>
+      <li><a href="changelogs.html">Changelogs</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About / Credits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <div id="main">
+      <div class="panel panel-visible">
+        <h2>VPTheme Editor v1.0</h2>
+        <p>
+          VPTheme Editor is the standalone tool for creating and editing themes used by VidPlayer's newer theme engine branch.
+          It is meant for customizing colors, gradients, fonts, icons, and UI sound packs used by VidPlayer.
+        </p>
+        <div class="hero-actions">
+          <a class="hero-btn" href="https://github.com/sonicFanTech/vidplayer/releases/download/VPTE-v1.0/VPTheme.Editor.exe" target="_blank">Download VPTheme Editor</a>
+          <a class="hero-btn" href="downloads.html#experimental">Back to Downloads</a>
+          <a class="hero-btn" href="theme-packs.html">Official Theme Packs</a>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="panel panel-visible">
+          <h2>Supported VidPlayer Theme Features</h2>
+          <ul class="feature-list">
+            <li>Themed main window colors</li>
+            <li>Themed dialog colors</li>
+            <li>Themed menu bar colors</li>
+            <li>Themed input and text field colors</li>
+            <li>Themed tabs</li>
+            <li>Themed playlist colors</li>
+            <li>Themed tooltips</li>
+            <li>Themed group box title colors</li>
+            <li>Themed slider colors</li>
+            <li>Themed progress bar colors</li>
+            <li>Gradient-based theme styling in supported areas</li>
+            <li>Custom font settings in themes</li>
+            <li>Custom icon overrides in themes</li>
+            <li>Custom UI sound paths in themes</li>
+          </ul>
+        </div>
+
+        <div class="panel panel-visible">
+          <h2>Theme Asset Support</h2>
+          <p>VidPlayer now supports loading theme assets from built-in folders and fully self-contained custom theme folders.</p>
+          <div class="mini-panel">
+            <strong>Built-in default UI sounds</strong>
+            <div class="path-box">bin\VPThemes\Default\Sounds\</div>
+          </div>
+          <div class="mini-panel" style="margin-top:14px;">
+            <strong>Custom theme folder layout</strong>
+            <div class="path-box">VPThemes\ThemeName\Theme.vptheme<br>VPThemes\ThemeName\Sounds\<br>VPThemes\ThemeName\Icons\<br>VPThemes\ThemeName\Fonts\</div>
+          </div>
+          <ul class="feature-list" style="margin-top:14px;">
+            <li>Supports <strong>Default/...</strong> paths for built-in assets</li>
+            <li>Supports relative per-theme asset paths for custom themes</li>
+            <li>If a custom font cannot be loaded, VidPlayer falls back to the default font</li>
+            <li>The theme can still be used even if a requested font is missing</li>
+          </ul>
+        </div>
+
+        <div class="panel panel-visible">
+          <h2>Custom Icon Support</h2>
+          <ul class="feature-list">
+            <li>App and artwork placeholder logo</li>
+            <li>Play button</li>
+            <li>Pause button</li>
+            <li>Stop button</li>
+            <li>Previous button</li>
+            <li>Next button</li>
+          </ul>
+          <p>
+            Theme icon overrides now apply to the real main playback controls, and theme logo overrides can be used
+            for the small artwork and logo display area. Built-in fallback icon behavior still remains if a custom icon is missing.
+          </p>
+        </div>
+
+        <div class="panel panel-visible">
+          <h2>UI Sound Support</h2>
+          <ul class="feature-list">
+            <li>UI sounds can be enabled or disabled</li>
+            <li>Hover sounds can be enabled or disabled separately</li>
+            <li>UI sound volume control is available in Settings</li>
+            <li>Supports themed UI sound paths</li>
+            <li>Supports default built-in UI sounds for built-in themes</li>
+            <li>Supports custom UI sound packs in custom themes</li>
+          </ul>
+        </div>
+
+        <div class="panel panel-visible" style="grid-column:1/-1;">
+          <h2>UI Sound Events Supported</h2>
+          <div class="feature-grid">
+            <div class="mini-panel">
+              <ul class="feature-list">
+                <li>General button click sound support</li>
+                <li>General hover sound support</li>
+                <li>Dialog open sound support</li>
+                <li>Dialog close sound support</li>
+                <li>Confirm and successful action sound support</li>
+                <li>Error sound support</li>
+                <li>Tab switch sound support</li>
+              </ul>
+            </div>
+            <div class="mini-panel">
+              <ul class="feature-list">
+                <li>Main playback control sounds for Play, Pause, Stop, Previous, and Next</li>
+                <li>Top menu bar sounds for File, View, Tools, and Help</li>
+                <li>Improved menu item click and hover behavior</li>
+                <li>Better fallback behavior for playback control sounds when a theme-specific control sound is missing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <div class="panel panel-visible">
+        <h2>Download</h2>
+        <p class="small-note">Standalone tool download for Windows:</p>
+        <p><a href="https://github.com/sonicFanTech/vidplayer/releases/download/VPTE-v1.0/VPTheme.Editor.exe" target="_blank">VPTheme.Editor.exe</a></p>
+      </div>
+      <div class="panel panel-visible">
+        <h2>Official Theme Packs</h2>
+        <p class="small-note">Download installer-based official theme packs for VidPlayer.</p>
+        <p><a href="theme-packs.html">Open Theme Packs page</a></p>
+      </div>
+      <div class="panel panel-visible">
+        <h2>Best Use</h2>
+        <p class="small-note">
+          Use this page for the theme editor tool itself, and keep the main downloads page focused on VidPlayer builds and archives.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    © 2000–2026 VidPlayer Team · Sonic Fan Tech · Theme tools and player builds archive
+  </div>
+</div>
+<script src="vidplayer.js"></script>
+</body>
+</html>

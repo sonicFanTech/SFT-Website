@@ -1,0 +1,459 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>VidPlayer HQ — Classic &amp; Modern Releases</title>
+  <meta name="description" content="Official hub for all VidPlayer builds: modern Sonic Fan Tech editions and axel613's retro fork for Windows 95–7.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="vidplayer.css">
+<style>
+    @keyframes errIn  { from{opacity:0;transform:translateY(-8px) skewX(2deg)} to{opacity:1;transform:none} }
+    @keyframes errOut { from{opacity:1} to{opacity:0;transform:skewX(-3deg) scaleX(0.97)} }
+    @keyframes scanRoll { from{background-position:0 0} to{background-position:0 400px} }
+    .panel-hidden  { opacity:0; transform:translateX(-10px); transition:opacity .4s ease,transform .4s ease }
+    .panel-visible { opacity:1; transform:none }
+
+    .vp-hero-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .version-switcher{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:14px}
+    .version-card{position:relative;padding:18px;border:1px solid rgba(0,212,255,.18);border-radius:14px;background:linear-gradient(180deg,rgba(7,18,34,.92),rgba(5,11,23,.98));box-shadow:0 0 0 1px rgba(255,255,255,.02) inset,0 12px 26px rgba(0,0,0,.28);cursor:pointer;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+    .version-card:hover{transform:translateY(-3px);border-color:rgba(0,212,255,.42);box-shadow:0 0 18px rgba(0,212,255,.12),0 12px 26px rgba(0,0,0,.32)}
+    .version-card h3{margin:0 0 6px;font-size:22px}
+    .version-card p{margin:0 0 10px}
+    .version-card .mini-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .mini-chip{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .version-card.python-card{border-color:rgba(0,212,255,.2)}
+    .version-card.cpp-card{border-color:rgba(123,47,255,.22)}
+    .version-card.cpp-card:hover{border-color:rgba(123,47,255,.45);box-shadow:0 0 18px rgba(123,47,255,.12),0 12px 26px rgba(0,0,0,.32)}
+    .version-card .open-hint{font-family:var(--font-mono,monospace);font-size:11px;color:var(--accent3,#8effc6);letter-spacing:.08em;text-transform:uppercase}
+
+    .detail-view{display:none}
+    .detail-view.active{display:block}
+    .back-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .back-btn-inline{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);text-decoration:none;cursor:pointer}
+    .back-btn-inline:hover{border-color:rgba(0,212,255,.35)}
+    .detail-banner{display:grid;grid-template-columns:1.35fr .95fr;gap:16px}
+    .detail-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .stat-box{padding:12px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}
+    .stat-box .label{display:block;font-size:11px;font-family:var(--font-mono,monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--accent4,#f3b255);margin-bottom:6px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .feature-slab{margin-top:14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .feature-slab .feature-card{height:100%}
+    .roadmap-list,.compat-list{margin:0;padding-left:18px}
+    .sidebar-section-title{font-size:11px;font-family:var(--font-mono,monospace);letter-spacing:.08em;text-transform:uppercase;color:var(--accent4,#f3b255);margin-bottom:6px}
+    .home-only.hidden,.sidebar-home.hidden,.sidebar-detail.hidden{display:none}
+    .sidebar-detail{display:none}
+    .sidebar-detail.active{display:block}
+    .status-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.045);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-mono,monospace)}
+    .status-dot-mini{width:8px;height:8px;border-radius:50%;background:var(--accent2,#7b2fff);box-shadow:0 0 10px currentColor}
+    @media (max-width: 980px){
+      .version-switcher,.detail-banner,.feature-slab,.detail-stats{grid-template-columns:1fr}
+    }
+  </style></head>
+<body style="">
+<canvas id="starfield" width="1365" height="969"></canvas>
+
+<div id="wrapper" style="transition: none; transform: none;">
+
+  <!-- HEADER -->
+  <div id="header">
+    <div id="header-grid"></div>
+    <div id="header-gfx"></div>
+    <div id="header-inner">
+      <div id="logo-area">
+        <div id="logo-icon">▶</div>
+        <div id="logo-text">
+          <h1 data-glitch="VIDPLAYER HQ" style="text-shadow: rgba(255, 0, 80, 0.85) -2.96561px -0.606012px 0px, rgba(0, 212, 255, 0.85) -1.86316px -2.92373px 0px;">VIDPLAYER HQ</h1>
+          <div class="tagline">// OPTIMISED FOR THE YEAR 2000 &amp; BEYOND</div>
+        </div>
+      </div>
+      <div id="header-right">
+        <div id="header-note">BEST VIEWED AT 1024×768 IN IE6 OR NETSCAPE 7</div>
+        <div class="header-badges">
+          <span class="hbadge hbadge-cyan">OPEN SOURCE</span>
+          <span class="hbadge hbadge-purple" style="">WIN 95–11</span>
+          <span class="hbadge hbadge-green">FREE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANNOUNCE BAR -->
+  <div class="announce-bar">
+    <span class="ab-tag">NEW</span>
+    <div class="announce-ticker">
+      <span class="announce-ticker-inner">
+        ★ VidPlayer v2.0.9.3.1 BETA-X64 is now up! &nbsp;&nbsp;&nbsp; ★ Experimental builds now have their own downloads tab! &nbsp;&nbsp;&nbsp; ★ New VPTheme Editor page added to the site! &nbsp;&nbsp;&nbsp; ★ Theme engine now supports colors, icons, fonts, sounds, and fallback handling! &nbsp;&nbsp;&nbsp; ★ Show All Builds view added to the downloads archive! &nbsp;&nbsp;&nbsp; ★ C++ Port still in development! &nbsp;&nbsp;&nbsp; ★ Retro fork supports Windows 95 / 98 / ME / 2000 / XP / 7 and Windows 3.1 plans! &nbsp;&nbsp;&nbsp;
+      </span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+      <li><a href="screenshots.html">Screenshots</a></li>
+      <li><a href="changelogs.html">Changelogs</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="manuals.html">Manuals</a></li>
+      <li><a href="about.html">About / Credits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content">
+    <div id="main">
+
+      <div class="panel panel-hidden panel-visible">
+        <div class="vp-hero-title">
+          <div>
+            <h2>What’s New in VidPlayer</h2>
+            <p>
+              The homepage now acts as a quick hub for the <strong>newest public stuff</strong> across VidPlayer:
+              the latest Python builds, the new <strong>Experimental</strong> branch, the <strong>VPTheme Editor</strong>,
+              theme engine support, the in-progress <strong>C++ port</strong>, and the retro / archive side of the project.
+            </p>
+          </div>
+          <span class="status-pill"><span class="status-dot-mini"></span> Active development overview</span>
+        </div>
+        <div class="feature-slab home-only" style="margin-top:12px">
+          <div class="feature-card">
+            <div class="fc-icon">🆕</div>
+            <div class="fc-title">Latest Beta Build</div>
+            <p>VidPlayer <strong>v2.0.9.3.1 BETA-X64</strong> is now on the downloads page as the newest beta build.</p>
+            <div class="cta-row"><a href="downloads.html#python-beta" class="dl-btn btn-secondary">Open Beta Downloads →</a></div>
+          </div>
+          <div class="feature-card purple-card">
+            <div class="fc-icon">🧪</div>
+            <div class="fc-title">Experimental Builds</div>
+            <p>The downloads page now has a dedicated <strong>Experimental</strong> tab for testing-focused builds that sit outside the normal beta / release flow.</p>
+            <div class="cta-row"><a href="downloads.html#experimental" class="dl-btn btn-secondary">View Experimental Tab →</a></div>
+          </div>
+          <div class="feature-card green-card">
+            <div class="fc-icon">🎨</div>
+            <div class="fc-title">New VPTheme Editor</div>
+            <p>A new standalone utility page is now part of the site for the <strong>VPTheme Editor</strong>, covering theme support, assets, icons, fonts, and UI sounds.</p>
+            <div class="cta-row"><a href="vptheme-editor.html" class="dl-btn btn-secondary">Open VPTheme Editor Page →</a></div>
+          </div>
+          <div class="feature-card amber-card">
+            <div class="fc-icon">📚</div>
+            <div class="fc-title">Show All Builds Archive</div>
+            <p>The downloads page now includes a <strong>Show All Builds</strong> view so visitors can browse the full project archive in one big list.</p>
+            <div class="cta-row"><a href="downloads.html#show-all-builds" class="dl-btn btn-secondary">Open Full Archive →</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-hidden panel-visible home-only">
+        <h2>Current Project Sections</h2>
+        <div class="version-switcher">
+          <article class="version-card python-card" data-open-version="python">
+            <div class="open-hint">Open section view</div>
+            <h3>OG Python Version</h3>
+            <p>The original VidPlayer line with the current public releases, betas, pre-releases, theming work, and most of the main feature set people use right now.</p>
+            <div class="mini-meta">
+              <span class="mini-chip">Main public branch</span>
+              <span class="mini-chip">Windows 7–11</span>
+              <span class="mini-chip">Latest build line</span>
+            </div>
+          </article>
+          <article class="version-card cpp-card" data-open-version="cpp">
+            <div class="open-hint">Open section view</div>
+            <h3>New C++ Port</h3>
+            <p>The native rewrite branch aimed at a compiled VidPlayer future, lower overhead, and a long-term rebuilt base for the same overall player identity.</p>
+            <div class="mini-meta">
+              <span class="mini-chip">In development</span>
+              <span class="mini-chip">Native rewrite</span>
+              <span class="mini-chip">Separate track</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel panel-hidden panel-visible home-only">
+        <h2>Theme Engine &amp; VPTheme Editor</h2>
+        <div class="feature-slab">
+          <div class="feature-card green-card">
+            <div class="fc-icon">🖌️</div>
+            <div class="fc-title">Theme Styling Support</div>
+            <p>VidPlayer theme support now covers main window colors, dialogs, menu bars, text fields, tabs, playlists, tooltips, sliders, progress bars, and more.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📁</div>
+            <div class="fc-title">Theme Asset Loading</div>
+            <p>Custom themes can now use self-contained folders for <strong>Sounds</strong>, <strong>Icons</strong>, and <strong>Fonts</strong>, plus built-in <code>Default/...</code> asset paths.</p>
+          </div>
+          <div class="feature-card purple-card">
+            <div class="fc-icon">🔤</div>
+            <div class="fc-title">Font Fallback Handling</div>
+            <p>If a custom theme font is missing, VidPlayer now falls back to the default font so the theme can still load and be used.</p>
+          </div>
+          <div class="feature-card amber-card">
+            <div class="fc-icon">🔊</div>
+            <div class="fc-title">UI Sound Support</div>
+            <p>The theme engine now supports UI sounds, hover sounds, playback control sounds, dialog sounds, tab sounds, menu sounds, and sound volume settings.</p>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a href="vptheme-editor.html" class="dl-btn">VPTheme Editor Page</a>
+          <a href="https://github.com/sonicFanTech/vidplayer/releases/download/VPTE-v1.0/VPTheme.Editor.exe" class="dl-btn btn-secondary" target="_blank">Download VPTheme Editor</a>
+        </div>
+      </div>
+
+      <div id="detail-python" class="detail-view">
+        <div class="panel panel-hidden panel-visible">
+          <div class="back-row">
+            <a href="#" class="back-btn-inline" data-back-to-cards>← Back to all versions</a>
+            <span class="badge badge-modern">Python Branch</span>
+          </div>
+          <div class="detail-banner">
+            <div>
+              <h2>VidPlayer — Original Python Edition</h2>
+              <p>
+                This is the main VidPlayer branch most people should start with right now.
+                It is the original project line, built around the modern Sonic Fan Tech releases,
+                with the feature set users already know: playlists, drag &amp; drop, artwork,
+                visualizer modes, CD features, and the classic Windows-style look.
+              </p>
+              <div class="cta-row">
+                <a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9-Release-X64/vidplayer_2.0.9-Release.7z" class="dl-btn" target="_blank">▶ Download Latest Python Release</a>
+                <a href="downloads.html#python-release" class="dl-btn btn-secondary">Python Downloads →</a>
+              </div>
+            </div>
+            <div class="detail-stats">
+              <div class="stat-box"><span class="label">Best for</span>Daily listening on modern Windows PCs</div>
+              <div class="stat-box"><span class="label">Current status</span>Active public release line</div>
+              <div class="stat-box"><span class="label">Platform</span>Windows 7–11 modern builds</div>
+              <div class="stat-box"><span class="label">Why pick it</span>Most complete feature set right now</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-hidden panel-visible">
+          <h2>Python Branch Highlights</h2>
+          <div class="feature-slab">
+            <div class="feature-card">
+              <div class="fc-icon">🎵</div>
+              <div class="fc-title">Playlist-first design</div>
+              <p>Load folders, reorder tracks, double-click to play, and manage day-to-day playback fast.</p>
+            </div>
+            <div class="feature-card purple-card">
+              <div class="fc-icon">🪟</div>
+              <div class="fc-title">Classic modern desktop feel</div>
+              <p>Qt-based UI styled around Windows-era vibes, glassy looks, and a custom desktop-player identity.</p>
+            </div>
+            <div class="feature-card green-card">
+              <div class="fc-icon">📊</div>
+              <div class="fc-title">Visualizer support</div>
+              <p>FFT visualizer modes and customization options carried through the newer versions of the Python line.</p>
+            </div>
+            <div class="feature-card amber-card">
+              <div class="fc-icon">💿</div>
+              <div class="fc-title">CD tools</div>
+              <p>Experimental audio CD playback and ripping support for the branch that already has public builds.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-hidden panel-visible">
+          <h2>Who Should Use This Version?</h2>
+          <ul class="compat-list">
+            <li>Anyone who wants the most complete VidPlayer experience right now.</li>
+            <li>Users who want the current stable public release instead of a work-in-progress rewrite.</li>
+            <li>People who want direct access to the release, beta, and pre-release archive on the downloads page.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="detail-cpp" class="detail-view">
+        <div class="panel panel-hidden panel-visible">
+          <div class="back-row">
+            <a href="#" class="back-btn-inline" data-back-to-cards>← Back to all versions</a>
+            <span class="badge badge-cpp">C++ Port</span>
+          </div>
+          <div class="detail-banner">
+            <div>
+              <h2>VidPlayer — C++ Port</h2>
+              <p>
+                The C++ port is the new native rewrite of VidPlayer. The idea is to keep the same overall soul
+                while moving the project toward a compiled build with quicker startup, lower runtime dependency weight,
+                and a cleaner long-term base for future expansion.
+              </p>
+              <div class="cta-row">
+                <a href="downloads.html#cpp-port" class="dl-btn">View C++ Port Downloads</a>
+                <a href="https://github.com/sonicFanTech/vidplayer" class="dl-btn btn-secondary" target="_blank">Project GitHub →</a>
+              </div>
+            </div>
+            <div class="detail-stats">
+              <div class="stat-box"><span class="label">Best for</span>Following development of the native rewrite</div>
+              <div class="stat-box"><span class="label">Current status</span>In development</div>
+              <div class="stat-box"><span class="label">Goal</span>Native performance and lower overhead</div>
+              <div class="stat-box"><span class="label">Why pick it</span>Future-facing compiled edition</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-hidden panel-visible">
+          <h2>C++ Port Focus</h2>
+          <div class="feature-slab">
+            <div class="feature-card purple-card">
+              <div class="fc-icon">⚡</div>
+              <div class="fc-title">Native executable</div>
+              <p>A compiled branch aimed at reducing startup time and Python runtime dependency overhead.</p>
+            </div>
+            <div class="feature-card purple-card">
+              <div class="fc-icon">🔧</div>
+              <div class="fc-title">Ground-up rebuild</div>
+              <p>The same VidPlayer identity, rebuilt feature by feature in a native codebase.</p>
+            </div>
+            <div class="feature-card">
+              <div class="fc-icon">🧪</div>
+              <div class="fc-title">Development-first branch</div>
+              <p>This branch is for testing progress, tracking the rewrite, and eventually downloading preview builds from its own tab.</p>
+            </div>
+            <div class="feature-card amber-card">
+              <div class="fc-icon">📦</div>
+              <div class="fc-title">Separate archive path</div>
+              <p>The downloads page now gives the C++ port its own section so it stays clearly separated from the Python build history.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-hidden panel-visible">
+          <h2>Current Direction</h2>
+          <ul class="roadmap-list">
+            <li>Preserve the overall VidPlayer feel while moving to a native codebase.</li>
+            <li>Keep the branch visually tied to the main project instead of feeling like a separate site.</li>
+            <li>Let visitors jump between Python and C++ details without leaving the homepage.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel teaser-panel physical-panel panel-hidden panel-visible home-only sidebar-home">
+        <h2>📦 Physical Copies — Coming Very Soon!</h2>
+        <div class="teaser-status"><span class="status-dot"></span> STATUS: IN PRODUCTION</div>
+        <p>
+          Real, physical copies of VidPlayer are arriving soon, including a CD-ROM, printed manual,
+          and box-style release presentation.
+        </p>
+      </div>
+
+    </div>
+
+    <div id="sidebar">
+      <div class="panel panel-hidden panel-visible sidebar-home">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9.3.1-beta/app.7z">⬇ Download Latest Beta Build</a></li>
+          <li><a href="vptheme-editor.html">VPTheme Editor Page</a></li>
+          <li><a href="https://github.com/sonicFanTech/vidplayer/releases/download/VPTE-v1.0/VPTheme.Editor.exe" target="_blank">Download VPTheme Editor</a></li>
+          <li><a href="downloads.html#show-all-builds">Show All Builds</a></li>
+          <li><a href="downloads.html">All Downloads</a></li>
+          <li><a href="changelogs.html">Changelogs</a></li>
+          <li><a href="https://github.com/sonicFanTech/vidplayer" target="_blank">GitHub Repository</a></li>
+        </ul>
+      </div>
+
+      <div class="panel panel-hidden panel-visible sidebar-home">
+        <h2>Branch Overview</h2>
+        <p class="small-note"><span class="sidebar-section-title">Python Version</span>The original public branch with releases, betas, and the current main feature set.</p>
+        <div class="section-divider" style="margin:8px 0"></div>
+        <p class="small-note"><span class="sidebar-section-title">C++ Port</span>The new native rewrite with its own development track and download tab.</p>
+      </div>
+
+      <div id="sidebar-python" class="panel panel-hidden panel-visible sidebar-detail">
+        <h2>Python Branch Quick Info</h2>
+        <ul>
+          <li>Main public release line</li>
+          <li>Modern Windows build path</li>
+          <li>Latest stable release available now</li>
+          <li>Separate release / beta / pre-release tabs on Downloads</li>
+        </ul>
+      </div>
+
+      <div id="sidebar-cpp" class="panel panel-hidden panel-visible sidebar-detail">
+        <h2>C++ Port Quick Info</h2>
+        <ul>
+          <li>Native rewrite branch</li>
+          <li>Development-focused right now</li>
+          <li>Own dedicated downloads tab</li>
+          <li>Best for following rewrite progress</li>
+        </ul>
+      </div>
+
+      <div class="panel panel-hidden panel-visible sidebar-home">
+        <h2>Newest Stuff</h2>
+        <ul>
+          <li><span class="badge badge-beta">NEW</span> v2.0.9.3.1 BETA-X64</li>
+          <li><span class="badge badge-modern">NEW</span> Experimental downloads tab</li>
+          <li><span class="badge badge-modern">NEW</span> Show All Builds archive view</li>
+          <li><span class="badge badge-modern">NEW</span> VPTheme Editor page</li>
+          <li><span class="badge badge-cpp">WIP</span> C++ Port progress</li>
+          <li><span class="badge badge-physical">SOON</span> Physical copies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- FOOTER -->
+  <div id="footer">
+    © 2000–2025 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech &amp; axel613 &nbsp;·&nbsp;
+    <a href="LICENSE.html">License</a> &nbsp;·&nbsp;
+    <a href="contact.html">Contact</a> &nbsp;·&nbsp;
+    This site is proudly old-school.
+  </div>
+</div>
+
+<script src="vidplayer.js"></script><div style="position: fixed; inset: 0px; z-index: 9990; pointer-events: none; opacity: 0;"><div style="position:absolute;inset:0;background:rgba(0,212,255,0.04)"></div></div><div style="position: fixed; inset: 0px; z-index: 99998; background: rgba(0, 8, 20, 0); pointer-events: none; transition: background 0.18s;"></div><div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 99999; pointer-events: none; opacity: 0; font-family: monospace; font-size: 12px; color: rgb(0, 212, 255); letter-spacing: 2px; text-align: center; text-shadow: rgb(0, 212, 255) 0px 0px 8px; line-height: 1.9; white-space: pre;"></div>
+
+
+<script>
+(function(){
+  const cardView = document.getElementById('version-card-view');
+  const homeOnly = Array.from(document.querySelectorAll('.home-only, .sidebar-home'));
+  const detailViews = {
+    python: document.getElementById('detail-python'),
+    cpp: document.getElementById('detail-cpp')
+  };
+  const sidebars = {
+    python: document.getElementById('sidebar-python'),
+    cpp: document.getElementById('sidebar-cpp')
+  };
+
+  function showCards(){
+    Object.values(detailViews).forEach(el => el && el.classList.remove('active'));
+    Object.values(sidebars).forEach(el => { if(el){ el.classList.remove('active'); el.style.display='none'; } });
+    homeOnly.forEach(el => el.classList.remove('hidden'));
+    if(cardView) cardView.style.display = '';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function showVersion(key){
+    homeOnly.forEach(el => el.classList.add('hidden'));
+    if(cardView) cardView.style.display = 'none';
+    Object.entries(detailViews).forEach(([name, el]) => {
+      if(el) el.classList.toggle('active', name === key);
+    });
+    Object.entries(sidebars).forEach(([name, el]) => {
+      if(!el) return;
+      const active = name === key;
+      el.classList.toggle('active', active);
+      el.style.display = active ? 'block' : 'none';
+    });
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  document.querySelectorAll('[data-open-version]').forEach(card => {
+    card.addEventListener('click', () => showVersion(card.getAttribute('data-open-version')));
+    card.addEventListener('keypress', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); showVersion(card.getAttribute('data-open-version')); }
+    });
+    card.setAttribute('tabindex','0');
+    card.setAttribute('role','button');
+  });
+  document.querySelectorAll('[data-back-to-cards]').forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); showCards(); }));
+
+  if(location.hash === '#python') showVersion('python');
+  else if(location.hash === '#cpp') showVersion('cpp');
+  else showCards();
+})();
+</script>
+</body></html>

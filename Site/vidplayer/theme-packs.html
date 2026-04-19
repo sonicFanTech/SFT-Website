@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Official VP Theme Packs — VidPlayer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official installer-based theme pack downloads for VidPlayer.">
+  <link rel="stylesheet" href="vidplayer.css">
+  <style>
+    .pack-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+    .hero-btn{display:inline-block;padding:11px 16px;border-radius:12px;text-decoration:none;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05)}
+    .hero-btn:hover{transform:translateY(-2px)}
+    .pack-card{padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(7,18,34,.92),rgba(5,11,23,.98))}
+    .pack-meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 12px}
+    .mini-chip{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .note-box{padding:14px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}
+    .download-table{width:100%;border-collapse:collapse}
+    .download-table th,.download-table td{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;vertical-align:top}
+    .download-btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+    .download-btn:hover{border-color:rgba(0,212,255,.35)}
+    .small-path{font-family:var(--font-mono,monospace);font-size:12px}
+    @media (max-width:980px){.pack-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<div id="wrapper">
+  <div id="header">
+    <div id="header-grid"></div>
+    <div id="header-gfx"></div>
+    <div id="header-inner">
+      <div id="logo-area">
+        <div id="logo-icon">🎨</div>
+        <div id="logo-text">
+          <h1 data-glitch="OFFICIAL THEME PACKS">OFFICIAL THEME PACKS</h1>
+          <div class="tagline">// INSTALLER-BASED VIDPLAYER THEME DOWNLOADS</div>
+        </div>
+      </div>
+      <div id="header-right">
+        <div id="header-note">DOWNLOAD THE OFFICIAL LOOKS FOR VIDPLAYER</div>
+        <div class="header-badges">
+          <span class="hbadge hbadge-cyan">THEMES</span>
+          <span class="hbadge hbadge-purple">INSTALLERS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+      <li><a href="vptheme-editor.html">VPTheme Editor</a></li>
+      <li><a href="theme-packs.html" class="active">Theme Packs</a></li>
+      <li><a href="screenshots.html">Screenshots</a></li>
+      <li><a href="changelogs.html">Changelogs</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about.html">About / Credits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <div id="main">
+      <div class="panel panel-visible">
+        <h2>Official VidPlayer Theme Packs</h2>
+        <p>
+          This page lists the official theme packs for VidPlayer. These downloads are provided as
+          <strong>installer programs</strong>, so users can install the themes more easily without having to
+          place the files into the theme folders manually.
+        </p>
+        <div class="hero-actions">
+          <a class="hero-btn" href="vptheme-editor.html">Back to VPTheme Editor</a>
+          <a class="hero-btn" href="downloads.html#experimental">Back to Experimental Downloads</a>
+        </div>
+      </div>
+
+      <div class="panel panel-visible">
+        <h2>Available Theme Pack Downloads</h2>
+        <table class="download-table">
+          <tr>
+            <th>Theme Pack</th>
+            <th>Type</th>
+            <th>Style</th>
+            <th>Notes</th>
+            <th>Download</th>
+          </tr>
+          <tr>
+            <td><strong>VidPlayer HQ</strong></td>
+            <td>Installer Program</td>
+            <td>Official office / brand theme</td>
+            <td>Main office VidPlayer brand theme pack.</td>
+            <td><em style="color:var(--accent4)">Add installer download link here</em></td>
+          </tr>
+          <tr>
+            <td><strong>Amber</strong></td>
+            <td>Installer Program</td>
+            <td>Yellow / red / orange theme</td>
+            <td>Warm amber-styled official theme pack.</td>
+            <td><em style="color:var(--accent4)">Add installer download link here</em></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="pack-grid">
+        <div class="panel panel-visible pack-card">
+          <h2>Theme Pack 1 — VidPlayer HQ</h2>
+          <p>
+            The main official VidPlayer brand theme pack. This is the office-style house theme for the newer
+            VidPlayer theme system.
+          </p>
+          <div class="pack-meta">
+            <span class="mini-chip">Official</span>
+            <span class="mini-chip">Brand theme</span>
+            <span class="mini-chip">Installer-based</span>
+          </div>
+          <p>
+            Best for users who want the default official VidPlayer HQ look and feel as an installable theme pack.
+          </p>
+          <p><em style="color:var(--accent4)">Installer link goes here when ready</em></p>
+        </div>
+
+        <div class="panel panel-visible pack-card">
+          <h2>Theme Pack 2 — Amber</h2>
+          <p>
+            A warm official theme pack using yellow, red, and orange tones for a brighter and more glowing desktop style.
+          </p>
+          <div class="pack-meta">
+            <span class="mini-chip">Official</span>
+            <span class="mini-chip">Warm colors</span>
+            <span class="mini-chip">Installer-based</span>
+          </div>
+          <p>
+            Best for users who want a stronger amber-style color palette instead of the main HQ look.
+          </p>
+          <p><em style="color:var(--accent4)">Installer link goes here when ready</em></p>
+        </div>
+      </div>
+
+      <div class="panel panel-visible">
+        <h2>How These Downloads Work</h2>
+        <div class="note-box">
+          These downloads are not just raw theme folders. Each official theme pack download is planned to be
+          an installer program so users can install the theme more easily if they do not want to set it up manually.
+        </div>
+      </div>
+
+      <div class="panel panel-visible">
+        <h2>Manual Theme Folder Reminder</h2>
+        <p>
+          VidPlayer themes normally use self-contained theme folders such as:
+        </p>
+        <p class="small-path">
+          VPThemes\ThemeName\Theme.vptheme<br>
+          VPThemes\ThemeName\Sounds\<br>
+          VPThemes\ThemeName\Icons\<br>
+          VPThemes\ThemeName\Fonts\
+        </p>
+        <p>
+          The official theme pack installers are meant to automate that setup for users.
+        </p>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <div class="panel panel-visible">
+        <h2>Included Packs</h2>
+        <ul>
+          <li>VidPlayer HQ</li>
+          <li>Amber</li>
+        </ul>
+      </div>
+
+      <div class="panel panel-visible">
+        <h2>Download Type</h2>
+        <p class="small-note">
+          Each theme pack is intended to be distributed as an installer program, not only as a raw theme folder archive.
+        </p>
+      </div>
+
+      <div class="panel panel-visible">
+        <h2>Related Pages</h2>
+        <ul>
+          <li><a href="vptheme-editor.html">VPTheme Editor</a></li>
+          <li><a href="downloads.html#experimental">Experimental Downloads</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    © 2000–2026 VidPlayer Team · Sonic Fan Tech · Official theme packs archive
+  </div>
+</div>
+<script src="vidplayer.js"></script>
+</body>
+</html>

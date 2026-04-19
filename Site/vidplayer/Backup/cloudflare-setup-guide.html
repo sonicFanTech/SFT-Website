@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VidPlayer Admin — Cloudflare Access Setup Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600&display=swap');
+    :root {
+      --bg:#020408; --panel:rgba(4,10,22,0.97); --border:#0a3d5c;
+      --cyan:#00d4ff; --green:#00ff99; --amber:#ff9900; --red:#ff3366;
+      --purple:#7b2fff; --yellow:#ffe066; --text:#c8dce8; --dim:#4a6a80;
+      --font-d:'Orbitron',sans-serif; --font-m:'Share Tech Mono',monospace;
+      --font-b:'Rajdhani',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:15px;line-height:1.7;padding:30px 20px 60px}
+    body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px)}
+
+    .page{max-width:860px;margin:0 auto}
+
+    /* Header */
+    .guide-header{background:linear-gradient(135deg,#001020,#002244,#001530);border:1px solid var(--cyan);box-shadow:0 0 40px rgba(0,212,255,.12);padding:28px 32px 22px;margin-bottom:24px;position:relative;overflow:hidden}
+    .guide-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--cyan) 1px,transparent 1px),linear-gradient(90deg,var(--cyan) 1px,transparent 1px);background-size:32px 32px;opacity:.04}
+    .guide-header h1{font-family:var(--font-d);font-size:20px;font-weight:900;letter-spacing:3px;color:var(--yellow);text-shadow:0 0 14px rgba(255,224,102,.4);text-transform:uppercase;margin-bottom:6px}
+    .guide-header p{font-family:var(--font-m);font-size:11px;color:var(--cyan);letter-spacing:1.5px}
+
+    /* Alert box */
+    .alert{border:1px solid currentColor;padding:14px 16px;margin-bottom:20px;font-size:13px;line-height:1.8}
+    .alert.info{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.05)}
+    .alert.green{border-color:var(--green);color:var(--green);background:rgba(0,255,153,.05)}
+    .alert.amber{border-color:var(--amber);color:var(--amber);background:rgba(255,153,0,.05)}
+    .alert strong{font-weight:700}
+
+    /* Section */
+    .section{background:var(--panel);border:1px solid var(--border);margin-bottom:16px}
+    .section-head{background:linear-gradient(90deg,rgba(0,40,80,.8),rgba(0,20,50,.8));padding:11px 18px;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+    .step-num{background:var(--cyan);color:#000;font-family:var(--font-d);font-size:10px;font-weight:900;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .section-body{padding:18px 20px}
+    .section-body p{margin-bottom:10px;font-size:14px}
+    .section-body ul,.section-body ol{padding-left:22px;margin-bottom:10px}
+    .section-body li{margin-bottom:6px;font-size:14px}
+
+    /* Screenshot placeholder */
+    .screen-note{background:rgba(0,0,0,.4);border:1px dashed var(--dim);padding:10px 14px;font-family:var(--font-m);font-size:11px;color:var(--dim);margin:10px 0;text-align:center}
+
+    /* Code / path */
+    code{font-family:var(--font-m);font-size:12px;background:rgba(0,40,80,.5);border:1px solid var(--border);padding:2px 7px;color:var(--green)}
+    .path{color:var(--amber);font-family:var(--font-m);font-size:12px}
+
+    /* Nav path visual */
+    .nav-path{display:flex;align-items:center;flex-wrap:wrap;gap:6px;background:rgba(0,0,0,.4);border:1px solid var(--border);padding:10px 14px;margin:10px 0;font-family:var(--font-m);font-size:12px}
+    .nav-path .arrow{color:var(--dim)}
+    .nav-path .crumb{color:var(--cyan);border:1px solid rgba(0,212,255,.3);padding:2px 8px}
+    .nav-path .crumb.active{background:rgba(0,212,255,.1);color:var(--yellow);border-color:var(--yellow)}
+
+    /* Field row */
+    .field-row{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid rgba(10,61,92,.4)}
+    .field-row:last-child{border-bottom:none}
+    .field-name{font-family:var(--font-m);font-size:11px;color:var(--cyan);flex-shrink:0;width:180px;padding-top:2px}
+    .field-value{font-size:13px;flex:1}
+    .field-value code{display:inline-block}
+
+    /* Callout */
+    .callout{border-left:3px solid var(--purple);padding:10px 14px;background:rgba(123,47,255,.06);margin:12px 0;font-size:13px}
+
+    h2{font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:2px;color:var(--yellow);text-transform:uppercase;margin:16px 0 8px;text-shadow:0 0 10px rgba(255,224,102,.3)}
+    h3{font-family:var(--font-m);font-size:12px;color:var(--green);margin:14px 0 6px;text-transform:uppercase;letter-spacing:1px}
+
+    /* Summary table */
+    table.summary{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+    table.summary th,table.summary td{border:1px solid var(--border);padding:8px 12px}
+    table.summary th{font-family:var(--font-d);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:linear-gradient(rgba(0,40,80,.8),rgba(0,20,50,.8));color:var(--cyan)}
+    table.summary td:first-child{font-family:var(--font-m);font-size:11px;color:var(--amber)}
+
+    a{color:var(--cyan);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .tag{display:inline-block;padding:2px 8px;font-family:var(--font-m);font-size:9px;border:1px solid currentColor;text-transform:uppercase;letter-spacing:1px;margin-left:6px;vertical-align:middle}
+    .tag.free{color:var(--green)}
+    .tag.required{color:var(--red)}
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="guide-header">
+    <h1>Cloudflare Access — Admin Setup Guide</h1>
+    <p>// HOW TO PROTECT YOUR ADMIN PANEL WITH A ONE-TIME EMAIL CODE — STEP BY STEP</p>
+  </div>
+
+  <div class="alert info">
+    <strong>What this does:</strong> Cloudflare Access sits in front of your admin page at the network level.
+    When anyone visits <code>yoursite.com/admin-vp9x2k.html</code>, Cloudflare intercepts them <em>before</em>
+    the page loads and demands authentication. You configured it to only allow <strong>your specific email address</strong>
+    — so Cloudflare sends a one-time code to that email, you enter it, and you're in. Anyone else gets blocked entirely.
+    No password to remember. No way for another Cloudflare user to get in.
+  </div>
+
+  <div class="alert green">
+    <strong>Cost:</strong> Cloudflare Zero Trust has a free tier that covers up to 50 users.
+    This entire setup costs nothing. <span class="tag free">FREE</span>
+  </div>
+
+  <div class="alert amber">
+    <strong>Prerequisite:</strong> Your site domain must already be on Cloudflare (proxied through their nameservers).
+    If you're hosting on GitHub Pages with a custom domain through Cloudflare, you're already set.
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="section">
+    <div class="section-head"><span class="step-num">1</span> Enable Cloudflare Zero Trust</div>
+    <div class="section-body">
+      <p>Log into your Cloudflare dashboard at <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a>.</p>
+      <p>In the left sidebar, look for <strong>Zero Trust</strong>. Click it.</p>
+      <div class="nav-path">
+        <span class="crumb">Cloudflare Dashboard</span>
+        <span class="arrow">›</span>
+        <span class="crumb active">Zero Trust</span>
+      </div>
+      <p>If this is your first time, it will ask you to create a Zero Trust organisation. Enter any team name you want — it doesn't matter, it's just an internal label. Something like <code>vidplayer</code> works fine.</p>
+      <p>When asked to choose a plan, select the <strong>Free plan</strong>. You don't need to enter payment info.</p>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section">
+    <div class="section-head"><span class="step-num">2</span> Create an Access Application</div>
+    <div class="section-body">
+      <p>Inside Zero Trust, navigate to:</p>
+      <div class="nav-path">
+        <span class="crumb">Zero Trust</span>
+        <span class="arrow">›</span>
+        <span class="crumb">Access</span>
+        <span class="arrow">›</span>
+        <span class="crumb active">Applications</span>
+      </div>
+      <p>Click <strong>"Add an application"</strong>, then choose <strong>"Self-hosted"</strong>.</p>
+
+      <h2>Fill in the Application fields</h2>
+      <div class="field-row">
+        <div class="field-name">Application name</div>
+        <div class="field-value">Anything you like — e.g. <code>VidPlayer Admin Panel</code></div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">Session Duration</div>
+        <div class="field-value"><code>24 hours</code> — so you don't need to re-authenticate every visit</div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">Application domain</div>
+        <div class="field-value">
+          Your site domain, e.g. <code>sonicfntech.org</code><br>
+          <span style="font-size:12px;color:var(--dim)">Do NOT include https:// — just the domain</span>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">Path</div>
+        <div class="field-value">
+          <code>admin-vp9x2k.html</code><br>
+          <span style="font-size:12px;color:var(--dim)">This tells Cloudflare to only protect that specific file, not the whole site</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        The full protected URL will be: <code>yoursite.com/admin-vp9x2k.html</code><br>
+        Every other page on your site remains publicly accessible as normal.
+      </div>
+
+      <p>Leave all other settings as defaults. Click <strong>Next</strong>.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section">
+    <div class="section-head"><span class="step-num">3</span> Create the Access Policy (Allow Only Your Email)</div>
+    <div class="section-body">
+      <p>This is the step that makes it yours-only. You're now on the <strong>Policies</strong> screen.</p>
+      <p>Click <strong>"Add a policy"</strong> and fill it in like this:</p>
+
+      <div class="field-row">
+        <div class="field-name">Policy name</div>
+        <div class="field-value"><code>Owner only</code></div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">Action</div>
+        <div class="field-value"><code>Allow</code></div>
+      </div>
+
+      <h2>Include rule (WHO can get in)</h2>
+      <div class="field-row">
+        <div class="field-name">Selector</div>
+        <div class="field-value"><code>Emails</code></div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">Value</div>
+        <div class="field-value">
+          <code>sonicfantech@sonicfntech.org</code><br>
+          <span style="font-size:12px;color:var(--dim)">This is the ONLY email that will receive the login code. Put your real email here.</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Why only your email?</strong> Cloudflare Access sends a one-time code to whatever email tries to log in,
+        but <em>only processes it</em> if the email matches this list. So even if someone else tries their own email,
+        they'll get "Access Denied" — the code only works for the exact address you typed here.
+      </div>
+
+      <p>Click <strong>Save policy</strong>, then <strong>Next</strong>, then <strong>Add application</strong>.</p>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section">
+    <div class="section-head"><span class="step-num">4</span> Set Up the Login Method (One-Time PIN via Email)</div>
+    <div class="section-body">
+      <p>Navigate to:</p>
+      <div class="nav-path">
+        <span class="crumb">Zero Trust</span>
+        <span class="arrow">›</span>
+        <span class="crumb">Settings</span>
+        <span class="arrow">›</span>
+        <span class="crumb active">Authentication</span>
+      </div>
+      <p>Under <strong>"Login methods"</strong>, make sure <strong>One-time PIN</strong> is enabled (it usually is by default on new Zero Trust accounts). This is what sends a 6-digit code to your email when you try to log in.</p>
+      <p>You don't need to add any third-party identity providers (Google, GitHub, etc.) — the one-time PIN is enough.</p>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section">
+    <div class="section-head"><span class="step-num">5</span> Test It</div>
+    <div class="section-body">
+      <p>Open a private/incognito browser window and go to:</p>
+      <p><code>https://yoursite.com/admin-vp9x2k.html</code></p>
+      <p>You should see a <strong>Cloudflare Access login page</strong> — not your admin panel. Enter your email address. You'll receive a 6-digit code by email within seconds. Enter the code and you'll be taken straight to the admin panel.</p>
+
+      <h3>What visitors see if they try to access it</h3>
+      <p>Anyone who visits the URL and enters an email that isn't on your list gets a Cloudflare "Access Denied" page — they never see the admin panel HTML at all. It's blocked at Cloudflare's edge before the request even reaches GitHub Pages.</p>
+
+      <div class="alert amber" style="margin-top:12px">
+        <strong>Important:</strong> Cloudflare Access only works when traffic is proxied through Cloudflare (the orange cloud icon is ON for your domain in the DNS settings). If you ever pause Cloudflare proxying, the admin page would be unprotected.
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6 — Rename the file if you want extra security -->
+  <div class="section">
+    <div class="section-head"><span class="step-num">6</span> (Optional) Rename the Admin File for Extra Obscurity</div>
+    <div class="section-body">
+      <p>The admin file is currently named <code>admin-vp9x2k.html</code> — already not guessable. But if you want to rename it to something even more obscure, like <code>ctrl-9f2a.html</code>, you can. Just update the path in Cloudflare Access to match the new filename.</p>
+      <p>With Cloudflare Access protecting it, the filename barely matters — but defence in depth never hurts.</p>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <div class="section-head">↗ Quick Reference Summary</div>
+    <div class="section-body">
+      <table class="summary">
+        <tr><th>What</th><th>Where / Value</th></tr>
+        <tr><td>Zero Trust dashboard</td><td><a href="https://one.dash.cloudflare.com" target="_blank">one.dash.cloudflare.com</a></td></tr>
+        <tr><td>Application type</td><td>Self-hosted</td></tr>
+        <tr><td>Protected path</td><td><code>admin-vp9x2k.html</code></td></tr>
+        <tr><td>Policy action</td><td>Allow</td></tr>
+        <tr><td>Include selector</td><td>Emails → your email only</td></tr>
+        <tr><td>Login method</td><td>One-time PIN (email code)</td></tr>
+        <tr><td>Session duration</td><td>24 hours (recommended)</td></tr>
+        <tr><td>Cost</td><td>Free (Zero Trust free tier, ≤50 users)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;font-family:var(--font-m);font-size:10px;color:var(--dim);line-height:2;border-top:1px solid var(--border);padding-top:14px">
+    This guide was generated for VidPlayer HQ &nbsp;·&nbsp; sonicfantech@sonicfntech.org &nbsp;·&nbsp;
+    Cloudflare Zero Trust docs: <a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/" target="_blank">developers.cloudflare.com/cloudflare-one</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VidPlayer Changelogs</title>
+  <meta name="description" content="Changelogs for all VidPlayer versions.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="vidplayer.css">
+  <style>
+    .changelog-entry { margin-bottom: 18px; }
+    .changelog-version {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent1);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .changelog-entry ul { margin-top: 6px; }
+    .changelog-entry li { font-size: 13px; margin-bottom: 4px; }
+    .cl-divider { height:1px; background: rgba(10,61,92,0.6); margin: 12px 0; }
+    .changelog-entry h3 {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent3);
+      margin: 10px 0 6px;
+    }
+  </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+<div id="wrapper">
+  <div id="header">
+    <div id="header-grid"></div><div id="header-gfx"></div>
+    <div id="header-inner">
+      <div id="logo-area">
+        <div id="logo-icon"><img src="logo.png" alt="VidPlayer Logo" onerror="this.style.display='none';this.parentElement.textContent='▶'"></div>
+        <div id="logo-text"><h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1><div class="tagline">// CHANGELOGS</div></div>
+      </div>
+      <div id="header-right">
+        <div id="header-note">WHAT CHANGED AND WHEN</div>
+        <div class="header-badges"><span class="hbadge hbadge-cyan">CHANGELOG</span></div>
+      </div>
+    </div>
+  </div>
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+      <li><a href="screenshots.html">Screenshots</a></li>
+      <li><a href="changelogs.html" class="active">Changelogs</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="manuals.html">Manuals</a></li>
+      <li><a href="about.html">About / Credits</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div id="main">
+      <div class="panel">
+        <h2>Modern Builds — Changelogs</h2>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9.3.1.1 Beta-X64 <span class="badge badge-beta">Beta</span> <span class="badge badge-new">Latest</span></div>
+          <h3>Main Beta focus</h3>
+          <ul>
+            <li>First public step forward from the unreleased Experimental branch</li>
+            <li>Multi-language support added into VidPlayer itself</li>
+            <li>VPTheme engine integrated into VidPlayer</li>
+            <li>UI sounds, theme assets, and appearance workflow improvements</li>
+            <li>Playlist, settings, updater, and general polish improvements</li>
+          </ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9.3 Release-X64 <span class="badge badge-modern">Modern</span></div>
+          <ul><li>Major UI / artwork / icon / File Info refresh</li><li>Custom .ico button and menubar icon support</li><li>Reworked Full Screen Artwork behavior</li><li>VPLogo placeholder integration</li><li>Expanded built-in File Info workflow</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9.1.2 Pre-Release-X64 <span class="badge badge-beta">Pre-release</span></div>
+          <ul><li>Python-based external updater rework</li><li>Shared updater settings file</li><li>Rollback snapshots with manifests</li><li>Mini Mode / playlist docking polish</li><li>Portable VLC DLLs updated to 3.0.23</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9.1.1 Experimental <span class="badge badge-beta">Experimental</span></div>
+          <ul><li>Dockable playlist mode added</li><li>Dock positions for top / right / left / bottom / visualizer</li><li>Mini Mode introduced</li><li>First pass of playlist docking and Mini Mode work</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9.1 Pre-Release <span class="badge badge-beta">Pre-release</span></div>
+          <ul><li>Built-in updater removed</li><li>External updater branch started</li><li>Playback moved fully to VLC in this branch</li><li>Subtitle / lyrics support added</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9 Release <span class="badge badge-modern">Modern</span></div>
+          <ul><li>Playlist search added</li><li>FFT visualizer included</li><li>Fixed autoplay behaviour</li><li>Aero Glass removed for stability improvements</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9-BETA-4.2-X64 <span class="badge badge-beta">Beta</span></div>
+          <ul><li>CD ripping via FFmpeg</li><li>Experimental VLC-based Audio CD playback</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9-BETA-4.1-X64 <span class="badge badge-beta">Beta</span></div>
+          <ul><li>Fixed updater freeze at 100%</li><li>Improved updater asset handling and JSON paths</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.9-B <span class="badge badge-beta">Beta</span></div>
+          <ul><li>First PySide6 / Qt GUI build</li><li>New File Info window</li><li>Aero Glass theme introduced</li><li>Fullscreen artwork moved to View menu</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.8.1 <span class="badge badge-modern">Stable</span></div>
+          <ul><li>External artwork now saved across restarts</li><li>Prev/Next controls in fullscreen overlay</li><li>Auto-hide overlay with mouse-move wake</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.8 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>Discord Rich Presence toggle in Settings</li><li>Always on Top setting</li><li>Full Screen Artwork mode</li><li>Fullscreen artwork window</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.7 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>Added Discord RPC</li><li>Default volume changed to 50.0</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.6.1 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>Updated License Agreement</li><li>License and Features/Update Log tabs now load from text files</li><li>Auto-check for updates on startup added</li><li>Check for updates button added to About menu</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.6 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>New About window</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.5 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>Batch-loading progress window added for large file loads</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.4.1 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>Artwork display support</li><li>Settings window</li><li>Early playlist + auto-play-next support</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.4 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>Fixed autoplay-next behavior</li><li>Added more settings options</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.3 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>First attempt at autoplay-next</li><li>Broken / unreleased build</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.2 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>Artwork support</li><li>Settings window</li><li>Playlist support</li><li>Experimental volume slider</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.1 <span class="badge badge-archive">Archive</span></div>
+          <ul><li>Full UI redo</li><li>Light/Dark mode added</li><li>Recent files list</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v2.0.0 — Re-Code <span class="badge badge-archive">Archive</span></div>
+          <ul><li>First re-coded version — new window/UI compared to the very first build</li></ul>
+        </div>
+        <div class="cl-divider"></div>
+
+        <div class="changelog-entry">
+          <div class="changelog-version">v11 — VERY OLD <span class="badge badge-archive">Very Old</span></div>
+          <ul><li>The very first VidPlayer build. Mainly kept for historical record.</li></ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <div class="panel">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="downloads.html">Download all versions</a></li>
+          <li><a href="https://github.com/sonicFanTech/vidplayer/releases" target="_blank">GitHub Releases</a></li>
+          <li><a href="archive.html">Experimental Archive</a></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Legend</h2>
+        <p class="small-note">
+          <span class="badge badge-new">Latest</span> Most recent public build<br><br>
+          <span class="badge badge-modern">Modern</span> Stable / main branch build<br><br>
+          <span class="badge badge-beta">Beta</span> Beta / pre-release / experimental branch<br><br>
+          <span class="badge badge-archive">Archive</span> Old / kept for history
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">&copy; 2000–2026 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech &amp; axel613</div>
+</div>
+<script src="vidplayer.js"></script>
+</body>
+</html>
