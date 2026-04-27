@@ -1,6 +1,6 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
-    <title>Source BSP Explorer - v1.3 (2007 Edition)</title>
+    <title>Source BSP Explorer - C++ Restart Prototype</title>
     <style>
         body {
             background: #008080; /* classic teal Windows 98/2000 look */
@@ -89,6 +89,23 @@
             border-bottom-color: #FFFFFF;
             background: #DFDFDF;
         }
+
+        .button.disabled {
+            background: #A0A0A0;
+            color: #666666;
+            border: 2px solid #808080;
+            border-right-color: #606060;
+            border-bottom-color: #606060;
+            cursor: not-allowed;
+            text-shadow: 1px 1px 0 #D0D0D0;
+        }
+        .button.disabled:hover {
+            background: #A0A0A0;
+            color: #666666;
+            border: 2px solid #808080;
+            border-right-color: #606060;
+            border-bottom-color: #606060;
+        }
         table.feature-table {
             width: 100%;
             border-collapse: collapse;
@@ -136,6 +153,46 @@
             font-size: 11px;
             margin-bottom: 10px;
         }
+
+        .dev-note {
+            background: #FFFACD;
+            border: 3px double #800000;
+            padding: 12px;
+            margin: 15px 0;
+            color: #000000;
+            box-shadow: 2px 2px 0 #808080;
+        }
+        .dev-note h2, .dev-note h3 {
+            color: #800000;
+            margin-top: 0;
+        }
+        .prototype-box {
+            background: #E8F3FF;
+            border: 2px inset #FFFFFF;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        .status-badge {
+            display: inline-block;
+            background: #800000;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            padding: 3px 8px;
+            font-weight: bold;
+            margin: 3px;
+        }
+        .status-badge.green { background: #008000; }
+        .status-badge.blue { background: #000080; }
+        .status-badge.gray { background: #606060; }
+        .mini-list {
+            margin: 8px 0 8px 24px;
+        }
+        .warning-text {
+            color: #800000;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -158,7 +215,7 @@
 
         <!-- MARQUEE -->
         <marquee behavior="scroll" direction="left">
-            v1.0 • Last updated February 2026 • 7614 visitors online
+            C++ RESTART PROTOTYPE NOW AVAILABLE • Phase 1/1.1 basic BSP inspector build • Legacy Python features are still planned to return
         </marquee>
 
         <!-- HERO -->
@@ -166,9 +223,21 @@
             <img src="splash.png" alt="Source BSP Explorer Logo" width="820" height="380" class="screenshot">
             <h1 style="color:#FFFF00; text-shadow: 3px 3px 0 #000000;">THE ULTIMATE .BSP TOOL FOR THE SOURCE ENGINE</h1>
             <p style="font-size:18px; max-width:700px; margin:0 auto;">
-                Open any .BSP file • Inspect every byte • Stunning PyOpenGL 3D render • Export to OBJ • Launch straight into HL2 / TF2 / CSS with custom console commands!
+                Open any .BSP file • Inspect every byte • C++ rebuild now in development • Legacy Python renderer/export/playtest features are planned to return as the new version grows!
             </p>
-            <a href="#download" class="button" style="font-size:22px;">DOWNLOAD v1.0</a>
+            <a href="#download" class="button" style="font-size:22px;">DOWNLOAD C++ PROTOTYPE</a>
+            <div class="dev-note" style="text-align:left; max-width:760px; margin:20px auto 0 auto;">
+                <h2>⚠ Development Restart Notice</h2>
+                <p>
+                    <strong>Source BSP Explorer is being restarted and rebuilt in C++.</strong>
+                    The older Python prototype proved the idea works, but the new version is being rebuilt as a faster native Windows tool with a cleaner DLL-based design.
+                </p>
+                <p>
+                    The current C++ prototype is still very early. It can open Source <code>.bsp</code> files, read the BSP header/lump table, parse entities, and list embedded pakfile entries.
+                    Features shown lower on this page, like 3D rendering, OBJ export, PlayTest, VTF/VMT/VPK texture parsing, and displacement rendering, are legacy/planned features and are not all back in the new C++ build yet.
+                </p>
+                <p class="warning-text">Current build status: Phase 1 / Phase 1.1 prototype — basic BSP inspection only.</p>
+            </div>
         </div>
 
         <div class="content">
@@ -176,9 +245,29 @@
             <!-- ABOUT -->
             <div class="old-bar">◆ WHAT IS SOURCE BSP EXPLORER?</div>
             <p>
-                <strong>Source BSP Explorer</strong> is a standalone Python application (with compiled worker EXEs) that lets you 
-                fully explore, visualize, and modify Source Engine .BSP map files — just like the pros did back in 2004-2007!
+                <strong>Source BSP Explorer</strong> is a standalone tool for inspecting Source Engine <code>.BSP</code> map files — just like the pros did back in 2004-2007!
             </p>
+            <p>
+                The original prototype was made in Python with worker EXEs for heavier features. Development is now being restarted in <strong>C++</strong> so the project can become faster, cleaner, easier to expand, and better suited for large Source maps.
+            </p>
+            <div class="prototype-box">
+                <h2>Current C++ Prototype</h2>
+                <span class="status-badge green">WORKING</span>
+                <span class="status-badge blue">C++</span>
+                <span class="status-badge gray">EARLY BUILD</span>
+                <ul class="mini-list">
+                    <li>Loads Source <code>.bsp</code> files</li>
+                    <li>Checks <code>VBSP</code> magic/header</li>
+                    <li>Reads BSP version and map revision</li>
+                    <li>Shows all 64 lump entries</li>
+                    <li>Parses the entities lump into readable keyvalues</li>
+                    <li>Lists embedded pakfile entries when available</li>
+                    <li>Uses a native Windows GUI instead of requiring CMD commands</li>
+                </ul>
+                <p>
+                    This build is mainly a foundation for the new native version. The bigger visual features will come back in later C++ phases.
+                </p>
+            </div>
             <p>
                 Built for mappers, modders, and Source engine fans. No Hammer required for quick inspection!
             </p>
@@ -186,6 +275,18 @@
             <!-- FEATURES -->
             <div id="features">
                 <div class="old-bar">◆ FEATURES</div>
+                <div class="dev-note">
+                    <h2>C++ Rebuild Roadmap</h2>
+                    <table class="feature-table">
+                        <tbody><tr><th>Stage</th><th>Status</th></tr>
+                        <tr><td><strong>Phase 1 - Basic BSP Inspector</strong></td><td><strong>Available now:</strong> open BSPs, read lumps, parse entities, list pakfile entries.</td></tr>
+                        <tr><td><strong>Phase 1.1 - Better GUI</strong></td><td><strong>In progress/planned:</strong> improved tabs, real list/table controls, search/filter tools, cleaner file info panel.</td></tr>
+                        <tr><td><strong>Phase 2 - 3D Renderer</strong></td><td><strong>Planned:</strong> C++ OpenGL renderer DLL, solid/wire views, camera controls, basic world mesh.</td></tr>
+                        <tr><td><strong>Phase 3 - Materials/Textures</strong></td><td><strong>Planned:</strong> VPK, VMT, VTF parsing through a native asset DLL.</td></tr>
+                        <tr><td><strong>Phase 4+ - Overlays, Export, PlayTest</strong></td><td><strong>Planned:</strong> bring back the bigger legacy Python prototype features in native C++ form.</td></tr>
+                    </tbody></table>
+                    <p class="warning-text">The full feature list below describes the project goal and legacy prototype features. The current C++ prototype does not include all of them yet.</p>
+                </div>
                 <table class="feature-table">
                     <tbody><tr>
                         <th width="30%">Category</th>
@@ -275,16 +376,29 @@
             <!-- DOWNLOAD -->
             <div id="download" style="text-align:center; padding:30px; background:#FFFFE0; border:4px double #000080;">
                 <h2>GET IT NOW - COMPLETELY FREE</h2>
-                <a href="#" onclick="alert('In a real release this would download SourceBSPExplorer_v1.3.zip\n(15.8 MB - Windows XP/Vista/7 ready)'); return false;" class="button" style="font-size:28px; padding:15px 40px;">
-                    DOWNLOAD INSTALLER
+                <div class="dev-note" style="text-align:left;">
+                    <h2>Current Download: C++ Prototype Build</h2>
+                    <p>
+                        This is the new native C++ restart build. It is currently a basic BSP inspector, not the full old Python feature set yet.
+                    </p>
+                    <ul class="mini-list">
+                        <li><strong>Current version:</strong> C++ Prototype v0.2 GUI / Phase 1.1</li>
+                        <li><strong>GitHub release:</strong> <a href="https://github.com/sonicFanTech/SourceBSPExplorer/releases/tag/P_v0.2">P_v0.2</a></li>
+                        <li><strong>Requires:</strong> Windows 7 or newer, x64 recommended</li>
+                        <li><strong>Does not require:</strong> Python, PyOpenGL, Qt, or Source SDK for this early build</li>
+                        <li><strong>Included:</strong> <code>SBSPE.exe</code> + <code>SBSPECore.dll</code></li>
+                    </ul>
+                </div>
+                <a href="#" onclick="playErrorSound(); alert('No installer is available for this prototype build yet. Please use the portable 7Z download instead.'); return false;" class="button disabled" style="font-size:28px; padding:15px 40px;" aria-disabled="true">
+                    DOWNLOAD C++ INSTALLER
                 </a>
-                <a href="#" onclick="alert('In a real release this would download SourceBSPExplorer_v1.3.zip\n(15.8 MB - Windows XP/Vista/7 ready)'); return false;" class="button" style="font-size:28px; padding:15px 40px;">
-                    DOWNLOAD PORTALBLE - ZIP/7Z
-                </a><a href="#" onclick="alert('In a real release this would download SourceBSPExplorer_v1.3.zip\n(15.8 MB - Windows XP/Vista/7 ready)'); return false;" class="button" style="font-size:28px; padding:15px 40px;">
+                <a href="https://github.com/sonicFanTech/SourceBSPExplorer/releases/download/P_v0.2/PROTOTYPE_V0.2.7z" class="button" style="font-size:28px; padding:15px 40px;">
+                    DOWNLOAD C++ PORTABLE - 7Z
+                </a><a href="https://github.com/sonicFanTech/SourceBSPExplorer/releases/tag/P_v0.2" class="button" style="font-size:28px; padding:15px 40px;">
                     GET FROM THE GitHub PAGE
                 </a><p style="margin:15px 0;">
-                    <strong>Requires:</strong> Windows 8.1 or Newer • Python 3.11 or Newer • PyOpenGL<br>
-                    <em>Includes VParsing.exe and DisplaceParsing.exe</em>
+                    <strong>Legacy Python prototype:</strong> Windows 8.1 or newer • Python 3.11 or newer • PyOpenGL<br>
+                    <em>Older Python builds used VParsing.exe and DisplaceParsing.exe. The new C++ version will replace these with native DLL modules over time.</em>
                 </p>
                 
             </div>
@@ -303,12 +417,32 @@
 
         <!-- FOOTER -->
         <footer>
-            © 2026 sonic Fan Tech - Source BSP Explorer • All rights reserved<br>
+            © 2026 sonic Fan Tech - Source BSP Explorer • C++ Restart Prototype • All rights reserved<br>
             <em>"Finally, a .BSP tool that doesn't suck!" - Some guy on Facepunch Forums</em>
         </footer>
     </div>
 
     <script>
+        function playErrorSound() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const ctx = new AudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(180, ctx.currentTime);
+                osc.frequency.setValueAtTime(120, ctx.currentTime + 0.08);
+                gain.gain.setValueAtTime(0.18, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.22);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.24);
+            } catch (e) {
+                console.warn('Could not play error sound:', e);
+            }
+        }
+
         // Simple retro click sound simulation (optional)
         console.log("%cSource BSP Explorer v1.3 loaded successfully! (2007 edition)", "color:#00FF00; font-family:monospace;");
         
