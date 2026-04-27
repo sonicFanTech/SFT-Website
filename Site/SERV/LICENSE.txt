@@ -1,0 +1,90 @@
+SOURCE ENGINE RESOURCES VIEWER (SERV)
+END USER LICENSE AGREEMENT (EULA)
+
+Last Updated: 3/1/26
+
+IMPORTANT: PLEASE READ THIS AGREEMENT CAREFULLY.
+This End User License Agreement (“Agreement”) is a legal agreement between you (“You” or “User”) and sonic Fan Tech (“Licensor,” “We,” “Us”) governing your use of the software known as “Source Engine Resources Viewer (SERV)” and any related components, tools, installers, updates, and documentation (collectively, the “Software”).
+
+BY INSTALLING, COPYING, OR USING THE SOFTWARE, YOU AGREE TO BE BOUND BY THIS AGREEMENT.
+IF YOU DO NOT AGREE, DO NOT INSTALL OR USE THE SOFTWARE.
+
+1) LICENSE GRANT
+Subject to your compliance with this Agreement, Licensor grants you a limited, revocable, non-exclusive, non-transferable license to install and use the Software for personal and/or internal use on devices you own or control.
+
+2) PERMITTED CONTENT SHARING (VIDEOS & SCREENSHOTS)
+You are allowed to:
+a) Record videos, livestreams, and demonstrations of the Software.
+b) Take screenshots of the Software.
+c) Share videos and screenshots publicly (YouTube, social media, etc.) or privately with other people.
+
+These permissions do NOT allow you to redistribute the Software files themselves. See Section 3.
+
+3) RESTRICTIONS (NO RE-UPLOAD / REDISTRIBUTION)
+You may NOT, and may not permit others to:
+a) Copy, reproduce, modify, adapt, translate, or create derivative works of the Software, except as expressly allowed by law.
+b) Reverse engineer, decompile, disassemble, or attempt to derive the source code or underlying ideas of the Software, except where such restriction is prohibited by applicable law.
+c) Redistribute, re-upload, mirror, share, sell, sublicense, rent, lease, lend, publish, upload, or otherwise make the Software (or any of its files) available to any third party, including posting it on websites, Google Drive, Dropbox, file sharing services, app stores, torrents, or “repack” distributions, without Licensor’s prior written permission.
+d) Remove, alter, or obscure any copyright, trademark, logo, or proprietary notices in the Software.
+e) Use the Software to violate any law, regulation, or third-party rights.
+
+You MAY share the official SERV download links (for example, the official GitHub release page). You may not re-host the files.
+
+4) OWNERSHIP
+The Software is licensed, not sold. sonic Fan Tech retains all right, title, and interest in and to the Software, including all copyrights and other intellectual property rights. No rights are granted to you except those expressly stated in this Agreement.
+
+Copyright © sonic Fan Tech. All rights reserved.
+
+5) THIRD-PARTY SOFTWARE AND LICENSES
+The Software may include or interact with third-party software and libraries (“Third-Party Software”). Third-Party Software is licensed to you under its respective license terms. Those terms may impose additional obligations and/or grant additional rights.
+
+Without limiting the above:
+- Some builds/tools may include VLC components (libVLC and/or plugins). VLC components are typically licensed under the GNU LGPL (and/or GPL depending on component/configuration). You are responsible for complying with all applicable Third-Party Software licenses.
+
+Third-Party Software is provided by its respective authors and is not covered by Licensor’s warranties.
+
+6) USER CONTENT / FILES
+The Software may open, inspect, extract, or preview files (including game assets) that you provide. You are solely responsible for:
+a) Ensuring you have the legal right to access and use those files.
+b) Complying with the licenses/terms of any games, mods, or assets you inspect or extract.
+Licensor does not grant you any rights to third-party content.
+
+7) UPDATES AND CHANGES
+Licensor may provide updates, patches, or new versions. Unless Licensor states otherwise, all updates are considered part of the Software and are subject to this Agreement. Licensor may change or discontinue features at any time.
+
+8) PRIVACY
+The Software is intended to run locally. Unless explicitly stated in the Software (for example, an optional update check), the Software does not require you to submit personal data to Licensor. If a feature collects or transmits data, it should be clearly disclosed in the Software or documentation.
+
+9) DISCLAIMER OF WARRANTIES
+THE SOFTWARE IS PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTY OF ANY KIND.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+LICENSOR DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE, UNINTERRUPTED, SECURE, OR COMPATIBLE WITH ANY PARTICULAR SYSTEM OR FILE FORMAT.
+
+10) LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL LICENSOR BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF DATA, PROFITS, REVENUE, OR BUSINESS INTERRUPTION, ARISING OUT OF OR RELATED TO YOUR USE OF (OR INABILITY TO USE) THE SOFTWARE, EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+LICENSOR’S TOTAL LIABILITY FOR ANY CLAIM ARISING OUT OF OR RELATING TO THIS AGREEMENT OR THE SOFTWARE WILL NOT EXCEED THE GREATER OF:
+(a) THE AMOUNT YOU PAID FOR THE SOFTWARE (IF ANY), OR
+(b) USD $10.00.
+
+Some jurisdictions do not allow certain limitations, so these limits may not apply to you to the extent prohibited by law.
+
+11) TERMINATION
+This Agreement is effective until terminated. Licensor may terminate this Agreement immediately if you breach any provision. Upon termination, you must stop using the Software and delete all copies in your possession or control.
+
+12) EXPORT / SANCTIONS COMPLIANCE
+You agree to comply with applicable export control and sanctions laws.
+
+13) GOVERNING LAW
+This Agreement is governed by the laws of your place of residence, unless local law requires otherwise. Any disputes must be brought in a court of competent jurisdiction, unless applicable law provides you additional rights.
+
+14) SEVERABILITY
+If any provision of this Agreement is found unenforceable, the remaining provisions will remain in full force and effect.
+
+15) ENTIRE AGREEMENT
+This Agreement constitutes the entire agreement between you and Licensor regarding the Software and supersedes any prior agreements or understandings.
+
+16) CONTACT
+If you have questions about this Agreement or need permission for redistribution or special licensing, contact:
+sonicfantech@sonicfantech.org
