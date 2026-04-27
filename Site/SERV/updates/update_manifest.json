@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "product": "SERV",
+  "display_name": "Source Engine Resources Viewer",
+  "channel": "beta",
+  "latest_version": "Beta 2",
+  "published_utc": "2026-04-27T00:00:00Z",
+  "downloads": {
+    "installer": "https://github.com/sonicFanTech/SourceEngineResourcesViewer/releases/download/B2/SERV.BETA.2.SETUP.exe",
+    "portable": "https://github.com/sonicFanTech/SourceEngineResourcesViewer/releases/download/B2/SERV_PB2.7z"
+  },
+  "notes": [
+    "Native C++/Qt recode of SERV.",
+    "New SERV Hub with tool metadata scanning.",
+    "Most old tools remade in C++.",
+    "SWATCH Inspector and EXE/DLL Inspector are still planned for later.",
+    "MDL rendering and DEM playback are experimental."
+  ],
+  "components": [
+    { "id": "hub", "name": "SERV Hub", "version": "Beta 2", "type": "app" },
+    { "id": "vpk_browser", "name": "VPK Browser", "version": "0.1.0", "type": "tool" },
+    { "id": "vtf_viewer", "name": "VTF Viewer", "version": "0.1.0", "type": "tool" },
+    { "id": "vmt_viewer", "name": "VMT Viewer", "version": "0.1.0", "type": "tool" },
+    { "id": "mdl_viewer", "name": "MDL Viewer / Inspector", "version": "0.4.x", "type": "tool", "experimental": true },
+    { "id": "vmf_viewer", "name": "VMF Viewer / Inspector", "version": "0.1.0", "type": "tool" },
+    { "id": "nut_viewer", "name": "NUT Viewer / Inspector", "version": "0.1.0", "type": "tool" },
+    { "id": "vcd_viewer", "name": "VCD Viewer / Inspector", "version": "0.1.0", "type": "tool" },
+    { "id": "pcf_inspector", "name": "PCF Inspector", "version": "0.1.0", "type": "tool" },
+    { "id": "snd_inspector", "name": "SND Inspector", "version": "0.1.0", "type": "tool" },
+    { "id": "res_inspector", "name": "RES Inspector", "version": "0.1.0", "type": "tool" },
+    { "id": "sav_inspector", "name": "SAV Inspector", "version": "0.1.0", "type": "tool" },
+    { "id": "launch_options_builder", "name": "Launch Options Builder", "version": "0.1.0", "type": "tool" },
+    { "id": "demo_player_inspector", "name": "DEMO Player / Inspector", "version": "0.4.x", "type": "tool", "experimental": true }
+  ]
+}

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Source Engine Resources Viewer - SERV Beta 2</title>
+  <meta name="description" content="Source Engine Resources Viewer (SERV) is a Windows tool suite for viewing, inspecting, and launching Source Engine resource tools." />
+  <style>
+    :root{
+      --bg:#d7dde6;
+      --panel:#f4f6f9;
+      --paper:#ffffff;
+      --line:#9aa8b8;
+      --line2:#c7d0dc;
+      --ink:#16202c;
+      --muted:#5b6775;
+      --blue:#1d5f9e;
+      --blue2:#0c3e72;
+      --blue3:#e9f3ff;
+      --green:#1d7c46;
+      --orange:#a65b00;
+      --red:#a32020;
+      --mono:Consolas, "Courier New", monospace;
+      --sans:"Segoe UI", Tahoma, Verdana, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;font-family:var(--sans);color:var(--ink);background:linear-gradient(#eef2f7,#c8d2de)}
+    a{color:#064d91;text-decoration:none} a:hover{text-decoration:underline}
+    .shell{width:min(1180px,calc(100% - 28px));margin:14px auto 26px;background:var(--panel);border:1px solid #7f8e9f;box-shadow:0 12px 32px rgba(28,41,58,.25)}
+    .titlebar{height:34px;background:linear-gradient(#e9f0f8,#c7d6e8 45%,#aebfd2 46%,#dbe5ef);border-bottom:1px solid #7f8e9f;display:flex;align-items:center;justify-content:space-between;padding:0 10px;color:#102b43;font-size:13px}
+    .title-left{display:flex;align-items:center;gap:8px;font-weight:600}.icon{width:16px;height:16px;border:1px solid #5f7894;background:linear-gradient(135deg,#dff2ff,#376e9f);box-shadow:inset 2px 2px 0 rgba(255,255,255,.75)}
+    .window-buttons{display:flex;gap:5px}.winbtn{width:22px;height:18px;border:1px solid #7f8e9f;background:linear-gradient(#fff,#cdd8e5);text-align:center;line-height:16px;font-family:var(--mono);font-size:11px;color:#273648}
+    .ribbon{background:linear-gradient(#2e78bd,#15558f);border-bottom:1px solid #0d3d69;color:#fff;padding:12px 16px 10px}.brand{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand h1{margin:0;font-size:25px;font-weight:700;letter-spacing:-.02em}.brand .tag{font-size:13px;opacity:.92;margin-top:3px}.nav{display:flex;gap:2px;margin-top:12px;flex-wrap:wrap}.nav button,.nav a{border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.13);color:white;padding:7px 11px;font:600 12px var(--sans);cursor:pointer}.nav button.active,.nav button:hover,.nav a:hover{background:#fff;color:#134d82;text-decoration:none}
+    .body{display:grid;grid-template-columns:250px 1fr;min-height:640px}.sidebar{border-right:1px solid var(--line);background:#e7edf4;padding:12px}.side-title{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#4d5e70;margin:3px 0 8px;font-weight:700}.tree{border:1px solid var(--line);background:white}.tree button{width:100%;text-align:left;border:0;border-bottom:1px solid #e2e8ef;background:white;padding:8px 10px;font:13px var(--sans);cursor:pointer;color:#1b2a3a}.tree button:hover{background:#eef6ff}.tree button.active{background:#cfe6ff;color:#003b70;font-weight:700}.quick{margin-top:12px;border:1px solid var(--line);background:#fff;padding:10px;font-size:12px;line-height:1.5}.quick b{display:block;margin-bottom:4px}.status-pill{display:inline-block;border:1px solid #8ab99d;background:#edf9f1;color:#126037;font:700 11px var(--mono);padding:2px 5px;margin:2px 0}.main{background:#fff;padding:16px;overflow:hidden}.page{display:none}.page.active{display:block}.headline{border-bottom:1px solid var(--line2);padding-bottom:10px;margin-bottom:12px}.headline h2{font-size:24px;margin:0 0 6px}.headline p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}.section{border:1px solid var(--line);margin:12px 0;background:#fff}.section h3{margin:0;background:linear-gradient(#f6f8fb,#e3eaf2);border-bottom:1px solid var(--line);font-size:14px;padding:8px 10px;color:#1c344f}.section .in{padding:11px 12px;font-size:13px;line-height:1.58}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.download-row{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;border:1px solid #7b8da1;background:linear-gradient(#fff,#dbe5ef);color:#122b45;font-weight:700;font-size:13px;padding:8px 12px;text-decoration:none;cursor:pointer}.btn.primary{background:linear-gradient(#2f82c8,#15558f);border-color:#0d4779;color:white}.btn:hover{text-decoration:none;filter:brightness(1.03)}.note{border-left:4px solid var(--blue);background:#f0f6fd;padding:9px 10px;margin:10px 0;color:#234}.warn{border-left-color:var(--orange);background:#fff8ed}.mono{font-family:var(--mono);background:#f6f8fa;border:1px solid #cfd8e2;padding:8px;white-space:pre-wrap;overflow:auto;font-size:12px;line-height:1.45}.table{width:100%;border-collapse:collapse;font-size:12.5px}.table th,.table td{border:1px solid #cbd5df;padding:7px 8px;text-align:left;vertical-align:top}.table th{background:#e8eff7;color:#20364e}.ok{color:var(--green);font-weight:700}.partial{color:var(--orange);font-weight:700}.missing{color:var(--red);font-weight:700}.legal-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px}.legal-imgs img{max-width:100%;border:1px solid var(--line);background:white}.footer{border-top:1px solid var(--line);background:#e7edf4;padding:8px 12px;font-size:12px;color:#4a5968;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media(max-width:900px){.body{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--line)}.two,.three,.legal-imgs{grid-template-columns:1fr}.shell{width:calc(100% - 12px);margin:6px}.brand h1{font-size:21px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="titlebar"><div class="title-left"><span class="icon"></span> Source Engine Resources Viewer Website</div><div class="window-buttons"><span class="winbtn">_</span><span class="winbtn">□</span><span class="winbtn">×</span></div></div>
+    <header class="ribbon">
+      <div class="brand">
+        <div><h1>Source Engine Resources Viewer</h1><div class="tag">SERV Beta 2 - native C++/Qt tool suite for Source Engine resources</div></div>
+        <div style="font-size:12px;text-align:right;line-height:1.45">Fan-made project<br>Not affiliated with Valve</div>
+      </div>
+      <nav class="nav">
+        <button class="active" data-page="about">About SERV</button>
+        <button data-page="beta2">Beta 2 / C++ Recode</button>
+        <button data-page="downloads">Downloads</button>
+        <button data-page="tools">Tools</button>
+        <button data-page="layout">Portable Layout</button>
+        <button data-page="legal">Legal</button>
+        <a href="documentation.html">Full Documentation</a>
+      </nav>
+    </header>
+    <div class="body">
+      <aside class="sidebar">
+        <div class="side-title">SERV pages</div>
+        <div class="tree">
+          <button class="active" data-page="about">About SERV</button>
+          <button data-page="beta2">Beta 2 / C++ Recode</button>
+          <button data-page="downloads">Downloads</button>
+          <button data-page="tools">Tool List</button>
+          <button data-page="layout">Portable Layout</button>
+          <button data-page="legal">Legal / Third-party</button>
+        </div>
+        <div class="quick">
+          <b>Current release</b>
+          <span class="status-pill">SERV Beta 2</span><br>
+          Native C++ recode with a new Hub and rewritten tools.
+        </div>
+        <div class="quick">
+          <b>Documentation</b>
+          A full detailed manual is now on its own page:<br>
+          <a href="documentation.html">Open SERV Documentation</a>
+        </div>
+      </aside>
+      <main class="main">
+        <section class="page active" id="about">
+          <div class="headline"><h2>About SERV</h2><p>A general overview of the project, separate from the Beta 2 release notes.</p></div>
+          <div class="section"><h3>What is Source Engine Resources Viewer?</h3><div class="in"><b>Source Engine Resources Viewer</b>, shortened to <b>SERV</b>, is a Windows tool suite for opening, inspecting, previewing, and working with files used by Source Engine games and mods. Instead of trying to force every file type into one giant program, SERV uses a central Hub that launches separate specialized tools.</div></div>
+          <div class="two">
+            <div class="section"><h3>Why SERV exists</h3><div class="in">Source Engine projects use many different file formats: maps, textures, materials, archives, models, particles, scripts, scenes, sounds, saves, and demo files. SERV is meant to make those formats easier to inspect without needing to manually jump between unrelated utilities.</div></div>
+            <div class="section"><h3>How SERV works</h3><div class="in">The Hub scans the <span class="mono" style="display:inline;padding:1px 4px">Tools</span> folder, reads each tool's <span class="mono" style="display:inline;padding:1px 4px">tool.servtool.json</span>, checks required DLLs, and lets you launch tools from one place.</div></div>
+          </div>
+          <div class="section"><h3>What SERV is not</h3><div class="in">SERV is not an official Valve tool, not a replacement for Hammer, and not a full game editor. It is a fan-made inspection and helper suite for learning about and working with Source Engine resources.</div></div>
+        </section>
+
+        <section class="page" id="beta2">
+          <div class="headline"><h2>Beta 2 / C++ Recode</h2><p>This section is about the new Beta 2 build specifically.</p></div>
+          <div class="section"><h3>What changed in Beta 2?</h3><div class="in">Beta 2 is a full native C++/Qt recode of SERV. The old Python-based tool suite has been replaced with a new C++ Hub and mostly rewritten native tools. The new design uses small EXEs with dedicated management DLLs, making tools easier to update and organize.</div></div>
+          <div class="three">
+            <div class="section"><h3>Native Hub</h3><div class="in">New Explorer/MMC-style Hub with tool metadata scanning, categories, status checks, launch buttons, and missing dependency detection.</div></div>
+            <div class="section"><h3>Tool DLLs</h3><div class="in">Each major tool now has one or more DLLs for parsing, management, or rendering support. The EXE stays mostly focused on the GUI.</div></div>
+            <div class="section"><h3>Beta notes</h3><div class="in">MDL rendering, DEM playback, and some extraction/preview workflows are functional but still experimental and may need more work.</div></div>
+          </div>
+          <div class="section"><h3>Still not remade in C++ yet</h3><div class="in">Only two old SERV tools are still waiting for their C++ rewrite: <b>SWATCH Inspector</b> and <b>EXE/DLL Inspector</b>. They can be added later without changing the Hub design.</div></div>
+        </section>
+
+        <section class="page" id="downloads">
+          <div class="headline"><h2>Downloads</h2><p>Choose the installer or portable package.</p></div>
+          <div class="section"><h3>Recommended downloads</h3><div class="in"><div class="download-row"><a class="btn primary" href="https://github.com/sonicFanTech/SourceEngineResourcesViewer/releases/download/B2/SERV.BETA.2.SETUP.exe">Download SERV Beta 2 Installer</a><a class="btn" href="https://github.com/sonicFanTech/SourceEngineResourcesViewer/releases/download/B2/SERV_PB2.7z">Download SERV Beta 2 Portable</a><a class="btn" href="https://github.com/sonicFanTech/SourceEngineResourcesViewer">GitHub Repository</a></div><div class="note">Installer is recommended for normal use. Portable is useful for testing, USB drives, or keeping SERV in a custom tools folder.</div></div></div>
+          <div class="section"><h3>Installer vs Portable</h3><div class="in"><table class="table"><tr><th>Build</th><th>Use this when</th></tr><tr><td><b>Installer</b></td><td>You want normal installation, Start Menu entries, and easier setup.</td></tr><tr><td><b>Portable 7z</b></td><td>You want to extract SERV anywhere and manage the folder yourself.</td></tr></table></div></div>
+        </section>
+
+        <section class="page" id="tools">
+          <div class="headline"><h2>Beta 2 Tool List</h2><p>Main tools included in the current C++ rewrite.</p></div>
+          <div class="section"><h3>Tools</h3><div class="in"><table class="table"><thead><tr><th>Tool</th><th>Status</th><th>Purpose</th><th>Main DLL</th></tr></thead><tbody>
+            <tr><td>SERV Hub</td><td class="ok">C++</td><td>Main launcher and tool manager</td><td>SERVManagement.dll</td></tr>
+            <tr><td>Source BSP Explorer</td><td class="partial">Existing C++ tool</td><td>BSP viewing, inspection, and PlayTest support</td><td>Tool-specific DLLs</td></tr>
+            <tr><td>VPK Browser</td><td class="ok">C++</td><td>Browse and extract VPK archives</td><td>VALVE-PK_Management.dll</td></tr>
+            <tr><td>VTF Viewer</td><td class="ok">C++</td><td>Preview and export Valve Texture Format files</td><td>VALVE-TEX_Management.dll</td></tr>
+            <tr><td>VMT Viewer</td><td class="ok">C++</td><td>Inspect Valve material files and texture paths</td><td>VALVE-MAT_Management.dll</td></tr>
+            <tr><td>MDL Viewer / Inspector</td><td class="partial">Experimental</td><td>Model info, companion files, OpenGL preview, texture browser</td><td>VALVE-MDL_*.dll</td></tr>
+            <tr><td>VMF Viewer / Inspector</td><td class="ok">C++</td><td>View and parse Hammer map source files</td><td>VALVE-VMF_Management.dll</td></tr>
+            <tr><td>NUT Viewer / Inspector</td><td class="ok">C++</td><td>Inspect Squirrel scripts</td><td>VALVE-NUT_Management.dll</td></tr>
+            <tr><td>VCD Viewer / Inspector</td><td class="ok">C++</td><td>Inspect Source choreography scene files</td><td>VALVE-VCD_Management.dll</td></tr>
+            <tr><td>PCF Inspector</td><td class="ok">C++</td><td>Inspect particle files and extract readable references</td><td>VALVE-PCF_Management.dll</td></tr>
+            <tr><td>SND Inspector</td><td class="ok">C++</td><td>Inspect sound scripts and audio metadata</td><td>VALVE-SND_Management.dll</td></tr>
+            <tr><td>RES Inspector</td><td class="ok">C++</td><td>Inspect resource lists and referenced files</td><td>VALVE-RES_Management.dll</td></tr>
+            <tr><td>SAV Inspector</td><td class="ok">C++</td><td>Inspect save/binary data, strings, and references</td><td>VALVE-SAV_Management.dll</td></tr>
+            <tr><td>Launch Options Builder</td><td class="ok">C++</td><td>Build Source/Steam launch option strings</td><td>VALVE-LAUNCH_Management.dll</td></tr>
+            <tr><td>DEMO Player / Inspector</td><td class="partial">Experimental</td><td>Inspect .dem files, playlist support, and Source playback launching</td><td>VALVE-DEMO_Management.dll</td></tr>
+            <tr><td>SWATCH Inspector</td><td class="missing">Not remade yet</td><td>Planned C++ rewrite</td><td>None yet</td></tr>
+            <tr><td>EXE/DLL Inspector</td><td class="missing">Not remade yet</td><td>Planned Windows binary/resource inspector</td><td>None yet</td></tr>
+          </tbody></table></div></div>
+        </section>
+
+        <section class="page" id="layout"><div class="headline"><h2>Portable Layout</h2><p>Recommended folder structure for the portable build.</p></div><div class="section"><h3>Folder example</h3><div class="in"><pre class="mono">SERV/
+├─ SERV Hub.exe
+├─ SERVManagement.dll
+├─ Tools/
+│  ├─ Viewers/
+│  │  ├─ VPKBrowser/
+│  │  ├─ VTFViewer/
+│  │  ├─ VMTViewer/
+│  │  ├─ MDLViewer/
+│  │  ├─ VMFViewer/
+│  │  └─ SourceBSPExplorer/
+│  ├─ Inspectors/
+│  │  ├─ NUTViewer/
+│  │  ├─ VCDViewer/
+│  │  ├─ PCFInspector/
+│  │  ├─ SNDInspector/
+│  │  ├─ RESInspector/
+│  │  ├─ SAVInspector/
+│  │  └─ DEMOPlayerInspector/
+│  └─ Other/
+│     └─ LaunchOptionsBuilder/
+├─ legal/
+├─ config/
+└─ logs/</pre><div class="note">Each tool folder should contain its EXE, required custom DLLs, Qt runtime DLLs, <span class="mono" style="display:inline;padding:1px 4px">platforms/qwindows.dll</span>, and <span class="mono" style="display:inline;padding:1px 4px">tool.servtool.json</span>.</div></div></div></section>
+
+        <section class="page" id="legal"><div class="headline"><h2>Legal / Third-party notes</h2><p>SERV is fan-made and not affiliated with Valve.</p></div><div class="section"><h3>Valve / Source Engine</h3><div class="in">SERV is a fan-made tool suite. Valve, Source, Portal, Half-Life, Team Fortress, Counter-Strike, and related names belong to their respective owners. SERV is not official Valve software.</div></div><div class="section"><h3>Resource Hacker permission proof</h3><div class="in"><p>Resource Hacker may be included as an optional unchanged third-party component with permission/credit/legal notes preserved.</p><div class="legal-imgs"><div><img src="permission_Request.png" alt="Resource Hacker permission request screenshot"><p>Permission request screenshot</p></div><div><img src="permission_GOT.png" alt="Resource Hacker permission granted screenshot"><p>Permission granted screenshot</p></div></div></div></div></section>
+      </main>
+    </div>
+    <footer class="footer"><span>SERV Beta 2 website</span><span>Fan-made project - not affiliated with Valve</span></footer>
+  </div>
+<script>
+  const buttons=[...document.querySelectorAll('[data-page]')];
+  const pages=[...document.querySelectorAll('.page')];
+  function show(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));buttons.forEach(b=>b.classList.toggle('active',b.dataset.page===id));}
+  buttons.forEach(b=>b.addEventListener('click',()=>show(b.dataset.page)));
+</script>
+</body>
+</html>
