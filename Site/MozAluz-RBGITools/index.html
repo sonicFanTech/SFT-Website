@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MozAluz RBGI Tools</title>
+  <link rel="icon" href="assets/logo.ico" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="pixel-bg"></div>
+
+  <header class="site-header">
+    <nav class="topbar wrap">
+      <a class="brand" href="#top" aria-label="MozAluz RBGI Tools home">
+        <img src="assets/logo.png" alt="MozAluz RBGI Tools logo" />
+        <span>MozAluz RBGI Tools</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links">
+        <a href="#tools">Tools</a>
+        <a href="#format">RBGI Format</a>
+        <a href="#viewer">Viewer</a>
+        <a href="#editor">Editor</a>
+        <a href="#download">Download</a>
+        <a href="sdk.html">SDK Page</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-card glow-card">
+        <img class="hero-banner" src="assets/banner.png" alt="RBGI Tools banner" />
+        <p class="eyebrow">Custom image tools for render backgrounds and skybox-style previews</p>
+        <h1>MozAluz RBGI Tools</h1>
+        <p class="lead">
+          MozAluz RBGI Tools is a Windows desktop toolkit for creating, editing, previewing,
+          and managing <strong>.RBGI</strong> files. RBGI stands for <strong>Render Background Image</strong>,
+          a custom image type made for render backgrounds, SkyBox images, OpenGL previews,
+          and future graphics tools.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/sonicFanTech/MozAluz-RBGITOOLS/releases/download/v1/MozAluz_RBGI_TOOLS_V1.0.0.7z">Download v1.0.0</a>
+          <a class="button secondary" href="https://github.com/sonicFanTech/MozAluz-RBGITOOLS">GitHub Page</a>
+          <a class="button secondary" href="#screenshots">View Screenshots</a>
+          <a class="button secondary" href="sdk.html">Open SDK Page</a>
+        </div>
+        <div class="badges" aria-label="Project details">
+          <span>Version 1.0.0</span>
+          <span>Pre-compiled build</span>
+          <span>Windows</span>
+          <span>Qt 6</span>
+          <span>OpenGL</span>
+          <span>Win32 Launcher</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap sdk-callout">
+      <div class="sdk-callout-card glow-card">
+        <div>
+          <p class="eyebrow">New open-source part</p>
+          <h2>.RBGI Format SDK</h2>
+          <p>
+            The <strong>.RBGI Format SDK</strong> now has its own page on this website. The SDK is the
+            open-source part of the project and contains the format-side code for reading, writing,
+            and understanding real RBGI files. The Viewer and Editor remain official closed-source tools.
+          </p>
+        </div>
+        <div class="sdk-callout-actions">
+          <a class="button primary" href="sdk.html">Go to SDK Page</a>
+          <a class="button secondary" href="#format">Learn about the format</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap grid intro-grid" id="tools">
+      <article class="card">
+        <div class="icon-chip">🚀</div>
+        <h2>Launcher</h2>
+        <p>
+          A small Win32 launcher that lets you choose between opening the RBGI Viewer,
+          opening the RBGI Editor, opening the program folder, or exiting. It uses the
+          custom RBGI Tools banner and logo to make the package feel like one complete toolset.
+        </p>
+      </article>
+      <article class="card">
+        <div class="icon-chip">🖼️</div>
+        <h2>Viewer</h2>
+        <p>
+          A dedicated .RBGI viewer with Flat, 3D Flat, and Full 3D viewing modes. It can open
+          legacy renamed-PNG .RBGI files and real RBGI v1 files with embedded metadata.
+        </p>
+      </article>
+      <article class="card">
+        <div class="icon-chip">🎨</div>
+        <h2>Editor</h2>
+        <p>
+          A Paint.NET-style basic image editor for making new RBGI files, importing images,
+          drawing on a canvas, editing metadata, and exporting real RBGI v1 files.
+        </p>
+      </article>
+      <article class="card">
+        <div class="icon-chip">🔧</div>
+        <h2>SharedRBGIformat.dll</h2>
+        <p>
+          A shared format library used by both the Viewer and Editor. It keeps the RBGI read/write
+          logic in one place so future tools can use the same format system.
+        </p>
+      </article>
+    </section>
+
+    <section class="wrap split" id="format">
+      <div class="panel">
+        <p class="eyebrow">The custom file type</p>
+        <h2>What is an .RBGI file?</h2>
+        <p>
+          <strong>.RBGI</strong> means <strong>Render Background Image</strong>. In early versions,
+          an RBGI file could simply be a PNG file renamed to <code>.RBGI</code>. MozAluz RBGI Tools
+          still supports those legacy files, but v1.0.0 also supports a real RBGI v1 container.
+        </p>
+        <p>
+          A real RBGI v1 file can hold image data and metadata together. That means your render
+          background can describe what it is meant for, what type of image it is, what projection
+          mode it uses, what default viewer mode it should open with, and other notes for tools.
+        </p>
+      </div>
+      <div class="spec-card">
+        <h3>RBGI v1 container idea</h3>
+        <pre><code>Magic:        RBGI
+Version:      1
+Metadata:     JSON
+Image Data:   PNG bytes
+Use Case:     Render background / SkyBox</code></pre>
+        <ul>
+          <li>Legacy renamed-PNG RBGI support</li>
+          <li>Real RBGI v1 metadata support</li>
+          <li>Designed for render previews and SkyBox workflows</li>
+          <li>Reusable through SharedRBGIformat.dll</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap feature-section" id="viewer">
+      <div class="section-heading">
+        <p class="eyebrow">Preview and inspect</p>
+        <h2>MozAluz RBGI Viewer</h2>
+        <p>
+          The Viewer is made for opening RBGI files quickly and seeing how they look in multiple render styles.
+          It is useful for checking a render background before using it inside another program, such as a Source BSP
+          viewer, OpenGL tool, or future MozAluz editor feature.
+        </p>
+      </div>
+      <div class="feature-list">
+        <div>
+          <h3>Flat Mode</h3>
+          <p>Displays the image normally, like a standard image viewer.</p>
+        </div>
+        <div>
+          <h3>3D Flat Mode</h3>
+          <p>Draws the image as a flat OpenGL plane that you can rotate to test angle and depth.</p>
+        </div>
+        <div>
+          <h3>Full 3D Mode</h3>
+          <p>Uses the image on a 3D square/cube-style preview for checking SkyBox-like use cases.</p>
+        </div>
+        <div>
+          <h3>File Info Panel</h3>
+          <p>Shows size, format type, version, RBGI mode, and JSON metadata when available.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap feature-section" id="editor">
+      <div class="section-heading">
+        <p class="eyebrow">Create and edit</p>
+        <h2>MozAluz RBGI Image Editor</h2>
+        <p>
+          The Editor is a separate program from the Viewer. It is built to feel more like a real image editor,
+          while still staying simple enough for early RBGI file creation. It can create a blank RBGI image,
+          import normal images, draw on the canvas, edit colors, and export to the real RBGI v1 format.
+        </p>
+      </div>
+      <div class="feature-list wide">
+        <div><h3>New RBGI Image</h3><p>Create a blank canvas with custom size, color, and RBGI metadata.</p></div>
+        <div><h3>Brush / Eraser</h3><p>Paint simple pixels or erase areas on the transparent checkerboard canvas.</p></div>
+        <div><h3>Fill Bucket</h3><p>Fill large areas with a chosen color for fast background creation.</p></div>
+        <div><h3>Eyedropper</h3><p>Pick a color directly from the canvas and use it as the brush color.</p></div>
+        <div><h3>Image Adjustments</h3><p>Apply grayscale, invert, sepia, tint, brightness, contrast, saturation, and shade/posterize changes.</p></div>
+        <div><h3>Metadata Editor</h3><p>Set RBGI name, author, type, projection, tile mode, background color, default view mode, and notes.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap screenshots" id="screenshots">
+      <div class="section-heading center">
+        <p class="eyebrow">Screenshots</p>
+        <h2>How the tools look</h2>
+        <p>These screenshots show the v1.0.0 launcher, viewer, and editor in use.</p>
+      </div>
+      <div class="screenshot-grid">
+        <figure class="screenshot-card">
+          <img src="assets/screenshots/launcher.png" alt="MozAluz RBGI Launcher screenshot" />
+          <figcaption>
+            <strong>Launcher</strong>
+            <span>Choose Viewer, Editor, program folder, or exit.</span>
+          </figcaption>
+        </figure>
+        <figure class="screenshot-card large">
+          <img src="assets/screenshots/viewer-3d-flat.png" alt="MozAluz RBGI Viewer 3D Flat mode screenshot" />
+          <figcaption>
+            <strong>Viewer</strong>
+            <span>3D Flat mode with the RBGI file info panel open.</span>
+          </figcaption>
+        </figure>
+        <figure class="screenshot-card large">
+          <img src="assets/screenshots/editor-metadata.png" alt="MozAluz RBGI Editor metadata dialog screenshot" />
+          <figcaption>
+            <strong>Editor</strong>
+            <span>Paint.NET-style editor layout with the RBGI metadata dialog.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wrap split" id="download">
+      <div class="download-card glow-card">
+        <img src="assets/banner.png" alt="RBGI Tools banner" />
+        <h2>Download MozAluz RBGI Tools v1.0.0</h2>
+        <p>
+          The release download is the pre-compiled MozAluz RBGI Tools package. It includes
+          the Launcher, Viewer, Editor, and SharedRBGIformat.dll, ready to run after extracting.
+        </p>
+        <a class="button primary big" href="https://github.com/sonicFanTech/MozAluz-RBGITOOLS/releases/download/v1/MozAluz_RBGI_TOOLS_V1.0.0.7z">Download Pre-compiled Build</a>
+        <p class="download-links"><a href="https://github.com/sonicFanTech/MozAluz-RBGITOOLS">View the GitHub page</a></p>
+      </div>
+      <div class="panel build-panel">
+        <h2>Project notes</h2>
+        <ol>
+          <li>The website download button points to the GitHub Release build.</li>
+          <li>The public download is meant to be the compiled app package, not the source package.</li>
+          <li>Extract the <code>.7z</code> release file before running the launcher.</li>
+          <li>Start with <code>MozAluz_RBGI_Launcher.exe</code> to choose the Viewer or Editor.</li>
+          <li>The Qt-based Viewer and Editor need their bundled Qt DLL files in the same release folder.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="wrap roadmap">
+      <div class="section-heading center">
+        <p class="eyebrow">Future ideas</p>
+        <h2>Possible next updates</h2>
+      </div>
+      <div class="roadmap-grid">
+        <div><span>01</span><p>Real six-sided SkyBox RBGI files with front/back/left/right/top/bottom image slots.</p></div>
+        <div><span>02</span><p>More Paint.NET-like tools such as selection, move selected pixels, shapes, gradients, and layers.</p></div>
+        <div><span>03</span><p>File association installer support so double-clicking .RBGI opens the Viewer.</p></div>
+        <div><span>04</span><p>Use RBGI backgrounds directly inside Source BSP Explorer or other OpenGL render tools.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <img src="assets/banner.png" alt="RBGI Tools banner" />
+        <p>MozAluz RBGI Tools v1.0.0 — created by sonic Fan Tech.</p>
+      </div>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

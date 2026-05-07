@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>.RBGI Format SDK - Select Save</title>
+  <link rel="icon" href="assets/logo.ico" />
+  <link rel="stylesheet" href="sdk.css" />
+</head>
+<body>
+  <audio id="drone-audio" loop preload="auto">
+    <source src="assets/audio/AUDIO_DRONE.ogg" type="audio/ogg" />
+  </audio>
+  <audio id="menu-move-audio" preload="auto">
+    <source src="assets/audio/snd_menumove.wav" type="audio/wav" />
+  </audio>
+  <audio id="select-audio" preload="auto">
+    <source src="assets/audio/snd_select.wav" type="audio/wav" />
+  </audio>
+
+  <main class="ch1-page">
+    <span class="selector-soul" id="selector-soul" aria-hidden="true">♥</span>
+
+    <header class="chapter-header">
+      <div class="chapter-title">CHAPTER 1</div>
+      <button id="audio-toggle" class="audio-toggle menu-sound selectable" type="button">AUDIO</button>
+    </header>
+
+    <section class="save-select" aria-label=".RBGI Format SDK save select style page">
+      <button class="save-file selected menu-sound select-sound selectable" type="button" data-panel="overview">
+        <span class="file-main">
+          <span class="file-name">[RBGI SDK]</span>
+          <span class="file-line">----------------</span>
+        </span>
+        <span class="file-time">--:--</span>
+      </button>
+
+      <button class="save-file menu-sound select-sound selectable" type="button" data-panel="download-sdk">
+        <span class="file-main">
+          <span class="file-name">[SOURCE]</span>
+          <span class="file-line">----------------</span>
+        </span>
+        <span class="file-time">--:--</span>
+      </button>
+
+      <button class="save-file menu-sound select-sound selectable" type="button" data-panel="specs">
+        <span class="file-main">
+          <span class="file-name">[FORMAT]</span>
+          <span class="file-line">----------------</span>
+        </span>
+        <span class="file-time">--:--</span>
+      </button>
+    </section>
+
+    <nav class="bottom-menu" aria-label="SDK page navigation">
+      <button class="menu-choice menu-button menu-sound select-sound selectable inactive-choice" type="button">COPY</button>
+      <button class="menu-choice menu-button menu-sound select-sound selectable inactive-choice" type="button">ERASE</button>
+      <button class="menu-choice menu-button menu-sound select-sound selectable inactive-choice" type="button">CHAPTER SELECT</button>
+      <button class="menu-choice menu-button lang menu-sound select-sound selectable inactive-choice" type="button">日本語</button>
+      <a class="menu-choice menu-sound select-sound selectable" href="index.html">END PROGRAM</a>
+    </nav>
+
+    <div class="version">1.41</div>
+
+    <section class="sdk-content" id="overview" hidden>
+      <div class="content-box">
+        <h1>.RBGI FORMAT SDK</h1>
+        <p>
+          The .RBGI Format SDK is the open-source part of MozAluz RBGI Tools. It contains the
+          format DLL source files, headers, documentation, and example code for the public file format layer.
+        </p>
+        <p>
+          The SDK is built around <code>SharedRBGIformat.dll</code>, <code>RbgiFormat.h</code>, and
+          <code>RbgiFormat.cpp</code>. It is written in C++17 with Qt 6 and is used for loading, saving,
+          validating, and inspecting .RBGI files.
+        </p>
+        <p>
+          MozAluz RBGI Viewer and MozAluz RBGI Editor remain official closed-source tools. The SDK exists
+          so other programs can support .RBGI files without needing the Viewer or Editor source code.
+        </p>
+      </div>
+    </section>
+
+    <section class="sdk-content" id="download-sdk" hidden>
+      <div class="content-box">
+        <h2>DOWNLOAD / SOURCE</h2>
+        <p>
+          Get the public .RBGI Format SDK source code from GitHub, read the SDK README, or download
+          the V1 source package. This SDK repo should only contain the format layer, not the closed-source
+          Viewer or Editor projects.
+        </p>
+        <div class="link-list">
+          <a class="green-link menu-sound select-sound selectable" href="https://github.com/sonicFanTech/RBGIFormat-SDK">SDK GITHUB PAGE</a>
+          <a class="green-link menu-sound select-sound selectable" href="https://github.com/sonicFanTech/RBGIFormat-SDK/blob/main/README.md">SDK README</a>
+          <a class="green-link menu-sound select-sound selectable" href="https://github.com/sonicFanTech/RBGIFormat-SDK/releases/download/V1/RBGIFormatSDK.zip">DOWNLOAD SDK V1</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sdk-content" id="specs" hidden>
+      <div class="content-box format-doc">
+        <h2>FORMAT DETAILS</h2>
+
+        <p>
+          <strong>.RBGI</strong> means <strong>Render Background Image</strong>. It was made so tools like
+          Source BSP Explorer could use a custom render-background / skybox-background file type instead of
+          using normal image extensions directly.
+        </p>
+
+        <p>
+          A real <strong>RBGI v1</strong> file is not just a renamed PNG. It is a small custom container that
+          stores a binary RBGI header, compact JSON metadata, and embedded PNG image bytes.
+        </p>
+
+        <pre>REAL RBGI V1:
+[ RBGI HEADER ][ JSON METADATA ][ PNG IMAGE DATA ]</pre>
+
+        <div class="format-grid">
+          <article>
+            <h3>1. RBGI HEADER</h3>
+            <p>
+              The file starts with the magic bytes <code>RBGI</code>. After that, the SDK reads a
+              little-endian header containing the format version, header size, image width, image height,
+              image mode, reserved flags, metadata size, and embedded PNG size.
+            </p>
+          </article>
+
+          <article>
+            <h3>2. JSON METADATA</h3>
+            <p>
+              Metadata is stored as a compact JSON object. It can describe the asset name, source project,
+              creator tool, description, or other information needed by editors, viewers, or render tools.
+            </p>
+          </article>
+
+          <article>
+            <h3>3. PNG IMAGE BYTES</h3>
+            <p>
+              The actual picture is stored as embedded PNG data. This keeps the image data simple and reliable,
+              while the RBGI wrapper gives the file a custom identity and room for extra render metadata.
+            </p>
+          </article>
+
+          <article>
+            <h3>4. LEGACY SUPPORT</h3>
+            <p>
+              Older .RBGI files may be normal PNG files renamed to <code>.RBGI</code>. The SDK still tries to
+              load those legacy files so old backgrounds do not become useless.
+            </p>
+          </article>
+        </div>
+
+        <h3>HEADER LAYOUT</h3>
+        <pre>OFFSET  TYPE      NAME
+0       char[4]   magic = "RBGI"
+4       quint16   version = 1
+6       quint32   headerSize = 38
+10      quint32   width
+14      quint32   height
+18      quint32   image mode
+22      quint32   flags
+26      quint64   pngSize
+34      quint32   metadataSize
+38      byte[]    compact JSON metadata
+38+M    byte[]    embedded PNG bytes</pre>
+
+        <h3>IMAGE MODES</h3>
+        <p>
+          The SDK has multiple image mode values so .RBGI files can describe how they are meant to be used.
+        </p>
+        <pre>0 = FlatImage
+1 = RenderBackground
+2 = SkyBoxSingleTexture
+3 = SkyBoxCubeTexture</pre>
+
+        <h3>HOW THE LOADER WORKS</h3>
+        <pre>1. Read the file bytes.
+2. Check if the file starts with "RBGI".
+3. If yes, load it as a real RBGI v1 file.
+4. If no, try to load it as PNG image data.
+5. If PNG loading works, mark it as a legacy renamed-PNG RBGI.
+6. If both paths fail, the file is invalid.</pre>
+
+        <h3>SDK OUTPUT</h3>
+        <p>
+          When loading a file, the SDK returns a document-style result with the decoded image, width, height,
+          metadata, image mode, version, flags, embedded PNG bytes, legacy-file status, validity state, and
+          an error message if something failed.
+        </p>
+
+        <h3>SAFETY LIMITS</h3>
+        <p>
+          The SDK includes safety checks for invalid files. It rejects empty files, unsupported versions,
+          invalid metadata JSON, invalid PNG data, and files that are neither real RBGI v1 files nor valid
+          legacy PNG data.
+        </p>
+
+        <pre>MAX METADATA SIZE: 8 MiB
+MAX PNG SIZE:      512 MiB</pre>
+
+        <h3>WHEN TO USE REAL RBGI V1</h3>
+        <p>
+          New tools should save real RBGI v1 files using the SDK's real save function. Legacy renamed-PNG
+          saving should only be used when older compatibility is needed.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="sdk.js"></script>
+</body>
+</html>
