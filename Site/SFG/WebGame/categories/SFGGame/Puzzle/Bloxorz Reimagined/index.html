@@ -3,22 +3,58 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
     <title>Unity WebGL Player | BloxorzReimagined</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
+    <link rel="stylesheet" href="TemplateData/style.css?v=br-webgl-fixed-1">
+
+    <!-- Fallback so UnityLoader does not break if UnityProgress.js gets cached or fails to load. -->
+    <script>
+      window.UnityProgress = window.UnityProgress || function (unityInstance, progress) {
+        if (!unityInstance || !unityInstance.Module) return;
+        var style = unityInstance.Module.splashScreenStyle || "Dark";
+        if (!unityInstance.logo) {
+          unityInstance.logo = document.createElement("div");
+          unityInstance.logo.className = "logo " + style;
+          unityInstance.container.appendChild(unityInstance.logo);
+        }
+        if (!unityInstance.progress) {
+          unityInstance.progress = document.createElement("div");
+          unityInstance.progress.className = "progress " + style;
+          unityInstance.progress.empty = document.createElement("div");
+          unityInstance.progress.empty.className = "empty";
+          unityInstance.progress.appendChild(unityInstance.progress.empty);
+          unityInstance.progress.full = document.createElement("div");
+          unityInstance.progress.full.className = "full";
+          unityInstance.progress.appendChild(unityInstance.progress.full);
+          unityInstance.container.appendChild(unityInstance.progress);
+        }
+        var full = Math.max(0, Math.min(100, 100 * progress));
+        unityInstance.progress.full.style.width = full + "%";
+        unityInstance.progress.empty.style.width = (100 - full) + "%";
+        if (progress >= 1) unityInstance.logo.style.display = unityInstance.progress.style.display = "none";
+      };
+    </script>
+    <script src="TemplateData/UnityProgress.js?v=br-webgl-fixed-1"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/BR_WEB.json", {onProgress: UnityProgress});
+      window.addEventListener("load", function () {
+        var container = document.getElementById("unityContainer");
+        if (typeof UnityLoader === "undefined") {
+          container.innerHTML = '<div style="padding:24px;color:#fff;font-family:Arial">Could not load <b>Build/UnityLoader.js</b>. Make sure the Build folder was uploaded next to index.html.</div>';
+          return;
+        }
+        window.unityInstance = UnityLoader.instantiate("unityContainer", "Build/BR_WebGL.json", { onProgress: window.UnityProgress });
+      });
     </script>
   </head>
   <body>
     <div class="webgl-content">
       <div id="unityContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="webgl-logo" title="Bloxorz Reimagined WebGL"></div>
         <div class="title">BloxorzReimagined</div>
+        <div class="fullscreen" onclick="if (window.unityInstance) unityInstance.SetFullscreen(1)" title="Fullscreen"></div>
       </div>
     </div>
   </body>
