@@ -1,16 +1,78 @@
-{
-"companyName": "DefaultCompany",
-"productName": "BloxorzReimagined",
-"productVersion": "1.0",
-"dataUrl": "BR_WEB.data.unityweb",
-"wasmCodeUrl": "BR_WEB.wasm.code.unityweb",
-"wasmFrameworkUrl": "BR_WEB.wasm.framework.unityweb",
-"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
-"webglContextAttributes": {"preserveDrawingBuffer": false},
-"splashScreenStyle": "Dark",
-"backgroundColor": "#231F20",
-"cacheControl": {"default": "must-revalidate"},
-"developmentBuild": false,
-"multithreading": false,
-"unityVersion": "2019.4.40f1"
-}
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+    <title>Unity WebGL Player | BloxorzReimagined</title>
+
+    <!-- Absolute paths are used because the WebGame library/wrapper can display this page from /Site/SFG/WebGame/index.html. -->
+    <link rel="shortcut icon" href="/Site/SFG/WebGame/categories/SFGGame/Puzzle/Bloxorz%20Reimagined/TemplateData/favicon.ico">
+    <link rel="stylesheet" href="/Site/SFG/WebGame/categories/SFGGame/Puzzle/Bloxorz%20Reimagined/TemplateData/style.css?v=br-webgl-absolute-2">
+
+    <!-- Fallback so UnityLoader does not break if UnityProgress.js gets cached or fails to load. -->
+    <script>
+      window.UnityProgress = window.UnityProgress || function (unityInstance, progress) {
+        if (!unityInstance || !unityInstance.Module) return;
+        var style = unityInstance.Module.splashScreenStyle || "Dark";
+        if (!unityInstance.logo) {
+          unityInstance.logo = document.createElement("div");
+          unityInstance.logo.className = "logo " + style;
+          unityInstance.container.appendChild(unityInstance.logo);
+        }
+        if (!unityInstance.progress) {
+          unityInstance.progress = document.createElement("div");
+          unityInstance.progress.className = "progress " + style;
+          unityInstance.progress.empty = document.createElement("div");
+          unityInstance.progress.empty.className = "empty";
+          unityInstance.progress.appendChild(unityInstance.progress.empty);
+          unityInstance.progress.full = document.createElement("div");
+          unityInstance.progress.full.className = "full";
+          unityInstance.progress.appendChild(unityInstance.progress.full);
+          unityInstance.container.appendChild(unityInstance.progress);
+        }
+        var full = Math.max(0, Math.min(100, 100 * progress));
+        unityInstance.progress.full.style.width = full + "%";
+        unityInstance.progress.empty.style.width = (100 - full) + "%";
+        if (progress >= 1) unityInstance.logo.style.display = unityInstance.progress.style.display = "none";
+      };
+    </script>
+    <script src="/Site/SFG/WebGame/categories/SFGGame/Puzzle/Bloxorz%20Reimagined/TemplateData/UnityProgress.js?v=br-webgl-absolute-2"></script>
+    <script src="/Site/SFG/WebGame/categories/SFGGame/Puzzle/Bloxorz%20Reimagined/Build/UnityLoader.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        var GAME_ROOT = "/Site/SFG/WebGame/categories/SFGGame/Puzzle/Bloxorz%20Reimagined/";
+        var container = document.getElementById("unityContainer");
+
+        if (typeof UnityLoader === "undefined") {
+          container.innerHTML = '<div style="padding:24px;color:#fff;font-family:Arial">Could not load <b>' + GAME_ROOT + 'Build/UnityLoader.js</b>. Make sure the Build folder exists inside the Bloxorz Reimagined folder.</div>';
+          return;
+        }
+
+        // Optional quick test: if the JSON URL returns HTML, the Build folder/path is still wrong.
+        fetch(GAME_ROOT + "Build/BR_WebGL.json", { cache: "no-store" })
+          .then(function (response) { return response.text(); })
+          .then(function (text) {
+            if (text.trim().charAt(0) === "<") {
+              container.innerHTML = '<div style="padding:24px;color:#fff;font-family:Arial;line-height:1.5"><b>Unity build JSON is returning HTML instead of JSON.</b><br>Check this file on the server:<br><code>' + GAME_ROOT + 'Build/BR_WebGL.json</code></div>';
+              return;
+            }
+            window.unityInstance = UnityLoader.instantiate("unityContainer", GAME_ROOT + "Build/BR_WebGL.json", { onProgress: window.UnityProgress });
+          })
+          .catch(function () {
+            window.unityInstance = UnityLoader.instantiate("unityContainer", GAME_ROOT + "Build/BR_WebGL.json", { onProgress: window.UnityProgress });
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo" title="Bloxorz Reimagined WebGL"></div>
+        <div class="title">BloxorzReimagined</div>
+        <div class="fullscreen" onclick="if (window.unityInstance) unityInstance.SetFullscreen(1)" title="Fullscreen"></div>
+      </div>
+    </div>
+  </body>
+</html>
