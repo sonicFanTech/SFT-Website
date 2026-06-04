@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pyIDE FAQ - C++ Recode, Legacy Release, AI Assistant</title>
+  <meta name="description" content="Frequently asked questions about pyIDE, the v2.0 C++ recode, legacy downloads, AI assistant permissions, local models, and localization.">
+  <link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/retro-components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="site-shell">
+    <div class="utility-bar"><span><span class="status-led gray"></span>FAQ</span><div class="utility-controls"><label><span data-ui-label="language">Language</span><select id="languageSelect" aria-label="Language"><option value="auto">Auto</option><option value="en">English</option><option value="ar">Arabic</option><option value="fr">French</option><option value="de">German</option><option value="he">Hebrew</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="ko">Korean</option><option value="pl">Polish</option><option value="pt">Portuguese</option><option value="ru">Russian</option><option value="es">Spanish</option><option value="tr">Turkish</option></select></label><label><span data-ui-label="theme">Theme</span><select id="themeSelect" aria-label="Theme"><option value="light">Classic</option><option value="dark">Dark</option></select></label></div></div>
+    <header class="site-header"><div class="header-banner"><a class="brand" href="index.html"><img src="assets/images/branding/pyide-logo.svg" alt="pyIDE"></a><span class="version-badge">Frequently Asked Questions</span></div><nav class="main-nav" id="mainNav" aria-label="Primary navigation"><button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-ui-label="nav">Navigation</button><a href="index.html"><img class="nav-icon" src="assets/images/icons/home.svg" alt="">Home</a><a href="features.html"><img class="nav-icon" src="assets/images/icons/features.svg" alt="">Features</a><a href="ai-assistant.html"><img class="nav-icon" src="assets/images/icons/ai-assistant.svg" alt="">AI Assistant</a><a href="development.html"><img class="nav-icon" src="assets/images/icons/development.svg" alt="">C++ Recode</a><a href="screenshots.html"><img class="nav-icon" src="assets/images/icons/screenshots.svg" alt="">Screenshots</a><a href="downloads.html"><img class="nav-icon" src="assets/images/icons/downloads.svg" alt="">Downloads</a><a href="docs.html"><img class="nav-icon" src="assets/images/icons/docs.svg" alt="">Documentation</a><a href="faq.html"><img class="nav-icon" src="assets/images/icons/faq.svg" alt="">FAQ</a><a href="legacy.html"><img class="nav-icon" src="assets/images/icons/legacy.svg" alt="">Legacy Version</a><a href="about.html"><img class="nav-icon" src="assets/images/icons/about.svg" alt="">About</a></nav></header>
+    <div class="layout">
+      <aside class="sidebar"><div class="side-panel"><div class="side-title"><img src="assets/images/icons/faq.svg" alt="">Related</div><div class="side-body"><ul class="side-links"><li><a href="downloads.html">Downloads</a></li><li><a href="development.html">C++ Recode</a></li><li><a href="ai-assistant.html">AI Assistant</a></li><li><a href="legacy.html">Legacy Version</a></li></ul></div></div><div class="side-panel"><div class="side-title"><img src="assets/images/icons/information.svg" alt="">Version Status</div><div class="side-body"><ul class="version-list"><li><strong>Current Stable Version:</strong><br>Legacy Python Release</li><li><strong>Next Major Version:</strong><br>pyIDE v2.0 C++ Recode</li><li><strong>v2.0 Status:</strong><br><span class="status-label dev">In Development</span></li></ul></div></div></aside>
+      <main class="main-content" id="content">
+        <div class="breadcrumb"><a href="index.html">Home</a> &gt; FAQ</div>
+        <section class="panel"><div class="panel-title"><img src="assets/images/icons/faq.svg" alt="">Frequently Asked Questions</div><div class="panel-body"><h1>Frequently Asked Questions</h1><p class="lead">Straight answers about the legacy release, the C++ recode, and the experimental AI Desktop Assistant.</p></div></section>
+        <details class="faq-item" open><summary>What is pyIDE?</summary><div>pyIDE is a lightweight Windows-focused IDE originally designed primarily for Python development.</div></details>
+        <details class="faq-item"><summary>Is pyIDE v2.0 available yet?</summary><div>No. pyIDE v2.0 is an in-development C++ recode and no public v2.0 download is listed.</div></details>
+        <details class="faq-item"><summary>Why is pyIDE being rewritten in C++?</summary><div>The C++ recode is intended to improve responsiveness, maintainability, and room for future expansion while preserving the useful workflow of the original Python version.</div></details>
+        <details class="faq-item"><summary>Can I still download the older Python version?</summary><div>Yes. The legacy Python release remains available through the preserved GitHub release links on the downloads page.</div></details>
+        <details class="faq-item"><summary>Is pyIDE only for Python?</summary><div>The original release was primarily designed for Python development. v2.0 may become more expandable, but Python remains the documented legacy focus.</div></details>
+        <details class="faq-item"><summary>Does pyIDE include a compiler?</summary><div>The legacy version includes a PyInstaller helper for packaging Python scripts as Windows executables.</div></details>
+        <details class="faq-item"><summary>What is the AI Desktop Assistant?</summary><div>An experimental built-in v2.0 assistant intended to help explain code, inspect project context, search project text, and assist with changes through controlled pyIDE tools.</div></details>
+        <details class="faq-item"><summary>Can the AI assistant access every file on my computer?</summary><div>No such unrestricted access is claimed. The design is scoped to the active pyIDE project when the user enables permission.</div></details>
+        <details class="faq-item"><summary>What does Allow pyIDE Control do?</summary><div>It is the user-controlled option required before assistant project tools should run.</div></details>
+        <details class="faq-item"><summary>Does the AI assistant require an active project folder?</summary><div>Project tools are designed to require an active project folder so pyIDE has a clear scope.</div></details>
+        <details class="faq-item"><summary>Can the AI assistant leave the active project folder?</summary><div>The tool layer is designed to reject unsafe paths and path traversal attempts such as <code>../</code>.</div></details>
+        <details class="faq-item"><summary>Is the AI assistant finished?</summary><div>No. It is experimental and in active development.</div></details>
+        <details class="faq-item"><summary>Can AI changes be undone?</summary><div>Recoverable edit batches and undo support for assistant changes are in development and should not be treated as complete until verified in a public build.</div></details>
+        <details class="faq-item"><summary>Does pyIDE support local AI models?</summary><div>Local coding models are part of the current development direction. The setup has been tested with Qwen2.5-Coder 7B, but compatibility details may change.</div></details>
+        <details class="faq-item"><summary>Is Qwen2.5-Coder 7B required?</summary><div>Not according to the website documentation. It is listed as a tested local coding model, not as the only supported model.</div></details>
+        <details class="faq-item"><summary>Where are pyIDE settings saved?</summary><div>The legacy release uses persistent configuration, including settings such as recent files, themes, autosave, interpreter paths, and console preferences. Exact v2.0 settings paths should be documented when finalized.</div></details>
+        <details class="faq-item"><summary>Does pyIDE support multiple languages?</summary><div>The legacy website and downloads include multiple languages. The v2.0 design goal is external JSON-based <code>.langu</code> files.</div></details>
+        <details class="faq-item"><summary>What Windows versions are supported?</summary><div>The site does not fabricate exact v2.0 requirements. Final v2.0 system requirements will be published closer to release.</div></details>
+        <details class="faq-item"><summary>Where can I follow development?</summary><div>Use the existing GitHub repository: <a href="https://github.com/sonicFanTech/pyIDE" target="_blank" rel="noreferrer">github.com/sonicFanTech/pyIDE</a>.</div></details>
+      </main>
+    </div>
+    <footer class="footer"><div class="footer-grid"><div><strong>pyIDE</strong> - FAQ. Last updated <span id="year">2026</span>.</div><div class="footer-links"><a href="index.html">Home</a><a href="downloads.html">Downloads</a><a href="docs.html">Documentation</a><a href="https://github.com/sonicFanTech/pyIDE" target="_blank" rel="noreferrer">GitHub</a><a href="legacy.html">Legacy Version</a></div></div></footer>
+  </div>
+</body>
+</html>
