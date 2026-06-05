@@ -1,0 +1,186 @@
+    <!doctype html>
+    <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title data-i18n="pages.projectManagerGuide.title">Project Manager Guide | pyIDE</title>
+      <meta name="description" content="Open project folders, manage files, search projects, and understand the active-project boundary." data-i18n-meta-description="pages.projectManagerGuide.meta">
+      <link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
+      <link rel="stylesheet" href="assets/css/site.css">
+      <link rel="stylesheet" href="assets/css/retro-components.css">
+      <link rel="stylesheet" href="assets/css/responsive.css">
+      <script defer src="assets/js/translations.generated.js"></script>
+      <script defer src="assets/js/site.js"></script>
+    </head>
+    <body data-page="projectManagerGuide">
+      <a class="skip-link" href="#content" data-i18n="shared.skip">Skip to content</a>
+      <div class="site-shell">
+        <div class="utility-bar">
+          <span><span class="status-led"></span><span data-i18n="pages.projectManagerGuide.utility">Project manager guide</span></span>
+          <div class="utility-controls" data-i18n-aria-label="shared.aria.siteControls" aria-label="Site controls">
+            <label><span data-i18n="shared.language.label">Language</span>
+              <select id="languageSelect" aria-label="Language" data-i18n-aria-label="shared.language.label"><option value="auto" data-i18n="shared.language.auto">Auto</option><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="he">עברית</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="pl">Polski</option><option value="pt">Português</option><option value="ru">Русский</option><option value="es">Español</option><option value="tr">Türkçe</option></select>
+            </label>
+            <label><span data-i18n="shared.theme.label">Theme</span>
+              <select id="themeSelect" aria-label="Theme" data-i18n-aria-label="shared.theme.label">
+                <option value="light" data-i18n="shared.theme.classic">Classic</option>
+                <option value="dark" data-i18n="shared.theme.dark">Dark</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <header class="site-header">
+          <div class="header-banner">
+            <a class="brand" href="index.html" aria-label="pyIDE home"><img src="assets/images/branding/pyide-logo.svg" alt="pyIDE"></a>
+            <span class="version-badge" data-i18n="pages.projectManagerGuide.badge">Projects</span>
+          </div>
+          <nav class="main-nav" id="mainNav" data-i18n-aria-label="shared.aria.primaryNav" aria-label="Primary navigation">
+            <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n="shared.navToggle">Navigation</button>
+            <a href="index.html"><img class="nav-icon" src="assets/images/icons/home.svg" alt=""><span data-i18n="shared.nav.home">Home</span></a>
+          <a href="features.html"><img class="nav-icon" src="assets/images/icons/features.svg" alt=""><span data-i18n="shared.nav.features">Features</span></a>
+          <a href="ai-assistant.html"><img class="nav-icon" src="assets/images/icons/ai-assistant.svg" alt=""><span data-i18n="shared.nav.aiAssistant">AI Assistant</span></a>
+          <a href="development.html"><img class="nav-icon" src="assets/images/icons/development.svg" alt=""><span data-i18n="shared.nav.development">C++ Recode</span></a>
+          <a href="screenshots.html"><img class="nav-icon" src="assets/images/icons/screenshots.svg" alt=""><span data-i18n="shared.nav.screenshots">Screenshots</span></a>
+          <a href="downloads.html"><img class="nav-icon" src="assets/images/icons/downloads.svg" alt=""><span data-i18n="shared.nav.downloads">Downloads</span></a>
+          <a href="docs.html"><img class="nav-icon" src="assets/images/icons/docs.svg" alt=""><span data-i18n="shared.nav.docs">Documentation</span></a>
+          <a href="faq.html"><img class="nav-icon" src="assets/images/icons/faq.svg" alt=""><span data-i18n="shared.nav.faq">FAQ</span></a>
+          <a href="legacy.html"><img class="nav-icon" src="assets/images/icons/legacy.svg" alt=""><span data-i18n="shared.nav.legacy">Legacy Version</span></a>
+          <a href="about.html"><img class="nav-icon" src="assets/images/icons/about.svg" alt=""><span data-i18n="shared.nav.about">About</span></a>
+          </nav>
+        </header>
+        <div class="layout">
+          <aside class="sidebar" aria-label="Sidebar">
+
+        <div class="side-panel">
+          <div class="side-title"><img src="assets/images/icons/docs.svg" alt=""><span data-i18n="shared.sidebar.help">Help Topics</span></div>
+          <div class="side-body"><ul class="side-links doc-sidebar"><li><a href="docs.html"><img src="assets/images/icons/docs.svg" alt=""><span data-i18n="shared.docsSidebar.docs">Documentation Home</span></a></li><li><a href="getting-started.html"><img src="assets/images/icons/docs.svg" alt=""><span data-i18n="shared.docsSidebar.gettingStarted">Getting Started</span></a></li><li><a href="installation.html"><img src="assets/images/icons/downloads.svg" alt=""><span data-i18n="shared.docsSidebar.installation">Installation</span></a></li><li><a href="editor-guide.html"><img src="assets/images/icons/editor.svg" alt=""><span data-i18n="shared.docsSidebar.editorGuide">Editor Guide</span></a></li><li><a href="project-manager-guide.html" class="active" aria-current="page"><img src="assets/images/icons/project-files.svg" alt=""><span data-i18n="shared.docsSidebar.projectManagerGuide">Project Manager</span></a></li><li><a href="running-scripts.html"><img src="assets/images/icons/run.svg" alt=""><span data-i18n="shared.docsSidebar.runningScripts">Running Scripts</span></a></li><li><a href="interpreter-manager.html"><img src="assets/images/icons/terminal.svg" alt=""><span data-i18n="shared.docsSidebar.interpreterManager">Interpreter Manager</span></a></li><li><a href="compiler-guide.html"><img src="assets/images/icons/compiler.svg" alt=""><span data-i18n="shared.docsSidebar.compilerGuide">Compiler Window</span></a></li><li><a href="settings-guide.html"><img src="assets/images/icons/settings.svg" alt=""><span data-i18n="shared.docsSidebar.settingsGuide">Settings</span></a></li><li><a href="shortcuts.html"><img src="assets/images/icons/shortcuts.svg" alt=""><span data-i18n="shared.docsSidebar.shortcuts">Keyboard Shortcuts</span></a></li><li><a href="ai-assistant-guide.html"><img src="assets/images/icons/ai-assistant.svg" alt=""><span data-i18n="shared.docsSidebar.aiAssistantGuide">AI Assistant Guide</span></a></li><li><a href="ai-permissions.html"><img src="assets/images/icons/security.svg" alt=""><span data-i18n="shared.docsSidebar.aiPermissions">AI Permission Controls</span></a></li><li><a href="troubleshooting.html"><img src="assets/images/icons/warning.svg" alt=""><span data-i18n="shared.docsSidebar.troubleshooting">Troubleshooting</span></a></li><li><a href="legacy-guide.html"><img src="assets/images/icons/legacy.svg" alt=""><span data-i18n="shared.docsSidebar.legacyGuide">Legacy Version Notes</span></a></li><li><a href="faq.html"><img src="assets/images/icons/faq.svg" alt=""><span data-i18n="shared.docsSidebar.faq">FAQ</span></a></li></ul></div>
+        </div>
+        <div class="side-panel">
+          <div class="side-title"><img src="assets/images/icons/information.svg" alt=""><span data-i18n="shared.sidebar.version">Version Status</span></div>
+          <div class="side-body">
+            <ul class="version-list">
+              <li><strong data-i18n="shared.sidebar.currentStable">Current Stable Version:</strong><br><span data-i18n="shared.sidebar.legacyRelease">Legacy Python Release</span></li>
+              <li><strong data-i18n="shared.sidebar.nextMajor">Next Major Version:</strong><br>pyIDE v2.0 C++ Recode</li>
+              <li><strong data-i18n="shared.sidebar.status">v2.0 Status:</strong><br><span class="status-label dev" data-i18n="shared.sidebar.inDevelopment">In Development</span></li>
+            </ul>
+          </div>
+        </div>
+
+          </aside>
+          <main class="main-content" id="content">
+            <div class="breadcrumb" data-i18n-html="pages.projectManagerGuide.breadcrumb"><a href="index.html">Home</a> &gt; Project Manager Guide</div>
+            <div data-i18n-html="pages.projectManagerGuide.body">
+
+      <section class="intro-box" aria-labelledby="projectManagerGuide-title">
+        <div class="intro-copy">
+          <h1 id="projectManagerGuide-title">Project Manager Guide</h1>
+          <p class="lead">Open project folders, manage files, search projects, and understand the active-project boundary.</p>
+          <div class="badge-row">
+            <span class="badge dev">v2.0 In Development</span>
+            <span class="badge legacy">Legacy Python Release</span>
+          </div>
+        </div>
+
+      <div class="quick-status">
+        <h2>Status</h2>
+        <p><strong>pyIDE v2.0:</strong> Public v2.0 download is not available yet.</p>
+        <p><strong>Legacy Python Release:</strong> Legacy Python Release</p>
+      </div>
+
+      </section>
+
+<section class="panel" id="opening-projects">
+<div class="panel-title"><img src="assets/images/icons/project-files.svg" alt="">Opening projects</div>
+<div class="panel-body">
+<p>Open a folder to make it the active project in pyIDE.</p>
+<ul class="check-list">
+<li>The dockable project tree shows files and folders.</li>
+<li>Double-click a project file to open it in the editor.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="active-project">
+<div class="panel-title"><img src="assets/images/icons/information.svg" alt="">Active project concept</div>
+<div class="panel-body">
+<p>The active project is the folder pyIDE uses for browsing, search, and scoped assistant tools.</p>
+<ul class="check-list">
+<li>Only one folder should be treated as active at a time.</li>
+<li>Use clear project folders for predictable paths.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="creating-items">
+<div class="panel-title"><img src="assets/images/icons/project-files.svg" alt="">Creating files and folders</div>
+<div class="panel-body">
+<p>Project actions can create new files and folders inside the active project.</p>
+<ul class="check-list">
+<li>Create files for Python modules, notes, or resources.</li>
+<li>Create folders to organize scripts and packages.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="rename-delete">
+<div class="panel-title"><img src="assets/images/icons/warning.svg" alt="">Rename and delete</div>
+<div class="panel-body">
+<p>Rename and delete actions change the filesystem and should be used carefully.</p>
+<ul class="check-list">
+<li>Confirm deletion before removing files.</li>
+<li>Make sure a file is not open or running before major changes.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="file-explorer">
+<div class="panel-title"><img src="assets/images/icons/source.svg" alt="">Open in File Explorer</div>
+<div class="panel-body">
+<p>Use File Explorer integration to inspect the real project location in Windows.</p>
+<ul class="check-list">
+<li>This helps confirm paths and external files.</li>
+<li>Unavailable actions may mean the folder is missing or inaccessible.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="search">
+<div class="panel-title"><img src="assets/images/icons/features.svg" alt="">Search the active project</div>
+<div class="panel-body">
+<p>Project search helps locate text across files in the active project.</p>
+<ul class="check-list">
+<li>Search returns no results when text is absent or files are outside scope.</li>
+<li>Use specific terms for faster results.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="ai-boundary">
+<div class="panel-title"><img src="assets/images/icons/security.svg" alt="">AI assistant project boundary</div>
+<div class="panel-body">
+<p>The active project acts as the assistant boundary when Allow pyIDE Control is enabled.</p>
+<ul class="check-list">
+<li>Tools should stay inside the active project.</li>
+<li>Path traversal such as ../ must be rejected.</li>
+</ul>
+<div class="button-row"><a class="classic-button" href="ai-permissions.html#active-project-boundary">AI Project Boundary</a></div>
+</div></section>
+            </div>
+          </main>
+        </div>
+        <footer class="footer">
+          <div class="footer-grid">
+            <div data-i18n-html="shared.footer.notice"><strong>pyIDE</strong> - sonicFanTech lightweight Windows IDE. Last updated <span id="year">2026</span>.</div>
+            <div class="footer-links">
+              <a href="index.html" data-i18n="shared.footer.home">Home</a>
+              <a href="downloads.html" data-i18n="shared.footer.downloads">Downloads</a>
+              <a href="docs.html" data-i18n="shared.footer.docs">Documentation</a>
+              <a href="https://github.com/sonicFanTech/pyIDE" target="_blank" rel="noreferrer" data-i18n="shared.footer.github">GitHub</a>
+              <a href="legacy.html" data-i18n="shared.footer.legacy">Legacy Version</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="lightbox" id="lightbox" hidden>
+        <button class="classic-button lightbox-close" id="lightboxClose" type="button">Close</button>
+        <figure>
+          <img id="lightboxImage" alt="">
+          <figcaption id="lightboxCaption"></figcaption>
+        </figure>
+      </div>
+    </body>
+    </html>

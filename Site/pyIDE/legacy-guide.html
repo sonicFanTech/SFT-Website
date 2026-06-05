@@ -1,0 +1,173 @@
+    <!doctype html>
+    <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title data-i18n="pages.legacyGuide.title">Legacy Version Notes | pyIDE</title>
+      <meta name="description" content="Documentation for the downloadable original Python and PySide6 pyIDE version." data-i18n-meta-description="pages.legacyGuide.meta">
+      <link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
+      <link rel="stylesheet" href="assets/css/site.css">
+      <link rel="stylesheet" href="assets/css/retro-components.css">
+      <link rel="stylesheet" href="assets/css/responsive.css">
+      <script defer src="assets/js/translations.generated.js"></script>
+      <script defer src="assets/js/site.js"></script>
+    </head>
+    <body data-page="legacyGuide">
+      <a class="skip-link" href="#content" data-i18n="shared.skip">Skip to content</a>
+      <div class="site-shell">
+        <div class="utility-bar">
+          <span><span class="status-led"></span><span data-i18n="pages.legacyGuide.utility">Legacy guide</span></span>
+          <div class="utility-controls" data-i18n-aria-label="shared.aria.siteControls" aria-label="Site controls">
+            <label><span data-i18n="shared.language.label">Language</span>
+              <select id="languageSelect" aria-label="Language" data-i18n-aria-label="shared.language.label"><option value="auto" data-i18n="shared.language.auto">Auto</option><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="he">עברית</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="pl">Polski</option><option value="pt">Português</option><option value="ru">Русский</option><option value="es">Español</option><option value="tr">Türkçe</option></select>
+            </label>
+            <label><span data-i18n="shared.theme.label">Theme</span>
+              <select id="themeSelect" aria-label="Theme" data-i18n-aria-label="shared.theme.label">
+                <option value="light" data-i18n="shared.theme.classic">Classic</option>
+                <option value="dark" data-i18n="shared.theme.dark">Dark</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <header class="site-header">
+          <div class="header-banner">
+            <a class="brand" href="index.html" aria-label="pyIDE home"><img src="assets/images/branding/pyide-logo.svg" alt="pyIDE"></a>
+            <span class="version-badge" data-i18n="pages.legacyGuide.badge">Legacy Python Release</span>
+          </div>
+          <nav class="main-nav" id="mainNav" data-i18n-aria-label="shared.aria.primaryNav" aria-label="Primary navigation">
+            <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" data-i18n="shared.navToggle">Navigation</button>
+            <a href="index.html"><img class="nav-icon" src="assets/images/icons/home.svg" alt=""><span data-i18n="shared.nav.home">Home</span></a>
+          <a href="features.html"><img class="nav-icon" src="assets/images/icons/features.svg" alt=""><span data-i18n="shared.nav.features">Features</span></a>
+          <a href="ai-assistant.html"><img class="nav-icon" src="assets/images/icons/ai-assistant.svg" alt=""><span data-i18n="shared.nav.aiAssistant">AI Assistant</span></a>
+          <a href="development.html"><img class="nav-icon" src="assets/images/icons/development.svg" alt=""><span data-i18n="shared.nav.development">C++ Recode</span></a>
+          <a href="screenshots.html"><img class="nav-icon" src="assets/images/icons/screenshots.svg" alt=""><span data-i18n="shared.nav.screenshots">Screenshots</span></a>
+          <a href="downloads.html"><img class="nav-icon" src="assets/images/icons/downloads.svg" alt=""><span data-i18n="shared.nav.downloads">Downloads</span></a>
+          <a href="docs.html"><img class="nav-icon" src="assets/images/icons/docs.svg" alt=""><span data-i18n="shared.nav.docs">Documentation</span></a>
+          <a href="faq.html"><img class="nav-icon" src="assets/images/icons/faq.svg" alt=""><span data-i18n="shared.nav.faq">FAQ</span></a>
+          <a href="legacy.html"><img class="nav-icon" src="assets/images/icons/legacy.svg" alt=""><span data-i18n="shared.nav.legacy">Legacy Version</span></a>
+          <a href="about.html"><img class="nav-icon" src="assets/images/icons/about.svg" alt=""><span data-i18n="shared.nav.about">About</span></a>
+          </nav>
+        </header>
+        <div class="layout">
+          <aside class="sidebar" aria-label="Sidebar">
+
+        <div class="side-panel">
+          <div class="side-title"><img src="assets/images/icons/docs.svg" alt=""><span data-i18n="shared.sidebar.help">Help Topics</span></div>
+          <div class="side-body"><ul class="side-links doc-sidebar"><li><a href="docs.html"><img src="assets/images/icons/docs.svg" alt=""><span data-i18n="shared.docsSidebar.docs">Documentation Home</span></a></li><li><a href="getting-started.html"><img src="assets/images/icons/docs.svg" alt=""><span data-i18n="shared.docsSidebar.gettingStarted">Getting Started</span></a></li><li><a href="installation.html"><img src="assets/images/icons/downloads.svg" alt=""><span data-i18n="shared.docsSidebar.installation">Installation</span></a></li><li><a href="editor-guide.html"><img src="assets/images/icons/editor.svg" alt=""><span data-i18n="shared.docsSidebar.editorGuide">Editor Guide</span></a></li><li><a href="project-manager-guide.html"><img src="assets/images/icons/project-files.svg" alt=""><span data-i18n="shared.docsSidebar.projectManagerGuide">Project Manager</span></a></li><li><a href="running-scripts.html"><img src="assets/images/icons/run.svg" alt=""><span data-i18n="shared.docsSidebar.runningScripts">Running Scripts</span></a></li><li><a href="interpreter-manager.html"><img src="assets/images/icons/terminal.svg" alt=""><span data-i18n="shared.docsSidebar.interpreterManager">Interpreter Manager</span></a></li><li><a href="compiler-guide.html"><img src="assets/images/icons/compiler.svg" alt=""><span data-i18n="shared.docsSidebar.compilerGuide">Compiler Window</span></a></li><li><a href="settings-guide.html"><img src="assets/images/icons/settings.svg" alt=""><span data-i18n="shared.docsSidebar.settingsGuide">Settings</span></a></li><li><a href="shortcuts.html"><img src="assets/images/icons/shortcuts.svg" alt=""><span data-i18n="shared.docsSidebar.shortcuts">Keyboard Shortcuts</span></a></li><li><a href="ai-assistant-guide.html"><img src="assets/images/icons/ai-assistant.svg" alt=""><span data-i18n="shared.docsSidebar.aiAssistantGuide">AI Assistant Guide</span></a></li><li><a href="ai-permissions.html"><img src="assets/images/icons/security.svg" alt=""><span data-i18n="shared.docsSidebar.aiPermissions">AI Permission Controls</span></a></li><li><a href="troubleshooting.html"><img src="assets/images/icons/warning.svg" alt=""><span data-i18n="shared.docsSidebar.troubleshooting">Troubleshooting</span></a></li><li><a href="legacy-guide.html" class="active" aria-current="page"><img src="assets/images/icons/legacy.svg" alt=""><span data-i18n="shared.docsSidebar.legacyGuide">Legacy Version Notes</span></a></li><li><a href="faq.html"><img src="assets/images/icons/faq.svg" alt=""><span data-i18n="shared.docsSidebar.faq">FAQ</span></a></li></ul></div>
+        </div>
+        <div class="side-panel">
+          <div class="side-title"><img src="assets/images/icons/information.svg" alt=""><span data-i18n="shared.sidebar.version">Version Status</span></div>
+          <div class="side-body">
+            <ul class="version-list">
+              <li><strong data-i18n="shared.sidebar.currentStable">Current Stable Version:</strong><br><span data-i18n="shared.sidebar.legacyRelease">Legacy Python Release</span></li>
+              <li><strong data-i18n="shared.sidebar.nextMajor">Next Major Version:</strong><br>pyIDE v2.0 C++ Recode</li>
+              <li><strong data-i18n="shared.sidebar.status">v2.0 Status:</strong><br><span class="status-label dev" data-i18n="shared.sidebar.inDevelopment">In Development</span></li>
+            </ul>
+          </div>
+        </div>
+
+          </aside>
+          <main class="main-content" id="content">
+            <div class="breadcrumb" data-i18n-html="pages.legacyGuide.breadcrumb"><a href="index.html">Home</a> &gt; Legacy Version Notes</div>
+            <div data-i18n-html="pages.legacyGuide.body">
+
+      <section class="intro-box" aria-labelledby="legacyGuide-title">
+        <div class="intro-copy">
+          <h1 id="legacyGuide-title">Legacy Version Notes</h1>
+          <p class="lead">Documentation for the downloadable original Python and PySide6 pyIDE version.</p>
+          <div class="badge-row">
+            <span class="badge dev">v2.0 In Development</span>
+            <span class="badge legacy">Legacy Python Release</span>
+          </div>
+        </div>
+
+      <div class="quick-status">
+        <h2>Status</h2>
+        <p><strong>pyIDE v2.0:</strong> Public v2.0 download is not available yet.</p>
+        <p><strong>Legacy Python Release:</strong> Legacy Python Release</p>
+      </div>
+
+      </section>
+
+<section class="panel" id="editor">
+<div class="panel-title"><img src="assets/images/icons/editor.svg" alt="">Tabbed editor</div>
+<div class="panel-body">
+<p>The legacy version includes a tabbed editor for multiple files and untitled files.</p>
+<ul class="check-list">
+<li>Unsaved indicators.</li>
+<li>Line numbers.</li>
+<li>Find and replace.</li>
+<li>Recent files.</li>
+<li>Autosave.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="project">
+<div class="panel-title"><img src="assets/images/icons/project-files.svg" alt="">Project-file tree</div>
+<div class="panel-body">
+<p>The project tree supports practical file management.</p>
+<ul class="check-list">
+<li>Open project folders.</li>
+<li>Create, rename, delete, and open files.</li>
+<li>Search where supported.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="run">
+<div class="panel-title"><img src="assets/images/icons/run.svg" alt="">Run workflow</div>
+<div class="panel-body">
+<p>The legacy version supports internal execution, an output panel, stdin input, script stopping, and external terminals.</p>
+<ul class="check-list">
+<li>F5 internal run.</li>
+<li>Shift+F5 stop.</li>
+<li>Ctrl+F5 external console.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="tools">
+<div class="panel-title"><img src="assets/images/icons/compiler.svg" alt="">Tools</div>
+<div class="panel-body">
+<p>Tools include interpreter manager, optional Jedi support, syntax checking, a PyInstaller helper, and settings persistence.</p>
+<ul class="check-list">
+<li>Legacy configuration can use pyide_config.json.</li>
+<li>Portable behavior applies where supported.</li>
+<li>Keyboard shortcuts are documented separately.</li>
+</ul>
+
+</div></section>
+<section class="panel" id="future">
+<div class="panel-title"><img src="assets/images/icons/development.svg" alt="">Future direction</div>
+<div class="panel-body">
+<p>The C++ recode and AI Desktop Assistant are separate in-development directions.</p>
+<ul class="check-list">
+<li>Read the development page.</li>
+<li>Read the AI assistant overview.</li>
+<li>Read the AI assistant guide.</li>
+</ul>
+<div class="button-row"><a class="classic-button" href="development.html">Development</a><a class="classic-button" href="ai-assistant.html">AI Assistant</a><a class="classic-button" href="ai-assistant-guide.html">AI Assistant Guide</a></div>
+</div></section>
+            </div>
+          </main>
+        </div>
+        <footer class="footer">
+          <div class="footer-grid">
+            <div data-i18n-html="shared.footer.notice"><strong>pyIDE</strong> - sonicFanTech lightweight Windows IDE. Last updated <span id="year">2026</span>.</div>
+            <div class="footer-links">
+              <a href="index.html" data-i18n="shared.footer.home">Home</a>
+              <a href="downloads.html" data-i18n="shared.footer.downloads">Downloads</a>
+              <a href="docs.html" data-i18n="shared.footer.docs">Documentation</a>
+              <a href="https://github.com/sonicFanTech/pyIDE" target="_blank" rel="noreferrer" data-i18n="shared.footer.github">GitHub</a>
+              <a href="legacy.html" data-i18n="shared.footer.legacy">Legacy Version</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="lightbox" id="lightbox" hidden>
+        <button class="classic-button lightbox-close" id="lightboxClose" type="button">Close</button>
+        <figure>
+          <img id="lightboxImage" alt="">
+          <figcaption id="lightboxCaption"></figcaption>
+        </figure>
+      </div>
+    </body>
+    </html>
