@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Level 2.22 variable survival class badge</title>
+  <desc id="desc">A diamond-shaped concrete and hazard-striped badge with elevator doors, an illuminated fault indicator, and a question mark.</desc>
+  <defs>
+    <clipPath id="inner-diamond">
+      <path d="M256 42 470 256 256 470 42 256Z"/>
+    </clipPath>
+    <pattern id="hazard" width="62" height="62" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="31" height="62" fill="#d5ad22"/>
+      <rect x="31" width="31" height="62" fill="#272e2e"/>
+    </pattern>
+    <filter id="red-glow" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <path d="M256 12 500 256 256 500 12 256Z" fill="#202626" stroke="#111515" stroke-width="16"/>
+  <path d="M256 30 482 256 256 482 30 256Z" fill="#7f8c8c" stroke="#c8d0cb" stroke-width="6"/>
+  <path d="M256 42 470 256 256 470 42 256Z" fill="#596764" stroke="#252d2c" stroke-width="8"/>
+
+  <g clip-path="url(#inner-diamond)">
+    <rect x="0" y="309" width="512" height="78" fill="url(#hazard)"/>
+    <path d="M54 187H458M54 279H458" stroke="#98aaa6" stroke-width="5" opacity=".42"/>
+    <path d="M83 141H429M83 403H429" stroke="#d2dbd6" stroke-width="3" opacity=".3"/>
+    <rect x="94" y="69" width="324" height="13" rx="6" fill="#d9ffff" opacity=".95"/>
+    <rect x="111" y="81" width="290" height="15" rx="7" fill="#baf7f2" opacity=".22"/>
+  </g>
+
+  <path d="M142 160H370V394H142Z" fill="#303938" stroke="#1c2222" stroke-width="10"/>
+  <path d="M157 175H355V394H157Z" fill="#667370" stroke="#a8b4af" stroke-width="5"/>
+  <path d="M256 176V394" stroke="#26302f" stroke-width="10"/>
+  <path d="M169 188H244V384H169ZM268 188H343V384H268Z" fill="#77837f" opacity=".75"/>
+  <path d="M176 201H237M275 201H336" stroke="#cbd4cf" stroke-width="4" opacity=".32"/>
+
+  <path d="M208 119H304V171H208Z" fill="#202626" stroke="#111515" stroke-width="7"/>
+  <path d="M219 130H293V160H219Z" fill="#101414" stroke="#5c6966" stroke-width="3"/>
+  <text x="256" y="157" fill="#ef4b3f" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" text-anchor="middle" filter="url(#red-glow)">?</text>
+
+  <path d="M372 233H402V305H372Z" fill="#202626" stroke="#111515" stroke-width="6"/>
+  <circle cx="387" cy="254" r="7" fill="#ef4b3f" filter="url(#red-glow)"/>
+  <path d="m380 290 7-10 7 10" fill="none" stroke="#bfc9c4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M141 160 256 44 371 160M142 394l114 74 114-74" fill="none" stroke="#d5ad22" stroke-width="8" opacity=".85"/>
+  <path d="m70 256 44-44M398 300l44-44M99 327l31-31M382 216l31-31" stroke="#d7e0db" stroke-width="5" opacity=".58"/>
+  <path d="m194 90 18 23-10 15 23 18M327 414l-20-22 13-17-20-16M88 241l29 12-4 22 27 8" fill="none" stroke="#2b3533" stroke-width="6"/>
+
+  <path d="M256 30 482 256 256 482 30 256Z" fill="none" stroke="#111515" stroke-width="9"/>
+  <path d="M256 51 461 256 256 461 51 256Z" fill="none" stroke="#e8eee8" stroke-width="3" stroke-dasharray="8 10" opacity=".62"/>
+
+</svg>
