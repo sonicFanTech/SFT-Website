@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b0d">
+  <meta name="description" content="Interactive Level 2.22 archive explorer with darkness-balanced, render-calibrated WebGL lighting.">
+  <title>Level 2.22 // Archive Explorer</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.184.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="viewport" aria-label="Interactive 3D explorer"></canvas>
+
+  <div id="scanlines" aria-hidden="true"></div>
+  <div id="vignette" aria-hidden="true"></div>
+
+  <header id="hud" class="hud-panel">
+    <div class="eyebrow">LEVEL 2.22 // ARCHIVE EXPLORER</div>
+    <h1 id="zone-title">Loading archive…</h1>
+    <p id="zone-description">Preparing the first explorable area.</p>
+    <div class="hud-row">
+      <span id="zone-counter">AREA -- / --</span>
+      <span id="collision-state">COLLISION: STANDBY</span>
+      <span id="flashlight-state">VISIBILITY LIGHT: OFF</span>
+      <span id="graphics-state">GRAPHICS: HIGH</span>
+      <span id="lighting-state">LOCAL LIGHTS: --</span>
+    </div>
+  </header>
+
+  <aside id="controls-hud" class="hud-panel">
+    <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> MOVE</span>
+    <span><kbd>MOUSE</kbd> LOOK</span>
+    <span><kbd>SPACE</kbd> JUMP</span>
+    <span><kbd>F</kbd> LIGHT</span>
+    <span><kbd>G</kbd> GRAPHICS</span>
+    <span><kbd>R</kbd> RESPAWN</span>
+    <span><kbd>ESC</kbd> PAUSE</span>
+  </aside>
+
+  <div id="crosshair" aria-hidden="true"></div>
+
+  <section id="loading-screen" class="screen-layer visible" aria-live="polite">
+    <div class="terminal-card compact-card">
+      <div class="terminal-label">LEVEL 2.22 REMOTE ARCHIVE</div>
+      <h2 id="loading-title">INITIALIZING VIEWER</h2>
+      <div class="progress-track"><div id="progress-bar"></div></div>
+      <p id="loading-message">Reading scene index…</p>
+    </div>
+  </section>
+
+  <section id="entry-screen" class="screen-layer">
+    <div class="terminal-card intro-card">
+      <div class="terminal-label">UNSTABLE SPATIAL RECONSTRUCTION</div>
+      <h2>LEVEL 2.22</h2>
+      <p>
+        This browser exploration build uses darkness-balanced WebGL lighting calibrated against the supplied final renders.
+        Fluorescent spill is kept local, deliberately dark corners remain dark, and each supplied area has its own atmosphere profile.
+      </p>
+      <div class="warning-box">
+        Desktop controls are recommended. Click inside the viewer to capture the mouse. Press <kbd>ESC</kbd> to release it.
+        The optional visibility light starts OFF so the area matches the render mood more closely. Press <kbd>F</kbd> when you need it.
+        If performance is slow, open Graphics Settings and switch to Medium or Low.
+      </div>
+      <div class="button-row wrap-row">
+        <button id="enter-button" class="primary-button">ENTER CURRENT AREA</button>
+        <button id="open-zones-button" class="secondary-button">SELECT AREA</button>
+        <button id="entry-graphics-button" class="secondary-button">GRAPHICS SETTINGS</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="pause-screen" class="screen-layer">
+    <div class="terminal-card compact-card">
+      <div class="terminal-label">MOUSE RELEASED</div>
+      <h2>EXPLORATION PAUSED</h2>
+      <p>Resume when you are ready to continue walking around the current reconstruction.</p>
+      <div class="button-stack">
+        <button id="resume-button" class="primary-button">RESUME</button>
+        <button id="respawn-button" class="secondary-button">RESPAWN</button>
+        <button id="pause-zones-button" class="secondary-button">SELECT ANOTHER AREA</button>
+        <button id="pause-graphics-button" class="secondary-button">GRAPHICS SETTINGS</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="graphics-screen" class="screen-layer">
+    <div class="terminal-card graphics-card">
+      <div class="terminal-label">WEBGL RENDER PROFILE</div>
+      <h2>GRAPHICS SETTINGS</h2>
+      <p>Select a preset. Changes apply immediately to the current area. Graphics quality no longer increases scene brightness.</p>
+      <div class="quality-grid" role="group" aria-label="Graphics quality">
+        <button data-quality="LOW">LOW</button>
+        <button data-quality="MEDIUM">MEDIUM</button>
+        <button data-quality="HIGH">HIGH</button>
+        <button data-quality="ULTRA">ULTRA</button>
+      </div>
+      <div class="brightness-control">
+        <div class="brightness-heading">
+          <label for="scene-brightness">SCENE BRIGHTNESS</label>
+          <span id="brightness-value">100%</span>
+        </div>
+        <input id="scene-brightness" type="range" min="65" max="125" step="1" value="100" aria-label="Scene brightness">
+        <div class="brightness-footer">
+          <span>65%</span>
+          <span>100% = RENDER MATCH</span>
+          <span>125%</span>
+        </div>
+        <button id="reset-brightness-button" class="secondary-button full-button brightness-reset">RESET TO RENDER MATCH</button>
+      </div>
+      <div class="settings-readout">
+        <div class="terminal-label">ACTIVE PROFILE</div>
+        <p id="graphics-description"></p>
+        <div id="graphics-details" class="graphics-details"></div>
+      </div>
+      <div class="warning-box subtle-warning">
+        The supplied `.glb` files do not contain baked Cycles lightmaps. This version uses darker real-time approximations calibrated from the reference renders.
+        A future lightmap pass can preserve the exact static light gradients and soft bounced shadows from Blender.
+      </div>
+      <button id="close-graphics-button" class="primary-button full-button">RETURN</button>
+    </div>
+  </section>
+
+  <section id="zones-screen" class="screen-layer panel-layer">
+    <div class="zones-window">
+      <div class="zones-header">
+        <div>
+          <div class="terminal-label">RECONSTRUCTION INDEX</div>
+          <h2>SELECT AN AREA</h2>
+          <p>Green entries include a supplied `.glb` model. Dim entries currently have a reference render only.</p>
+        </div>
+        <button id="close-zones-button" class="icon-button" aria-label="Close area selector">×</button>
+      </div>
+      <div id="zones-grid" class="zones-grid"></div>
+    </div>
+  </section>
+
+  <div id="desktop-warning" class="hud-panel desktop-warning">
+    Exploration currently requires a desktop keyboard and mouse. Area previews still work on smaller screens.
+  </div>
+
+  <noscript>This 3D explorer requires JavaScript.</noscript>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
