@@ -583,6 +583,27 @@ p {
   margin-top: 14px;
 }
 
+.profile-tags {
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.profile-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+
+.profile-tag-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  color: #06416d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
 .aero-badge {
   display: inline-flex;
   align-items: center;
@@ -596,6 +617,11 @@ p {
   box-shadow: inset 0 1px 0 #ffffff, 0 2px 8px rgba(36, 146, 201, 0.12);
   font-size: 12px;
   font-weight: 700;
+}
+
+.profile-tag-wide {
+  max-width: 100%;
+  white-space: normal;
 }
 
 .curve-divider {
