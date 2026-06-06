@@ -3,347 +3,211 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Programs — sonic Fan Tech</title>
-  <link rel="icon" href="https://sonicfast2017.github.io/images/favicon.ico">
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = { content: [], theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } }
-  </script>
-
-  <style>
-    body { background-image: url('https://i.imgur.com/UMYi74W.jpeg'); }
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); }
-    .card-hover { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 50px -10px #1E90FF; }
-  </style>
+  <title>Programs - sonic Fan Tech</title>
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/aero-theme.css?v=20260605d">
+  <meta name="description" content="Tools and programs made by sonic Fan Tech.">
+  <script src="assets/js/aero-site.js?v=20260605g" defer></script>
 </head>
-
-<body class="font-sans bg-cover bg-center bg-fixed min-h-screen text-slate-200">
-  <!-- Overlay -->
-  <div class="fixed inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 pointer-events-none z-0"></div>
-
-  <!-- Navbar (same as new home page) -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3 group">
-        <img src="https://sonicfast2017.github.io/images/logo.png" alt="sonic Fan Tech logo" class="w-10 h-10 rounded-xl transition-transform group-hover:scale-110">
-        <div>
-          <h1 class="font-bold text-2xl tracking-tighter">sonic Fan Tech</h1>
-          <p class="text-xs text-slate-400 -mt-1">Projects • Software • Games</p>
-        </div>
-      </a>
-
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="index.html" class="hover:text-white transition">Home</a>
-        <a href="programs.html" class="text-[#1E90FF] font-semibold">Programs</a>
-        <a href="Site/SFG/index.html" class="hover:text-white transition">Games</a>
-        <a href="credits.html" class="hover:text-white transition">Credits</a>
-        <a href="archives.html" class="hover:text-white transition">Archive</a>
-        <a href="socials.html" class="hover:text-white transition">Socials</a>
-      </div>
-
-      <div class="flex items-center gap-4">
-        <a href="mailto:sonicfan1348@gmail.com" class="hidden sm:block text-sm font-medium hover:text-white transition">Contact</a>
-        <button id="menuBtn" class="md:hidden text-3xl leading-none">☰</button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 py-6">
-      <div class="flex flex-col items-center gap-6 text-lg font-medium">
-        <a href="index.html">Home</a>
-        <a href="programs.html" class="text-[#1E90FF]">Programs</a>
-        <a href="Site/SFG/Site/SFG-main.html">Games</a>
-        <a href="credits.html">Credits</a>
-        <a href="archives.html">Archive</a>
-        <a href="socials.html">Socials</a>
-        <a href="mailto:sonicfan1348@gmail.com">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="relative z-10 pt-28 pb-20 max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h1 class="text-6xl font-bold tracking-tighter text-white mb-3">Programs</h1>
-      <p class="text-2xl text-slate-300">Tools &amp; programs made with Python or Clickteam Fusion</p>
-
-      <div class="flex flex-wrap justify-center gap-4 mt-10">
-        <a href="index.html" 
-           class="glass hover:bg-white/20 border border-white/20 px-8 py-4 rounded-3xl font-semibold flex items-center gap-2 transition">
-          ← Back to Home
+<body class="programs-page">
+  <div class="site-shell">
+    <header class="aero-window site-header" data-aero-header>
+      <div class="title-bar">
+        <a class="brand" href="index.html">
+          <span class="brand-orb"><img class="brand-logo" src="images/logo.png" alt="sonic Fan Tech logo"></span>
+          <span class="brand-copy"><span class="brand-title">sonic Fan Tech</span><span class="brand-subtitle">Aero Desktop Portal - Software Library</span></span>
         </a>
-        <a href="Site/SFG/Site/SFG-main.html" 
-           class="glass hover:bg-white/20 border border-white/20 px-8 py-4 rounded-3xl font-semibold flex items-center gap-2 transition">
-          🎮 Go to Games →
-        </a>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button class="menu-toggle" id="menuBtn" type="button" aria-controls="siteNav" aria-expanded="false"><span class="sr-only">Open navigation</span><span class="menu-lines" aria-hidden="true"></span></button>
       </div>
-    </div>
+      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html"><span class="nav-icon">HM</span>Home</a>
+        <a class="nav-link" href="programs.html" aria-current="page"><span class="nav-icon">EXE</span>Programs</a>
+        <a class="nav-link" href="Site/SFG/"><span class="nav-icon">SFG</span>Games</a>
+        <a class="nav-link" href="credits.html"><span class="nav-icon">CR</span>Credits</a>
+        <a class="nav-link" href="archives.html"><span class="nav-icon">AR</span>Archive</a>
+        <a class="nav-link" href="socials.html"><span class="nav-icon">NET</span>Socials</a>
+        <a class="nav-link" href="mailto:sonicfantech@sonicfantech.org"><span class="nav-icon">@</span>Contact</a>
+      </nav>
+    </header>
 
-    <!-- Info Banner -->
-    <div class="glass rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row gap-6 items-center">
-      <div class="flex-1">
-        <div class="uppercase text-xs tracking-widest text-slate-400">Made by</div>
-        <div class="text-2xl font-semibold text-white">sonic Fan Tech</div>
-      </div>
-      <div class="text-slate-300 text-sm max-w-md">
-        Tip: All downloads are free. Click the blue buttons for the latest release!
-      </div>
-    </div>
+    <main class="page-main portal-layout">
+      <section class="portal-window" aria-labelledby="programs-title">
+        <div class="portal-titlebar">Programs Library<span class="title-note">Vista-era software shelf with download, GitHub, and website shortcuts</span></div>
+        <div class="portal-content">
+          <section class="page-hero">
+            <div class="portrait-frame"><span class="shortcut-icon">EXE</span></div>
+            <div>
+              <p class="page-kicker">Downloads and project pages</p>
+              <h1 class="page-title" id="programs-title">Programs</h1>
+              <p class="page-lead">Tools and programs made with Python, Clickteam Fusion, and other experiments.</p>
+              <div class="tag-list">
+                <span class="aero-badge">Media</span>
+                <span class="aero-badge">Python</span>
+                <span class="aero-badge">Source Engine</span>
+                <span class="aero-badge">Utilities</span>
+              </div>
+            </div>
+          </section>
 
-    <!-- Programs Grid -->
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="program-filter-row" aria-label="Program categories">
+            <span class="aero-badge">All Software</span>
+            <span class="aero-badge">Downloads</span>
+            <span class="aero-badge">Project Sites</span>
+            <span class="aero-badge">Open Source</span>
+          </div>
 
-      <!-- DVDxPlayer -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">DVDxPlayer</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-          Simple video, audio &amp; DVD player. Supports MPEG, AVI, WMV, MP3, WAV, OGG and more.
-        </p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1.0</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Updated: <span class="rel-time" data-date="2025-08-31"></span></span>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/sonicFanTech/DVDxPlayer/releases/download/Software/DVDxPlayer.exe" download
-             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
-          <a href="https://github.com/sonicFanTech/DVDxPlayer?tab=readme-ov-file" 
-             class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
-        </div>
-      </article>
+          <section class="software-library" aria-label="Program list">
+            <article class="aero-card software-card">
+              <div class="software-thumb">DVD</div>
+              <div>
+                <h3>DVDxPlayer</h3>
+                <p>Simple video, audio and DVD player. Supports MPEG, AVI, WMV, MP3, WAV, OGG and more.</p>
+                <div class="software-meta"><span class="aero-badge">v1.0</span><span class="aero-badge">Updated: <span class="rel-time" data-date="2025-08-31"></span></span><span class="aero-badge">Media</span></div>
+                <div class="card-actions"><a class="aero-button download" href="https://github.com/sonicFanTech/DVDxPlayer/releases/download/Software/DVDxPlayer.exe" download>Download</a><a class="aero-button github" href="https://github.com/sonicFanTech/DVDxPlayer?tab=readme-ov-file">GitHub</a></div>
+              </div>
+            </article>
 
-      <!-- MozAluz RBGITools -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">MozAluz - RBGI Tools</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">A small Windows toolset for creating, editing, viewing, and testing custom .RBGI render background / SkyBox image files.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
-        </div>
-        <a href="Site/MozAluz-RBGITools/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
-      </article>
+            <article class="aero-card software-card">
+              <div class="software-thumb">RBGI</div>
+              <div>
+                <h3>MozAluz - RBGI Tools</h3>
+                <p>A small Windows toolset for creating, editing, viewing, and testing custom .RBGI render background / SkyBox image files.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="NA"></span></span><span class="aero-badge">Graphics</span></div>
+                <div class="card-actions"><a class="aero-button website" href="Site/MozAluz-RBGITools/index.html">Go to Website</a></div>
+              </div>
+            </article>
 
-      <!-- Cobvuz Virtual -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">Cobvuz Virtual</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Cobvuz Virtual is a up-coming Modern VM Software that uses Windows Hyper-V API's, for ore info, go to the Website.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
-        </div>
-        <a href="Site/CobvuzVirtualDownload/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
-      </article>
+            <article class="aero-card software-card">
+              <div class="software-thumb">VM</div>
+              <div>
+                <h3>Cobvuz Virtual</h3>
+                <p>Cobvuz Virtual is an upcoming modern VM software project that uses Windows Hyper-V APIs.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="NA"></span></span><span class="aero-badge">Virtualization</span></div>
+                <div class="card-actions"><a class="aero-button website" href="Site/CobvuzVirtualDownload/index.html">Go to Website</a></div>
+              </div>
+            </article>
 
-      <!-- FLDM -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">FlacLight Disk Manager</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Go to the website for full info.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
-        </div>
-        <a href="Site/FLDM/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
-      </article>
+            <article class="aero-card software-card">
+              <div class="software-thumb">DSK</div>
+              <div>
+                <h3>FlacLight Disk Manager</h3>
+                <p>Go to the website for full info.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="NA"></span></span><span class="aero-badge">Disk</span></div>
+                <div class="card-actions"><a class="aero-button website" href="Site/FLDM/index.html">Go to Website</a></div>
+              </div>
+            </article>
 
-      <!-- SERV -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">Source Engine Resources Viewer</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Go to the website for full info.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
-        </div>
-        <a href="Site/SERV/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
-      </article>
+            <article class="aero-card software-card">
+              <div class="software-thumb">RES</div>
+              <div>
+                <h3>Source Engine Resources Viewer</h3>
+                <p>Go to the website for full info.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="NA"></span></span><span class="aero-badge">Source Engine</span></div>
+                <div class="card-actions"><a class="aero-button website" href="Site/SERV/index.html">Go to Website</a></div>
+              </div>
+            </article>
 
-      <!-- SBSPE -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">Source BSP Explorer</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Go to the website for full info.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
-        </div>
-        <a href="Site/SBSPE/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
-      </article>
+            <article class="aero-card software-card">
+              <div class="software-thumb">BSP</div>
+              <div>
+                <h3>Source BSP Explorer</h3>
+                <p>Go to the website for full info.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="NA"></span></span><span class="aero-badge">Maps</span></div>
+                <div class="card-actions"><a class="aero-button website" href="Site/SBSPE/index.html">Go to Website</a></div>
+              </div>
+            </article>
 
-      <!-- RSD -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">Roxzned Setup Designer</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Upcoming project — check the website.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
-        </div>
-        <a href="Site/RSD/index.html" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Go to Website</a>
-      </article>
+            <article class="aero-card software-card">
+              <div class="software-thumb">SET</div>
+              <div>
+                <h3>Roxzned Setup Designer</h3>
+                <p>Upcoming project. Check the website.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="NA"></span></span><span class="aero-badge">Installer</span></div>
+                <div class="card-actions"><a class="aero-button website" href="Site/RSD/index.html">Go to Website</a></div>
+              </div>
+            </article>
 
-      <!-- pyIDE -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">pyIDE</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Lightweight Python IDE with the tools you actually use.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/sonicFanTech/pyIDE/releases/download/v1.1.0/pyIDE.Setup.exe" download
-             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
-          <a href="https://github.com/sonicFanTech/pyIDE" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
-          <a href="Site/pyIDE/index.html" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Website</a>
-        </div>
-      </article>
+            <article class="aero-card software-card">
+              <div class="software-thumb">PY</div>
+              <div>
+                <h3>pyIDE</h3>
+                <p>Lightweight Python IDE with the tools you actually use.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="NA"></span></span><span class="aero-badge">Python</span></div>
+                <div class="card-actions"><a class="aero-button download" href="https://github.com/sonicFanTech/pyIDE/releases/download/v1.1.0/pyIDE.Setup.exe" download>Download</a><a class="aero-button github" href="https://github.com/sonicFanTech/pyIDE">GitHub</a><a class="aero-button website" href="Site/pyIDE/index.html">Website</a></div>
+              </div>
+            </article>
 
-      <!-- NoxenFE -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
+            <article class="aero-card software-card">
+              <div class="software-thumb">FE</div>
+              <div>
+                <h3>NoxenFE</h3>
+                <p>Tabbed Windows-Explorer-style file manager built with Python + PySide6.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="NA"></span></span><span class="aero-badge">File Manager</span></div>
+                <div class="card-actions"><a class="aero-button download" href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/R3/NoxenFE.exe" download>Download</a><a class="aero-button github" href="https://github.com/sonicFanTech/Noxen-File-explorer">GitHub</a></div>
+              </div>
+            </article>
+
+            <article class="aero-card software-card">
+              <div class="software-thumb">PLAY</div>
+              <div>
+                <h3>EveryPlay</h3>
+                <p>Powerful media player with VLC backend + custom tools.</p>
+                <div class="software-meta"><span class="aero-badge">v1</span><span class="aero-badge">Added: <span class="rel-time" data-date="2025-12-18"></span></span><span class="aero-badge">Media</span></div>
+                <div class="card-actions"><a class="aero-button download" href="https://github.com/sonicFanTech/EveryPlay/releases/download/v1/EveryPlay.7z" download>Download</a><a class="aero-button github" href="https://github.com/sonicFanTech/EveryPlay">GitHub</a></div>
+              </div>
+            </article>
+
+            <article class="aero-card software-card">
+              <div class="software-thumb">VID</div>
+              <div>
+                <h3>vidplayer</h3>
+                <p>Modern audio player with playlist, themes and Discord Rich Presence.</p>
+                <div class="software-meta"><span class="aero-badge">v2.0.9.3 Release</span><span class="aero-badge">2.0.9.3.1 Beta</span><span class="aero-badge">Updated: <span class="rel-time" data-date="2025-12-16"></span></span></div>
+                <div class="card-actions"><a class="aero-button download" href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9.3-Release-x64/VP-2.0.9.3-Release.7z" download>Stable</a><a class="aero-button beta" href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9.3.1-beta/app.7z" download>Beta</a><a class="aero-button github" href="https://github.com/sonicFanTech/vidplayer">GitHub</a><a class="aero-button website" href="Site/vidplayer/index.html">Website</a></div>
+              </div>
+            </article>
+
+            <article class="aero-card software-card">
+              <div class="software-thumb">VST</div>
+              <div>
+                <h3>Windows Vista Winver installer</h3>
+                <p>Made by just joey.</p>
+                <div class="software-meta"><span class="aero-badge">Installer</span><span class="aero-badge">Vista</span></div>
+                <div class="card-actions"><a class="aero-button download" href="https://sonicfantech.org/download/VistaWinver%5BJust%20Joey%5D.zip" download>Download</a></div>
+              </div>
+            </article>
+
+            <article class="aero-card software-card">
+              <div class="software-thumb">GM</div>
+              <div>
+                <h3>GMData</h3>
+                <p>View Data.win/.wim files from any GameMaker game.</p>
+                <div class="software-meta"><span class="aero-badge">GameMaker</span><span class="aero-badge">Viewer</span></div>
+                <div class="card-actions"><a class="aero-button github" href="https://github.com/sonicFanTech/GMData">GitHub</a></div>
+              </div>
+            </article>
+          </section>
         </div>
-        <h3 class="font-semibold text-xl mb-3">NoxenFE</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Tabbed Windows-Explorer-style file manager built with Python + PySide6.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="NA"></span></span>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/R3/NoxenFE.exe" download
-             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
-          <a href="https://github.com/sonicFanTech/Noxen-File-explorer" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
-        </div>
-      </article>
+      </section>
 
-      <!-- EveryPlay -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">EveryPlay</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Powerful media player with VLC backend + custom tools.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v1</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Added: <span class="rel-time" data-date="2025-12-18"></span></span>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/sonicFanTech/EveryPlay/releases/download/v1/EveryPlay.7z" download
-             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
-          <a href="https://github.com/sonicFanTech/EveryPlay" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
-        </div>
-      </article>
+      <aside class="gadget-column" aria-label="Desktop gadgets">
+        <section class="gadget music-player" data-music-player>
+          <div class="gadget-title"><span class="gadget-icon">MP</span>Background Music</div>
+          <div class="gadget-body">
+            <div class="music-meta"><span class="music-track" data-music-track>No track registered</span><span class="music-artist" data-music-artist>Add music in assets/js/aero-site.js</span><span class="music-source" data-music-source>Use assets/audio/ for your own files.</span></div>
+            <div class="progress-shell"><div class="progress-fill" data-music-progress></div></div><div class="progress-time" data-music-time>0:00 / 0:00</div>
+            <div class="music-controls"><button class="music-button secondary" type="button" data-music-prev>Prev</button><button class="music-button secondary" type="button" data-music-play>Play</button><button class="music-button secondary" type="button" data-music-pause>Pause</button><button class="music-button secondary" type="button" data-music-next>Next</button><button class="music-button secondary" type="button" data-music-mute aria-pressed="false">Mute</button></div>
+            <label class="sr-only" for="musicVolume">Volume</label><input class="volume-slider" id="musicVolume" data-music-volume type="range" min="0" max="100" value="55">
+            <div class="visualizer" data-music-visualizer aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><audio data-music-audio preload="metadata"></audio>
+          </div>
+        </section>
+        <section class="gadget"><div class="gadget-title"><span class="gadget-icon">LIB</span>Library Stats</div><div class="gadget-body"><div class="status-orb" aria-hidden="true"></div><p><strong>13 entries</strong> in the current program shelf, including downloads, GitHub projects, and project websites.</p></div></section>
+        <section class="gadget"><div class="gadget-title"><span class="gadget-icon">GO</span>Software Shortcuts</div><div class="gadget-body gadget-links"><a href="index.html">Home <span>Back</span></a><a href="Site/SFG/">Games <span>Open</span></a><a href="archives.html">Archive <span>Open</span></a><a href="mailto:sonicfan1348@gmail.com">Email <span>Send</span></a></div></section>
+      </aside>
+    </main>
 
-      <!-- vidplayer -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">vidplayer</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Modern audio player with playlist, themes &amp; Discord Rich Presence.</p>
-        <div class="flex gap-2 text-xs mb-6">
-          <span class="px-3 py-1 bg-white/10 rounded-full">v2.0.9.3 Release / 2.0.9.3.1 Beta</span>
-          <span class="px-3 py-1 bg-white/10 rounded-full">Updated: <span class="rel-time" data-date="2025-12-16"></span></span>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9.3-Release-x64/VP-2.0.9.3-Release.7z" download
-             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition text-sm">Stable</a>
-          <a href="https://github.com/sonicFanTech/vidplayer/releases/download/v2.0.9.3.1-beta/app.7z" download
-             class="flex-1 text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition text-sm">Beta</a>
-          <a href="https://github.com/sonicFanTech/vidplayer" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
-          <a href="Site/vidplayer/index.html" class="flex-1 text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">Website</a>
-        </div>
-      </article>
-
-      <!-- Windows Vista Winver -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">Windows Vista Winver installer</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">Made by just joey</p>
-        <a href="https://sonicfantech.org/download/VistaWinver%5BJust%20Joey%5D.zip" download
-           class="block text-center bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-3 rounded-2xl transition">Download</a>
-      </article>
-
-      <!-- GMData -->
-      <article class="glass rounded-3xl p-7 card-hover">
-        <div class="h-48 bg-gradient-to-br from-slate-900 to-zinc-950 rounded-2xl mb-6 flex items-center justify-center border border-white/10">
-          <span class="text-slate-400 text-sm font-medium">Thumbnail / Screenshot</span>
-        </div>
-        <h3 class="font-semibold text-xl mb-3">GMData</h3>
-        <p class="text-slate-300 text-sm leading-relaxed mb-6">View Data.win/.wim files from any GameMaker game.</p>
-        <a href="https://github.com/sonicFanTech/GMData" class="block text-center glass hover:bg-white/20 py-3 rounded-2xl font-semibold transition">GitHub</a>
-      </article>
-
-    </section>
-
-    <footer class="mt-20 text-center text-slate-400 text-sm">
-      © <span id="year"></span> sonic Fan Tech — Programs
-    </footer>
-  </main>
-
-  <script>
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Relative time (cleaned & fixed)
-    function relTimeFromDate(dateStr) {
-      if (!dateStr || dateStr === "NA") return "N/A";
-      const d = new Date(dateStr + "T00:00:00");
-      if (isNaN(d)) return dateStr;
-
-      const now = new Date();
-      const days = Math.floor((now - d) / (1000 * 60 * 60 * 24));
-
-      if (days <= 0) return "today";
-      if (days === 1) return "yesterday";
-      if (days < 7) return `${days} days ago`;
-      if (days < 30) return `${Math.floor(days/7)} week${days/7>1?"s":""} ago`;
-      if (days < 365) return `${Math.floor(days/30)} month${days/30>1?"s":""} ago`;
-      return `${Math.floor(days/365)} year${days/365>1?"s":""} ago`;
-    }
-
-    document.querySelectorAll(".rel-time").forEach(el => {
-      const dateStr = el.dataset.date?.trim() || "";
-      const rel = relTimeFromDate(dateStr);
-      el.innerHTML = `${rel}<span class="text-[10px] opacity-75 ml-1">(${dateStr})</span>`;
-      el.title = dateStr;
-    });
-  </script>
+    <footer class="site-footer"><div><strong>sonic Fan Tech</strong> &copy; <span data-year></span> - Programs</div><nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="Site/SFG/">Games</a><a href="archives.html">Archive</a><a href="mailto:sonicfan1348@gmail.com">Email</a></nav></footer>
+  </div>
 </body>
 </html>

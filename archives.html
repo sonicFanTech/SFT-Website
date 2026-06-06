@@ -3,106 +3,64 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Archive — sonic Fan Tech</title>
-  <link rel="icon" href="https://sonicfast2017.github.io/images/favicon.ico">
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = { content: [], theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } }
-  </script>
-
-  <style>
-    body { background-image: url('https://i.imgur.com/UMYi74W.jpeg'); }
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); }
-    .card-hover { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 50px -10px #1E90FF; }
-  </style>
+  <title>Archive - sonic Fan Tech</title>
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/aero-theme.css?v=20260605d">
+  <meta name="description" content="Archived software and preserved files from sonic Fan Tech.">
+  <script src="assets/js/aero-site.js?v=20260605g" defer></script>
 </head>
+<body class="archive-page">
+  <div class="site-shell">
+    <header class="aero-window site-header" data-aero-header>
+      <div class="title-bar">
+        <a class="brand" href="index.html"><span class="brand-orb"><img class="brand-logo" src="images/logo.png" alt="sonic Fan Tech logo"></span><span class="brand-copy"><span class="brand-title">sonic Fan Tech</span><span class="brand-subtitle">Aero Desktop Portal - Archive Vault</span></span></a>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button class="menu-toggle" id="menuBtn" type="button" aria-controls="siteNav" aria-expanded="false"><span class="sr-only">Open navigation</span><span class="menu-lines" aria-hidden="true"></span></button>
+      </div>
+      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html"><span class="nav-icon">HM</span>Home</a>
+        <a class="nav-link" href="programs.html"><span class="nav-icon">EXE</span>Programs</a>
+        <a class="nav-link" href="Site/SFG/"><span class="nav-icon">SFG</span>Games</a>
+        <a class="nav-link" href="credits.html"><span class="nav-icon">CR</span>Credits</a>
+        <a class="nav-link" href="archives.html" aria-current="page"><span class="nav-icon">AR</span>Archive</a>
+        <a class="nav-link" href="socials.html"><span class="nav-icon">NET</span>Socials</a>
+        <a class="nav-link" href="mailto:sonicfantech@sonicfantech.org"><span class="nav-icon">@</span>Contact</a>
+      </nav>
+    </header>
 
-<body class="font-sans bg-cover bg-center bg-fixed min-h-screen text-slate-200">
-  <!-- Overlay -->
-  <div class="fixed inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 pointer-events-none z-0"></div>
-
-  <!-- Navbar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3 group">
-        <img src="https://sonicfast2017.github.io/images/logo.png" alt="sonic Fan Tech logo" class="w-10 h-10 rounded-xl transition-transform group-hover:scale-110">
-        <div>
-          <h1 class="font-bold text-2xl tracking-tighter">sonic Fan Tech</h1>
-          <p class="text-xs text-slate-400 -mt-1">Projects • Software • Games</p>
+    <main class="page-main portal-layout">
+      <section class="portal-window" aria-labelledby="archive-title">
+        <div class="portal-titlebar">Old Software Vault<span class="title-note">A subdued glass shelf for preserved downloads</span></div>
+        <div class="portal-content">
+          <section class="page-hero">
+            <div class="portrait-frame"><span class="shortcut-icon">AR</span></div>
+            <div>
+              <p class="page-kicker">Archive shelf</p>
+              <h1 class="page-title" id="archive-title">Archive</h1>
+              <p class="page-lead">Old software, tools, and preserved files kept in a small library-style download area.</p>
+            </div>
+          </section>
+          <div class="curve-divider" aria-hidden="true"></div>
+          <section class="archive-shelf" aria-label="Archive downloads">
+            <article class="aero-card archive-card">
+              <div class="archive-icon"><img src="images/cmd.png" alt=""></div>
+              <h3>Uninstall Tool 3.7.3 [CRACK]</h3>
+              <p>Archived version of Uninstall Tool.</p>
+              <div class="software-meta" style="justify-content: center;"><span class="aero-badge">Archive</span><span class="aero-badge">EXE</span><span class="aero-badge">Preserved</span></div>
+              <div class="card-actions"><a class="aero-button download" href="https://sonicfantech.org/archive/UT.exe" download>Download Archive</a></div>
+            </article>
+          </section>
         </div>
-      </a>
+      </section>
 
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="index.html" class="hover:text-white transition">Home</a>
-        <a href="programs.html" class="hover:text-white transition">Programs</a>
-        <a href="Site/SFG/index.html" class="hover:text-white transition">Games</a>
-        <a href="credits.html" class="hover:text-white transition">Credits</a>
-        <a href="archives.html" class="text-[#1E90FF] font-semibold">Archive</a>
-        <a href="socials.html" class="hover:text-white transition">Socials</a>
-      </div>
+      <aside class="gadget-column" aria-label="Desktop gadgets">
+        <section class="gadget music-player" data-music-player><div class="gadget-title"><span class="gadget-icon">MP</span>Background Music</div><div class="gadget-body"><div class="music-meta"><span class="music-track" data-music-track>No track registered</span><span class="music-artist" data-music-artist>Add music in assets/js/aero-site.js</span><span class="music-source" data-music-source>Use assets/audio/ for your own files.</span></div><div class="progress-shell"><div class="progress-fill" data-music-progress></div></div><div class="progress-time" data-music-time>0:00 / 0:00</div><div class="music-controls"><button class="music-button secondary" type="button" data-music-prev>Prev</button><button class="music-button secondary" type="button" data-music-play>Play</button><button class="music-button secondary" type="button" data-music-pause>Pause</button><button class="music-button secondary" type="button" data-music-next>Next</button><button class="music-button secondary" type="button" data-music-mute aria-pressed="false">Mute</button></div><label class="sr-only" for="musicVolume">Volume</label><input class="volume-slider" id="musicVolume" data-music-volume type="range" min="0" max="100" value="55"><div class="visualizer" data-music-visualizer aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><audio data-music-audio preload="metadata"></audio></div></section>
+        <section class="gadget"><div class="gadget-title"><span class="gadget-icon">VA</span>Vault Status</div><div class="gadget-body"><div class="status-orb" aria-hidden="true"></div><p>The archive keeps older downloads visible without changing or renaming their original destinations.</p></div></section>
+        <section class="gadget"><div class="gadget-title"><span class="gadget-icon">GO</span>Sections</div><div class="gadget-body gadget-links"><a href="index.html">Home <span>Open</span></a><a href="programs.html">Programs <span>Open</span></a><a href="Site/SFG/">Games <span>Open</span></a><a href="socials.html">Socials <span>Open</span></a></div></section>
+      </aside>
+    </main>
 
-      <div class="flex items-center gap-4">
-        <a href="mailto:sonicfan1348@gmail.com" class="hidden sm:block text-sm font-medium hover:text-white transition">Contact</a>
-        <button id="menuBtn" class="md:hidden text-3xl leading-none">☰</button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 py-6">
-      <div class="flex flex-col items-center gap-6 text-lg font-medium">
-        <a href="index.html">Home</a>
-        <a href="programs.html">Programs</a>
-        <a href="Site/SFG/Site/SFG-main.html">Games</a>
-        <a href="credits.html">Credits</a>
-        <a href="archives.html" class="text-[#1E90FF]">Archive</a>
-        <a href="socials.html">Socials</a>
-        <a href="mailto:sonicfan1348@gmail.com">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="relative z-10 pt-28 pb-20 max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h1 class="text-6xl font-bold tracking-tighter text-white mb-4">Archive</h1>
-      <p class="text-2xl text-slate-300">Old software, tools &amp; preserved files</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Existing Archive Item -->
-      <div class="glass rounded-3xl p-8 card-hover text-center">
-        <img src="https://sonicfast2017.github.io/images/cmd.png" alt="Uninstall Tool" class="w-28 h-28 mx-auto rounded-2xl object-cover mb-6 border border-white/20">
-        <h3 class="text-2xl font-semibold mb-2">Uninstall Tool 3.7.3 [CRACK]</h3>
-        <p class="text-slate-300 text-sm mb-8">Archived version of Uninstall Tool.</p>
-        <a href="https://sonicfantech.org/archive/UT.exe" download
-           class="block bg-[#1E90FF] hover:bg-[#00BFFF] text-white font-semibold py-4 rounded-2xl transition">Download Archive</a>
-      </div>
-
-      <!-- You can add more cards here later — just copy the block above -->
-
-    </div>
-
-    <footer class="mt-20 text-center text-slate-400 text-sm">
-      © <span id="year"></span> sonic Fan Tech — Archive
-    </footer>
-  </main>
-
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <footer class="site-footer"><div><strong>sonic Fan Tech</strong> &copy; <span data-year></span> - Archive</div><nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="socials.html">Socials</a><a href="mailto:sonicfan1348@gmail.com">Email</a></nav></footer>
+  </div>
 </body>
 </html>

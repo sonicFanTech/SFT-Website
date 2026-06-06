@@ -3,157 +3,171 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About Me - sonic Fan Tech</title>
-  <link rel="icon" href="https://sonicfast2017.github.io/images/favicon.ico">
-  <meta property="og:title" content="About Me - sonic Fan Tech">
+  <title>sonic Fan Tech - Aero Desktop Portal</title>
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/aero-theme.css?v=20260605d">
+  <meta property="og:title" content="sonic Fan Tech">
   <meta property="og:description" content="Hello, welcome to my site. Find my projects, software, email and more!">
   <meta property="og:image" content="https://i.imgur.com/t9cRzzs.png">
   <meta name="description" content="Hello, welcome to my site. Find my projects, software, email and more!">
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      content: [],
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
-        }
-      }
-    }
-  </script>
-
-  <style>
-     <link rel="icon" href="https://sonicfast2017.github.io/images/favicon.ico">
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); }
-    .sonic-glow { box-shadow: 0 0 40px -10px #1E90FF; }
-  </style>
+  <script src="assets/js/aero-site.js?v=20260605g" defer></script>
 </head>
+<body class="home-page">
+  <div class="site-shell">
+    <header class="aero-window site-header" data-aero-header>
+      <div class="title-bar">
+        <a class="brand" href="index.html">
+          <span class="brand-orb"><img class="brand-logo" src="images/logo.png" alt="sonic Fan Tech logo"></span>
+          <span class="brand-copy">
+            <span class="brand-title">sonic Fan Tech</span>
+            <span class="brand-subtitle">Aero Desktop Portal - Projects - Software - Games</span>
+          </span>
+        </a>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button class="menu-toggle" id="menuBtn" type="button" aria-controls="siteNav" aria-expanded="false">
+          <span class="sr-only">Open navigation</span>
+          <span class="menu-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html" aria-current="page"><span class="nav-icon">HM</span>Home</a>
+        <a class="nav-link" href="programs.html"><span class="nav-icon">EXE</span>Programs</a>
+        <a class="nav-link" href="Site/SFG/"><span class="nav-icon">SFG</span>Games</a>
+        <a class="nav-link" href="credits.html"><span class="nav-icon">CR</span>Credits</a>
+        <a class="nav-link" href="archives.html"><span class="nav-icon">AR</span>Archive</a>
+        <a class="nav-link" href="socials.html"><span class="nav-icon">NET</span>Socials</a>
+        <a class="nav-link" href="mailto:sonicfantech@sonicfantech.org"><span class="nav-icon">@</span>Contact</a>
+      </nav>
+    </header>
 
-<body class="font-sans bg-cover bg-center bg-fixed min-h-screen text-slate-200">
-  <!-- Subtle overlay -->
-  <div class="fixed inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 pointer-events-none z-0"></div>
-
-  <!-- Navbar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-    <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3 group">
-        <img src="https://sonicfast2017.github.io/images/logo.png" alt="sonic Fan Tech logo" class="w-10 h-10 rounded-xl transition-transform group-hover:scale-110">
-        <div>
-          <h1 class="font-bold text-2xl tracking-tighter">sonic Fan Tech</h1>
-          <p class="text-xs text-slate-400 -mt-1">Projects • Software • Games</p>
+    <main class="page-main portal-layout">
+      <section class="portal-window" aria-labelledby="welcome-title">
+        <div class="portal-titlebar">
+          Home Portal
+          <span class="title-note">Personal desktop hub for sonic Fan Tech projects</span>
         </div>
-      </a>
+        <div class="portal-content">
+          <section class="page-hero">
+            <div class="portrait-frame">
+              <img class="profile-image" src="images/logo.png" alt="sonic Fan Tech profile image">
+            </div>
+            <div>
+              <p class="page-kicker">Personal technology site</p>
+              <h1 class="page-title" id="welcome-title">sonic Fan Tech</h1>
+              <p class="page-lead">Developer, hobbyist, and game-maker sharing software, experiments, fan games, notes, and community links.</p>
+              <div class="actions" aria-label="Primary actions">
+                <a class="aero-button secondary" href="mailto:sonicfan1348@gmail.com">Email me</a>
+                <a class="aero-button" href="programs.html">View My Programs</a>
+              </div>
+              <div class="tag-list" aria-label="Topics">
+                <span class="aero-badge">Clickteam Fusion</span>
+                <span class="aero-badge">Game Dev</span>
+                <span class="aero-badge">Web</span>
+                <span class="aero-badge">Modding</span>
+              </div>
+            </div>
+          </section>
 
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="index.html" class="hover:text-white transition">Home</a>
-        <a href="programs.html" class="hover:text-white transition">Programs</a>
-        <a href="Site/SFG/index.html" class="hover:text-white transition">Games</a>
-        <a href="credits.html" class="hover:text-white transition">Credits</a>
-        <a href="archives.html" class="hover:text-white transition">Archive</a>
-        <a href="socials.html" class="hover:text-white transition">Socials</a>
-      </div>
+          <div class="curve-divider" aria-hidden="true"></div>
 
-      <div class="flex items-center gap-4">
-        <a href="mailto:sonicfantech@sonicfantech.org" class="hidden sm:block text-sm font-medium hover:text-white transition">Contact</a>
-        <a href="programs.html" 
-           class="bg-[#1E90FF] hover:bg-[#00BFFF] text-white px-6 py-3 rounded-2xl font-semibold text-sm transition-all active:scale-95 shadow-lg shadow-[#1E90FF]/50">
-          View Programs
-        </a>
-        <button id="menuBtn" class="md:hidden text-3xl leading-none">☰</button>
-      </div>
-    </div>
+          <section aria-labelledby="about-title" class="content-grid grid-2">
+            <div class="soft-panel">
+              <h2 class="section-heading" id="about-title">About Me</h2>
+              <p>Hello, welcome to my personal website! I'm passionate about technology, programming, and gaming. I build hobby projects, recreate games for fun, and share software and resources here.</p>
+            </div>
+            <div class="soft-panel">
+              <h2 class="section-heading">What You'll Find Here</h2>
+              <p>Downloads for my programs and small projects, notes about ongoing games including ONaF and DELTARUNE: CTFRM, plus community links and contact info.</p>
+            </div>
+          </section>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 py-6">
-      <div class="flex flex-col items-center gap-6 text-lg font-medium">
-        <a href="index.html">Home</a>
+          <section aria-labelledby="featured-title" style="margin-top: 18px;">
+            <h2 class="section-heading" id="featured-title">Featured Areas</h2>
+            <div class="featured-tiles">
+              <a class="shortcut-tile programs" href="programs.html">
+                <span class="shortcut-icon">EXE</span>
+                <h3>Programs</h3>
+                <p>Software downloads, tools, GitHub projects, and standalone project sites.</p>
+              </a>
+              <a class="shortcut-tile games" href="Site/SFG/">
+                <span class="shortcut-icon">SFG</span>
+                <h3>Games</h3>
+                <p>Open the separate Sonic Fan Games sub-site without changing its style.</p>
+              </a>
+              <a class="shortcut-tile socials" href="socials.html">
+                <span class="shortcut-icon">NET</span>
+                <h3>Socials</h3>
+                <p>Channels, project updates, source code profiles, and community pages.</p>
+              </a>
+            </div>
+          </section>
+
+          <section aria-labelledby="quick-title" style="margin-top: 18px;">
+            <h2 class="section-heading" id="quick-title">Quick Links</h2>
+            <div class="quick-dock">
+              <a class="aero-button website" href="Site/SFG/">Games page</a>
+              <a class="aero-button" href="programs.html">Programs</a>
+              <a class="aero-button secondary" href="credits.html">Credits</a>
+              <a class="aero-button secondary" href="archives.html">Archive</a>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <aside class="gadget-column" aria-label="Desktop gadgets">
+        <section class="gadget music-player" data-music-player>
+          <div class="gadget-title"><span class="gadget-icon">MP</span>Background Music</div>
+          <div class="gadget-body">
+            <div class="music-meta">
+              <span class="music-track" data-music-track>No track registered</span>
+              <span class="music-artist" data-music-artist>Add music in assets/js/aero-site.js</span>
+              <span class="music-source" data-music-source>Use assets/audio/ for your own files.</span>
+            </div>
+            <div class="progress-shell"><div class="progress-fill" data-music-progress></div></div>
+            <div class="progress-time" data-music-time>0:00 / 0:00</div>
+            <div class="music-controls">
+              <button class="music-button secondary" type="button" data-music-prev title="Previous">Prev</button>
+              <button class="music-button secondary" type="button" data-music-play>Play</button>
+              <button class="music-button secondary" type="button" data-music-pause>Pause</button>
+              <button class="music-button secondary" type="button" data-music-next title="Next">Next</button>
+              <button class="music-button secondary" type="button" data-music-mute aria-pressed="false">Mute</button>
+            </div>
+            <label class="sr-only" for="musicVolume">Volume</label>
+            <input class="volume-slider" id="musicVolume" data-music-volume type="range" min="0" max="100" value="55">
+            <div class="visualizer" data-music-visualizer aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <audio data-music-audio preload="metadata"></audio>
+          </div>
+        </section>
+
+        <section class="gadget">
+          <div class="gadget-title"><span class="gadget-icon">QL</span>Quick Links</div>
+          <div class="gadget-body gadget-links">
+            <a href="programs.html">Programs <span>Open</span></a>
+            <a href="Site/SFG/">Games <span>Open</span></a>
+            <a href="socials.html">Socials <span>Open</span></a>
+            <a href="mailto:sonicfan1348@gmail.com">Email <span>Send</span></a>
+          </div>
+        </section>
+
+        <section class="gadget">
+          <div class="gadget-title"><span class="gadget-icon">ST</span>Site Sections</div>
+          <div class="gadget-body">
+            <div class="status-orb" aria-hidden="true"></div>
+            <p><strong>Online:</strong> Main portal loaded. Explore software, games, credits, archives, and socials from the glass toolbar.</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div><strong>sonic Fan Tech</strong> &copy; <span data-year></span></div>
+      <nav class="footer-links" aria-label="Footer navigation">
         <a href="programs.html">Programs</a>
-        <a href="Site/SFG/Site/SFG-main.html">Games</a>
-        <a href="credits.html">Credits</a>
-        <a href="archives.html">Archive</a>
+        <a href="Site/SFG/">Games</a>
         <a href="socials.html">Socials</a>
-        <a href="mailto:sonicfantech@sonicfantech.org">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="relative z-10 pt-28 pb-20 max-w-3xl mx-auto px-6">
-    <!-- Hero Profile -->
-    <div class="text-center mb-16">
-      <div class="mx-auto w-56 h-56 relative">
-        <img src="https://i.imgur.com/t9cRzzs.png" alt="sonic Fan Tech" 
-             class="w-full h-full object-cover rounded-3xl border-8 border-white/30 sonic-glow">
-      </div>
-      <h1 class="mt-8 text-6xl font-bold tracking-tighter text-white">sonic Fan Tech</h1>
-      <p class="mt-3 text-2xl text-slate-300">Developer, hobbyist &amp; game-maker</p>
-
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="mailto:sonicfan1348@gmail.com"
-           class="glass hover:bg-white/20 border border-white/20 px-8 py-4 rounded-3xl font-semibold flex items-center gap-2 transition">
-          ✉️ Email me
-        </a>
-        <a href="programs.html"
-           class="bg-[#1E90FF] hover:bg-[#00BFFF] px-8 py-4 rounded-3xl font-semibold text-white flex items-center gap-2 transition shadow-xl">
-          🛠️ View My Programs
-        </a>
-      </div>
-    </div>
-
-    <!-- About -->
-    <div class="max-w-2xl mx-auto">
-      <h2 class="text-[#1E90FF] text-4xl font-semibold mb-6">About me</h2>
-      <p class="text-lg leading-relaxed text-slate-300">
-        Hello — welcome to my personal website! I'm passionate about technology, programming, and gaming. 
-        I build hobby projects, recreate games for fun, and share software and resources here.
-      </p>
-
-      <div class="flex flex-wrap gap-3 my-10">
-        <span class="glass px-6 py-2.5 rounded-3xl text-sm font-medium">Clickteam Fusion</span>
-        <span class="glass px-6 py-2.5 rounded-3xl text-sm font-medium">Game Dev</span>
-        <span class="glass px-6 py-2.5 rounded-3xl text-sm font-medium">Web</span>
-        <span class="glass px-6 py-2.5 rounded-3xl text-sm font-medium">Modding</span>
-      </div>
-
-      <h2 class="text-[#1E90FF] text-4xl font-semibold mb-6 mt-16">What you'll find here</h2>
-      <div class="grid md:grid-cols-3 gap-6 text-sm">
-        <div class="glass p-6 rounded-3xl">💾 Downloads for my programs and small projects</div>
-        <div class="glass p-6 rounded-3xl">📝 Notes about ongoing games (ONaF, DELTARUNE: CTFRM, etc.)</div>
-        <div class="glass p-6 rounded-3xl">🔗 Community links and contact info</div>
-      </div>
-
-      <h2 class="text-[#1E90FF] text-4xl font-semibold mb-6 mt-16">Quick links</h2>
-      <div class="flex flex-wrap gap-4">
-        <a href="Site/SFG/Site/SFG-main.html" 
-           class="flex-1 min-w-[160px] text-center glass hover:bg-white/20 py-5 rounded-3xl font-semibold transition">🎮 Games page</a>
-        <a href="programs.html" 
-           class="flex-1 min-w-[160px] text-center glass hover:bg-white/20 py-5 rounded-3xl font-semibold transition">🛠️ Programs</a>
-      </div>
-    </div>
-
-    <footer class="mt-24 text-center text-slate-400 text-sm">
-      © <span id="year"></span> sonic Fan Tech
+        <a href="mailto:sonicfan1348@gmail.com">Email</a>
+      </nav>
     </footer>
-  </main>
-
-  <script>
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Close mobile menu when clicking a link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    // Current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  </div>
 </body>
 </html>

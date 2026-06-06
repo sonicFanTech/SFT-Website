@@ -3,116 +3,71 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Credits — sonic Fan Tech</title>
-  <link rel="icon" href="https://sonicfast2017.github.io/images/favicon.ico">
-
-  <!-- Tailwind + Font Awesome -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = { content: [], theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } }
-  </script>
-
-  <style>
-    body { background-image: url('https://i.imgur.com/UMYi74W.jpeg'); }
-    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); }
-    .card-hover { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 50px -10px #1E90FF; }
-  </style>
+  <title>Credits - sonic Fan Tech</title>
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/aero-theme.css?v=20260605d">
+  <meta name="description" content="Credits and contributors for sonic Fan Tech.">
+  <script src="assets/js/aero-site.js?v=20260605g" defer></script>
 </head>
+<body class="credits-page">
+  <div class="site-shell">
+    <header class="aero-window site-header" data-aero-header>
+      <div class="title-bar">
+        <a class="brand" href="index.html"><span class="brand-orb"><img class="brand-logo" src="images/logo.png" alt="sonic Fan Tech logo"></span><span class="brand-copy"><span class="brand-title">sonic Fan Tech</span><span class="brand-subtitle">Aero Desktop Portal - Credits</span></span></a>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button class="menu-toggle" id="menuBtn" type="button" aria-controls="siteNav" aria-expanded="false"><span class="sr-only">Open navigation</span><span class="menu-lines" aria-hidden="true"></span></button>
+      </div>
+      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html"><span class="nav-icon">HM</span>Home</a>
+        <a class="nav-link" href="programs.html"><span class="nav-icon">EXE</span>Programs</a>
+        <a class="nav-link" href="Site/SFG/"><span class="nav-icon">SFG</span>Games</a>
+        <a class="nav-link" href="credits.html" aria-current="page"><span class="nav-icon">CR</span>Credits</a>
+        <a class="nav-link" href="archives.html"><span class="nav-icon">AR</span>Archive</a>
+        <a class="nav-link" href="socials.html"><span class="nav-icon">NET</span>Socials</a>
+        <a class="nav-link" href="mailto:sonicfantech@sonicfantech.org"><span class="nav-icon">@</span>Contact</a>
+      </nav>
+    </header>
 
-<body class="font-sans bg-cover bg-center bg-fixed min-h-screen text-slate-200">
-  <!-- Overlay -->
-  <div class="fixed inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 pointer-events-none z-0"></div>
-
-  <!-- Navbar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3 group">
-        <img src="https://sonicfast2017.github.io/images/logo.png" alt="sonic Fan Tech logo" class="w-10 h-10 rounded-xl transition-transform group-hover:scale-110">
-        <div>
-          <h1 class="font-bold text-2xl tracking-tighter">sonic Fan Tech</h1>
-          <p class="text-xs text-slate-400 -mt-1">Projects • Software • Games</p>
+    <main class="page-main portal-layout">
+      <section class="portal-window" aria-labelledby="credits-title">
+        <div class="portal-titlebar">Contributor Lounge<span class="title-note">A warmer glass page for people who helped shape the site</span></div>
+        <div class="portal-content">
+          <section class="page-hero">
+            <div class="portrait-frame"><span class="shortcut-icon">CR</span></div>
+            <div>
+              <p class="page-kicker">Thank you</p>
+              <h1 class="page-title" id="credits-title">Credits</h1>
+              <p class="page-lead">Thank you to everyone who helped make this site awesome.</p>
+            </div>
+          </section>
+          <div class="curve-divider" aria-hidden="true"></div>
+          <section class="credit-grid" aria-label="Credits list">
+            <article class="aero-card credit-card"><div class="credit-avatar"><img src="https://1justjoey.github.io/images/logo.png" alt="Joey"></div><h3>Joey</h3><p>Helped with menus and some early site layout ideas.</p></article>
+            <article class="aero-card credit-card"><div class="credit-avatar"><img src="https://teknixstuff.github.io/Logo3.png" alt="Tech Stuff"></div><h3>Tech Stuff</h3><p>Assisted with styling and UI improvements.</p></article>
+            <article class="aero-card credit-card"><div class="credit-avatar"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8b140052-cc50-4879-9382-26a89a456826/dfom9gw-00d58bcf-c034-4120-874e-76b1c8c08a01.png" alt="SomeGuy"></div><h3>SomeGuy</h3><p>Styled the new site and gave feedback on layout.</p></article>
+          </section>
+          <section class="soft-panel" aria-labelledby="music-credits-title" style="margin-top: 18px;">
+            <h2 class="section-heading" id="music-credits-title">Music Credits</h2>
+            <p>Tracks used in the built-in Frutiger Aero music player under the Pixabay Content License.</p>
+            <div class="content-grid" style="margin-top: 12px;">
+              <div class="aero-badge">Aqua (Frutiger Aero Chillwave) - 9JackJack8</div>
+              <div class="aero-badge">Aquatic Ambience (Frutiger Aero Chill) - 9JackJack8</div>
+              <div class="aero-badge">Risesun on Mars (Day 1) - DayNigthMorning</div>
+              <div class="aero-badge">Neon Nostalgia - DMassaIII</div>
+              <div class="aero-badge">Frutiger aero - Mewwwwwww</div>
+            </div>
+          </section>
         </div>
-      </a>
+      </section>
 
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="index.html" class="hover:text-white transition">Home</a>
-        <a href="programs.html" class="hover:text-white transition">Programs</a>
-        <a href="Site/SFG/index.html" class="hover:text-white transition">Games</a>
-        <a href="credits.html" class="text-[#1E90FF] font-semibold">Credits</a>
-        <a href="archives.html" class="hover:text-white transition">Archive</a>
-        <a href="socials.html" class="hover:text-white transition">Socials</a>
-      </div>
+      <aside class="gadget-column" aria-label="Desktop gadgets">
+        <section class="gadget music-player" data-music-player><div class="gadget-title"><span class="gadget-icon">MP</span>Background Music</div><div class="gadget-body"><div class="music-meta"><span class="music-track" data-music-track>No track registered</span><span class="music-artist" data-music-artist>Add music in assets/js/aero-site.js</span><span class="music-source" data-music-source>Use assets/audio/ for your own files.</span></div><div class="progress-shell"><div class="progress-fill" data-music-progress></div></div><div class="progress-time" data-music-time>0:00 / 0:00</div><div class="music-controls"><button class="music-button secondary" type="button" data-music-prev>Prev</button><button class="music-button secondary" type="button" data-music-play>Play</button><button class="music-button secondary" type="button" data-music-pause>Pause</button><button class="music-button secondary" type="button" data-music-next>Next</button><button class="music-button secondary" type="button" data-music-mute aria-pressed="false">Mute</button></div><label class="sr-only" for="musicVolume">Volume</label><input class="volume-slider" id="musicVolume" data-music-volume type="range" min="0" max="100" value="55"><div class="visualizer" data-music-visualizer aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><audio data-music-audio preload="metadata"></audio></div></section>
+        <section class="gadget"><div class="gadget-title"><span class="gadget-icon">THX</span>Credits Note</div><div class="gadget-body"><div class="status-orb" aria-hidden="true"></div><p>Small site ideas, styling feedback, and layout help are preserved here as part of the main portal.</p></div></section>
+        <section class="gadget"><div class="gadget-title"><span class="gadget-icon">GO</span>Sections</div><div class="gadget-body gadget-links"><a href="index.html">Home <span>Open</span></a><a href="programs.html">Programs <span>Open</span></a><a href="archives.html">Archive <span>Open</span></a><a href="socials.html">Socials <span>Open</span></a></div></section>
+      </aside>
+    </main>
 
-      <div class="flex items-center gap-4">
-        <a href="mailto:sonicfan1348@gmail.com" class="hidden sm:block text-sm font-medium hover:text-white transition">Contact</a>
-        <button id="menuBtn" class="md:hidden text-3xl leading-none">☰</button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 py-6">
-      <div class="flex flex-col items-center gap-6 text-lg font-medium">
-        <a href="index.html">Home</a>
-        <a href="programs.html">Programs</a>
-        <a href="Site/SFG/Site/SFG-main.html">Games</a>
-        <a href="credits.html" class="text-[#1E90FF]">Credits</a>
-        <a href="archives.html">Archive</a>
-        <a href="socials.html">Socials</a>
-        <a href="mailto:sonicfan1348@gmail.com">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="relative z-10 pt-28 pb-20 max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h1 class="text-6xl font-bold tracking-tighter text-white mb-4">Credits</h1>
-      <p class="text-2xl text-slate-300">Thank you to everyone who helped make this site awesome</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Joey -->
-      <div class="glass rounded-3xl p-8 card-hover text-center">
-        <img src="https://1justjoey.github.io/images/logo.png" alt="Joey" class="w-28 h-28 mx-auto rounded-2xl object-cover mb-6 border border-white/20">
-        <h3 class="text-2xl font-semibold mb-2">Joey</h3>
-        <p class="text-slate-300">Helped with menus and some early site layout ideas.</p>
-      </div>
-
-      <!-- Tech Stuff -->
-      <div class="glass rounded-3xl p-8 card-hover text-center">
-        <img src="https://teknixstuff.github.io/Logo3.png" alt="Tech Stuff" class="w-28 h-28 mx-auto rounded-2xl object-cover mb-6 border border-white/20">
-        <h3 class="text-2xl font-semibold mb-2">Tech Stuff</h3>
-        <p class="text-slate-300">Assisted with styling and UI improvements.</p>
-      </div>
-
-      <!-- SomeGuy -->
-      <div class="glass rounded-3xl p-8 card-hover text-center">
-        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8b140052-cc50-4879-9382-26a89a456826/dfom9gw-00d58bcf-c034-4120-874e-76b1c8c08a01.png" alt="SomeGuy" class="w-28 h-28 mx-auto rounded-2xl object-cover mb-6 border border-white/20">
-        <h3 class="text-2xl font-semibold mb-2">SomeGuy</h3>
-        <p class="text-slate-300">Styled the new site and gave feedback on layout.</p>
-      </div>
-
-    </div>
-
-    <footer class="mt-20 text-center text-slate-400 text-sm">
-      © <span id="year"></span> sonic Fan Tech
-    </footer>
-  </main>
-
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <footer class="site-footer"><div><strong>sonic Fan Tech</strong> &copy; <span data-year></span> - Credits</div><nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="socials.html">Socials</a><a href="mailto:sonicfan1348@gmail.com">Email</a></nav></footer>
+  </div>
 </body>
 </html>
