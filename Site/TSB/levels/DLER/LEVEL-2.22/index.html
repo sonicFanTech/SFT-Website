@@ -10,8 +10,8 @@
   <script type="importmap">
     {
       "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.184.0/examples/jsm/"
+        "three": "./assets/vendor/three/build/three.module.js",
+        "three/addons/": "./assets/vendor/three/examples/jsm/"
       }
     }
   </script>
@@ -134,7 +134,7 @@
         <div>
           <div class="terminal-label">RECONSTRUCTION INDEX</div>
           <h2>SELECT AN AREA</h2>
-          <p>Green entries include a supplied `.glb` model. Dim entries currently have a reference render only.</p>
+          <p>Each entry includes a converted `.glb` model and a matching final render preview.</p>
         </div>
         <button id="close-zones-button" class="icon-button" aria-label="Close area selector">×</button>
       </div>

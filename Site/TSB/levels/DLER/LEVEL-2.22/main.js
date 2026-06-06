@@ -14,29 +14,29 @@ import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUnifo
 RectAreaLightUniformsLib.init();
 
 const DEFAULT_LIGHTING = {
-  background: 0x020405,
-  fogColor: 0x050b0d,
+  background: 0x030404,
+  fogColor: 0x080907,
   fogNear: 16,
   fogFar: 80,
-  hemisphereSky: 0x8eafb6,
-  hemisphereGround: 0x050708,
-  hemisphereIntensity: 0.075,
-  ambientColor: 0x718c91,
-  ambientIntensity: 0.024,
-  fixtureColor: 0xbde5ef,
-  warmFixtureColor: 0xffa14f,
-  fixtureIntensity: 2.45,
-  fixturePointIntensity: 1.25,
+  hemisphereSky: 0xc7d9c9,
+  hemisphereGround: 0x17120a,
+  hemisphereIntensity: 0.115,
+  ambientColor: 0x9eaa78,
+  ambientIntensity: 0.048,
+  fixtureColor: 0xdfe7b8,
+  warmFixtureColor: 0xffb15f,
+  fixtureIntensity: 3.65,
+  fixturePointIntensity: 1.85,
   fixturePointDistance: 7.0,
   fixturePointDecay: 1.78,
   fixtureRectStride: 1,
   fixturePointStride: 2,
-  maxFixturePoints: 6,
-  emissiveBoost: 0.94,
-  exposure: 0.76,
-  bloomStrength: 0.25,
-  bloomRadius: 0.43,
-  bloomThreshold: 0.88,
+  maxFixturePoints: 10,
+  emissiveBoost: 1.18,
+  exposure: 0.94,
+  bloomStrength: 0.32,
+  bloomRadius: 0.48,
+  bloomThreshold: 0.82,
   aoRadius: 6,
   aoMinDistance: 0.002,
   aoMaxDistance: 0.11,
@@ -54,138 +54,154 @@ const zones = [
     description: 'Early-2000s baseline garage with a public-use elevator bank.',
     model: 'assets/models/01_baseline_elevator_bank.glb', preview: 'assets/renders/01_baseline_elevator_bank.png',
     spawn: [8.6, 0, 4.8], yaw: 0,
-    lighting: { exposure: 0.78, fogFar: 90, ambientIntensity: 0.030, hemisphereIntensity: 0.085, fixtureIntensity: 2.75, fixturePointIntensity: 1.35, bloomStrength: 0.28 }
+    lighting: { exposure: 1.02, fogFar: 96, ambientIntensity: 0.060, hemisphereIntensity: 0.13, fixtureColor: 0xd9dfaa, fixtureIntensity: 4.2, fixturePointIntensity: 2.1, bloomStrength: 0.30, envMapIntensity: 0.28 }
   },
   {
     id: '02', slug: '02_repeating_aisle', title: 'Repeating Aisle',
     description: 'Vehicle-free repeating aisle with unreliable repeated B3 labels.',
     model: 'assets/models/02_repeating_aisle.glb', preview: 'assets/renders/02_repeating_aisle.png',
     spawn: [0, 0, 27], yaw: 0,
-    lighting: { background: 0x010304, fogNear: 15, fogFar: 75, ambientIntensity: 0.014, hemisphereIntensity: 0.046, fixtureIntensity: 2.35, fixturePointIntensity: 1.0, exposure: 0.69, bloomStrength: 0.28 }
+    lighting: { background: 0x0b0c0b, fogNear: 20, fogFar: 120, ambientIntensity: 0.078, hemisphereIntensity: 0.15, fixtureColor: 0xf1f1de, fixtureIntensity: 4.8, fixturePointIntensity: 2.35, exposure: 1.08, bloomStrength: 0.24, envMapIntensity: 0.32 }
   },
   {
     id: '03', slug: '03_passenger_cab_void', title: 'Passenger Cab Void',
     description: 'Passenger elevator opening through its rear into another garage section.',
     model: 'assets/models/03_passenger_cab_void.glb', preview: 'assets/renders/03_passenger_cab_void.png',
     spawn: [0.3, 0, 7.8], yaw: 0,
-    lighting: { ambientIntensity: 0.032, hemisphereIntensity: 0.09, fixtureIntensity: 2.85, fixturePointIntensity: 1.45, exposure: 0.81, bloomStrength: 0.31 }
+    lighting: { ambientIntensity: 0.055, hemisphereIntensity: 0.12, fixtureColor: 0xd8d1a2, fixtureIntensity: 3.8, fixturePointIntensity: 1.9, exposure: 0.98, bloomStrength: 0.28, envMapIntensity: 0.25 }
   },
   {
     id: '04', slug: '04_old_service_elevator', title: 'Old Service Elevator',
     description: 'Older warm-lit layer with a worn service elevator gate.',
     model: 'assets/models/04_old_service_elevator.glb', preview: 'assets/renders/04_old_service_elevator.png',
     spawn: [0, 0, -2.6], yaw: 0,
-    lighting: { background: 0x080301, fogColor: 0x100602, fogNear: 17, fogFar: 76, hemisphereSky: 0xc47735, hemisphereGround: 0x0b0301, hemisphereIntensity: 0.060, ambientColor: 0xa35c27, ambientIntensity: 0.022, fixtureColor: 0xff9b42, warmFixtureColor: 0xff8d37, fixtureIntensity: 2.55, fixturePointIntensity: 1.20, exposure: 0.70, bloomStrength: 0.27, envMapIntensity: 0.18, flashlightColor: 0xffd2a4 }
+    lighting: { background: 0x110304, fogColor: 0x190607, fogNear: 8, fogFar: 42, hemisphereSky: 0xff6c55, hemisphereGround: 0x100202, hemisphereIntensity: 0.055, ambientColor: 0x9d2e2e, ambientIntensity: 0.026, fixtureColor: 0xff3328, warmFixtureColor: 0xff6e42, fixtureIntensity: 2.8, fixturePointIntensity: 1.65, exposure: 0.80, bloomStrength: 0.40, bloomRadius: 0.56, bloomThreshold: 0.70, envMapIntensity: 0.16, flashlightColor: 0xffc0a4 }
   },
   {
     id: '05', slug: '05_modern_neglected_security', title: 'Modern Neglected Security',
     description: 'Modern neglected layer with an inactive booth and access gate.',
     model: 'assets/models/05_modern_neglected_security.glb', preview: 'assets/renders/05_modern_neglected_security.png',
     spawn: [-10.8, 0, 11.8], yaw: -0.47,
-    lighting: { background: 0x010405, fogFar: 77, ambientIntensity: 0.012, hemisphereIntensity: 0.042, fixtureIntensity: 2.15, fixturePointIntensity: 0.88, exposure: 0.67, bloomStrength: 0.23 }
+    lighting: { background: 0x060807, fogColor: 0x0c100d, fogFar: 82, ambientColor: 0x8b956f, ambientIntensity: 0.050, hemisphereIntensity: 0.12, fixtureColor: 0xd7dfb0, fixtureIntensity: 3.7, fixturePointIntensity: 1.75, exposure: 0.92, bloomStrength: 0.22, envMapIntensity: 0.24 }
   },
   {
     id: '06', slug: '06_hydraulic_maintenance_region', title: 'Hydraulic Maintenance Region',
     description: 'Maintenance region with panels, pump, oil tank, and a low-rise elevator.',
     model: 'assets/models/06_hydraulic_maintenance_region.glb', preview: 'assets/renders/06_hydraulic_maintenance_region.png',
     spawn: [-10.8, 0, -8.2], yaw: -0.88,
-    lighting: { background: 0x000102, fogColor: 0x020303, fogNear: 10, fogFar: 53, hemisphereSky: 0x3d4d52, hemisphereGround: 0x010101, hemisphereIntensity: 0.011, ambientColor: 0x475050, ambientIntensity: 0.0035, fixtureIntensity: 1.10, fixturePointIntensity: 0.34, fixtureRectStride: 2, fixturePointStride: 99, maxFixturePoints: 0, emissiveBoost: 0.78, exposure: 0.56, bloomStrength: 0.28, bloomRadius: 0.48, bloomThreshold: 0.86, envMapIntensity: 0.08, flashlightIntensity: 8.5 }
+    lighting: { background: 0x070401, fogColor: 0x120802, fogNear: 10, fogFar: 56, hemisphereSky: 0xffa66a, hemisphereGround: 0x0d0501, hemisphereIntensity: 0.055, ambientColor: 0xb16b2e, ambientIntensity: 0.025, fixtureColor: 0xff9b42, warmFixtureColor: 0xff7d31, fixtureIntensity: 2.45, fixturePointIntensity: 1.1, fixtureRectStride: 2, fixturePointStride: 2, maxFixturePoints: 4, emissiveBoost: 1.04, exposure: 0.76, bloomStrength: 0.31, bloomRadius: 0.50, bloomThreshold: 0.78, envMapIntensity: 0.18, flashlightColor: 0xffd2a4, flashlightIntensity: 8.5 }
   },
   {
     id: '07', slug: '07_flooded_leaking_floor', title: 'Flooded Leaking Floor',
     description: 'Damp replacement floor with leaks and standing water.',
     model: 'assets/models/07_flooded_leaking_floor.glb', preview: 'assets/renders/07_flooded_leaking_floor.png',
     spawn: [-9.7, 0, 15], yaw: -0.42,
-    lighting: { background: 0x010405, fogColor: 0x050f12, fogNear: 14, fogFar: 80, ambientIntensity: 0.019, hemisphereIntensity: 0.060, fixtureIntensity: 2.40, fixturePointIntensity: 1.05, exposure: 0.73, bloomStrength: 0.29, envMapIntensity: 0.38 }
+    lighting: { background: 0x070b0b, fogColor: 0x0b1518, fogNear: 16, fogFar: 90, ambientColor: 0x9fae9c, ambientIntensity: 0.070, hemisphereIntensity: 0.15, fixtureColor: 0xf1f4e9, fixtureIntensity: 4.65, fixturePointIntensity: 2.25, exposure: 1.06, bloomStrength: 0.34, bloomRadius: 0.50, envMapIntensity: 0.58 }
   },
   {
     id: '08', slug: '08_zone_blackout', title: 'Zone Blackout',
     description: 'Moving blackout sequence ending at an emergency-lit landing.',
     model: 'assets/models/08_zone_blackout.glb', preview: 'assets/renders/08_zone_blackout.png',
     spawn: [0, 0, 17.5], yaw: 0,
-    lighting: { background: 0x000102, fogColor: 0x070102, fogNear: 9, fogFar: 59, hemisphereSky: 0x27373c, hemisphereGround: 0x020000, hemisphereIntensity: 0.015, ambientColor: 0x493533, ambientIntensity: 0.005, fixtureIntensity: 2.00, fixturePointIntensity: 0.72, fixturePointStride: 3, maxFixturePoints: 2, emissiveBoost: 0.88, exposure: 0.65, bloomStrength: 0.45, bloomRadius: 0.58, bloomThreshold: 0.70, envMapIntensity: 0.10, flashlightIntensity: 9.5 }
+    lighting: { background: 0x030102, fogColor: 0x150102, fogNear: 9, fogFar: 68, hemisphereSky: 0x3d4d52, hemisphereGround: 0x090000, hemisphereIntensity: 0.026, ambientColor: 0x5b3d34, ambientIntensity: 0.012, fixtureColor: 0xff1b10, fixtureIntensity: 2.25, fixturePointIntensity: 1.35, fixturePointStride: 3, maxFixturePoints: 3, emissiveBoost: 1.0, exposure: 0.78, bloomStrength: 0.54, bloomRadius: 0.62, bloomThreshold: 0.62, envMapIntensity: 0.16, flashlightIntensity: 9.5 }
   },
   {
     id: '09', slug: '09_exposed_shaft_and_pit', title: 'Exposed Shaft and Pit',
     description: 'Explorable shaft and pit with rails, buffers, ladder, and piping.',
-    preview: 'assets/renders/09_exposed_shaft_and_pit.png'
+    model: 'assets/models/09_exposed_shaft_and_pit.glb', preview: 'assets/renders/09_exposed_shaft_and_pit.png',
+    spawn: [0, 0, 3.2], yaw: 0,
+    lighting: { background: 0x070604, fogColor: 0x110b05, fogNear: 8, fogFar: 42, hemisphereSky: 0xd0b06a, hemisphereGround: 0x090604, hemisphereIntensity: 0.070, ambientColor: 0xa7844e, ambientIntensity: 0.038, fixtureColor: 0xf4d795, warmFixtureColor: 0xff9c45, fixtureIntensity: 2.8, fixturePointIntensity: 1.4, exposure: 0.86, bloomStrength: 0.24, envMapIntensity: 0.2, flashlightColor: 0xffd4a5 }
   },
   {
     id: '10', slug: '10_misleveled_elevator_car', title: 'Misleveled Elevator Car',
     description: 'Passenger car stopped above landing level.',
     model: 'assets/models/10_misleveled_elevator_car.glb', preview: 'assets/renders/10_misleveled_elevator_car.png',
     spawn: [0, 0, 6.8], yaw: 0,
-    lighting: { ambientIntensity: 0.032, hemisphereIntensity: 0.09, fixtureIntensity: 2.80, fixturePointIntensity: 1.40, exposure: 0.80, bloomStrength: 0.29 }
+    lighting: { ambientIntensity: 0.062, hemisphereIntensity: 0.13, fixtureColor: 0xe8ead2, fixtureIntensity: 4.1, fixturePointIntensity: 2.0, exposure: 0.98, bloomStrength: 0.28, envMapIntensity: 0.28 }
   },
   {
     id: '11', slug: '11_false_exit_loop', title: 'False Exit Loop',
     description: 'Convincing EXIT opening that loops back into another garage aisle.',
     model: 'assets/models/11_false_exit_loop.glb', preview: 'assets/renders/11_false_exit_loop.png',
     spawn: [0, 0, 11], yaw: 0,
-    lighting: { background: 0x010405, fogNear: 15, fogFar: 82, ambientIntensity: 0.030, hemisphereIntensity: 0.082, fixtureIntensity: 2.75, fixturePointIntensity: 1.38, exposure: 0.82, bloomStrength: 0.29 }
+    lighting: { background: 0x070807, fogNear: 15, fogFar: 95, ambientIntensity: 0.072, hemisphereIntensity: 0.15, fixtureColor: 0xf0f2df, fixtureIntensity: 4.75, fixturePointIntensity: 2.35, exposure: 1.08, bloomStrength: 0.28, envMapIntensity: 0.30 }
   },
   {
     id: '12', slug: '12_outside_forest_route', title: 'Outside Forest Route',
     description: 'Exterior opening leading into a dark forest route.',
     model: 'assets/models/12_outside_forest_route.glb', preview: 'assets/renders/12_outside_forest_route.png',
     spawn: [0, 0, 10.8], yaw: 0,
-    lighting: { background: 0x000201, fogColor: 0x020805, fogNear: 7, fogFar: 49, hemisphereSky: 0x254138, hemisphereGround: 0x000100, hemisphereIntensity: 0.012, ambientColor: 0x254038, ambientIntensity: 0.0035, fixtureIntensity: 0.92, fixturePointIntensity: 0.28, fixtureRectStride: 2, fixturePointStride: 99, maxFixturePoints: 0, emissiveBoost: 0.78, exposure: 0.55, bloomStrength: 0.24, envMapIntensity: 0.08, flashlightColor: 0xb9e9d9, flashlightIntensity: 8.5 }
+    lighting: { background: 0x000402, fogColor: 0x021007, fogNear: 7, fogFar: 55, hemisphereSky: 0x3ca568, hemisphereGround: 0x000100, hemisphereIntensity: 0.028, ambientColor: 0x2e7b4b, ambientIntensity: 0.012, fixtureColor: 0x4cff68, fixtureIntensity: 1.8, fixturePointIntensity: 0.95, fixtureRectStride: 2, fixturePointStride: 99, maxFixturePoints: 0, emissiveBoost: 1.08, exposure: 0.72, bloomStrength: 0.42, bloomRadius: 0.55, envMapIntensity: 0.14, flashlightColor: 0xb9e9d9, flashlightIntensity: 8.5 }
   },
   {
     id: '13', slug: '13_discolored_wall_exit', title: 'Discolored Wall Exit',
     description: 'Strangely discolored wall used as an anomalous noclip exit.',
     model: 'assets/models/13_discolored_wall_exit.glb', preview: 'assets/renders/13_discolored_wall_exit.png',
     spawn: [-1.8, 0, 9.8], yaw: -0.73,
-    lighting: { background: 0x010403, fogColor: 0x050e0a, fogNear: 14, fogFar: 73, hemisphereSky: 0x627e77, hemisphereGround: 0x010302, hemisphereIntensity: 0.050, ambientColor: 0x607770, ambientIntensity: 0.015, fixtureIntensity: 2.25, fixturePointIntensity: 0.92, exposure: 0.70, bloomStrength: 0.26, envMapIntensity: 0.18 }
+    lighting: { background: 0x0b0201, fogColor: 0x170301, fogNear: 14, fogFar: 73, hemisphereSky: 0xe46b55, hemisphereGround: 0x120301, hemisphereIntensity: 0.052, ambientColor: 0xa54a38, ambientIntensity: 0.020, fixtureColor: 0xff412d, fixtureIntensity: 3.2, fixturePointIntensity: 1.6, exposure: 0.82, bloomStrength: 0.38, bloomRadius: 0.54, bloomThreshold: 0.70, envMapIntensity: 0.18 }
   },
   {
     id: '14', slug: '14_outside_forest_clearing', title: 'Outside Forest Clearing',
     description: 'Exterior service road and rain-darkened forest clearing.',
-    preview: 'assets/renders/14_outside_forest_clearing.png'
+    model: 'assets/models/14_outside_forest_clearing.glb', preview: 'assets/renders/14_outside_forest_clearing.png',
+    spawn: [0, 0, 5.5], yaw: 0,
+    lighting: { background: 0x000201, fogColor: 0x031008, fogNear: 7, fogFar: 52, hemisphereSky: 0x2d9d5b, hemisphereGround: 0x000100, hemisphereIntensity: 0.018, ambientColor: 0x1d5d34, ambientIntensity: 0.007, fixtureColor: 0x4cff68, fixtureIntensity: 0.8, fixturePointIntensity: 0.45, maxFixturePoints: 0, exposure: 0.62, bloomStrength: 0.28, envMapIntensity: 0.10, flashlightColor: 0xb8efcf, flashlightIntensity: 8.8 }
   },
   {
     id: '15', slug: '15_open_air_upper_deck', title: 'Open-Air Upper Deck',
     description: 'Open-air parking deck configuration with a ramp opening and forest edge.',
-    preview: 'assets/renders/15_open_air_upper_deck.png'
+    model: 'assets/models/15_open_air_upper_deck.glb', preview: 'assets/renders/15_open_air_upper_deck.png',
+    spawn: [0, 0, 6.2], yaw: 0,
+    lighting: { background: 0x000102, fogColor: 0x030607, fogNear: 18, fogFar: 95, hemisphereSky: 0x87948f, hemisphereGround: 0x020202, hemisphereIntensity: 0.035, ambientColor: 0x6f7a73, ambientIntensity: 0.018, fixtureColor: 0xd7d7c8, fixtureIntensity: 1.7, fixturePointIntensity: 0.75, exposure: 0.70, bloomStrength: 0.18, envMapIntensity: 0.16, flashlightIntensity: 9.2 }
   },
   {
     id: '16', slug: '16_traction_machine_room', title: 'Traction Machine Room',
     description: 'Machine room with controllers, motor, sheave, and hoist ropes.',
-    preview: 'assets/renders/16_traction_machine_room.png'
+    model: 'assets/models/16_traction_machine_room.glb', preview: 'assets/renders/16_traction_machine_room.png',
+    spawn: [0, 0, 5.8], yaw: 0,
+    lighting: { background: 0x070301, fogColor: 0x100602, fogNear: 10, fogFar: 48, hemisphereSky: 0xff9b4d, hemisphereGround: 0x080401, hemisphereIntensity: 0.055, ambientColor: 0xb0662f, ambientIntensity: 0.028, fixtureColor: 0xff9b42, warmFixtureColor: 0xff8b36, fixtureIntensity: 2.6, fixturePointIntensity: 1.3, exposure: 0.76, bloomStrength: 0.25, envMapIntensity: 0.20, flashlightColor: 0xffd2a4 }
   },
   {
     id: '17', slug: '17_hydraulic_machine_room', title: 'Hydraulic Machine Room',
     description: 'Low-rise equipment room with reservoir, pump, controller, and piping.',
-    preview: 'assets/renders/17_hydraulic_machine_room.png'
+    model: 'assets/models/17_hydraulic_machine_room.glb', preview: 'assets/renders/17_hydraulic_machine_room.png',
+    spawn: [0, 0, 4.8], yaw: 0,
+    lighting: { background: 0x070301, fogColor: 0x100602, fogNear: 10, fogFar: 48, hemisphereSky: 0xff9b4d, hemisphereGround: 0x080401, hemisphereIntensity: 0.055, ambientColor: 0xb0662f, ambientIntensity: 0.028, fixtureColor: 0xff9b42, warmFixtureColor: 0xff8b36, fixtureIntensity: 2.6, fixturePointIntensity: 1.3, exposure: 0.76, bloomStrength: 0.25, envMapIntensity: 0.20, flashlightColor: 0xffd2a4 }
   },
   {
     id: '18', slug: '18_shaft_top_down', title: 'Shaft Top-Down',
     description: 'Top-down elevator shaft view with a car roof, guide rails, ropes, and counterweight.',
-    preview: 'assets/renders/18_shaft_top_down.png'
+    model: 'assets/models/18_shaft_top_down.glb', preview: 'assets/renders/18_shaft_top_down.png',
+    spawn: [0, 0, 3.4], yaw: 0,
+    lighting: { background: 0x010101, fogColor: 0x050404, fogNear: 5, fogFar: 34, hemisphereSky: 0xc6b493, hemisphereGround: 0x020202, hemisphereIntensity: 0.035, ambientColor: 0x9b8060, ambientIntensity: 0.014, fixtureColor: 0xffdf9a, warmFixtureColor: 0xffc170, fixtureIntensity: 2.1, fixturePointIntensity: 1.05, exposure: 0.72, bloomStrength: 0.20, envMapIntensity: 0.12, flashlightColor: 0xffd9ad }
   },
   {
     id: '19', slug: '19_top_of_car_access', title: 'Top-of-Car Access',
     description: 'Top-of-car service access area and inspection station.',
-    preview: 'assets/renders/19_top_of_car_access.png'
+    model: 'assets/models/19_top_of_car_access.glb', preview: 'assets/renders/19_top_of_car_access.png',
+    spawn: [0, 0, 3.0], yaw: 0,
+    lighting: { background: 0x010101, fogColor: 0x060504, fogNear: 5, fogFar: 32, hemisphereSky: 0xffd9a0, hemisphereGround: 0x020202, hemisphereIntensity: 0.030, ambientColor: 0xa47c45, ambientIntensity: 0.012, fixtureColor: 0xffe7ad, warmFixtureColor: 0xffca73, fixtureIntensity: 3.6, fixturePointIntensity: 1.9, exposure: 0.74, bloomStrength: 0.34, bloomThreshold: 0.70, envMapIntensity: 0.12, flashlightColor: 0xffdfb4 }
   },
   {
     id: '20', slug: '20_looping_stairwell', title: 'Looping Stairwell',
     description: 'Stairwell configuration with repeated B2 labels and an unreliable return path.',
     model: 'assets/models/20_looping_stairwell.glb', preview: 'assets/renders/20_looping_stairwell.png',
     spawn: [4.15, 0, 4.8], yaw: 0.63,
-    lighting: { background: 0x010304, fogColor: 0x050b0e, fogNear: 7, fogFar: 43, hemisphereSky: 0x607b83, hemisphereGround: 0x010203, hemisphereIntensity: 0.025, ambientColor: 0x596b70, ambientIntensity: 0.008, exposure: 0.62, bloomStrength: 0.22, envMapIntensity: 0.11, flashlightIntensity: 9.0 }
+    lighting: { background: 0x010101, fogColor: 0x040404, fogNear: 7, fogFar: 45, hemisphereSky: 0x8a8a7d, hemisphereGround: 0x010101, hemisphereIntensity: 0.020, ambientColor: 0x56564d, ambientIntensity: 0.009, fixtureColor: 0xd8d8b8, fixtureIntensity: 1.15, fixturePointIntensity: 0.55, exposure: 0.58, bloomStrength: 0.14, envMapIntensity: 0.08, flashlightIntensity: 9.0 }
   },
   {
     id: '21', slug: '21_unfinished_elevator_installation', title: 'Unfinished Elevator Installation',
     description: 'Damaged unfinished landing with exposed rails, loose panels, and components.',
     model: 'assets/models/21_unfinished_elevator_installation.glb', preview: 'assets/renders/21_unfinished_elevator_installation.png',
     spawn: [0, 0, 7], yaw: 0,
-    lighting: { background: 0x040100, fogColor: 0x090402, fogNear: 9, fogFar: 56, hemisphereSky: 0x704320, hemisphereGround: 0x020100, hemisphereIntensity: 0.012, ambientColor: 0x694321, ambientIntensity: 0.004, fixtureIntensity: 0.95, fixturePointIntensity: 0.30, fixtureRectStride: 2, fixturePointStride: 99, maxFixturePoints: 0, emissiveBoost: 0.80, exposure: 0.56, bloomStrength: 0.31, envMapIntensity: 0.09, flashlightColor: 0xffd0aa, flashlightIntensity: 8.8 }
+    lighting: { background: 0x050100, fogColor: 0x110503, fogNear: 9, fogFar: 58, hemisphereSky: 0xb15f40, hemisphereGround: 0x020100, hemisphereIntensity: 0.025, ambientColor: 0x81432d, ambientIntensity: 0.010, fixtureColor: 0xff8b5a, warmFixtureColor: 0xff7a45, fixtureIntensity: 1.8, fixturePointIntensity: 0.86, fixtureRectStride: 2, fixturePointStride: 3, maxFixturePoints: 2, emissiveBoost: 0.92, exposure: 0.68, bloomStrength: 0.34, envMapIntensity: 0.12, flashlightColor: 0xffd0aa, flashlightIntensity: 8.8 }
   },
   {
     id: '22', slug: '22_mixed_era_ramp', title: 'Mixed-Era Ramp',
     description: 'Parking ramp crossing between cold early-2000s and older amber-lit structural layers.',
-    preview: 'assets/renders/22_mixed_era_ramp.png'
+    model: 'assets/models/22_mixed_era_ramp.glb', preview: 'assets/renders/22_mixed_era_ramp.png',
+    spawn: [0, 0, 7.2], yaw: 0,
+    lighting: { background: 0x090402, fogColor: 0x120805, fogNear: 14, fogFar: 78, hemisphereSky: 0xffb46a, hemisphereGround: 0x080402, hemisphereIntensity: 0.070, ambientColor: 0xb56d37, ambientIntensity: 0.032, fixtureColor: 0xff9b52, warmFixtureColor: 0xff8641, fixtureIntensity: 3.0, fixturePointIntensity: 1.45, exposure: 0.82, bloomStrength: 0.24, envMapIntensity: 0.18, flashlightColor: 0xffd3a0 }
   }
 ];
 
@@ -213,6 +229,13 @@ const QUALITY_PRESETS = {
 };
 
 const availableZones = zones.filter((zone) => zone.model);
+const MODEL_UNIT_SCALE = 0.1;
+const PLAYER_RADIUS = 0.35;
+const PLAYER_EYE_HEIGHT = 1.62;
+const PLAYER_WALK_SPEED = 5.8;
+const PLAYER_AIR_SPEED = 2.2;
+const PLAYER_JUMP_SPEED = 5.2;
+const PLAYER_GRAVITY = 18;
 const elements = {
   canvas: document.querySelector('#viewport'),
   zoneTitle: document.querySelector('#zone-title'),
@@ -327,7 +350,11 @@ let graphicsReturnScreen = 'entry';
 
 scene.add(zoneLightGroup);
 
-const playerCollider = new Capsule(new THREE.Vector3(0, 0.35, 0), new THREE.Vector3(0, 1.55, 0), 0.35);
+const playerCollider = new Capsule(
+  new THREE.Vector3(0, PLAYER_RADIUS, 0),
+  new THREE.Vector3(0, PLAYER_EYE_HEIGHT, 0),
+  PLAYER_RADIUS
+);
 const playerVelocity = new THREE.Vector3();
 const playerDirection = new THREE.Vector3();
 let playerOnFloor = false;
@@ -339,7 +366,11 @@ function lightingFor(zone) {
 }
 
 function fromBlender(x, y, z) {
-  return new THREE.Vector3(x, z, -y);
+  return new THREE.Vector3(x, z, -y).multiplyScalar(MODEL_UNIT_SCALE);
+}
+
+function scaledWorldPosition(position) {
+  return new THREE.Vector3(position[0], position[1], position[2]).multiplyScalar(MODEL_UNIT_SCALE);
 }
 
 function showOnly(screen) {
@@ -477,7 +508,7 @@ function fixtureColor(mesh, profile) {
 }
 
 function buildFixtureLights(profile) {
-  if (!loadedModel) return;
+  if (!loadedModel) return 0;
   loadedModel.updateMatrixWorld(true);
   const fixtures = [];
   loadedModel.traverse((child) => {
@@ -490,6 +521,7 @@ function buildFixtureLights(profile) {
   const rectStride = Math.max(1, Math.round(quality.fixtureStride * profile.fixtureRectStride));
   const pointStride = Math.max(1, Math.round(quality.pointStride * profile.fixturePointStride));
   let pointCount = 0;
+  let rectCount = 0;
 
   fixtures.forEach((fixture, index) => {
     if (index % rectStride !== 0) return;
@@ -513,6 +545,7 @@ function buildFixtureLights(profile) {
       flicker,
       flickerSpeed: isMaintenance ? 8.2 : 4.7
     });
+    rectCount += 1;
 
     if (index % pointStride === 0 && pointCount < profile.maxFixturePoints) {
       addPoint({
@@ -527,6 +560,87 @@ function buildFixtureLights(profile) {
       pointCount += 1;
     }
   });
+  return rectCount;
+}
+
+function addBoundedCeilingLights(profile, {
+  rows = 2,
+  columns = 2,
+  color = profile.fixtureColor,
+  intensity = profile.fixtureIntensity,
+  pointIntensity = profile.fixturePointIntensity,
+  pointScale = 1,
+  warm = false,
+  flicker = 0.006,
+  heightOffset = 0.24,
+  widthScale = 0.24,
+  depthScale = 0.12
+} = {}) {
+  if (!activeBounds) return;
+  const size = activeBounds.getSize(new THREE.Vector3());
+  const center = activeBounds.getCenter(new THREE.Vector3());
+  const minX = activeBounds.min.x + size.x * 0.18;
+  const maxX = activeBounds.max.x - size.x * 0.18;
+  const minZ = activeBounds.min.z + size.z * 0.18;
+  const maxZ = activeBounds.max.z - size.z * 0.18;
+  const y = activeBounds.max.y - heightOffset;
+  const rectWidth = Math.max(1.8, Math.min(7.5, size.x * widthScale));
+  const rectHeight = Math.max(0.22, Math.min(2.4, size.z * depthScale));
+  const limit = Math.max(1, Math.min(profile.maxFixturePoints, rows * columns));
+  let made = 0;
+
+  for (let row = 0; row < rows; row += 1) {
+    for (let column = 0; column < columns; column += 1) {
+      if (made >= limit) return;
+      const x = columns === 1 ? center.x : minX + (maxX - minX) * (column / (columns - 1));
+      const z = rows === 1 ? center.z : minZ + (maxZ - minZ) * (row / (rows - 1));
+      const position = new THREE.Vector3(x, y, z);
+      const target = new THREE.Vector3(x, activeBounds.min.y + 0.8, z);
+      addRect({ position, target, color, intensity: intensity * (warm ? 0.95 : 1), width: rectWidth, height: rectHeight, flicker, flickerSpeed: warm ? 5.2 : 4.1 });
+      addPoint({
+        position: position.clone().add(new THREE.Vector3(0, -0.32, 0)),
+        color,
+        intensity: pointIntensity * pointScale,
+        distance: Math.max(8, Math.min(22, size.length() * 0.34)),
+        decay: profile.fixturePointDecay,
+        flicker,
+        flickerSpeed: warm ? 5.2 : 4.1
+      });
+      made += 1;
+    }
+  }
+}
+
+function addReferenceRenderLights(zone, profile) {
+  switch (zone.id) {
+    case '04':
+      addBoundedCeilingLights(profile, { rows: 1, columns: 1, color: 0xff2a22, intensity: 2.9, pointIntensity: 2.2, flicker: 0.035 });
+      break;
+    case '06':
+    case '16':
+    case '17':
+    case '18':
+    case '19':
+    case '21':
+    case '22':
+      addBoundedCeilingLights(profile, { rows: 1, columns: 2, color: profile.warmFixtureColor, intensity: profile.fixtureIntensity, pointIntensity: profile.fixturePointIntensity, warm: true, flicker: 0.018 });
+      break;
+    case '08':
+    case '13':
+      addBoundedCeilingLights(profile, { rows: 1, columns: 2, color: 0xff2116, intensity: profile.fixtureIntensity, pointIntensity: profile.fixturePointIntensity * 1.15, flicker: 0.08 });
+      break;
+    case '12':
+    case '14':
+      addBoundedCeilingLights(profile, { rows: 1, columns: 2, color: 0x46ff67, intensity: 1.1, pointIntensity: 1.6, flicker: 0.018 });
+      break;
+    case '15':
+    case '20':
+      addBoundedCeilingLights(profile, { rows: 1, columns: 1, color: profile.fixtureColor, intensity: profile.fixtureIntensity, pointIntensity: profile.fixturePointIntensity, flicker: 0.004 });
+      break;
+    default:
+      addBoundedCeilingLights(profile, { rows: 2, columns: 3, flicker: zone.id === '07' ? 0.012 : 0.006 });
+      break;
+  }
 }
 
 function addSpecialZoneLights(zone, profile) {
@@ -570,7 +684,8 @@ function rebuildZoneLights() {
   clearZoneLights();
   if (!loadedModel || !activeZone) return;
   const profile = lightingFor(activeZone);
-  buildFixtureLights(profile);
+  const fixtureCount = buildFixtureLights(profile);
+  if (!fixtureCount) addReferenceRenderLights(activeZone, profile);
   addSpecialZoneLights(activeZone, profile);
   updateHud();
 }
@@ -648,9 +763,18 @@ function applyGraphicsQuality(name, { rebuild = true } = {}) {
 
 function respawn() {
   if (!activeZone?.spawn) return;
-  const [x, y, z] = activeZone.spawn;
-  playerCollider.start.set(x, y + 0.35, z);
-  playerCollider.end.set(x, y + 1.55, z);
+  const spawn = scaledWorldPosition(activeZone.spawn);
+  if (activeBounds) {
+    const center = activeBounds.getCenter(new THREE.Vector3());
+    const testPoint = new THREE.Vector3(spawn.x, activeBounds.min.y + PLAYER_RADIUS, spawn.z);
+    if (!activeBounds.containsPoint(testPoint)) {
+      spawn.x = center.x;
+      spawn.z = center.z;
+    }
+    spawn.y = Math.max(spawn.y, activeBounds.min.y + 0.03);
+  }
+  playerCollider.start.set(spawn.x, spawn.y + PLAYER_RADIUS, spawn.z);
+  playerCollider.end.set(spawn.x, spawn.y + PLAYER_EYE_HEIGHT, spawn.z);
   playerVelocity.set(0, 0, 0);
   camera.position.copy(playerCollider.end);
   camera.rotation.set(0, activeZone.yaw ?? 0, 0, 'YXZ');
@@ -680,6 +804,8 @@ function loadZone(zone) {
       if (token !== loadingToken) return;
       loadedModel = gltf.scene;
       loadedModel.name = `Level 2.22 Area ${zone.id}`;
+      loadedModel.scale.setScalar(MODEL_UNIT_SCALE);
+      loadedModel.updateMatrixWorld(true);
       scene.add(loadedModel);
       activeBounds = new THREE.Box3().setFromObject(loadedModel);
       configureImportedMeshes(lightingFor(zone));
@@ -762,26 +888,26 @@ function getSideVector() {
 
 function processInput(deltaTime) {
   if (!controls.isLocked) return;
-  const speedDelta = deltaTime * (playerOnFloor ? 24 : 8);
+  const speedDelta = deltaTime * (playerOnFloor ? PLAYER_WALK_SPEED : PLAYER_AIR_SPEED);
   if (keyStates.KeyW) playerVelocity.add(getForwardVector().multiplyScalar(speedDelta));
   if (keyStates.KeyS) playerVelocity.add(getForwardVector().multiplyScalar(-speedDelta));
   if (keyStates.KeyA) playerVelocity.add(getSideVector().multiplyScalar(-speedDelta));
   if (keyStates.KeyD) playerVelocity.add(getSideVector().multiplyScalar(speedDelta));
-  if (playerOnFloor && keyStates.Space) playerVelocity.y = 7.4;
+  if (playerOnFloor && keyStates.Space) playerVelocity.y = PLAYER_JUMP_SPEED;
 }
 
 function updatePlayer(deltaTime) {
   if (!loadedModel) return;
   let damping = Math.exp(-4 * deltaTime) - 1;
   if (!playerOnFloor) {
-    playerVelocity.y -= 25 * deltaTime;
+    playerVelocity.y -= PLAYER_GRAVITY * deltaTime;
     damping *= 0.12;
   }
   playerVelocity.addScaledVector(playerVelocity, damping);
   playerCollider.translate(playerVelocity.clone().multiplyScalar(deltaTime));
   playerCollisions();
   camera.position.copy(playerCollider.end);
-  if (activeBounds && camera.position.y < activeBounds.min.y - 12) respawn();
+  if (activeBounds && camera.position.y < activeBounds.min.y - 8) respawn();
 }
 
 function updateAnimatedLights(elapsedTime) {

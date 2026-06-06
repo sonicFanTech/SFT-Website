@@ -50,4 +50,4 @@ The supplied `.glb` files do not include Cycles-baked lightmaps. This build appr
 
 ## Hosting
 
-Upload the extracted files to a static web host while preserving the folder structure. The viewer currently loads Three.js modules from jsDelivr, so visitors require an internet connection unless the Three.js dependency files are bundled locally in a later build.
+Upload the extracted files to a static web host while preserving the folder structure. The viewer bundles its required Three.js module files locally under `assets/vendor/three`, so the WebGL runtime does not depend on CDN-hosted JavaScript.
