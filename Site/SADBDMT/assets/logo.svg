@@ -1,0 +1,23 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img">
+  <title id="title">SAD-B-D-M-T Logo</title>
+  <desc id="desc">Rounded square shield with a phone, heartbeat line, and backup arrows for the Specialized Android Diagnostic, Backup and Device Management Tool.</desc>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="64" x2="448" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="170" y1="120" x2="342" y2="392" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#1F2937"/>
+    </linearGradient>
+  </defs>
+  <rect x="48" y="48" width="416" height="416" rx="96" fill="url(#bg)"/>
+  <rect x="166" y="104" width="180" height="304" rx="36" fill="url(#screen)" stroke="#E5EEF9" stroke-width="12"/>
+  <rect x="192" y="140" width="128" height="204" rx="18" fill="#F8FAFC" opacity="0.96"/>
+  <circle cx="256" cy="372" r="10" fill="#E5EEF9"/>
+  <path d="M112 265C145 265 160 265 177 265L200 229L225 293L252 218L281 293L307 244L337 265H399" stroke="#F8FAFC" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M128 156C152 124 197 104 224 104" stroke="#D1FAE5" stroke-width="14" stroke-linecap="round"/>
+  <path d="M210 94L227 103L218 120" stroke="#D1FAE5" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M384 356C360 388 315 408 288 408" stroke="#DBEAFE" stroke-width="14" stroke-linecap="round"/>
+  <path d="M302 418L285 409L294 392" stroke="#DBEAFE" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
