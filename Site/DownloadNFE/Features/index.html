@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Features - Noxen File Explorer</title>
+  <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<div class="page-shell">
+  <div class="title-bar"><div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - Features</strong></div><div class="window-controls"><span></span><span></span><span></span></div></div>
+  <div class="top-strip">
+    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
+    <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
+    <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
+  </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="menu-box"><div class="box-title">Feature Sections</div><div class="box-body"><ul class="nav-links">
+        <li><a href="#foundation"><img src="../assets/icons/features.svg" alt="">Native Foundation</a></li>
+        <li><a href="#browsing"><img src="../assets/icons/folder.svg" alt="">Browsing & Tabs</a></li>
+        <li><a href="#drives"><img src="../assets/icons/device.svg" alt="">This PC & Drives</a></li>
+        <li><a href="#mtp"><img src="../assets/icons/device.svg" alt="">MTP Devices</a></li>
+        <li><a href="#archives"><img src="../assets/icons/archive.svg" alt="">Archives / ISO / 7-Zip</a></li>
+        <li><a href="#polish"><img src="../assets/icons/info.svg" alt="">Polish & Controls</a></li>
+      </ul></div></div>
+    </aside>
+    <main class="content">
+      <div class="box"><div class="box-title">Feature overview</div><div class="box-body alt">
+        <h1 style="margin-top:0;">What v2.0 R1 includes</h1>
+        <p>Noxen File Explorer: Razer Native is not just a small update. It is a large rebuild of the original NFE concept with a native architecture, modular DLL features, and a much more complete desktop file explorer workflow.</p>
+      </div></div>
+
+      <div id="foundation" class="box"><div class="box-title">1. Native Foundation</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li>Full native C++ / Qt rebuild of the older Python/PySide6 version.</li>
+          <li>Visual Studio / MSVC project structure rather than a script-packed EXE approach.</li>
+          <li>Cleaner runtime packaging with a standard build and an optional one-file EXE build.</li>
+          <li>Closed-source freeware release model with in-app license access.</li>
+        </ul>
+      </div></div>
+
+      <div id="browsing" class="box"><div class="box-title">2. Browsing, Tabs, and Home</div><div class="box-body alt">
+        <div class="feature-grid">
+          <div class="feature-card"><h3><img src="../assets/icons/folder.svg" alt="">Tabbed browsing</h3><p>Open multiple locations in one window, duplicate tabs, close other tabs, and restore the previous tab session between launches.</p></div>
+          <div class="feature-card"><h3><img src="../assets/icons/guide.svg" alt="">Address bar</h3><p>Enter direct paths, navigate with Back / Forward / Up / Refresh, jump to This PC or Home tokens, and run command-style entries from the address box.</p></div>
+          <div class="feature-card"><h3><img src="../assets/icons/info.svg" alt="">Home / Quick Access</h3><p>Home page includes common folders, pinned folders, recent locations, recent files, and cleanup tools for clearing or removing Quick Access items.</p></div>
+          <div class="feature-card"><h3><img src="../assets/icons/features.svg" alt="">Preview pane</h3><p>Preview/details pane support is built in and can be toggled from the View menu and settings.</p></div>
+        </div>
+      </div></div>
+
+      <div id="drives" class="box"><div class="box-title">3. This PC and Drive Features</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li>Custom This PC page for local drives, removable drives, network locations, and supported portable devices.</li>
+          <li>Storage usage bars with adjustable colors for used space, free space, almost-full state, and full/critical state.</li>
+          <li>Drive context actions such as open, open in new tab, eject where supported, and open Disk Management.</li>
+          <li>Settings support for drive display behavior and start-page selection.</li>
+        </ul>
+      </div></div>
+
+      <div id="mtp" class="box"><div class="box-title">4. Built-In MTP Support</div><div class="box-body alt">
+        <p>One of the biggest improvements in the C++ release line is that MTP phone support is now built directly into the main program.</p>
+        <ul class="list-tight">
+          <li>MTP device scanning happens on startup, manual rescan, and device connect/disconnect events.</li>
+          <li>Device browsing is built into the main window rather than requiring a separate companion browser.</li>
+          <li>Dedicated feature DLLs handle MTP scanning, MTP filesystem browsing, and MTP actions.</li>
+          <li>Exporting files from phone to PC and sending files from PC to the current MTP location are supported.</li>
+        </ul>
+      </div></div>
+
+      <div id="archives" class="box"><div class="box-title">5. Archives, ISO Files, and 7-Zip Integration</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li>Bundled 7-Zip runtime files, so users do not need to install 7-Zip separately for NFE archive features.</li>
+          <li>Archive actions include extract here, extract to folder, extract to chosen folder, test archive, create ZIP, and create 7Z archives.</li>
+          <li>ISO actions include mount and dismount support.</li>
+          <li>7-Zip File Manager can be launched from NFE for users who want the real 7-Zip archive viewer/manager experience.</li>
+          <li>Shortcut tools include create shortcut here, open shortcut target, and open target location.</li>
+        </ul>
+      </div></div>
+
+      <div id="polish" class="box"><div class="box-title">6. Final Polish, Controls, and Help</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li>View modes: Details, List, Small, Medium, Large, and Extra Large icons.</li>
+          <li>Ctrl + mouse wheel icon zoom in supported views.</li>
+          <li>Keyboard shortcuts such as F2 for rename, Delete to Recycle Bin, and Ctrl + L for address-bar focus.</li>
+          <li>About window with clickable GitHub and website links.</li>
+          <li>Help menu entries for GitHub page, NFE website, NFE license, and 7-Zip license.</li>
+        </ul>
+      </div></div>
+    </main>
+  </div>
+  <div class="footer"><p>Feature reference for Noxen File Explorer: Razer Native — v2.0 R1.</p></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Latest Build - Noxen File Explorer</title>
+  <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<div class="page-shell">
+  <div class="title-bar">
+    <div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - Latest Build</strong></div>
+    <div class="window-controls"><span></span><span></span><span></span></div>
+  </div>
+  <div class="top-strip">
+    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
+    <a class="pill" href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a>
+    <a class="pill" href="../Features/"><img src="../assets/icons/features.svg" alt="">Features</a>
+    <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
+  </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="menu-box">
+        <div class="box-title">Download Pages</div>
+        <div class="box-body">
+          <ul class="nav-links">
+            <li><a href="index.html"><img src="../assets/icons/download.svg" alt="">Latest Build</a></li>
+            <li><a href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a></li>
+            <li><a href="../Changelog/"><img src="../assets/icons/info.svg" alt="">Detailed Changelog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-box">
+        <div class="box-title">Release Summary</div>
+        <div class="box-body alt">
+          <ul class="stat-list">
+            <li><strong>Release:</strong> RNR1</li>
+            <li><strong>Version:</strong> v2.0 R1</li>
+            <li><strong>Date:</strong> 2026-06-23</li>
+            <li><strong>Framework:</strong> C++ / Qt 6 / Native Windows APIs</li>
+            <li><strong>Build status:</strong> <span class="status-good">Final public release</span></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+    <main class="content">
+      <div class="box">
+        <div class="box-title">Current recommended download</div>
+        <div class="box-body alt">
+          <h1 style="margin-top:0;">Noxen File Explorer: Razer Native — v2.0 R1</h1>
+          <p>This page is for the latest public release of Noxen File Explorer. The RNR1 release is the first full native C++ rebuild of NFE and the main recommended version for current users.</p>
+          <div class="button-row">
+            <a class="win-btn" href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RNR1/NoxenFE_RazerNative_v2_0_R1_Final_MSVC.zip"><img src="../assets/icons/download.svg" alt="">Download normal build</a>
+            <a class="win-btn" href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RNR1/NoxenFE_RazerNative_v2_0_R1_Final_OneFile_FIX3_MSVC.zip"><img src="../assets/icons/download.svg" alt="">Download one-file EXE build</a>
+            <a class="win-btn" href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RNR1"><img src="../assets/icons/github.svg" alt="">Open GitHub release notes</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Which build should I choose?</div>
+        <div class="box-body alt">
+          <div class="table-wrap">
+            <table class="retro">
+              <thead><tr><th>Build type</th><th>File name</th><th>Recommended for</th><th>Behavior</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Normal build</strong></td>
+                  <td><span class="code">NoxenFE_RazerNative_v2_0_R1_Final_MSVC.zip</span></td>
+                  <td>Almost everyone</td>
+                  <td>This is the cleanest and easiest layout to update or troubleshoot. The EXE, runtime files, feature DLLs, 7-Zip files, and license files stay visible on disk.</td>
+                </tr>
+                <tr>
+                  <td><strong>One-file EXE build</strong></td>
+                  <td><span class="code">NoxenFE_RazerNative_v2_0_R1_Final_OneFile_FIX3_MSVC.zip</span></td>
+                  <td>Users who want a single-download package</td>
+                  <td>The EXE contains the private runtime payload. On first run it extracts the required files into the user profile and starts the internal runtime from there.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout info" style="margin-top:10px;"><strong>Recommendation:</strong> Use the normal build unless you specifically want the convenience of a one-file EXE.</div>
+        </div>
+      </div>
+
+      <div class="content-grid single">
+        <div class="box">
+          <div class="box-title">Included highlights in v2.0 R1</div>
+          <div class="box-body alt">
+            <div class="feature-grid">
+              <div class="feature-card"><h3><img src="../assets/icons/features.svg" alt="">Native UI foundation</h3><p>Tabbed browsing, address bar, search box, sidebar, Home page, This PC, preview pane, settings, About window, and license windows are all part of the new native foundation.</p></div>
+              <div class="feature-card"><h3><img src="../assets/icons/device.svg" alt="">MTP support</h3><p>Phone browsing is built directly into the main program with dedicated support DLLs for device scanning, filesystem access, and actions.</p></div>
+              <div class="feature-card"><h3><img src="../assets/icons/archive.svg" alt="">Archive tools</h3><p>Archive, ISO, and shortcut features are bundled with the release, including 7-Zip runtime support and 7-Zip File Manager integration.</p></div>
+              <div class="feature-card"><h3><img src="../assets/icons/download.svg" alt="">One-file option</h3><p>An optional one-file EXE edition is available for users who prefer a single downloadable executable rather than a visible runtime layout.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-title">Installation notes</div>
+          <div class="box-body alt">
+            <ol class="list-tight">
+              <li>Download the build you want.</li>
+              <li>Extract the ZIP file into its own folder.</li>
+              <li>For the normal build, run the main NFE EXE from the extracted folder.</li>
+              <li>For the one-file build, run the single EXE and let it extract its internal runtime the first time it launches.</li>
+              <li>If you want usage help after the first launch, open the <a href="../Guide/">Getting Started Guide</a>.</li>
+            </ol>
+            <p class="small muted">The one-file EXE still uses extracted files behind the scenes because Qt platform plugins, helper EXEs, and external runtime files need to exist on disk in order to work correctly.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="footer"><p>Direct download page for the current public release of Noxen File Explorer.</p></div>
+</div>
+</body>
+</html>

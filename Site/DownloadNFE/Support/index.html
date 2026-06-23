@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support and Requirements - Noxen File Explorer</title>
+  <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<div class="page-shell">
+  <div class="title-bar"><div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - Support & Requirements</strong></div><div class="window-controls"><span></span><span></span><span></span></div></div>
+  <div class="top-strip">
+    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
+    <a class="pill" href="../FAQ/"><img src="../assets/icons/help.svg" alt="">FAQ</a>
+    <a class="pill" href="https://github.com/sonicFanTech/Noxen-File-explorer/issues"><img src="../assets/icons/github.svg" alt="">GitHub Issues</a>
+  </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="menu-box"><div class="box-title">Support Topics</div><div class="box-body"><ul class="nav-links">
+        <li><a href="#requirements"><img src="../assets/icons/device.svg" alt="">Requirements</a></li>
+        <li><a href="#mtp"><img src="../assets/icons/device.svg" alt="">MTP Notes</a></li>
+        <li><a href="#onefile"><img src="../assets/icons/download.svg" alt="">One-File Build Notes</a></li>
+        <li><a href="#contact"><img src="../assets/icons/github.svg" alt="">Project Links</a></li>
+      </ul></div></div>
+    </aside>
+    <main class="content">
+      <div id="requirements" class="box"><div class="box-title">System requirements and target environment</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li><strong>Platform:</strong> Windows x64</li>
+          <li><strong>Framework target:</strong> Qt 6 / native Windows APIs</li>
+          <li><strong>Main release focus:</strong> modern Windows systems with desktop file browsing, removable storage, and optional MTP device access</li>
+          <li><strong>Archive features:</strong> rely on bundled 7-Zip runtime files included with the release</li>
+        </ul>
+      </div></div>
+      <div id="mtp" class="box"><div class="box-title">MTP device support notes</div><div class="box-body alt">
+        <p>MTP support depends on Windows portable-device behavior and on the connected device itself. If a phone does not show up right away, try the following:</p>
+        <ol class="list-tight">
+          <li>Unlock the device.</li>
+          <li>Choose the file transfer USB mode if prompted.</li>
+          <li>Reconnect the cable if needed.</li>
+          <li>Open This PC inside NFE and use the <strong>Rescan Devices</strong> action.</li>
+        </ol>
+      </div></div>
+      <div id="onefile" class="box"><div class="box-title">One-file EXE build notes</div><div class="box-body alt">
+        <p>The one-file build is intended as a convenience distribution. Even though the user only launches one EXE, the application still extracts its runtime to the user profile because that is the practical way to support Qt plugins, helper tools, and external DLL-based features.</p>
+      </div></div>
+      <div id="contact" class="box"><div class="box-title">Project links and support routes</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li><strong>GitHub repository:</strong> <a href="https://github.com/sonicFanTech/Noxen-File-explorer">https://github.com/sonicFanTech/Noxen-File-explorer</a></li>
+          <li><strong>GitHub releases:</strong> <a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases">https://github.com/sonicFanTech/Noxen-File-explorer/releases</a></li>
+          <li><strong>Issue tracking:</strong> <a href="https://github.com/sonicFanTech/Noxen-File-explorer/issues">https://github.com/sonicFanTech/Noxen-File-explorer/issues</a></li>
+        </ul>
+      </div></div>
+    </main>
+  </div>
+  <div class="footer"><p>Support notes and general compatibility information for NFE.</p></div>
+</div>
+</body>
+</html>

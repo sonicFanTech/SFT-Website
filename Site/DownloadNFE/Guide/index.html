@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting Started Guide - Noxen File Explorer</title>
+  <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<div class="page-shell">
+  <div class="title-bar"><div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - Getting Started Guide</strong></div><div class="window-controls"><span></span><span></span><span></span></div></div>
+  <div class="top-strip">
+    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
+    <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
+    <a class="pill" href="../FAQ/"><img src="../assets/icons/help.svg" alt="">FAQ</a>
+  </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="menu-box"><div class="box-title">Guide Topics</div><div class="box-body"><ul class="nav-links">
+        <li><a href="#install"><img src="../assets/icons/download.svg" alt="">Install / Extract</a></li>
+        <li><a href="#firstlaunch"><img src="../assets/icons/info.svg" alt="">First Launch</a></li>
+        <li><a href="#navigation"><img src="../assets/icons/folder.svg" alt="">Basic Navigation</a></li>
+        <li><a href="#mtp"><img src="../assets/icons/device.svg" alt="">Using MTP Devices</a></li>
+        <li><a href="#archives"><img src="../assets/icons/archive.svg" alt="">Archives and ISO</a></li>
+      </ul></div></div>
+    </aside>
+    <main class="content">
+      <div class="box"><div class="box-title">Quick start</div><div class="box-body alt">
+        <h1 style="margin-top:0;">First-time use guide for NFE v2.0 R1</h1>
+        <p>This guide walks through the normal first-use workflow for the current NFE release line.</p>
+      </div></div>
+
+      <div id="install" class="box"><div class="box-title">1. Download and prepare the build</div><div class="box-body alt">
+        <ol class="list-tight">
+          <li>Open the <a href="../LatestBuild/">Latest Build</a> page.</li>
+          <li>Choose the normal build or the one-file EXE build.</li>
+          <li>Download the ZIP file and extract it into a clean folder.</li>
+          <li>If you are using the normal build, keep the EXE and the <span class="code">Resources</span> folder together.</li>
+          <li>If you are using the one-file build, you only need the one EXE from the extracted ZIP.</li>
+        </ol>
+      </div></div>
+
+      <div id="firstlaunch" class="box"><div class="box-title">2. First launch behavior</div><div class="box-body alt">
+        <p>On first launch, NFE opens into its native window layout with the menu bar, toolbar, address bar, sidebar, main content view, and preview/details pane. Depending on the saved settings or start page behavior, you may begin on the Home page or the This PC page.</p>
+        <p>If you are using the one-file EXE, it will first unpack its private runtime to the user profile before the actual NFE runtime starts.</p>
+      </div></div>
+
+      <div id="navigation" class="box"><div class="box-title">3. Basic navigation workflow</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li>Use the sidebar for Home, This PC, Home Folder, Desktop, Documents, Downloads, Pictures, Music, and Videos.</li>
+          <li>Use the address bar to type a full path directly.</li>
+          <li>Use <span class="code">Ctrl + L</span> to focus the address bar quickly.</li>
+          <li>Use Back, Forward, Up, and Refresh from the toolbar.</li>
+          <li>Use tabs for multiple locations and right-click tabs for duplicate/close actions.</li>
+          <li>Use the View menu for Details/List/Icon modes and icon-size behavior.</li>
+        </ul>
+      </div></div>
+
+      <div id="mtp" class="box"><div class="box-title">4. Connecting and using a phone or other MTP device</div><div class="box-body alt">
+        <ol class="list-tight">
+          <li>Connect the phone to the PC using a USB cable.</li>
+          <li>Unlock the phone.</li>
+          <li>If Android asks what kind of USB connection to use, choose file transfer.</li>
+          <li>Open This PC inside NFE and click <strong>Rescan Devices</strong> if needed.</li>
+          <li>When the device appears, open it like any other location.</li>
+          <li>Use the export/send actions to move data between the phone and the PC.</li>
+        </ol>
+        <div class="callout"><strong>Important:</strong> MTP support depends on Windows, the phone, and the cable. If a device does not show up immediately, unlocking the device and rescanning normally fixes it.</div>
+      </div></div>
+
+      <div id="archives" class="box"><div class="box-title">5. Working with archives, ISO files, and shortcuts</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li>Right-click a supported archive to extract here, extract to a folder, extract to a chosen location, or test the archive.</li>
+          <li>Select files/folders and create ZIP or 7Z archives directly from the context menu.</li>
+          <li>Right-click an ISO file to mount or dismount it.</li>
+          <li>Right-click an archive and choose the 7-Zip File Manager action if you want the real 7-Zip archive viewer.</li>
+          <li>Use shortcut actions for <span class="code">.lnk</span> files or to create a shortcut in the current location.</li>
+        </ul>
+      </div></div>
+    </main>
+  </div>
+  <div class="footer"><p>Setup and first-use guide for NFE v2.0 R1.</p></div>
+</div>
+</body>
+</html>

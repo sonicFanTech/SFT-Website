@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build History - Noxen File Explorer</title>
+  <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script src="../assets/js/builds.js"></script>
+  <script src="../assets/js/site.js"></script>
+</head>
+<body onload="renderBuildHistory()">
+<div class="page-shell">
+  <div class="title-bar">
+    <div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - Build History</strong></div>
+    <div class="window-controls"><span></span><span></span><span></span></div>
+  </div>
+  <div class="top-strip">
+    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
+    <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
+    <a class="pill" href="../Changelog/"><img src="../assets/icons/info.svg" alt="">Changelog</a>
+  </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="menu-box">
+        <div class="box-title">How this page works</div>
+        <div class="box-body alt">
+          <p>This page lists public NFE releases and also supports parameter-based filtering.</p>
+          <p><strong>Examples:</strong></p>
+          <ul class="list-tight">
+            <li><span class="code">BuildHistory/?version=v2.0&amp;release=R1</span></li>
+            <li><span class="code">BuildHistory/?tag=RNR1</span></li>
+          </ul>
+          <p class="small muted">This gives you the dynamic-style build loading behavior you wanted without needing a separate physical page for every release combination.</p>
+        </div>
+      </div>
+      <div class="menu-box">
+        <div class="box-title">Quick filters</div>
+        <div class="box-body alt">
+          <ul class="quick-list">
+            <li><a href="?version=v2.0&amp;release=R1"><img src="../assets/icons/history.svg" alt="">v2.0 R1</a></li>
+            <li><a href="?tag=RNR1"><img src="../assets/icons/history.svg" alt="">Tag RNR1</a></li>
+            <li><a href="index.html"><img src="../assets/icons/folder.svg" alt="">Show all listed builds</a></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+    <main class="content">
+      <div class="box">
+        <div class="box-title">Build History</div>
+        <div class="box-body alt">
+          <h1 id="history-filter-title" style="margin-top:0;">All public NFE builds currently listed on this site</h1>
+          <p>The build history page is intended to become the main long-term archive of NFE releases. Right now it starts with the public RNR1 release and is already ready for future additions as more builds are published.</p>
+        </div>
+      </div>
+      <div id="build-history-output"></div>
+    </main>
+  </div>
+  <div class="footer"><p>Build history and parameter-based release lookup for Noxen File Explorer.</p></div>
+</div>
+</body>
+</html>

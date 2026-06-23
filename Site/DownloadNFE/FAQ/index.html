@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ - Noxen File Explorer</title>
+  <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<div class="page-shell">
+  <div class="title-bar"><div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - FAQ</strong></div><div class="window-controls"><span></span><span></span><span></span></div></div>
+  <div class="top-strip">
+    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
+    <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
+    <a class="pill" href="../Support/"><img src="../assets/icons/device.svg" alt="">Support</a>
+  </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="menu-box"><div class="box-title">Quick questions</div><div class="box-body alt"><ul class="quick-list">
+        <li><a href="#onefile"><img src="../assets/icons/download.svg" alt="">What is the one-file build?</a></li>
+        <li><a href="#mtp"><img src="../assets/icons/device.svg" alt="">Why is MTP different from a USB drive?</a></li>
+        <li><a href="#7zip"><img src="../assets/icons/archive.svg" alt="">Do I need to install 7-Zip?</a></li>
+        <li><a href="#opensource"><img src="../assets/icons/license.svg" alt="">Is NFE open source?</a></li>
+      </ul></div></div>
+    </aside>
+    <main class="content">
+      <div class="box"><div class="box-title">Frequently Asked Questions</div><div class="box-body alt">
+        <h1 style="margin-top:0;">FAQ</h1>
+        <p>This page answers the common questions most likely to come up when downloading or using NFE v2.0 R1.</p>
+      </div></div>
+
+      <div id="onefile" class="box"><div class="box-title">What is the one-file build?</div><div class="box-body alt"><p>The one-file build is a single EXE edition of NFE. It embeds the runtime payload internally and then extracts the needed runtime files into the user's profile at launch. The app still needs real files on disk behind the scenes because Qt plugins and helper components cannot reliably run straight from memory alone.</p></div></div>
+      <div id="mtp" class="box"><div class="box-title">Why is MTP different from a normal USB drive?</div><div class="box-body alt"><p>MTP devices do not expose a normal drive letter filesystem in the same way that HDDs, SSDs, and removable USB drives do. They are portable devices that usually require Windows portable-device APIs and device communication layers. That is why NFE has dedicated built-in MTP support.</p></div></div>
+      <div id="7zip" class="box"><div class="box-title">Do I need to install 7-Zip separately?</div><div class="box-body alt"><p>No. The current NFE release bundles the required 7-Zip runtime files so archive tools work out of the box. The program also includes 7-Zip File Manager integration and keeps the 7-Zip license available with the release.</p></div></div>
+      <div id="opensource" class="box"><div class="box-title">Is NFE open source?</div><div class="box-body alt"><p>No. Noxen File Explorer is released as closed-source freeware. The program is free to download and use, and it is intended to stay free, but the source code itself is not open source.</p></div></div>
+      <div class="box"><div class="box-title">More quick answers</div><div class="box-body alt">
+        <ul class="list-tight">
+          <li><strong>Can I use the normal build portably?</strong> Yes. As long as the EXE and its required resources stay together, the normal build can be used as an extracted portable folder.</li>
+          <li><strong>Can I browse archives directly?</strong> NFE supports archive actions directly, and it can also open 7-Zip File Manager for a fuller archive-management workflow.</li>
+          <li><strong>Does NFE replace Windows Explorer?</strong> Not in this v2.0 R1 release line. It is a standalone file explorer application.</li>
+          <li><strong>Where do I find the licenses?</strong> Use the Licenses page on this site or the Help menu inside the application.</li>
+        </ul>
+      </div></div>
+    </main>
+  </div>
+  <div class="footer"><p>Common questions for NFE v2.0 R1.</p></div>
+</div>
+</body>
+</html>
