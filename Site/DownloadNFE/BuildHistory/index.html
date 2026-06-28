@@ -3,60 +3,109 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Noxen File Explorer: Razer Native v2.0.1 R1.1 download center, updater documentation, build history, and support pages.">
   <title>Build History - Noxen File Explorer</title>
   <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/site.css">
-  <script src="../assets/js/builds.js"></script>
-  <script src="../assets/js/site.js"></script>
+  <script defer src="../assets/js/builds.js"></script>
+  <script defer src="../assets/js/site.js"></script>
 </head>
-<body onload="renderBuildHistory()">
-<div class="page-shell">
-  <div class="title-bar">
-    <div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - Build History</strong></div>
-    <div class="window-controls"><span></span><span></span><span></span></div>
-  </div>
-  <div class="top-strip">
-    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
-    <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
-    <a class="pill" href="../Changelog/"><img src="../assets/icons/info.svg" alt="">Changelog</a>
-  </div>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="menu-box">
-        <div class="box-title">How this page works</div>
-        <div class="box-body alt">
-          <p>This page lists public NFE releases and also supports parameter-based filtering.</p>
-          <p><strong>Examples:</strong></p>
-          <ul class="list-tight">
-            <li><span class="code">BuildHistory/?version=v2.0&amp;release=R1</span></li>
-            <li><span class="code">BuildHistory/?tag=RNR1</span></li>
-          </ul>
-          <p class="small muted">This gives you the dynamic-style build loading behavior you wanted without needing a separate physical page for every release combination.</p>
-        </div>
+<body>
+  <div class="desktop-bg">
+    <div class="page-shell">
+      <div class="title-bar">
+        <div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt="NFE logo"><strong>Noxen File Explorer Download Center</strong></div>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
       </div>
-      <div class="menu-box">
-        <div class="box-title">Quick filters</div>
-        <div class="box-body alt">
-          <ul class="quick-list">
-            <li><a href="?version=v2.0&amp;release=R1"><img src="../assets/icons/history.svg" alt="">v2.0 R1</a></li>
-            <li><a href="?tag=RNR1"><img src="../assets/icons/history.svg" alt="">Tag RNR1</a></li>
-            <li><a href="index.html"><img src="../assets/icons/folder.svg" alt="">Show all listed builds</a></li>
-          </ul>
-        </div>
+      <div class="top-strip">
+        <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
+        <a class="pill" href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Updater Docs</a>
+        <a class="pill" href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a>
+        <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
+        <a class="pill" href="https://github.com/sonicFanTech/Noxen-File-explorer"><img src="../assets/icons/github.svg" alt="">GitHub</a>
       </div>
-    </aside>
-    <main class="content">
-      <div class="box">
-        <div class="box-title">Build History</div>
-        <div class="box-body alt">
-          <h1 id="history-filter-title" style="margin-top:0;">All public NFE builds currently listed on this site</h1>
-          <p>The build history page is intended to become the main long-term archive of NFE releases. Right now it starts with the public RNR1 release and is already ready for future additions as more builds are published.</p>
-        </div>
-      </div>
-      <div id="build-history-output"></div>
-    </main>
+      <div class="marquee-strip"><marquee behavior="scroll" scrollamount="4"><strong>Latest release:</strong> Noxen File Explorer: Razer Native — v2.0.1 R1.1 adds the updater foundation, SHA-256 package verification, built-in themes, Backspace-as-Up behavior, and SaveData storage under resources/SaveData/.</marquee></div>
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="menu-box">
+            <div class="box-title">Site Navigation</div>
+            <div class="box-body"><ul class="nav-links"><li><a href="../index.html"><img src="../assets/icons/folder.svg" alt="">Home</a></li>
+<li><a href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a></li>
+<li><a href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Update System</a></li>
+<li><a href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a></li>
+<li><a href="../Features/"><img src="../assets/icons/features.svg" alt="">Features</a></li>
+<li><a href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a></li>
+<li><a href="../Changelog/"><img src="../assets/icons/info.svg" alt="">Changelog</a></li>
+<li><a href="../FAQ/"><img src="../assets/icons/help.svg" alt="">FAQ</a></li>
+<li><a href="../Support/"><img src="../assets/icons/device.svg" alt="">Support</a></li>
+<li><a href="../Licenses/"><img src="../assets/icons/license.svg" alt="">Licenses</a></li>
+<li><a href="../About/"><img src="../assets/icons/info.svg" alt="">About</a></li></ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Quick Download Links</div>
+            <div class="box-body alt"><ul class="quick-list">
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_NormalBuild.zip"><img src="../assets/icons/download.svg" alt="">Normal build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_OneFileBuild.zip"><img src="../assets/icons/download.svg" alt="">One-file build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RN-R1.1"><img src="../assets/icons/github.svg" alt="">GitHub release page</a></li>
+    </ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Project Snapshot</div>
+            <div class="box-body alt">
+              <ul class="stat-list">
+                <li><strong>Build name:</strong> NoxenFE: Razer Native</li>
+                <li><strong>Version:</strong> v2.0.1</li>
+                <li><strong>Release:</strong> R1.1</li>
+                <li><strong>Platform:</strong> Windows x64</li>
+                <li><strong>Framework:</strong> C++ / Qt 6.10.2 / Win32 fallback</li>
+                <li><strong>Recommended build:</strong> Normal folder build</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+        <main class="content">
+
+<div class="hero">
+  <h1>Build History</h1>
+  <p class="subtitle">Every public Noxen File Explorer GitHub release, including the current Razer Native C++ line and the older Python/PySide6 line.</p>
+  <div class="button-row">
+    <a class="win-btn" href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RN-R1.1"><img src="../assets/icons/github.svg" alt="">Latest GitHub release</a>
+    <a class="win-btn" href="https://github.com/sonicFanTech/Noxen-File-explorer/releases"><img src="../assets/icons/history.svg" alt="">All GitHub releases</a>
+    <a class="win-btn" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build page</a>
   </div>
-  <div class="footer"><p>Build history and parameter-based release lookup for Noxen File Explorer.</p></div>
 </div>
+
+<div class="box">
+  <div class="box-title">Release Timeline</div>
+  <div class="box-body alt">
+    <p>NFE currently has two eras: the older <strong>Python / PySide6</strong> releases and the newer <strong>Razer Native C++ / Qt</strong> releases. The old Python versions are still part of the public release history, but the current recommended branch is the native C++ Razer Native line.</p>
+    <div class="table-wrap">
+      <table class="retro">
+        <thead><tr><th>Release</th><th>Public date</th><th>Era</th><th>Status</th><th>Summary</th><th>Links</th></tr></thead>
+        <tbody>
+          <tr><td><strong>v2.0.1 R1.1</strong><br><span class="code">RN-R1.1</span></td><td>2026-06-27</td><td>Razer Native C++ / Qt</td><td><span class="badge">Latest</span></td><td>First updater-ready release. Adds external updater files, SHA-256 package checks, updater settings, rollback/cache/log folders, built-in themes, SaveData storage, Backspace-as-Up, and Win32 fallback repair mode.</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RN-R1.1">Release</a><br><a href="../LatestBuild/">Download page</a></td></tr>
+          <tr><td><strong>v2.0 R1</strong><br><span class="code">RNR1</span></td><td>2026-06-23</td><td>Razer Native C++ / Qt</td><td>Previous native base</td><td>Full native C++ rebuild of the original Python/PySide6 NFE line with native UI, tabbed browsing, This PC, Home/Quick Access, MTP support, archive/ISO tools, FeatureDLLs, bundled 7-Zip, and optional one-file build.</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RNR1">Release</a></td></tr>
+          <tr><td><strong>R3.1 / v1.4.1</strong><br><span class="code">R3.1</span></td><td>2026-01-07</td><td>Original Python / PySide6</td><td>Legacy bug-fix release</td><td>Reliability-focused Python-era release: copy/paste fixes, Disk Management launch fix, ejected-drive ghosting fixes, portable-device cleanup, scan throttling, and Noxen MTP Browser companion workflow.</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/R3.1">Release</a></td></tr>
+          <tr><td><strong>R3 / v1.4</strong><br><span class="code">R3</span></td><td>2025-12-31</td><td>Original Python / PySide6</td><td>Legacy big update</td><td>Added Recent Locations, Recent Files, context menu upgrades, improved copy/move progress UI, drive eject behavior, address bar commands, and pinned/recent cleanup actions.</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/R3">Release</a></td></tr>
+          <tr><td><strong>R2</strong><br><span class="code">R2</span></td><td>2025-12-30</td><td>Original Python / PySide6</td><td>Legacy feature update</td><td>Added the New submenu, 7-Zip archive actions, Notepad++ edit integration, Backspace-as-Up behavior, ISO mount/eject actions, and Delete / Shift+Delete behavior.</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/R2">Release</a></td></tr>
+          <tr><td><strong>R1</strong><br><span class="code">R1</span></td><td>2025-12-28</td><td>Original Python / PySide6</td><td>First public release</td><td>First public GitHub release of the original Python/PySide6 Noxen File Explorer line. This is the base that the later R2, R3, and R3.1 Python-era updates built from.</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/R1">Release</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="content-grid">
+  <div class="box"><div class="box-title">Razer Native line</div><div class="box-body alt"><ul class="list-tight"><li><strong>v2.0 R1</strong> is the main C++/Qt rebuild foundation.</li><li><strong>v2.0.1 R1.1</strong> is the first updater-ready release and should be treated as the baseline for future updater packages.</li><li>The normal folder build is recommended for most users because it is easier to update, repair, and troubleshoot.</li><li>The one-file build is a wrapper that extracts a runtime copy before launching NFE.</li></ul></div></div>
+  <div class="box"><div class="box-title">Legacy Python line</div><div class="box-body alt"><ul class="list-tight"><li><strong>R1</strong> started the public Python/PySide6 NFE history.</li><li><strong>R2</strong> expanded file actions, archive tools, ISO actions, and keyboard behavior.</li><li><strong>R3</strong> added major UX and progress-dialog improvements.</li><li><strong>R3.1</strong> focused on fixes, stability, and MTP companion-app workflow.</li></ul></div></div>
+</div>
+
+<div class="box"><div class="box-title">Download notes</div><div class="box-body alt"><p>The <strong>Latest Build</strong> page points to <span class="code">RN-R1.1</span>, the current updater-ready release. Older Python releases are kept in the history list for archival/reference use.</p><p>Future update packages should be placed under <span class="code">LatestBuild/update/</span> with matching <span class="code">.sha256.txt</span> checksum files so the updater can verify downloads before installing.</p></div></div>
+
+</main>
+      </div>
+    </div>
+    <div class="footer"><p>Noxen File Explorer download center. Built for GitHub Pages / sonicfantech.org.</p></div>
+  </div>
 </body>
 </html>

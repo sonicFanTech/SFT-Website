@@ -3,48 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Noxen File Explorer: Razer Native v2.0.1 R1.1 download center, updater documentation, build history, and support pages.">
   <title>FAQ - Noxen File Explorer</title>
   <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/site.css">
+  <script defer src="../assets/js/builds.js"></script>
+  <script defer src="../assets/js/site.js"></script>
 </head>
 <body>
-<div class="page-shell">
-  <div class="title-bar"><div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - FAQ</strong></div><div class="window-controls"><span></span><span></span><span></span></div></div>
-  <div class="top-strip">
-    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
-    <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
-    <a class="pill" href="../Support/"><img src="../assets/icons/device.svg" alt="">Support</a>
+  <div class="desktop-bg">
+    <div class="page-shell">
+      <div class="title-bar">
+        <div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt="NFE logo"><strong>Noxen File Explorer Download Center</strong></div>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      <div class="top-strip">
+        <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
+        <a class="pill" href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Updater Docs</a>
+        <a class="pill" href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a>
+        <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
+        <a class="pill" href="https://github.com/sonicFanTech/Noxen-File-explorer"><img src="../assets/icons/github.svg" alt="">GitHub</a>
+      </div>
+      <div class="marquee-strip"><marquee behavior="scroll" scrollamount="4"><strong>Latest release:</strong> Noxen File Explorer: Razer Native — v2.0.1 R1.1 adds the updater foundation, SHA-256 package verification, built-in themes, Backspace-as-Up behavior, and SaveData storage under resources/SaveData/.</marquee></div>
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="menu-box">
+            <div class="box-title">Site Navigation</div>
+            <div class="box-body"><ul class="nav-links"><li><a href="../index.html"><img src="../assets/icons/folder.svg" alt="">Home</a></li>
+<li><a href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a></li>
+<li><a href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Update System</a></li>
+<li><a href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a></li>
+<li><a href="../Features/"><img src="../assets/icons/features.svg" alt="">Features</a></li>
+<li><a href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a></li>
+<li><a href="../Changelog/"><img src="../assets/icons/info.svg" alt="">Changelog</a></li>
+<li><a href="../FAQ/"><img src="../assets/icons/help.svg" alt="">FAQ</a></li>
+<li><a href="../Support/"><img src="../assets/icons/device.svg" alt="">Support</a></li>
+<li><a href="../Licenses/"><img src="../assets/icons/license.svg" alt="">Licenses</a></li>
+<li><a href="../About/"><img src="../assets/icons/info.svg" alt="">About</a></li></ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Quick Download Links</div>
+            <div class="box-body alt"><ul class="quick-list">
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_NormalBuild.zip"><img src="../assets/icons/download.svg" alt="">Normal build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_OneFileBuild.zip"><img src="../assets/icons/download.svg" alt="">One-file build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RN-R1.1"><img src="../assets/icons/github.svg" alt="">GitHub release page</a></li>
+    </ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Project Snapshot</div>
+            <div class="box-body alt">
+              <ul class="stat-list">
+                <li><strong>Build name:</strong> NoxenFE: Razer Native</li>
+                <li><strong>Version:</strong> v2.0.1</li>
+                <li><strong>Release:</strong> R1.1</li>
+                <li><strong>Platform:</strong> Windows x64</li>
+                <li><strong>Framework:</strong> C++ / Qt 6.10.2 / Win32 fallback</li>
+                <li><strong>Recommended build:</strong> Normal folder build</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+        <main class="content">
+<div class="hero"><h1>FAQ</h1><p class="subtitle">Common questions for downloading, updating, and testing NFE.</p></div>
+<div class="box"><div class="box-title">General questions</div><div class="box-body alt"><h3>Which build should I use?</h3><p>Use the normal folder build unless you specifically need the one-file EXE style. The normal build is easier to update, repair, and troubleshoot.</p><h3>Does the updater change my system 7-Zip install?</h3><p>No. NFE should use its own bundled 7-Zip files under <span class="code">Resources/FeatureDLLs/ArchiveSupport/ThirdParty/7zip/</span>.</p><h3>Why does the one-file build extract files?</h3><p>Qt plugins, updater files, helper DLLs, and external tools must exist on disk. The one-file EXE is a wrapper around a private extracted runtime.</p><h3>Where are settings saved?</h3><p>Settings and updater options are stored in <span class="code">resources/SaveData/</span>.</p><h3>What does the checksum system do?</h3><p>It checks the downloaded update package against the SHA-256 hash stored on the website. If the hash does not match, the updater refuses to install the package.</p></div></div>
+</main>
+      </div>
+    </div>
+    <div class="footer"><p>Noxen File Explorer download center. Built for GitHub Pages / sonicfantech.org.</p></div>
   </div>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="menu-box"><div class="box-title">Quick questions</div><div class="box-body alt"><ul class="quick-list">
-        <li><a href="#onefile"><img src="../assets/icons/download.svg" alt="">What is the one-file build?</a></li>
-        <li><a href="#mtp"><img src="../assets/icons/device.svg" alt="">Why is MTP different from a USB drive?</a></li>
-        <li><a href="#7zip"><img src="../assets/icons/archive.svg" alt="">Do I need to install 7-Zip?</a></li>
-        <li><a href="#opensource"><img src="../assets/icons/license.svg" alt="">Is NFE open source?</a></li>
-      </ul></div></div>
-    </aside>
-    <main class="content">
-      <div class="box"><div class="box-title">Frequently Asked Questions</div><div class="box-body alt">
-        <h1 style="margin-top:0;">FAQ</h1>
-        <p>This page answers the common questions most likely to come up when downloading or using NFE v2.0 R1.</p>
-      </div></div>
-
-      <div id="onefile" class="box"><div class="box-title">What is the one-file build?</div><div class="box-body alt"><p>The one-file build is a single EXE edition of NFE. It embeds the runtime payload internally and then extracts the needed runtime files into the user's profile at launch. The app still needs real files on disk behind the scenes because Qt plugins and helper components cannot reliably run straight from memory alone.</p></div></div>
-      <div id="mtp" class="box"><div class="box-title">Why is MTP different from a normal USB drive?</div><div class="box-body alt"><p>MTP devices do not expose a normal drive letter filesystem in the same way that HDDs, SSDs, and removable USB drives do. They are portable devices that usually require Windows portable-device APIs and device communication layers. That is why NFE has dedicated built-in MTP support.</p></div></div>
-      <div id="7zip" class="box"><div class="box-title">Do I need to install 7-Zip separately?</div><div class="box-body alt"><p>No. The current NFE release bundles the required 7-Zip runtime files so archive tools work out of the box. The program also includes 7-Zip File Manager integration and keeps the 7-Zip license available with the release.</p></div></div>
-      <div id="opensource" class="box"><div class="box-title">Is NFE open source?</div><div class="box-body alt"><p>No. Noxen File Explorer is released as closed-source freeware. The program is free to download and use, and it is intended to stay free, but the source code itself is not open source.</p></div></div>
-      <div class="box"><div class="box-title">More quick answers</div><div class="box-body alt">
-        <ul class="list-tight">
-          <li><strong>Can I use the normal build portably?</strong> Yes. As long as the EXE and its required resources stay together, the normal build can be used as an extracted portable folder.</li>
-          <li><strong>Can I browse archives directly?</strong> NFE supports archive actions directly, and it can also open 7-Zip File Manager for a fuller archive-management workflow.</li>
-          <li><strong>Does NFE replace Windows Explorer?</strong> Not in this v2.0 R1 release line. It is a standalone file explorer application.</li>
-          <li><strong>Where do I find the licenses?</strong> Use the Licenses page on this site or the Help menu inside the application.</li>
-        </ul>
-      </div></div>
-    </main>
-  </div>
-  <div class="footer"><p>Common questions for NFE v2.0 R1.</p></div>
-</div>
 </body>
 </html>

@@ -3,53 +3,74 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About NFE - Noxen File Explorer</title>
+  <meta name="description" content="Noxen File Explorer: Razer Native v2.0.1 R1.1 download center, updater documentation, build history, and support pages.">
+  <title>About - Noxen File Explorer</title>
   <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/site.css">
+  <script defer src="../assets/js/builds.js"></script>
+  <script defer src="../assets/js/site.js"></script>
 </head>
 <body>
-<div class="page-shell">
-  <div class="title-bar"><div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>About Noxen File Explorer</strong></div><div class="window-controls"><span></span><span></span><span></span></div></div>
-  <div class="top-strip">
-    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
-    <a class="pill" href="https://github.com/sonicFanTech/Noxen-File-explorer"><img src="../assets/icons/github.svg" alt="">GitHub</a>
-    <a class="pill" href="https://sonicfantech.org/Site/DownloadNFE/"><img src="../assets/icons/web.svg" alt="">Website Root</a>
+  <div class="desktop-bg">
+    <div class="page-shell">
+      <div class="title-bar">
+        <div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt="NFE logo"><strong>Noxen File Explorer Download Center</strong></div>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      <div class="top-strip">
+        <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
+        <a class="pill" href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Updater Docs</a>
+        <a class="pill" href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a>
+        <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
+        <a class="pill" href="https://github.com/sonicFanTech/Noxen-File-explorer"><img src="../assets/icons/github.svg" alt="">GitHub</a>
+      </div>
+      <div class="marquee-strip"><marquee behavior="scroll" scrollamount="4"><strong>Latest release:</strong> Noxen File Explorer: Razer Native — v2.0.1 R1.1 adds the updater foundation, SHA-256 package verification, built-in themes, Backspace-as-Up behavior, and SaveData storage under resources/SaveData/.</marquee></div>
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="menu-box">
+            <div class="box-title">Site Navigation</div>
+            <div class="box-body"><ul class="nav-links"><li><a href="../index.html"><img src="../assets/icons/folder.svg" alt="">Home</a></li>
+<li><a href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a></li>
+<li><a href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Update System</a></li>
+<li><a href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a></li>
+<li><a href="../Features/"><img src="../assets/icons/features.svg" alt="">Features</a></li>
+<li><a href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a></li>
+<li><a href="../Changelog/"><img src="../assets/icons/info.svg" alt="">Changelog</a></li>
+<li><a href="../FAQ/"><img src="../assets/icons/help.svg" alt="">FAQ</a></li>
+<li><a href="../Support/"><img src="../assets/icons/device.svg" alt="">Support</a></li>
+<li><a href="../Licenses/"><img src="../assets/icons/license.svg" alt="">Licenses</a></li>
+<li><a href="../About/"><img src="../assets/icons/info.svg" alt="">About</a></li></ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Quick Download Links</div>
+            <div class="box-body alt"><ul class="quick-list">
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_NormalBuild.zip"><img src="../assets/icons/download.svg" alt="">Normal build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_OneFileBuild.zip"><img src="../assets/icons/download.svg" alt="">One-file build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RN-R1.1"><img src="../assets/icons/github.svg" alt="">GitHub release page</a></li>
+    </ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Project Snapshot</div>
+            <div class="box-body alt">
+              <ul class="stat-list">
+                <li><strong>Build name:</strong> NoxenFE: Razer Native</li>
+                <li><strong>Version:</strong> v2.0.1</li>
+                <li><strong>Release:</strong> R1.1</li>
+                <li><strong>Platform:</strong> Windows x64</li>
+                <li><strong>Framework:</strong> C++ / Qt 6.10.2 / Win32 fallback</li>
+                <li><strong>Recommended build:</strong> Normal folder build</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+        <main class="content">
+<div class="hero"><h1>About NFE</h1><p class="subtitle">Noxen File Explorer is a custom Windows file explorer project built by sonicFanTech.</p></div>
+<div class="box"><div class="box-title">Project background</div><div class="box-body alt"><p>NFE began as a Python/PySide6 file explorer project and later moved into the Razer Native C++ rebuild. The native rebuild keeps the original goals: a custom Explorer-like interface, tabs, This PC, Quick Access, better file management workflow, modular helper tools, and a custom visual identity.</p></div></div>
+<div class="box"><div class="box-title">Current direction</div><div class="box-body alt"><p>The current v2.0.1 R1.1 direction is focused on making NFE easier to maintain and update. The updater foundation, SaveData folder, built-in themes, and fallback repair mode make future NFE updates safer and easier to test.</p></div></div>
+</main>
+      </div>
+    </div>
+    <div class="footer"><p>Noxen File Explorer download center. Built for GitHub Pages / sonicfantech.org.</p></div>
   </div>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="menu-box"><div class="box-title">About Links</div><div class="box-body alt"><ul class="link-list">
-        <li><a href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a></li>
-        <li><a href="../Features/"><img src="../assets/icons/features.svg" alt="">Features</a></li>
-        <li><a href="../Licenses/"><img src="../assets/icons/license.svg" alt="">Licenses</a></li>
-      </ul></div></div>
-    </aside>
-    <main class="content">
-      <div class="box"><div class="box-title">Project identity</div><div class="box-body alt">
-        <h1 style="margin-top:0;">Noxen File Explorer: Razer Native</h1>
-        <p>Noxen File Explorer is a Windows file explorer project focused on combining a custom desktop file-management experience with a strong feature set, modular expansion, and a more classic desktop-app feel.</p>
-        <div class="kv">
-          <div>Current version line</div><div>v2.0 R1</div>
-          <div>Public release tag</div><div>RNR1</div>
-          <div>Primary language/framework</div><div>C++ / Qt 6 / Native Windows APIs</div>
-          <div>Platform</div><div>Windows x64</div>
-          <div>License model</div><div>Closed-source freeware</div>
-        </div>
-      </div></div>
-
-      <div class="box"><div class="box-title">Why the “Razer Native” release exists</div><div class="box-body alt">
-        <p>The older Python/PySide6 version of NFE already proved the layout and feature idea, but it could become laggy, buggy, and unstable on newer Windows systems. The v2.0 R1 line exists to rebuild that idea as a stronger native Windows application while preserving the NFE identity and workflow.</p>
-      </div></div>
-
-      <div class="box"><div class="box-title">Official links</div><div class="box-body alt">
-        <ul class="list-tight">
-          <li><strong>GitHub project:</strong> <a href="https://github.com/sonicFanTech/Noxen-File-explorer">https://github.com/sonicFanTech/Noxen-File-explorer</a></li>
-          <li><strong>GitHub release page:</strong> <a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RNR1">https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RNR1</a></li>
-          <li><strong>NFE site path:</strong> <a href="https://sonicfantech.org/Site/DownloadNFE/">https://sonicfantech.org/Site/DownloadNFE/</a></li>
-        </ul>
-      </div></div>
-    </main>
-  </div>
-  <div class="footer"><p>About page for Noxen File Explorer: Razer Native.</p></div>
-</div>
 </body>
 </html>

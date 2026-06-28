@@ -3,48 +3,95 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Noxen File Explorer: Razer Native v2.0.1 R1.1 download center, updater documentation, build history, and support pages.">
   <title>Changelog - Noxen File Explorer</title>
   <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/site.css">
+  <script defer src="../assets/js/builds.js"></script>
+  <script defer src="../assets/js/site.js"></script>
 </head>
 <body>
-<div class="page-shell">
-  <div class="title-bar"><div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt=""><strong>Noxen File Explorer - Detailed Changelog</strong></div><div class="window-controls"><span></span><span></span><span></span></div></div>
-  <div class="top-strip">
-    <a class="pill" href="../"><img src="../assets/icons/folder.svg" alt="">Home</a>
-    <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
-    <a class="pill" href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RNR1"><img src="../assets/icons/github.svg" alt="">Release Notes</a>
+  <div class="desktop-bg">
+    <div class="page-shell">
+      <div class="title-bar">
+        <div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt="NFE logo"><strong>Noxen File Explorer Download Center</strong></div>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      <div class="top-strip">
+        <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
+        <a class="pill" href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Updater Docs</a>
+        <a class="pill" href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a>
+        <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
+        <a class="pill" href="https://github.com/sonicFanTech/Noxen-File-explorer"><img src="../assets/icons/github.svg" alt="">GitHub</a>
+      </div>
+      <div class="marquee-strip"><marquee behavior="scroll" scrollamount="4"><strong>Latest release:</strong> Noxen File Explorer: Razer Native — v2.0.1 R1.1 adds the updater foundation, SHA-256 package verification, built-in themes, Backspace-as-Up behavior, and SaveData storage under resources/SaveData/.</marquee></div>
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="menu-box">
+            <div class="box-title">Site Navigation</div>
+            <div class="box-body"><ul class="nav-links"><li><a href="../index.html"><img src="../assets/icons/folder.svg" alt="">Home</a></li>
+<li><a href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a></li>
+<li><a href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Update System</a></li>
+<li><a href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a></li>
+<li><a href="../Features/"><img src="../assets/icons/features.svg" alt="">Features</a></li>
+<li><a href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a></li>
+<li><a href="../Changelog/"><img src="../assets/icons/info.svg" alt="">Changelog</a></li>
+<li><a href="../FAQ/"><img src="../assets/icons/help.svg" alt="">FAQ</a></li>
+<li><a href="../Support/"><img src="../assets/icons/device.svg" alt="">Support</a></li>
+<li><a href="../Licenses/"><img src="../assets/icons/license.svg" alt="">Licenses</a></li>
+<li><a href="../About/"><img src="../assets/icons/info.svg" alt="">About</a></li></ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Quick Download Links</div>
+            <div class="box-body alt"><ul class="quick-list">
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_NormalBuild.zip"><img src="../assets/icons/download.svg" alt="">Normal build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_OneFileBuild.zip"><img src="../assets/icons/download.svg" alt="">One-file build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RN-R1.1"><img src="../assets/icons/github.svg" alt="">GitHub release page</a></li>
+    </ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Project Snapshot</div>
+            <div class="box-body alt">
+              <ul class="stat-list">
+                <li><strong>Build name:</strong> NoxenFE: Razer Native</li>
+                <li><strong>Version:</strong> v2.0.1</li>
+                <li><strong>Release:</strong> R1.1</li>
+                <li><strong>Platform:</strong> Windows x64</li>
+                <li><strong>Framework:</strong> C++ / Qt 6.10.2 / Win32 fallback</li>
+                <li><strong>Recommended build:</strong> Normal folder build</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+        <main class="content">
+<div class="hero"><h1>Detailed Changelog</h1><p class="subtitle">Release notes for the current Razer Native line and the older Python-era NFE history.</p></div>
+
+<div class="box">
+  <div class="box-title">Full GitHub release history</div>
+  <div class="box-body alt">
+    <div class="table-wrap">
+      <table class="retro">
+        <thead><tr><th>Release</th><th>Date</th><th>Line</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>v2.0.1 R1.1</td><td>2026-06-27</td><td>Razer Native updater foundation</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RN-R1.1">RN-R1.1</a></td></tr>
+          <tr><td>v2.0 R1</td><td>2026-06-23</td><td>Razer Native C++ rebuild</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RNR1">RNR1</a></td></tr>
+          <tr><td>R3.1 / v1.4.1</td><td>2026-01-07</td><td>Legacy Python bug-fix release</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/R3.1">R3.1</a></td></tr>
+          <tr><td>R3 / v1.4</td><td>2025-12-31</td><td>Legacy Python big update</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/R3">R3</a></td></tr>
+          <tr><td>R2</td><td>2025-12-30</td><td>Legacy Python feature update</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/R2">R2</a></td></tr>
+          <tr><td>R1</td><td>2025-12-28</td><td>First public Python release</td><td><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/R1">R1</a></td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="menu-box"><div class="box-title">Release Scope</div><div class="box-body alt"><p>v2.0 R1 was developed in phases that rebuilt the older project into the current native C++ release.</p></div></div>
-    </aside>
-    <main class="content">
-      <div class="box"><div class="box-title">Changelog for v2.0 R1</div><div class="box-body alt">
-        <h1 style="margin-top:0;">Development summary</h1>
-        <p>This page summarizes the main milestones that formed the final public RNR1 build.</p>
-        <div class="table-wrap">
-          <table class="retro">
-            <thead><tr><th>Stage</th><th>Main focus</th><th>Key outcomes</th></tr></thead>
-            <tbody>
-              <tr><td>Phase 1</td><td>Native project foundation</td><td>Created the Visual Studio / MSVC native project and restored basic folder browsing, sidebar, and main window structure.</td></tr>
-              <tr><td>Phase 2</td><td>This PC and drives</td><td>Added drive tiles, storage bars, drive actions, and This PC workflow.</td></tr>
-              <tr><td>Phase 3</td><td>Home / Quick Access</td><td>Added Home page, pinned folders, recent locations, and saved settings foundation.</td></tr>
-              <tr><td>Phase 4</td><td>Preview pane and drive bar customization</td><td>Added preview/details pane, better startup logic, and custom drive-bar colors.</td></tr>
-              <tr><td>Phase 5</td><td>About and app identity</td><td>Added the app icon, About window, and remove actions for pinned/recent items.</td></tr>
-              <tr><td>Phase 6</td><td>Quick Access cleanup tools</td><td>Added remove-all and clear-all actions for pinned and recent data.</td></tr>
-              <tr><td>Phase 7</td><td>Built-in MTP support</td><td>Added device scanning, MTP browsing, action support, and the final stable phone-browsing workflow.</td></tr>
-              <tr><td>Phase 8</td><td>Archive / ISO / shortcut tools</td><td>Added bundled 7-Zip support, archive extraction/creation, ISO tools, shortcut actions, and license windows.</td></tr>
-              <tr><td>Phase 9</td><td>View modes and polish</td><td>Added Explorer-style view modes, saved icon sizes, keyboard shortcuts, and tab menu polish.</td></tr>
-              <tr><td>Phase 10</td><td>MTP action polish</td><td>Added export/send operations, rename support where possible, and toolbar improvements for MTP folders.</td></tr>
-              <tr><td>Final cleanup</td><td>Release identity and packaging</td><td>Added final branding, clickable links, one-file EXE build, and packaging fixes.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div></div>
-    </main>
-  </div>
-  <div class="footer"><p>Condensed changelog reference for the current public release line.</p></div>
 </div>
+
+<div class="box"><div class="box-title">v2.0.1 R1.1 — Updater foundation / R1.1</div><div class="box-body alt"><h3>New</h3><ul><li>Added external updater executable: <span class="code">resources/update/NFEUpdate.exe</span>.</li><li>Added Qt updater UI and Win32 fallback repair UI.</li><li>Added SHA-256 checksum verification for update packages.</li><li>Added updater Settings tab and saved updater preferences to <span class="code">resources/SaveData/</span>.</li><li>Added built-in Light, Dark, and System themes.</li><li>Added folders for update logs, rollbacks, cache, checksums, and downloaded packages.</li></ul><h3>Changed</h3><ul><li>Backspace in a folder now behaves like the Up button.</li><li>Settings storage moved into the NFE runtime layout under SaveData.</li><li>Normal update packages and one-file update packages now use separate fixed server paths.</li></ul><h3>Repair/update behavior</h3><ul><li>Normal updates skip <span class="code">resources/Qt/</span> so the Qt updater does not try to replace files it is currently using.</li><li>Repair mode uses Win32 fallback to repair or replace Qt files.</li><li>Updater uses bundled 7-Zip files, not the user's system 7-Zip installation.</li></ul></div></div>
+<div class="box"><div class="box-title">v2.0 R1 — Native rebuild base</div><div class="box-body alt"><p>First native C++ / Qt rebuild of Noxen File Explorer, restoring the core Explorer-style workflow from the older Python/PySide6 version while moving toward a modular DLL-based runtime.</p></div></div>
+<div class="box"><div class="box-title">Legacy Python era</div><div class="box-body alt"><p>Older NFE releases were Python/PySide6 based and included tabbed browsing, This PC, Quick Access, ZIP support, MTP companion workflow, progress dialogs, and other Explorer-style features. The Razer Native line carries those ideas forward in C++.</p></div></div>
+</main>
+      </div>
+    </div>
+    <div class="footer"><p>Noxen File Explorer download center. Built for GitHub Pages / sonicfantech.org.</p></div>
+  </div>
 </body>
 </html>

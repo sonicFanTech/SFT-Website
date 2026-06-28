@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Noxen File Explorer: Razer Native v2.0.1 R1.1 download center, updater documentation, build history, and support pages.">
+  <title>Update System - Noxen File Explorer</title>
+  <link rel="icon" href="../assets/icons/nfe-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script defer src="../assets/js/builds.js"></script>
+  <script defer src="../assets/js/site.js"></script>
+</head>
+<body>
+  <div class="desktop-bg">
+    <div class="page-shell">
+      <div class="title-bar">
+        <div class="title-left"><img src="../assets/icons/nfe-logo.svg" alt="NFE logo"><strong>Noxen File Explorer Download Center</strong></div>
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      <div class="top-strip">
+        <a class="pill" href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a>
+        <a class="pill" href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Updater Docs</a>
+        <a class="pill" href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a>
+        <a class="pill" href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a>
+        <a class="pill" href="https://github.com/sonicFanTech/Noxen-File-explorer"><img src="../assets/icons/github.svg" alt="">GitHub</a>
+      </div>
+      <div class="marquee-strip"><marquee behavior="scroll" scrollamount="4"><strong>Latest release:</strong> Noxen File Explorer: Razer Native — v2.0.1 R1.1 adds the updater foundation, SHA-256 package verification, built-in themes, Backspace-as-Up behavior, and SaveData storage under resources/SaveData/.</marquee></div>
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="menu-box">
+            <div class="box-title">Site Navigation</div>
+            <div class="box-body"><ul class="nav-links"><li><a href="../index.html"><img src="../assets/icons/folder.svg" alt="">Home</a></li>
+<li><a href="../LatestBuild/"><img src="../assets/icons/download.svg" alt="">Latest Build</a></li>
+<li><a href="../UpdateSystem/"><img src="../assets/icons/web.svg" alt="">Update System</a></li>
+<li><a href="../BuildHistory/"><img src="../assets/icons/history.svg" alt="">Build History</a></li>
+<li><a href="../Features/"><img src="../assets/icons/features.svg" alt="">Features</a></li>
+<li><a href="../Guide/"><img src="../assets/icons/guide.svg" alt="">Guide</a></li>
+<li><a href="../Changelog/"><img src="../assets/icons/info.svg" alt="">Changelog</a></li>
+<li><a href="../FAQ/"><img src="../assets/icons/help.svg" alt="">FAQ</a></li>
+<li><a href="../Support/"><img src="../assets/icons/device.svg" alt="">Support</a></li>
+<li><a href="../Licenses/"><img src="../assets/icons/license.svg" alt="">Licenses</a></li>
+<li><a href="../About/"><img src="../assets/icons/info.svg" alt="">About</a></li></ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Quick Download Links</div>
+            <div class="box-body alt"><ul class="quick-list">
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_NormalBuild.zip"><img src="../assets/icons/download.svg" alt="">Normal build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/download/RN-R1.1/NoxenFE_RazerNative_v2_0_1_R1_1_OneFileBuild.zip"><img src="../assets/icons/download.svg" alt="">One-file build ZIP</a></li>
+      <li><a href="https://github.com/sonicFanTech/Noxen-File-explorer/releases/tag/RN-R1.1"><img src="../assets/icons/github.svg" alt="">GitHub release page</a></li>
+    </ul></div>
+          </div>
+          <div class="menu-box">
+            <div class="box-title">Project Snapshot</div>
+            <div class="box-body alt">
+              <ul class="stat-list">
+                <li><strong>Build name:</strong> NoxenFE: Razer Native</li>
+                <li><strong>Version:</strong> v2.0.1</li>
+                <li><strong>Release:</strong> R1.1</li>
+                <li><strong>Platform:</strong> Windows x64</li>
+                <li><strong>Framework:</strong> C++ / Qt 6.10.2 / Win32 fallback</li>
+                <li><strong>Recommended build:</strong> Normal folder build</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+        <main class="content">
+<div class="hero"><h1>NFE Updater System</h1><p class="subtitle">Detailed layout and behavior notes for the v2.0.1 R1.1 updater foundation.</p></div>
+<div class="content-grid"><div class="box"><div class="box-title">Updater design</div><div class="box-body alt"><p>The updater is intentionally separate from the main app. NFE launches <span class="code">resources/update/NFEUpdate.exe</span>, then the updater can close NFE, download a package, verify the server checksum, stage the package, copy files, write logs, and reopen NFE after finishing.</p><div class="feature-grid"><div class="feature-card"><h3>Qt normal UI</h3><p>Used when the updater is launched from NFE. It gives the full updater window with preview, update, repair, history, logs, rollback, and cache controls.</p></div><div class="feature-card"><h3>Win32 fallback UI</h3><p>Used when opening NFEUpdate.exe directly or when Repair needs to replace broken/missing Qt runtime files. It does not load Qt, so it can repair <span class="code">resources/Qt/</span>.</p></div></div></div></div><div class="box"><div class="box-title">Updater settings</div><div class="box-body alt"><p>Updater preferences are saved in:</p><pre>resources/SaveData/NoxenFE_Settings.ini</pre><ul class="list-tight"><li>Check for updates on startup.</li><li>Check every N launches.</li><li>Auto-start checking when updater opens.</li><li>Auto-close NFE when starting updater.</li><li>Auto-open NFE after update/rollback.</li><li>Rollback limit and rollback manager.</li><li>Silent mode controls.</li><li>Package format choice: ZIP, 7z, TAR, or WIM.</li></ul><p class="small muted">There is no build-channel setting because the normal and one-file builds use fixed update URLs.</p></div></div></div>
+<div class="box"><div class="box-title">Folder layout</div><div class="box-body alt"><pre>resources/
+├─ SaveData/
+│  └─ NoxenFE_Settings.ini
+├─ Themes/
+│  ├─ built-in/
+│  │  ├─ Light.nfetheme
+│  │  ├─ Dark.nfetheme
+│  │  └─ System.nfetheme
+│  └─ custom/
+├─ Qt/
+└─ update/
+   ├─ NFEUpdate.exe
+   ├─ NFEUpdateQt.dll
+   ├─ Logs/
+   ├─ RoleBacks/
+   ├─ cashes/
+   ├─ Checksums/
+   └─ DownloadedUpdatePackage/</pre></div></div>
+<div class="box"><div class="box-title">Checksum flow</div><div class="box-body alt"><ol class="list-tight"><li>The updater chooses the package URL for the build type and selected format.</li><li>It downloads the matching <span class="code">.sha256.txt</span> file from the server.</li><li>It downloads the update package into the local update cache.</li><li>It computes SHA-256 for the downloaded package.</li><li>If the computed hash does not match the server checksum, the updater refuses to install it.</li><li>If the installed copy already matches the server package/checksum rules, it shows that NFE is up to date.</li></ol></div></div>
+</main>
+      </div>
+    </div>
+    <div class="footer"><p>Noxen File Explorer download center. Built for GitHub Pages / sonicfantech.org.</p></div>
+  </div>
+</body>
+</html>
