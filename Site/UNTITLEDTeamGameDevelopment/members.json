@@ -1,0 +1,193 @@
+{
+  "comment": "This is normal JSON saved as .list so the member list is easier to edit. Add/remove objects in the members array. roles can have as many entries as needed.",
+  "members": [
+    {
+      "name": "Alex",
+      "roles": [
+        "Owner",
+        "Developer",
+        "Animator"
+      ]
+    },
+    {
+      "name": "Cristian Tillar",
+      "roles": [
+        "Discord Server Co-Owner",
+        "Developer",
+        "Modeler",
+        "Animator",
+        "Voice Actor",
+        "Artist",
+        "Music Composer"
+      ]
+    },
+    {
+      "name": "DJ Musical Rares 22",
+      "roles": [
+        "Developer",
+        "Animator",
+        "Voice Actor",
+        "Artist"
+      ]
+    },
+    {
+      "name": "Hunx",
+      "roles": [
+        "Voice Actor",
+        "Artist"
+      ]
+    },
+    {
+      "name": "ReversalPlayer",
+      "roles": [
+        "Developer"
+      ]
+    },
+    {
+      "name": "WitheredBonnieINC",
+      "roles": [
+        "Voice Actor",
+        "Artist"
+      ]
+    },
+    {
+      "name": "Cyvix Z. Voxless",
+      "roles": [
+        "Developer"
+      ]
+    },
+    {
+      "name": "AbeMakesGames",
+      "roles": [
+        "Developer"
+      ]
+    },
+    {
+      "name": "Dashvan",
+      "roles": [
+        "Developer"
+      ]
+    },
+    {
+      "name": "Enjoyer Smith",
+      "roles": [
+        "Artist"
+      ]
+    },
+    {
+      "name": "German Tank Gotta Sweep",
+      "roles": [
+        "Developer"
+      ]
+    },
+    {
+      "name": "portal2half",
+      "roles": [
+        "Developer",
+        "Modeler"
+      ]
+    },
+    {
+      "name": "JulianHRROR",
+      "roles": [
+        "Developer"
+      ]
+    },
+    {
+      "name": "TimmingCulture",
+      "roles": [
+        "Modeler"
+      ]
+    },
+    {
+      "name": "AdelaMartinica",
+      "roles": [
+        "Voice Actor",
+        "Artist"
+      ]
+    },
+    {
+      "name": "Ethan Young",
+      "roles": [
+        "Voice Actor"
+      ]
+    },
+    {
+      "name": "GK",
+      "roles": [
+        "Voice Actor"
+      ]
+    },
+    {
+      "name": "Surov0990",
+      "roles": [
+        "Voice Actor"
+      ]
+    },
+    {
+      "name": "BOOSH",
+      "roles": [
+        "Animator",
+        "Modeler"
+      ]
+    },
+    {
+      "name": "Kippers",
+      "roles": [
+        "Developer",
+        "Voice Actor",
+        "Artist"
+      ]
+    },
+    {
+      "name": "le charmander withe gune",
+      "roles": [
+        "Voice Actor"
+      ]
+    },
+    {
+      "name": "Lee :D",
+      "roles": [
+        "Voice Actor"
+      ]
+    },
+    {
+      "name": "ORION",
+      "roles": [
+        "Voice Actor"
+      ]
+    },
+    {
+      "name": "Rexab Rabbit",
+      "roles": [
+        "Voice Actor"
+      ]
+    },
+    {
+      "name": "TerrybleCode",
+      "roles": [
+        "Developer"
+      ]
+    },
+    {
+      "name": "Yeckim",
+      "roles": [
+        "Developer",
+        "Animator",
+        "Modeler"
+      ]
+    },
+    {
+      "name": "Mike",
+      "roles": [
+        "Artist"
+      ]
+    },
+    {
+      "name": "Acorn",
+      "roles": [
+        "Artist"
+      ]
+    }
+  ]
+}

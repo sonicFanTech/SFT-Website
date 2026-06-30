@@ -1,0 +1,172 @@
+{
+  "note": "This is JSON saved as .list on purpose. Edit this file to add, remove, reorder, or update games on the website.",
+  "games": [
+    {
+      "title": "Mehoy Menoy",
+      "creator": "bartish behaviour",
+      "url": "https://gamejolt.com/games/mehoy-menoy/1059054",
+      "description": "A GameJolt project from bartish behaviour. The page is linked here while the team waits on a final banner and short creator-written pitch.",
+      "banner": "",
+      "status": "Listed",
+      "tags": [
+        "GameJolt",
+        "Details Needed"
+      ],
+      "needsBanner": true
+    },
+    {
+      "title": "Five Nights at Musical Rares 22 - 1 (FNaMR22-1)",
+      "creator": "The Mr. DJ22",
+      "url": "https://gamejolt.com/games/FNaMR22-1/971498",
+      "description": "Survive five nights inside Musical's Pizza Party World. The job looks simple until the characters start acting alive.",
+      "banner": "assets/images/GameBanners/FNaMR22-1.webp",
+      "status": "Available",
+      "tags": [
+        "FNaF Fan Game",
+        "Survival",
+        "Horror"
+      ],
+      "needsBanner": false
+    },
+    {
+      "title": "Billy's Theatre Show ACT-1",
+      "creator": "The Mr. DJ22",
+      "url": "https://gamejolt.com/games/BTSACT-1OO/1031704",
+      "description": "After losing Rodger's Pizza Playhouse, Andrés takes a job at the theatre that stole his character. The past follows him there, and the story ties into the FFD Saga.",
+      "banner": "assets/images/GameBanners/BTS_ACT1.webp",
+      "status": "Available",
+      "tags": [
+        "Story",
+        "Horror",
+        "FFD Saga"
+      ],
+      "needsBanner": false
+    },
+    {
+      "title": "Five Nights at Musical Rares - 1 \"The Musical Investigation\" [Recomposed]",
+      "creator": "The Mr. DJ22",
+      "url": "https://gamejolt.com/games/FNaMR1tmirecomposed/1014268",
+      "description": "A remake of the original FNaMR experience, with updated graphics, reworked lore, returning characters, mechanics, and story pieces.",
+      "banner": "assets/images/GameBanners/FNaMR-1.webp",
+      "status": "Available",
+      "tags": [
+        "Remake",
+        "Horror",
+        "FNaMR"
+      ],
+      "needsBanner": false
+    },
+    {
+      "title": "Fishery's Family Diner (Classic)",
+      "creator": "CSB",
+      "url": "https://gamejolt.com/games/FFD1Classic/960353",
+      "description": "A financially desperate night guard takes a job at an animatronic restaurant with a very bad history.",
+      "banner": "",
+      "status": "Listed",
+      "tags": [
+        "FNaF Fan Game",
+        "Classic",
+        "Horror"
+      ],
+      "needsBanner": true
+    },
+    {
+      "title": "Fishery's Family Diner 2",
+      "creator": "CSB",
+      "url": "https://gamejolt.com/games/ffd2/961598",
+      "description": "The same worker returns for a new summer job at the renovated Fishery's Family Diner.",
+      "banner": "",
+      "status": "Listed",
+      "tags": [
+        "FNaF Fan Game",
+        "Sequel",
+        "Horror"
+      ],
+      "needsBanner": true
+    },
+    {
+      "title": "Fishery's Family Diner 3",
+      "creator": "CSB",
+      "url": "https://gamejolt.com/games/FFD3/977501",
+      "description": "In 1996, Daniel Stephans is hired to watch a horror attraction built around the mysteries of the older diner.",
+      "banner": "",
+      "status": "Listed",
+      "tags": [
+        "Horror Attraction",
+        "FNaF Fan Game",
+        "Demo"
+      ],
+      "needsBanner": true
+    },
+    {
+      "title": "Fishery's Family Diner 4",
+      "creator": "CSB",
+      "url": "https://gamejolt.com/games/FFD4/1007523",
+      "description": "In 2008, Jena takes a job at a new horror attraction based on the still-unsolved Fishery's Family Diner case.",
+      "banner": "",
+      "status": "Listed",
+      "tags": [
+        "Horror Attraction",
+        "Mystery",
+        "FNaF Fan Game"
+      ],
+      "needsBanner": true
+    },
+    {
+      "title": "Fishery's Family Diner 5",
+      "creator": "CSB",
+      "url": "https://gamejolt.com/games/ffd5welcometothemechanichell/1015509",
+      "description": "Ronald, a 26-year-old investigator, reopens a dropped case and follows what remains of the story back to the factory.",
+      "banner": "",
+      "status": "Early Access / Teaser",
+      "tags": [
+        "Free Roam",
+        "Chapters",
+        "Horror"
+      ],
+      "needsBanner": true
+    },
+    {
+      "title": "Fishery's Family Diner Overhaul",
+      "creator": "CSB",
+      "url": "https://gamejolt.com/games/ffdoverhaul/1018072",
+      "description": "An overhaul slot for the Fishery's Family Diner series. Drop in the official short pitch and banner when the creator sends them over.",
+      "banner": "",
+      "status": "Listed",
+      "tags": [
+        "Overhaul",
+        "FNaF Fan Game",
+        "Details Needed"
+      ],
+      "needsBanner": true
+    },
+    {
+      "title": "Wyre",
+      "creator": "reese's pieces",
+      "url": "https://gamejolt.com/games/wyre/1057498",
+      "description": "A wire-connection puzzle game about opening the way forward. More creator-provided text can be added later.",
+      "banner": "",
+      "status": "Listed",
+      "tags": [
+        "Puzzle",
+        "GameJolt",
+        "Details Needed"
+      ],
+      "needsBanner": true
+    },
+    {
+      "title": "Five Nights at Musical Rares 22 - 2 \"A Factory That Falls\"",
+      "creator": "The Mr. DJ22",
+      "url": "https://gamejolt.com/games/FNaMR22-2/971546",
+      "description": "A follow-up FNaMR22 fan game centered around the factory setting. Added from the extra GameJolt link in the team list.",
+      "banner": "",
+      "status": "Extra Link",
+      "tags": [
+        "FNaMR",
+        "Sequel",
+        "Factory"
+      ],
+      "needsBanner": true
+    }
+  ]
+}
