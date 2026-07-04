@@ -5,11 +5,10 @@
   "assets/audio/snd_menumove.wav",
   "assets/audio/snd_select.wav",
   "assets/downloads/DELTARUNE_Debug_Menu_v1.csx",
-  "assets/downloads/DELTARUNE_Debug_Menu_v1_Source_Package.zip",
-  "assets/downloads/GAMEJOLT_DESCRIPTION.txt",
-  "assets/downloads/README.md",
-  "assets/downloads/RELEASE_NOTES_v1.txt",
-  "assets/fonts/README_OPTIONAL_FONTS.txt",
+  "assets/downloads/DR_CHSFS_SetttingsMenu.csx",
+  "assets/downloads/DR_ChapSelect_SetttingsMenu.csx",
+  "assets/downloads/SAVE_ANYWHERE_WARNING.txt",
+  "assets/fonts/README_KEEP_EXISTING_FONTS.txt",
   "assets/images/Frame.png",
   "assets/images/IMAGE_DEPTH_BGEffect.png",
   "assets/images/SPR_H_MouseCur.png",
@@ -35,5 +34,7 @@
   "assets/site.js",
   "downloads/index.html",
   "index.html",
-  "mods/debugging-mod/index.html"
+  "mods/debugging-mod/index.html",
+  "mods/save-anywhere-ch5/index.html",
+  "mods/settings-menus/index.html"
 ]

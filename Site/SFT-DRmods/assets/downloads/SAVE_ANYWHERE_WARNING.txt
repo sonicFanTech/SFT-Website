@@ -1,0 +1,9 @@
+DELTARUNE Chapter 5 Save Anywhere Mod - BIG WARNING
+
+This mod is highly unstable and unsafe in testing.
+It can/could cause save-file corruption.
+Do not use it on important saves.
+Back up your save files and the original Chapter 5 data file before testing.
+
+GitHub:
+https://github.com/sonicFanTech/DELTARUNE-Chapter-5---Save-Anywhere-Mod
