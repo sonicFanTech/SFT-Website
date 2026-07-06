@@ -1,41 +1,32 @@
+<!doctype html>
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SFT DELTARUNE Mods</title>
-  <meta name="description" content="SFT DELTARUNE mod collection: UMT CSX mods, settings tools, screenshots, warnings, and install notes.">
+  <meta name="description" content="SFT DELTARUNE mod collection: UMT CSX mods, debug menu v2, settings tools, screenshots, warnings, and install notes.">
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <div class="stars"></div>
-  <div class="bg-depth"></div>
-  <header class="topbar">
-    <nav class="nav wrap">
-      <a class="brand" href="index.html"><span class="soul"></span><span>SFT DELTARUNE MODS</span></a>
-      <div class="navlinks">
-        <a href="index.html">Home</a>
-        <a href="downloads/index.html">Downloads</a>
-        
-      </div>
-    </nav>
-  </header>
+  <div class="stars"></div><div class="bg-depth"></div>
+  <header class="topbar"><nav class="nav wrap"><a class="brand" href="index.html"><span class="soul"></span><span>SFT DELTARUNE MODS</span></a><div class="navlinks"><a class="active" href="index.html">Home</a><a href="downloads/index.html">Downloads</a><a href="mods/debugging-mod/index.html">Debug Menu v2</a></div></nav></header>
   <main id="main">
-
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
           <h1 class="logo-title">DELT<span class="heart-inline"></span>RUNE:<span class="small">Mod Collection</span></h1>
-          <div class="subtitle">CSX Mod Collection</div>
-          <p class="lead">A fan-made archive for SFT DELTARUNE UMT mods, settings tools, debug scripts, screenshots, and install notes.</p>
-          <div class="cta"><a class="btn warn" href="mods/debugging-mod/index.html">Featured Debug Mod</a><a class="btn" href="downloads/index.html">Downloads</a></div>
+          <div class="subtitle">Debug Menu v2 Released</div>
+          <p class="lead">A fan-made archive for SFT DELTARUNE UMT mods, settings tools, debug scripts, screenshots, warnings, and install notes.</p>
+          <div class="cta"><a class="btn warn" href="mods/debugging-mod/index.html">Debug Menu v2</a><a class="btn" href="downloads/index.html">Downloads</a><a class="btn pink" href="publishing/README_GITHUB_MAIN.md">Publishing Docs</a></div>
         </div>
         <div class="window home-terminal">
           <div class="win-title">SFT MOD LIST</div>
           <div class="win-body fake-menu">
-            <span class="selection">DELTARUNE Debugging Mod — Chapters 1–5</span>
-            <p>Chapter Select Settings Menu — Chapter Select data.win</p>
-            <p>Save File Select Settings Menu — Chapter data.win files</p>
-            <p class="danger-text">Chapter 5 Save Anywhere — unstable / unsafe warning</p>
+            <span class="selection">DELTARUNE Debugging Mod v2 — Recommended</span>
+            <p>Legacy Debugging Mod v1 — still available for old-menu users.</p>
+            <p>Chapter Select Settings Menu — Chapter Select data.win.</p>
+            <p>Save File Select Settings Menu — normal chapter save screens.</p>
+            <p class="danger-text">Chapter 5 Save Anywhere — unstable / unsafe warning.</p>
             <p class="cyan">Tip: always back up data.win and save files before testing.</p>
           </div>
         </div>
@@ -44,51 +35,26 @@
     <section class="wrap">
       <div class="section-head"><h2>Mods</h2><p>Everything here is unofficial and intended for modding/debugging. Backups are strongly recommended.</p></div>
       <div class="grid mods">
-        <article class="card">
-  <div class="badges"><span class="badge yellow">v1</span><span class="badge ">Chapters 1–5</span><span class="badge pink">UMT CSX</span></div>
-  <h3>DELTARUNE Debugging Mod</h3>
-  <p>Custom fan-made debug menu with room select, sprite viewer, sound test, visual/collision tools, no-clip, runtime info, object browser, and battle/test helpers.</p>
-  <div class="cta"><a class="btn warn" href="mods/debugging-mod/index.html">Details</a><a class="btn " href="assets/downloads/DELTARUNE_Debug_Menu_v1.csx">Download .CSX</a></div>
-</article>
-        <article class="card">
-  <div class="badges"><span class="badge yellow">v1</span><span class="badge ">Chapter Select data.win</span><span class="badge pink">Settings</span></div>
-  <h3>Chapter Select Settings Menu</h3>
-  <p>Adds a Settings option to the DELTARUNE Chapter Select screen so global settings can live in one cleaner place.</p>
-  <div class="cta"><a class="btn warn" href="assets/downloads/DR_ChapSelect_SetttingsMenu.csx">Download .CSX</a><a class="btn " href="downloads/index.html">Downloads</a></div>
-</article>
-        <article class="card">
-  <div class="badges"><span class="badge yellow">v1</span><span class="badge ">All Chapters</span><span class="badge pink">Save Screen</span></div>
-  <h3>Save File Select Settings Menu</h3>
-  <p>Adds a Settings option to the normal chapter save-file select screen, including the newer save-file settings overlay work.</p>
-  <div class="cta"><a class="btn warn" href="assets/downloads/DR_CHSFS_SetttingsMenu.csx">Download .CSX</a><a class="btn " href="downloads/index.html">Downloads</a></div>
-</article>
-        <article class="card danger-card">
-  <div class="badges"><span class="badge yellow">Chapter 5</span><span class="badge pink">Experimental</span><span class="badge danger-badge">High Risk</span></div>
-  <h3>DELTARUNE Chapter 5 Save Anywhere Mod</h3>
-  <p><b class="danger-text">BIG WARNING:</b> this mod is highly unstable and unsafe in testing. It can break saves and could cause save-file corruption. Only use it on backed-up saves and a backed-up chapter data file.</p>
-  <div class="cta"><a class="btn danger" href="mods/save-anywhere-ch5/index.html">Read Warning</a><a class="btn " href="https://github.com/sonicFanTech/DELTARUNE-Chapter-5---Save-Anywhere-Mod">GitHub</a></div>
-</article>
+        <article class="card download-card-main">
+          <div class="badges"><span class="badge yellow">v2</span><span class="badge">Chapters 1–5</span><span class="badge pink">UMT CSX</span></div>
+          <h3>DELTARUNE Debugging Mod v2</h3>
+          <p>Current recommended debug menu with the cleaner v2 UI, controller support, GML Code Viewer, Flag metadata viewer, Runtime Logger overlay, object spawner, script call tools, and persistent settings.</p>
+          <div class="cta"><a class="btn warn" href="mods/debugging-mod/index.html">Details</a><a class="btn" href="assets/downloads/DR_DDM_V2.zip">Download v2 Package</a></div>
+        </article>
+        <article class="card legacy-card">
+          <div class="badges"><span class="badge yellow">Legacy v1</span><span class="badge">Old UI</span></div>
+          <h3>DELTARUNE Debugging Mod v1</h3>
+          <p>The older debug menu build is still available for people who want the original behavior or are testing old setups.</p>
+          <div class="cta"><a class="btn" href="assets/downloads/DELTARUNE_Debug_Menu_v1.csx">Download Legacy .CSX</a></div>
+        </article>
+        <article class="card"><div class="badges"><span class="badge yellow">v1</span><span class="badge">Chapter Select data.win</span><span class="badge pink">Settings</span></div><h3>Chapter Select Settings Menu</h3><p>Adds a Settings option to the DELTARUNE Chapter Select screen so global settings can live in one cleaner place.</p><div class="cta"><a class="btn warn" href="assets/downloads/DR_ChapSelect_SetttingsMenu.csx">Download .CSX</a><a class="btn" href="mods/settings-menus/index.html">Details</a></div></article>
+        <article class="card"><div class="badges"><span class="badge yellow">v1</span><span class="badge">All Chapters</span><span class="badge pink">Save Screen</span></div><h3>Save File Select Settings Menu</h3><p>Adds a Settings option to normal chapter save-file select screens.</p><div class="cta"><a class="btn warn" href="assets/downloads/DR_CHSFS_SetttingsMenu.csx">Download .CSX</a><a class="btn" href="mods/settings-menus/index.html">Details</a></div></article>
+        <article class="card danger-card"><div class="badges"><span class="badge yellow">Chapter 5</span><span class="badge pink">Experimental</span><span class="badge danger-badge">High Risk</span></div><h3>DELTARUNE Chapter 5 Save Anywhere Mod</h3><p><b class="danger-text">BIG WARNING:</b> highly unstable and unsafe in testing. It can break saves and could cause save-file corruption.</p><div class="cta"><a class="btn danger" href="mods/save-anywhere-ch5/index.html">Read Warning</a><a class="btn" href="https://github.com/sonicFanTech/DELTARUNE-Chapter-5---Save-Anywhere-Mod">GitHub</a></div></article>
       </div>
     </section>
-    <section class="wrap">
-      <div class="danger-strip">
-        <h2>Save safety warning</h2>
-        <p>The Chapter 5 Save Anywhere Mod is listed for archival/testing purposes, but it is not recommended for normal play. Make save backups before trying it.</p>
-      </div>
-    </section>
-    <section class="wrap">
-      <div class="section-head"></div>
-      
-    </section>
+    <section class="wrap"><div class="danger-strip"><h2>Save safety warning</h2><p>These are debugging/modding tools. Make backups before patching data files or testing save-related features.</p></div></section>
   </main>
-  <button class="audio-toggle" type="button">AUDIO: OFF</button>
-  <div class="modal" aria-hidden="true"><button type="button">Close</button><img alt="Screenshot preview"></div>
-  <footer>
-    <div class="wrap">
-      <p><b>SFT DELTARUNE Mod Collection</b> — fan-made UMT scripts and documentation.</p>
-      <p class="asset-note">Unofficial fan mods. Always back up your game data and save files before testing.</p>
-    </div>
-  </footer>
+  <button class="audio-toggle" type="button">AUDIO: OFF</button><div class="modal" aria-hidden="true"><button type="button">Close</button><img alt="Screenshot preview"></div>
+  <footer><div class="wrap"><p><b>SFT DELTARUNE Mod Collection</b> — fan-made UMT scripts and documentation.</p><p class="asset-note">Unofficial fan mods. Always back up your game data and save files before testing.</p></div></footer>
   <script src="assets/site.js"></script>
-
 </body></html>

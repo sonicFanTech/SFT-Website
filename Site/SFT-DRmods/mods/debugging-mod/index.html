@@ -1,82 +1,85 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DELTARUNE Debugging Mod v1</title>
-  <meta name="description" content="SFT DELTARUNE mod collection: UMT CSX mods, settings tools, screenshots, warnings, and install notes.">
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DELTARUNE Debugging Mod v2</title>
+  <meta name="description" content="SFT DELTARUNE Debugging Mod v2: fan-made UMT CSX debug menu for DELTARUNE Chapters 1–5.">
   <link rel="stylesheet" href="../../assets/site.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="stars"></div>
-  <div class="bg-depth"></div>
-  <header class="topbar">
-    <nav class="nav wrap">
-      <a class="brand" href="../../index.html"><span class="soul"></span><span>SFT DELTARUNE MODS</span></a>
-      <div class="navlinks">
-        <a href="../../index.html">Home</a>
-        <a href="../../downloads/index.html">Downloads</a>
-        <a href="../../mods/save-anywhere-ch5/index.html">Save Anywhere Warning</a>
-      </div>
-    </nav>
-  </header>
+  <a class="skip" href="#main">Skip to content</a><div class="stars"></div><div class="bg-depth"></div>
+  <header class="topbar"><nav class="nav wrap"><a class="brand" href="../../index.html"><span class="soul"></span><span>SFT DELTARUNE MODS</span></a><div class="navlinks"><a href="../../index.html">Home</a><a href="../../downloads/index.html">Downloads</a><a href="../../mods/save-anywhere-ch5/index.html">Save Anywhere Warning</a></div></nav></header>
   <main id="main">
-
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <h1 class="logo-title">DELT<span class="heart-inline"></span>RUNE:<span class="small">Debugging Mod</span></h1>
-          <div class="subtitle">Chapters 1–5 • v1</div>
-          <p class="lead">A fan-made UMT CSX debugging menu for DELTARUNE Chapters 1–5.</p>
-          <div class="cta"><a class="btn warn" href="../../assets/downloads/DELTARUNE_Debug_Menu_v1.csx">Download .CSX</a><a class="btn pink" href="https://gamejolt.com/games/DR_DDM_CH1-5/1081137">GameJolt</a><a class="btn" href="../../downloads/index.html">All Downloads</a></div>
+          <h1 class="logo-title">DELT<span class="heart-inline"></span>RUNE:<span class="small">Debug Menu v2</span></h1>
+          <div class="subtitle">Chapters 1–5 • UMT CSX</div>
+          <p class="lead">The current recommended SFT DELTARUNE Debugging Mod build. v2 adds the cleaner UI, controller support, Runtime Logger overlay, GML Code Viewer support, real flag metadata support, object spawner, script call tools, and persistent settings.</p>
+          <div class="cta"><a class="btn warn" href="../../assets/downloads/DR_DDM_V2.zip">Download v2 Package</a><a class="btn" href="../../assets/downloads/DR_DDM_v2.csx">Download .CSX Only</a><a class="btn pink" href="https://gamejolt.com/games/DR_DDM_CH1-5/1081137">GameJolt</a></div>
         </div>
-        <div class="window">
-          <div class="win-title">SFT DELTARUNE Debug Menu v1 — Main Categories</div>
-          <div class="win-body fake-menu">
-            <span class="selection">Room Select — Warp to any room in this chapter with search.</span>
-            <p>Player / Movement — No-clip, speed, teleport-to-mouse, reload room.</p>
-            <p>Visual / Collision — Hide/show layers, draw hitboxes, labels, bounds.</p>
-            <p>Sound Test — Search and play music/SFX from this chapter.</p>
-            <p>Sprite / Animation Viewer — Search sprites and preview animation frames.</p>
-            <p>Runtime Info / Object Browser / Debug helpers.</p>
-            <p class="cyan">Keyboard: F3 open. Controller builds use Back+Start.</p>
-          </div>
-        </div>
+        <div class="window"><div class="win-title">SFT DELTARUNE Debug Menu v2 — Main Categories</div><div class="win-body fake-menu">
+          <span class="selection">Room Select — Warp to rooms in the patched chapter.</span>
+          <p>Player / Movement — No-clip, speed, teleport-style helpers.</p>
+          <p>Visual / Collision — Layers, hitboxes, labels, bounds, interact markers.</p>
+          <p>Sound Test — Search and play music/SFX.</p>
+          <p>Sprite / Animation Viewer — Search sprites and preview frames.</p>
+          <p>GML Code Viewer — Index and optional exported-code previews.</p>
+          <p>Flag / Global Viewer — Safe metadata/index viewer.</p>
+          <p>Runtime Logger — Logs with optional side overlay/tabs.</p>
+          <p>Script Call / Object Spawner — dangerous advanced research tools.</p>
+          <p class="cyan">Keyboard: F3. Controller: Back+Start.</p>
+        </div></div>
       </div>
     </section>
-    <section class="wrap">
-      <div class="section-head"><h2>Features</h2></div>
-      <div class="grid feature-grid">
-        <article class="card feature"><h3><span class="icon yellow">▣</span>Room Select</h3><p>Browse, search, and warp to rooms in the currently patched chapter.</p></article>
-        <article class="card feature"><h3><span class="icon cyan">⊞</span>Visual / Collision</h3><p>Draw collision boxes, object labels, room bounds, player markers, and layer visibility tests.</p></article>
-        <article class="card feature"><h3><span class="icon pink">♪</span>Sound Test</h3><p>Search/play music and SFX from the loaded chapter, with stop/reset helpers.</p></article>
-        <article class="card feature"><h3><span class="icon cyan">☻</span>Sprite Viewer</h3><p>Search sprites, preview animation frames, frame forward/back, and inspect sprite sizes.</p></article>
-        <article class="card feature"><h3><span class="icon yellow">→</span>No-clip</h3><p>Move through walls and objects with adjustable no-clip speed.</p></article>
-        <article class="card feature"><h3><span class="icon pink">⚙</span>Research Tools</h3><p>Runtime info, object browsing, overlays, and experimental v2-lab style debugging helpers.</p></article>
-      </div>
-    </section>
-    <section class="wrap">
-      <div class="section-head"><h2>Install Guide</h2></div>
-      <div class="download-panel">
-        <div class="card"><h3>Steps</h3><ol class="steps"><li>Back up the chapter’s original data file first.</li><li>Open the chapter data file in UndertaleModTool.</li><li>Go to <b>Scripts</b> / <b>Run other script...</b> and select <code>DELTARUNE_Debug_Menu_v1.csx</code>.</li><li>Save the patched data file.</li><li>Launch the game and press <b>F3</b> to open/close the debug menu.</li></ol></div>
-        <div class="card"><h3>Controls</h3><div class="codebox">F3 = open / close menu
-Up / Down = move selection
-Enter = select / toggle
-Backspace / Esc = go back
-Controller builds: Back+Start open/close, A select, B back</div><p class="muted">Some behavior can vary per chapter because each chapter has its own object/script/resource layout.</p></div>
-      </div>
-    </section>
-    <section class="wrap"><div class="section-head"><h2>Real Screenshots</h2></div><div class="grid gallery"><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu1.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu1.png" alt="DDM Menu1 screenshot"><b>DDM Menu1</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu2.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu2.png" alt="DDM Menu2 screenshot"><b>DDM Menu2</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu3.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu3.png" alt="DDM Menu3 screenshot"><b>DDM Menu3</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu4.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu4.png" alt="DDM Menu4 screenshot"><b>DDM Menu4</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu5.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu5.png" alt="DDM Menu5 screenshot"><b>DDM Menu5</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu6.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu6.png" alt="DDM Menu6 screenshot"><b>DDM Menu6</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu7.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu7.png" alt="DDM Menu7 screenshot"><b>DDM Menu7</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu8.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu8.png" alt="DDM Menu8 screenshot"><b>DDM Menu8</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu9.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu9.png" alt="DDM Menu9 screenshot"><b>DDM Menu9</b><span>Menu / Categories</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/Spr_Menu/Spr_1.png"><img src="../../assets/images/Screenshots/Debugging_Mod/Spr_Menu/Spr_1.png" alt="Spr 1 screenshot"><b>Spr 1</b><span>Sprite Viewer</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/Spr_Menu/Spr_2.png"><img src="../../assets/images/Screenshots/Debugging_Mod/Spr_Menu/Spr_2.png" alt="Spr 2 screenshot"><b>Spr 2</b><span>Sprite Viewer</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act1.png"><img src="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act1.png" alt="Vis Act1 screenshot"><b>Vis Act1</b><span>Visual / Collision</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act2.png"><img src="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act2.png" alt="Vis Act2 screenshot"><b>Vis Act2</b><span>Visual / Collision</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act3.png"><img src="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act3.png" alt="Vis Act3 screenshot"><b>Vis Act3</b><span>Visual / Collision</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act5.png"><img src="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act5.png" alt="Vis Act5 screenshot"><b>Vis Act5</b><span>Visual / Collision</span></article></div></section>
+
+    <section class="wrap"><div class="release-note"><h3>v2 release status</h3><p>This build replaces v1 as the recommended download. v1 stays available as a legacy option. The public package does not include DELTARUNE exported code, sprites, sounds, music, or data files.</p></div></section>
+
+    <section class="wrap"><div class="section-head"><h2>Features</h2><p>v2 is meant for debugging/research, not normal play. Some advanced tools can break the game if used out of context.</p></div><div class="grid feature-grid">
+      <article class="card feature"><h3><span class="icon yellow">▣</span>Room Select</h3><p>Browse/search rooms and warp around the currently patched chapter.</p></article>
+      <article class="card feature"><h3><span class="icon cyan">→</span>Movement Tools</h3><p>No-clip, speed helpers, teleport-style actions, and movement/debug utilities.</p></article>
+      <article class="card feature"><h3><span class="icon pink">⊞</span>Visual / Collision</h3><p>Hitboxes, labels, bounds, layer tests, player markers, and interact/trigger style overlays.</p></article>
+      <article class="card feature"><h3><span class="icon pink">♪</span>Sound Test</h3><p>Search and play music or SFX from the loaded chapter.</p></article>
+      <article class="card feature"><h3><span class="icon cyan">☻</span>Sprite Viewer</h3><p>Search sprites, preview frames, and inspect animation/frame info.</p></article>
+      <article class="card feature"><h3><span class="icon yellow">{ }</span>GML Code Viewer</h3><p>Shows code names and optional source previews embedded from user-exported UMT GML files.</p></article>
+      <article class="card feature"><h3><span class="icon cyan">⚑</span>Flag Viewer</h3><p>Safe flag/global metadata viewer. Can embed real flag names from a local metadata file.</p></article>
+      <article class="card feature"><h3><span class="icon pink">LOG</span>Runtime Logger</h3><p>Records room/object/action/system notes with optional always-show side overlay and category pages.</p></article>
+      <article class="card feature"><h3><span class="icon yellow">⚠</span>Script Call</h3><p>Dangerous advanced page for calling scripts manually. Use test saves only.</p></article>
+      <article class="card feature"><h3><span class="icon cyan">OBJ</span>Object Spawner</h3><p>Spawn existing objects. Spawned objects run their real game code, so this can be powerful and risky.</p></article>
+      <article class="card feature"><h3><span class="icon pink">INI</span>Persistent Settings</h3><p>Debug menu settings save into <code>SFT_DDM_SETTINGS.ini</code>.</p></article>
+      <article class="card feature"><h3><span class="icon yellow">🎮</span>Controller Support</h3><p>Xbox-style controller support with Back+Start open/close and A/B navigation.</p></article>
+    </div></section>
+
+    <section class="wrap"><div class="section-head"><h2>Install Guide</h2></div><div class="download-panel">
+      <div class="card"><h3>Basic steps</h3><ol class="steps"><li>Back up the chapter data file and your saves.</li><li>Open the chapter data file in UndertaleModTool.</li><li>Run <code>DR_DDM_v2.csx</code> through <b>Scripts → Run other script...</b>.</li><li>Save the patched data file.</li><li>Launch the game and press <span class="kbd">F3</span>.</li></ol></div>
+      <div class="card"><h3>Controls</h3><div class="codebox">F3 = open / close
+Up / Down = move
+Left / Right = change
+Enter = select
+Esc / Backspace = back
+Back + Start = controller open
+A = controller select
+B = controller back</div></div>
+    </div></section>
+
+    <section class="wrap"><div class="section-head"><h2>GML Code Viewer Setup</h2><p>The mod does not include DELTARUNE source code. Users export their own GML locally.</p></div><div class="card"><div class="codebox">SFT_DDM_GML_Source/
+  CH1/
+  CH2/
+  CH3/
+  CH4/
+  CH5/
+  ChapSelect/</div><p>Put exported UMT code files in the matching folder before running the .csx installer. The installer embeds safe previews into the patched data file. Do not upload exported DELTARUNE code with the mod.</p></div></section>
+
+    <section class="wrap"><div class="section-head"><h2>Download Options</h2></div><div class="grid mods">
+      <article class="card download-card-main"><h3>Recommended: v2 Package</h3><p>Includes the v2 .csx, detailed README, placeholder GML folders, flag metadata sample, and converter helper.</p><div class="cta"><a class="btn warn" href="../../assets/downloads/DR_DDM_V2.zip">Download v2 Package</a></div></article>
+      <article class="card"><h3>v2 .CSX Only</h3><p>Only the script file. Use the package if you want the full documentation and optional folder setup.</p><div class="cta"><a class="btn" href="../../assets/downloads/DR_DDM_v2.csx">Download .CSX</a></div></article>
+      <article class="card legacy-card"><h3>Legacy v1</h3><p>Old version kept for archive/testing.</p><div class="cta"><a class="btn" href="../../assets/downloads/DELTARUNE_Debug_Menu_v1.csx">Download v1 .CSX</a></div></article>
+    </div></section>
+
+    <section class="wrap"><div class="danger-strip"><h2>Important Warning</h2><ul class="warning-list"><li>Back up saves and data files before testing.</li><li>Object Spawner can run real object code, including dangerous objects.</li><li>Script Call can break rooms or crash the game if used wrong.</li><li>No-clip should be off before battles, dialogue, cutscenes, and important menus.</li><li>Do not redistribute DELTARUNE code/assets with the mod.</li></ul></div></section>
+
+    <section class="wrap"><div class="section-head"><h2>Real Screenshots</h2><p>Older screenshots are still included; v2 has a cleaner drawn UI and more menu categories.</p></div><div class="grid gallery"><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu1.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu1.png" alt="DDM Menu1 screenshot"><b>DDM Menu1</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu2.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu2.png" alt="DDM Menu2 screenshot"><b>DDM Menu2</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu3.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu3.png" alt="DDM Menu3 screenshot"><b>DDM Menu3</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu4.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu4.png" alt="DDM Menu4 screenshot"><b>DDM Menu4</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu5.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu5.png" alt="DDM Menu5 screenshot"><b>DDM Menu5</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu6.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu6.png" alt="DDM Menu6 screenshot"><b>DDM Menu6</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu7.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu7.png" alt="DDM Menu7 screenshot"><b>DDM Menu7</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu8.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu8.png" alt="DDM Menu8 screenshot"><b>DDM Menu8</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu9.png"><img src="../../assets/images/Screenshots/Debugging_Mod/DR_DDM_Menu/DDM_Menu9.png" alt="DDM Menu9 screenshot"><b>DDM Menu9</b><span>Debug Menu</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/Spr_Menu/Spr_1.png"><img src="../../assets/images/Screenshots/Debugging_Mod/Spr_Menu/Spr_1.png" alt="Sprite viewer screenshot"><b>Sprite Viewer</b><span>Sprite Preview</span></article><article class="shot" data-full="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act1.png"><img src="../../assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act1.png" alt="Visual actions screenshot"><b>Visual Tools</b><span>Collision / Visuals</span></article></div></section>
   </main>
-  <button class="audio-toggle" type="button">AUDIO: OFF</button>
-  <div class="modal" aria-hidden="true"><button type="button">Close</button><img alt="Screenshot preview"></div>
-  <footer>
-    <div class="wrap">
-      <p><b>SFT DELTARUNE Mod Collection</b> — fan-made UMT scripts and documentation.</p>
-      <p class="asset-note">Unofficial fan mods. Always back up your game data and save files before testing.</p>
-    </div>
-  </footer>
+  <button class="audio-toggle" type="button">AUDIO: OFF</button><div class="modal" aria-hidden="true"><button type="button">Close</button><img alt="Screenshot preview"></div>
+  <footer><div class="wrap"><p><b>SFT DELTARUNE Mod Collection</b> — fan-made UMT scripts and documentation.</p><p class="asset-note">Unofficial fan mods. Always back up your game data and save files before testing.</p></div></footer>
   <script src="../../assets/site.js"></script>
-</body>
-</html>
+</body></html>

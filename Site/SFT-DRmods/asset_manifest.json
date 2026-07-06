@@ -7,6 +7,8 @@
   "assets/downloads/DELTARUNE_Debug_Menu_v1.csx",
   "assets/downloads/DR_CHSFS_SetttingsMenu.csx",
   "assets/downloads/DR_ChapSelect_SetttingsMenu.csx",
+  "assets/downloads/DR_DDM_V2.zip",
+  "assets/downloads/DR_DDM_v2.csx",
   "assets/downloads/SAVE_ANYWHERE_WARNING.txt",
   "assets/fonts/README_KEEP_EXISTING_FONTS.txt",
   "assets/images/Frame.png",
@@ -36,5 +38,11 @@
   "index.html",
   "mods/debugging-mod/index.html",
   "mods/save-anywhere-ch5/index.html",
-  "mods/settings-menus/index.html"
+  "mods/settings-menus/index.html",
+  "publishing/GAMEJOLT_PAGE.md",
+  "publishing/GITHUB_RELEASE_v2.md",
+  "publishing/ITCH_IO_PAGE.md",
+  "publishing/MOD_PACKAGE_README.md",
+  "publishing/NOTICE_NO_GAME_ASSETS.md",
+  "publishing/README_GITHUB_MAIN.md"
 ]
