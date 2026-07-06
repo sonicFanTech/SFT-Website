@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SFT UNDERTALE Mods DB</title>
+  <meta name="description" content="sonicFanTech's UNDERTALE mod archive, featuring the UNDERTALE Debug Menu Port.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="world-bg" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="boot-layer" id="bootLayer" role="dialog" aria-label="UNDERTALE Mods DB boot screen">
+    <div class="boot-box">
+      <div class="boot-splash-stack" aria-hidden="true">
+        <img src="Assets/images/Animation/BOOT/UNDERTALE_SPLASH01.png" alt="" class="boot-splash is-active" id="bootSplashA">
+        <img src="Assets/images/Animation/BOOT/UNDERTALE_SPLASH02.png" alt="" class="boot-splash" id="bootSplashB">
+      </div>
+      <p class="boot-note">Press Enter, Space, or click to skip.</p>
+    </div>
+  </div>
+
+  <audio id="bootSwapSound" src="Assets/Audio/mus_intronoise.ogg" preload="auto"></audio>
+  <audio id="moveSound" src="Assets/Audio/snd_menumove.wav" preload="auto"></audio>
+  <audio id="selectSound" src="Assets/Audio/snd_select.wav" preload="auto"></audio>
+  <audio id="errorSound" src="Assets/Audio/snd_ERROR.wav" preload="auto"></audio>
+
+  <header class="site-header">
+    <a class="site-mark sound-hover" href="#home" aria-label="Go to home">
+      <span class="heart" aria-hidden="true">♥</span>
+      <span>SFT UNDERTALE MODS</span>
+    </a>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a class="sound-hover route-link" href="#home" data-route-link="home">HOME</a>
+      <a class="sound-hover route-link" href="#mods" data-route-link="mods">MODS</a>
+      <a class="sound-hover route-link" href="#install" data-route-link="install">INSTALL</a>
+      <a class="sound-hover route-link" href="#controls" data-route-link="controls">CONTROLS</a>
+      <a class="sound-hover route-link" href="#credits" data-route-link="credits">CREDITS</a>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="app-view active" data-route="home" id="view-home">
+      <section class="hero shell-card">
+        <div class="scene" aria-hidden="true" id="mainScene">
+          <img id="char-flowey" class="scene-character" src="Assets/images/Characters/flowey_HomePage_Deco.png" alt="">
+          <img id="char-sans" class="scene-character" src="Assets/images/Characters/Sans_BG_HomePage_Deco.png" alt="">
+          <img id="char-papyrus" class="scene-character" src="Assets/images/Characters/papyruse_BG__HomePage_Deco.png" alt="">
+          <img id="char-toriel" class="scene-character" src="Assets/images/Characters/toriel_BG_HomePage_Deco.png" alt="">
+          <img id="char-asgore" class="scene-character" src="Assets/images/Characters/Asgore_BG_HomePage_Deco.png" alt="">
+          <img id="char-undyne" class="scene-character" src="Assets/images/Characters/undy_BG_HomePage_Deco.png" alt="">
+          <img id="dogSprite" class="dog-sprite" src="Assets/images/Animation/HomePage_TobyFoxDog/spr_tinypomwalk_0.png" alt="">
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">* A small archive has appeared.</p>
+          <h1>UNDERTALE Mods DB</h1>
+          <p class="hero-text">
+            A dedicated UNDERTALE mod sub-site for sonicFanTech projects. The main page changes its background and character placement each time you come back to it.
+          </p>
+          <div class="hero-actions">
+            <a class="ut-button sound-click" href="#mods">VIEW MODS</a>
+            <a class="ut-button alt sound-click" href="Assets/Downloads/SFT_UTDM_Port_v1_2.csx" download>DOWNLOAD CSX</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-grid">
+        <article class="shell-card text-section compact-card">
+          <p class="eyebrow">* Current Archive</p>
+          <h2>One UNDERTALE Mod</h2>
+          <p>
+            The archive currently includes one release: the UNDERTALE port of the DELTARUNE Debug Menu mod.
+          </p>
+          <a class="ut-button sound-click" href="#mods">OPEN MOD LIST</a>
+        </article>
+
+        <article class="shell-card text-section compact-card">
+          <p class="eyebrow">* Patch Reminder</p>
+          <h2>Use a Backup</h2>
+          <p>
+            This site only provides the mod script. It does not include UNDERTALE, data.win, or any other original game files.
+          </p>
+          <button class="ut-button warning-button" id="noticeButton" type="button">READ MOD NOTICE</button>
+        </article>
+      </section>
+    </section>
+
+    <section class="app-view" data-route="mods" id="view-mods">
+      <section class="page-banner shell-card">
+        <p class="eyebrow">* Downloads</p>
+        <h1>MOD LIST</h1>
+        <p>All UNDERTALE mod downloads currently available in this archive.</p>
+      </section>
+
+      <section class="grid-section">
+        <article class="mod-card shell-card featured-mod">
+          <div class="save-orbit" aria-hidden="true">
+            <img class="save-sparkle" src="Assets/images/Animation/SAVE_p_Sparkle/spr_savepoint_0.png" alt="">
+          </div>
+          <p class="eyebrow">* Available Mod</p>
+          <h2>UNDERTALE Debug Menu Port</h2>
+          <p>
+            A classic UNDERTALE/GameMaker version of sonicFanTech's DELTARUNE Debug Menu mod, rebuilt without the GMS2-only parts.
+          </p>
+          <div class="facts">
+            <span>Version: v1.2</span>
+            <span>Format: UMT .csx</span>
+            <span>Game: UNDERTALE</span>
+          </div>
+          <div class="hero-actions">
+            <a class="ut-button sound-click" href="#mod-undertale-debug-menu-port">VIEW MOD</a>
+            <a class="ut-button alt sound-click" href="Assets/Downloads/SFT_UTDM_Port_v1_2.csx" download>DOWNLOAD CSX</a>
+          </div>
+        </article>
+
+        <aside class="shell-card notice-card">
+          <h2>Before You Patch</h2>
+          <p>
+            Keep a clean backup of your UNDERTALE data.win first. This download is only the mod script.
+          </p>
+          <button class="ut-button warning-button" type="button" data-open-notice="true">READ MOD NOTICE</button>
+        </aside>
+      </section>
+    </section>
+
+    <section class="app-view" data-route="mod-undertale-debug-menu-port" id="view-mod-debug-port">
+      <section class="page-banner shell-card">
+        <p class="eyebrow">* Mod Page</p>
+        <h1>UNDERTALE DEBUG MENU PORT</h1>
+        <p>A closer look at the current UNDERTALE release in the archive.</p>
+      </section>
+
+      <section class="detail-grid">
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Overview</p>
+          <h2>What It Does</h2>
+          <p>
+            This mod is the UNDERTALE/classic GameMaker port of sonicFanTech's DELTARUNE Debug Menu project. It keeps the usable debug systems while removing the GMS2-only features that do not fit UNDERTALE.
+          </p>
+          <div class="facts">
+            <span>Version: v1.2</span>
+            <span>Script: SFT_UTDM_Port_v1_2.csx</span>
+            <span>Tool: UndertaleModTool</span>
+          </div>
+          <div class="hero-actions">
+            <a class="ut-button sound-click" href="Assets/Downloads/SFT_UTDM_Port_v1_2.csx" download>DOWNLOAD MOD</a>
+            <a class="ut-button sound-click" href="#install">INSTALL GUIDE</a>
+          </div>
+        </article>
+
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Included</p>
+          <h2>Highlights</h2>
+          <ul class="feature-list">
+            <li>Classic UNDERTALE-compatible debug menu behavior.</li>
+            <li>Built from the DELTARUNE Debug Menu project as a port.</li>
+            <li>GMS2-only features removed for classic engine limits.</li>
+            <li>Distributed as a UMT .csx patch script.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="detail-grid lower-details">
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Quick Install</p>
+          <h2>Patch Steps</h2>
+          <ol class="step-list">
+            <li>Back up your UNDERTALE <strong>data.win</strong>.</li>
+            <li>Open the game file in UndertaleModTool.</li>
+            <li>Run <strong>SFT_UTDM_Port_v1_2.csx</strong> from the scripts menu.</li>
+            <li>Save the patched output.</li>
+            <li>Launch the game and open the debug menu with <strong>F3</strong>.</li>
+          </ol>
+        </article>
+
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Quick Controls</p>
+          <h2>Menu Input</h2>
+          <dl class="control-list compact-controls">
+            <div><dt>F3</dt><dd>Open or close the debug menu.</dd></div>
+            <div><dt>Esc</dt><dd>Back or close.</dd></div>
+            <div><dt>Enter</dt><dd>Select the current row.</dd></div>
+            <div><dt>Up / Down</dt><dd>Move through menu rows.</dd></div>
+          </dl>
+        </article>
+      </section>
+    </section>
+
+    <section class="app-view" data-route="install" id="view-install">
+      <section class="shell-card text-section page-section">
+        <p class="eyebrow">* How to install</p>
+        <h1>INSTALL</h1>
+        <ol class="step-list">
+          <li>Back up your UNDERTALE <strong>data.win</strong> before changing anything.</li>
+          <li>Open UNDERTALE's <strong>data.win</strong> in UndertaleModTool.</li>
+          <li>Run <strong>SFT_UTDM_Port_v1_2.csx</strong> from the scripts menu.</li>
+          <li>Save the patched copy and keep your clean backup somewhere safe.</li>
+          <li>Start UNDERTALE and open the debug menu with <strong>F3</strong>.</li>
+        </ol>
+      </section>
+    </section>
+
+    <section class="app-view" data-route="controls" id="view-controls">
+      <section class="controls-grid single-page-grid">
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Keyboard</p>
+          <h1>CONTROLS</h1>
+          <dl class="control-list">
+            <div><dt>F3</dt><dd>Open or close the debug menu.</dd></div>
+            <div><dt>Esc</dt><dd>Back or close.</dd></div>
+            <div><dt>Backspace</dt><dd>Back, or delete one search character.</dd></div>
+            <div><dt>Up / Down</dt><dd>Move through menu rows.</dd></div>
+            <div><dt>Enter</dt><dd>Select a row or run an action.</dd></div>
+          </dl>
+        </article>
+
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Controller</p>
+          <h2>Gamepad Controls</h2>
+          <dl class="control-list">
+            <div><dt>Back + Start</dt><dd>Open or close the debug menu.</dd></div>
+            <div><dt>B</dt><dd>Back or close.</dd></div>
+            <div><dt>X</dt><dd>Back, or delete one search character.</dd></div>
+            <div><dt>D-pad / L-stick</dt><dd>Move through menu rows.</dd></div>
+            <div><dt>LB / RB</dt><dd>Page jump inside long lists.</dd></div>
+          </dl>
+        </article>
+      </section>
+    </section>
+
+    <section class="app-view" data-route="credits" id="view-credits">
+      <section class="shell-card text-section credits-section page-section">
+        <p class="eyebrow">* Credits</p>
+        <h1>CREDITS</h1>
+        <p>
+          Mod and site by <strong>sonicFanTech</strong>. The UNDERTALE Debug Menu Port is based on sonicFanTech's DELTARUNE Debug Menu work and adapted for classic UNDERTALE limits.
+        </p>
+        <p>
+          UNDERTALE is by Toby Fox. This is a fan-made mod archive and is not an official UNDERTALE website.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <dialog class="notice-dialog" id="noticeDialog">
+    <form method="dialog" class="shell-card dialog-card">
+      <h2>Mod Notice</h2>
+      <p>
+        Use the script with a legally owned copy of UNDERTALE. Keep a clean backup of your original data.win so you can restore the game at any time.
+      </p>
+      <button class="ut-button sound-click" value="close">OK</button>
+    </form>
+  </dialog>
+
+  <footer class="site-footer">
+    <span>♥ STAY DETERMINED.</span>
+    <a class="sound-hover" href="#home">Back to home</a>
+  </footer>
+</body>
+</html>
