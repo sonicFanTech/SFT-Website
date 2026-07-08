@@ -153,6 +153,7 @@
     const titles = {
       home: "SFT UNDERTALE Mods DB",
       mods: "SFT UNDERTALE Mods DB - Mod List",
+      "mod-settings-plus": "SFT UNDERTALE Mods DB - UNDERTALE Settings+",
       "mod-undertale-debug-menu-port": "SFT UNDERTALE Mods DB - UNDERTALE Debug Menu Port",
       install: "SFT UNDERTALE Mods DB - Install",
       controls: "SFT UNDERTALE Mods DB - Controls",

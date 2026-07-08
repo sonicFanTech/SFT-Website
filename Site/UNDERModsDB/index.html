@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SFT UNDERTALE Mods DB</title>
-  <meta name="description" content="sonicFanTech's UNDERTALE mod archive, featuring the UNDERTALE Debug Menu Port.">
+  <meta name="description" content="sonicFanTech's UNDERTALE mod archive, featuring Settings+ and the UNDERTALE Debug Menu Port.">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -62,7 +62,7 @@
           </p>
           <div class="hero-actions">
             <a class="ut-button sound-click" href="#mods">VIEW MODS</a>
-            <a class="ut-button alt sound-click" href="Assets/Downloads/SFT_UTDM_Port_v1_2.csx" download>DOWNLOAD CSX</a>
+            <a class="ut-button alt sound-click" href="Assets/Downloads/UT_Settings+.zip" download>DOWNLOAD SETTINGS+</a>
           </div>
         </div>
       </section>
@@ -70,18 +70,27 @@
       <section class="home-grid">
         <article class="shell-card text-section compact-card">
           <p class="eyebrow">* Current Archive</p>
-          <h2>One UNDERTALE Mod</h2>
+          <h2>Two UNDERTALE Mods</h2>
           <p>
-            The archive currently includes one release: the UNDERTALE port of the DELTARUNE Debug Menu mod.
+            The archive now includes the UNDERTALE Debug Menu Port and Settings+, a quality-of-life overhaul for UNDERTALE's settings and C Menu.
           </p>
           <a class="ut-button sound-click" href="#mods">OPEN MOD LIST</a>
         </article>
 
         <article class="shell-card text-section compact-card">
+          <p class="eyebrow">* Latest Release</p>
+          <h2>Settings+ v1</h2>
+          <p>
+            Adds a tabbed settings menu, audio sliders, window options, real border support, and in-game C Menu shortcuts.
+          </p>
+          <a class="ut-button alt sound-click" href="#mod-settings-plus">VIEW SETTINGS+</a>
+        </article>
+
+        <article class="shell-card text-section compact-card wide-card">
           <p class="eyebrow">* Patch Reminder</p>
           <h2>Use a Backup</h2>
           <p>
-            This site only provides the mod script. It does not include UNDERTALE, data.win, or any other original game files.
+            These downloads are mod packages and patch scripts. They do not include UNDERTALE itself, data.win, or a pre-patched copy of the game. Keep a clean backup before using UMT.
           </p>
           <button class="ut-button warning-button" id="noticeButton" type="button">READ MOD NOTICE</button>
         </article>
@@ -95,11 +104,32 @@
         <p>All UNDERTALE mod downloads currently available in this archive.</p>
       </section>
 
-      <section class="grid-section">
-        <article class="mod-card shell-card featured-mod">
+      <section class="grid-section mod-list-grid">
+        <article class="mod-card shell-card featured-mod latest-mod">
           <div class="save-orbit" aria-hidden="true">
             <img class="save-sparkle" src="Assets/images/Animation/SAVE_p_Sparkle/spr_savepoint_0.png" alt="">
           </div>
+          <p class="eyebrow">* Latest Mod</p>
+          <h2>UNDERTALE Settings+</h2>
+          <p>
+            A useful settings menu overhaul for UNDERTALE. It replaces the basic settings screen with tabs, adds in-game Settings access, adds a Main Menu shortcut, and saves new options into UNDERTALE's normal config file.
+          </p>
+          <div class="facts">
+            <span>Version: v1</span>
+            <span>Format: UMT .csx + assets</span>
+            <span>Game: UNDERTALE</span>
+          </div>
+          <figure class="mod-preview">
+            <img src="Assets/images/Screenshots/UT_SettingsPLUS/TITLE_SETTINGS_PLUS.png" alt="Settings+ title menu screenshot">
+            <figcaption>Settings+ running from the title settings room.</figcaption>
+          </figure>
+          <div class="hero-actions">
+            <a class="ut-button sound-click" href="#mod-settings-plus">VIEW MOD</a>
+            <a class="ut-button alt sound-click" href="Assets/Downloads/UT_Settings+.zip" download>DOWNLOAD ZIP</a>
+          </div>
+        </article>
+
+        <article class="mod-card shell-card featured-mod">
           <p class="eyebrow">* Available Mod</p>
           <h2>UNDERTALE Debug Menu Port</h2>
           <p>
@@ -116,13 +146,91 @@
           </div>
         </article>
 
-        <aside class="shell-card notice-card">
+        <aside class="shell-card notice-card mod-list-notice">
           <h2>Before You Patch</h2>
           <p>
-            Keep a clean backup of your UNDERTALE data.win first. This download is only the mod script.
+            Keep a clean backup of your UNDERTALE data.win first. Patch scripts should be used with UndertaleModTool on your own copy of the game.
           </p>
           <button class="ut-button warning-button" type="button" data-open-notice="true">READ MOD NOTICE</button>
         </aside>
+      </section>
+    </section>
+
+    <section class="app-view" data-route="mod-settings-plus" id="view-mod-settings-plus">
+      <section class="page-banner shell-card">
+        <p class="eyebrow">* Mod Page</p>
+        <h1>UNDERTALE SETTINGS+</h1>
+        <p>A quality-of-life settings overhaul for the PC version of UNDERTALE.</p>
+      </section>
+
+      <section class="detail-grid">
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Overview</p>
+          <h2>What It Does</h2>
+          <p>
+            Settings+ upgrades UNDERTALE's basic settings room into a more useful tabbed menu. It also adds SETTINGS and MAIN MENU entries to the in-game C Menu, so you can change options or return to the title without closing the game.
+          </p>
+          <div class="facts">
+            <span>Version: v1</span>
+            <span>Package: UT_Settings+.zip</span>
+            <span>Tool: UndertaleModTool</span>
+          </div>
+          <div class="hero-actions">
+            <a class="ut-button sound-click" href="Assets/Downloads/UT_Settings+.zip" download>DOWNLOAD MOD</a>
+            <a class="ut-button sound-click" href="#install">INSTALL GUIDE</a>
+          </div>
+        </article>
+
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Included</p>
+          <h2>Highlights</h2>
+          <ul class="feature-list">
+            <li>Tabbed Settings+ menu with General, Video, Audio, and Controls pages.</li>
+            <li>Fullscreen, window size, language, border, and save-config options.</li>
+            <li>Master, Music, and SFX volume settings.</li>
+            <li>In-game C Menu shortcuts for SETTINGS and MAIN MENU.</li>
+            <li>Optional border image import from the included border image zip.</li>
+            <li>Saves extra settings to UNDERTALE's normal config.ini location.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="screenshot-grid lower-details">
+        <figure class="shell-card screenshot-card">
+          <img src="Assets/images/Screenshots/UT_SettingsPLUS/TITLE_SETTINGS_PLUS.png" alt="Settings+ title menu with tabs and settings rows">
+          <figcaption>TITLE SETTINGS+ — tabbed settings from room_settings.</figcaption>
+        </figure>
+        <figure class="shell-card screenshot-card">
+          <img src="Assets/images/Screenshots/UT_SettingsPLUS/C_MENU.png" alt="Settings+ entry inside UNDERTALE's in-game C Menu">
+          <figcaption>C MENU — SETTINGS and MAIN MENU entries while playing.</figcaption>
+        </figure>
+      </section>
+
+      <section class="detail-grid lower-details">
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Quick Install</p>
+          <h2>Patch Steps</h2>
+          <ol class="step-list">
+            <li>Back up your UNDERTALE <strong>data.win</strong>.</li>
+            <li>Extract <strong>UT_Settings+.zip</strong>.</li>
+            <li>Open <strong>data.win</strong> in UndertaleModTool.</li>
+            <li>Run <strong>UT_Settings_Overhaul_v1.csx</strong> from UMT's script menu.</li>
+            <li>Choose whether to import the included border images when prompted.</li>
+            <li>Save the patched file and launch UNDERTALE.</li>
+          </ol>
+        </article>
+
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Config</p>
+          <h2>Saved Settings</h2>
+          <p>
+            Settings+ writes its options to UNDERTALE's normal local settings file:
+          </p>
+          <p class="path-text">C:\Users\YOURNAME\AppData\Local\UNDERTALE\config.ini</p>
+          <p>
+            Use SAVE CONFIG inside Settings+ after changing options you want to keep.
+          </p>
+        </article>
       </section>
     </section>
 
@@ -130,7 +238,7 @@
       <section class="page-banner shell-card">
         <p class="eyebrow">* Mod Page</p>
         <h1>UNDERTALE DEBUG MENU PORT</h1>
-        <p>A closer look at the current UNDERTALE release in the archive.</p>
+        <p>A classic UNDERTALE debug tool ported from sonicFanTech's DELTARUNE Debug Menu project.</p>
       </section>
 
       <section class="detail-grid">
@@ -195,37 +303,63 @@
         <h1>INSTALL</h1>
         <ol class="step-list">
           <li>Back up your UNDERTALE <strong>data.win</strong> before changing anything.</li>
+          <li>Download the mod package you want from the MOD LIST.</li>
           <li>Open UNDERTALE's <strong>data.win</strong> in UndertaleModTool.</li>
-          <li>Run <strong>SFT_UTDM_Port_v1_2.csx</strong> from the scripts menu.</li>
+          <li>Run the mod's included <strong>.csx</strong> file from UMT's script menu.</li>
+          <li>If a mod asks about optional assets, follow the prompt and select the included folder or zip contents.</li>
           <li>Save the patched copy and keep your clean backup somewhere safe.</li>
-          <li>Start UNDERTALE and open the debug menu with <strong>F3</strong>.</li>
+          <li>Start UNDERTALE and test the mod before adding more patches.</li>
         </ol>
+      </section>
+
+      <section class="detail-grid lower-details">
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Settings+ Install</p>
+          <h2>UT_Settings+.zip</h2>
+          <ol class="step-list">
+            <li>Extract <strong>UT_Settings+.zip</strong>.</li>
+            <li>Run <strong>UT_Settings_Overhaul_v1.csx</strong> in UndertaleModTool.</li>
+            <li>When asked, import the included borders if you want the real border images.</li>
+            <li>Use SAVE CONFIG inside Settings+ after changing settings.</li>
+          </ol>
+        </article>
+
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Debug Menu Install</p>
+          <h2>SFT_UTDM_Port_v1_2.csx</h2>
+          <ol class="step-list">
+            <li>Open your clean <strong>data.win</strong> in UndertaleModTool.</li>
+            <li>Run <strong>SFT_UTDM_Port_v1_2.csx</strong>.</li>
+            <li>Save the patched game file.</li>
+            <li>Press <strong>F3</strong> in-game to open the menu.</li>
+          </ol>
+        </article>
       </section>
     </section>
 
     <section class="app-view" data-route="controls" id="view-controls">
       <section class="controls-grid single-page-grid">
         <article class="shell-card text-section">
-          <p class="eyebrow">* Keyboard</p>
+          <p class="eyebrow">* Settings+</p>
           <h1>CONTROLS</h1>
+          <dl class="control-list">
+            <div><dt>Arrow Keys</dt><dd>Move between rows or change the selected setting.</dd></div>
+            <div><dt>Z / Enter</dt><dd>Confirm the selected row.</dd></div>
+            <div><dt>X / Shift</dt><dd>Go back or exit a page.</dd></div>
+            <div><dt>C Menu</dt><dd>Choose SETTINGS while playing to open Settings+.</dd></div>
+            <div><dt>Main Menu</dt><dd>Choose MAIN MENU from the C Menu to return to the title.</dd></div>
+          </dl>
+        </article>
+
+        <article class="shell-card text-section">
+          <p class="eyebrow">* Debug Menu Port</p>
+          <h2>Debug Controls</h2>
           <dl class="control-list">
             <div><dt>F3</dt><dd>Open or close the debug menu.</dd></div>
             <div><dt>Esc</dt><dd>Back or close.</dd></div>
             <div><dt>Backspace</dt><dd>Back, or delete one search character.</dd></div>
             <div><dt>Up / Down</dt><dd>Move through menu rows.</dd></div>
             <div><dt>Enter</dt><dd>Select a row or run an action.</dd></div>
-          </dl>
-        </article>
-
-        <article class="shell-card text-section">
-          <p class="eyebrow">* Controller</p>
-          <h2>Gamepad Controls</h2>
-          <dl class="control-list">
-            <div><dt>Back + Start</dt><dd>Open or close the debug menu.</dd></div>
-            <div><dt>B</dt><dd>Back or close.</dd></div>
-            <div><dt>X</dt><dd>Back, or delete one search character.</dd></div>
-            <div><dt>D-pad / L-stick</dt><dd>Move through menu rows.</dd></div>
-            <div><dt>LB / RB</dt><dd>Page jump inside long lists.</dd></div>
           </dl>
         </article>
       </section>
@@ -236,7 +370,7 @@
         <p class="eyebrow">* Credits</p>
         <h1>CREDITS</h1>
         <p>
-          Mod and site by <strong>sonicFanTech</strong>. The UNDERTALE Debug Menu Port is based on sonicFanTech's DELTARUNE Debug Menu work and adapted for classic UNDERTALE limits.
+          Mod and site work by <strong>sonicFanTech</strong>. Settings+ and the UNDERTALE Debug Menu Port are fan-made UNDERTALE mods made for use with UndertaleModTool.
         </p>
         <p>
           UNDERTALE is by Toby Fox. This is a fan-made mod archive and is not an official UNDERTALE website.
@@ -249,7 +383,7 @@
     <form method="dialog" class="shell-card dialog-card">
       <h2>Mod Notice</h2>
       <p>
-        Use the script with a legally owned copy of UNDERTALE. Keep a clean backup of your original data.win so you can restore the game at any time.
+        Use these mods with a legally owned copy of UNDERTALE. Keep a clean backup of your original data.win so you can restore the game at any time.
       </p>
       <button class="ut-button sound-click" value="close">OK</button>
     </form>
