@@ -1,5 +1,4 @@
 [
-  "SITE_README.txt",
   "asset_manifest.json",
   "assets/audio/AUDIO_DRONE.ogg",
   "assets/audio/snd_menumove.wav",
@@ -9,8 +8,9 @@
   "assets/downloads/DR_ChapSelect_SetttingsMenu.csx",
   "assets/downloads/DR_DDM_V2.zip",
   "assets/downloads/DR_DDM_v2.csx",
-  "assets/downloads/SAVE_ANYWHERE_WARNING.txt",
-  "assets/fonts/README_KEEP_EXISTING_FONTS.txt",
+  "assets/downloads/DR_GODEMODE_v2.csx",
+  "assets/fonts/8bitoperator_jve_MainUIFont.ttf",
+  "assets/fonts/DR_LOGO_FONT.ttf",
   "assets/images/Frame.png",
   "assets/images/IMAGE_DEPTH_BGEffect.png",
   "assets/images/SPR_H_MouseCur.png",
@@ -29,6 +29,9 @@
   "assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act2.png",
   "assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act3.png",
   "assets/images/Screenshots/Debugging_Mod/Vis_actions/Vis_Act5.png",
+  "assets/images/Screenshots/GODMODE_Mod/Battale_test0.jpg",
+  "assets/images/Screenshots/GODMODE_Mod/Battale_test01.jpg",
+  "assets/images/Screenshots/GODMODE_Mod/CONFIG_MENU.jpg",
   "assets/images/deltarune_debug_mod_interface.png",
   "assets/images/deltarune_debug_mod_splash_art.png",
   "assets/images/deltarune_debugging_mod_splash.png",
@@ -36,13 +39,8 @@
   "assets/site.js",
   "downloads/index.html",
   "index.html",
+  "mods/GODMODE/index.html",
   "mods/debugging-mod/index.html",
   "mods/save-anywhere-ch5/index.html",
-  "mods/settings-menus/index.html",
-  "publishing/GAMEJOLT_PAGE.md",
-  "publishing/GITHUB_RELEASE_v2.md",
-  "publishing/ITCH_IO_PAGE.md",
-  "publishing/MOD_PACKAGE_README.md",
-  "publishing/NOTICE_NO_GAME_ASSETS.md",
-  "publishing/README_GITHUB_MAIN.md"
+  "mods/settings-menus/index.html"
 ]
