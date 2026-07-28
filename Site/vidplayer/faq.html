@@ -1,59 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>VidPlayer FAQ</title>
-  <meta name="description" content="Frequently Asked Questions about VidPlayer.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="vidplayer.css">
-</head>
-<body>
-<canvas id="starfield"></canvas>
-<div id="wrapper">
-  <div id="header">
-    <div id="header-grid"></div><div id="header-gfx"></div>
-    <div id="header-inner">
-      <div id="logo-area">
-        <div id="logo-icon"><img src="logo.png" alt="VidPlayer Logo" onerror="this.style.display='none';this.parentElement.textContent='▶'"></div>
-        <div id="logo-text"><h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1><div class="tagline">// FREQUENTLY ASKED QUESTIONS</div></div>
-      </div>
-      <div id="header-right">
-        <div id="header-note">FAQ PAGE COMING SOON™</div>
-        <div class="header-badges"><span class="hbadge hbadge-cyan">FAQ</span></div>
-      </div>
-    </div>
-  </div>
-  <div id="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="downloads.html">Downloads</a></li>
-      <li><a href="screenshots.html">Screenshots</a></li>
-      <li><a href="changelogs.html">Changelogs</a></li>
-      <li><a href="faq.html" class="active">FAQ</a></li>
-      <li><a href="manuals.html">Manuals</a></li>
-      <li><a href="about.html">About / Credits</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-  <div id="content" class="full">
-    <div class="panel coming-soon-panel">
-      <div class="cs-title">FAQ.EXE <span class="blink">_</span></div>
-      <p>The FAQ page is still being worked on. Eventually this will answer things like:</p>
-      <ul class="cs-list">
-        <li>Which version should I download for my OS?</li>
-        <li>Why does VidPlayer need FFmpeg / VLC?</li>
-        <li>How do I report bugs or suggest features?</li>
-        <li>What's the deal with the retro fork?</li>
-        <li>How do I install VidPlayer on Windows 95/98/XP?</li>
-        <li>What formats does VidPlayer support?</li>
-      </ul>
-      <p style="margin-top:16px;" class="small-note">
-        Until then — check the <a href="downloads.html">Downloads</a> page or contact the devs directly via the <a href="contact.html">Contact</a> page.
-      </p>
-    </div>
-  </div>
-  <div id="footer">&copy; 2000–2025 VidPlayer Team &nbsp;·&nbsp; FAQ is under construction.</div>
-</div>
-<script src="vidplayer.js"></script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>VidPlayer FAQ — C# Rebuild</title><meta name="description" content="Frequently asked questions about VidPlayer CS V1.0, Python, themes, visualizers, and CD ripping."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="vidplayer.css"></head><body><canvas id="starfield"></canvas><div id="wrapper">
+<div id="header"><div id="header-grid"></div><div id="header-gfx"></div><div id="header-inner">
+      <div id="logo-area"><div id="logo-icon">▶</div><div id="logo-text"><h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1><div class="tagline">// FREQUENTLY ASKED QUESTIONS</div></div></div>
+      <div id="header-right"><div id="header-note">C# REBUILD SUPPORT INFORMATION</div><div class="header-badges"><span class="hbadge hbadge-cyan">FAQ</span><span class="hbadge hbadge-purple">CS V1.0</span></div></div>
+    </div></div>
+<div id="navbar"><ul><li><a href="index.html">Home</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="features.html">Features</a></li><li><a href="vptheme-editor.html">VPTheme Editor</a></li><li><a href="screenshots.html">Screenshots</a></li><li><a href="changelogs.html">Changelogs</a></li><li><a href="faq.html" class="active">FAQ</a></li><li><a href="manuals.html">Manuals</a></li><li><a href="about.html">About / Credits</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+<div id="content"><div id="main"><div class="panel panel-visible"><h2>Frequently Asked Questions</h2><p>Answers for the current C# rebuild, original Python edition, and companion tools.</p></div><div class="panel panel-visible"><h2>Which version should I download?</h2><p>Use VidPlayer v2.0.9.2 CS V1.0 for a modern Windows 10/11 x64 system. The Python edition remains available for the original implementation and historical use.</p></div><div class="panel panel-visible"><h2>Does the C# build require .NET to be installed?</h2><p>The precompiled release is self-contained. Extract the complete archive and keep its folders together.</p></div><div class="panel panel-visible"><h2>Why are there separate repositories?</h2><p>The C# and Python editions use different languages, project formats, dependencies, build systems, and release histories. Separate repositories keep both understandable.</p></div><div class="panel panel-visible"><h2>Why does VidPlayer include VLC and FFmpeg?</h2><p>LibVLC performs playback, while FFmpeg/ffprobe provide synchronized visualizer analysis, fallback data, and technical media information.</p></div><div class="panel panel-visible"><h2>Does the visualizer use real audio data?</h2><p>The C# rebuild can use real signed-16-bit LibVLC PCM callbacks. A position-synchronized FFmpeg path remains available as fallback.</p></div><div class="panel panel-visible"><h2>Can I test a theme before saving it?</h2><p>Yes. VPTheme Editor launches the protected Theme Environment Tester and can stream unsaved theme changes to it.</p></div><div class="panel panel-visible"><h2>Can the Theme Environment Tester play audio?</h2><p>No. It is intentionally a visual mock environment and does not initialize LibVLC.</p></div><div class="panel panel-visible"><h2>What can VPACDRipper create?</h2><p>WAV PCM, FLAC, and MP3 files through BASSCD and BASSenc.</p></div><div class="panel panel-visible"><h2>Can I copy settings from the Python edition?</h2><p>Many portable JSON, playlist, theme, and language formats are intended to remain compatible, but back up both installations and migrate into a separate C# folder first.</p></div><div class="panel panel-visible"><h2>Where should I report C# rebuild bugs?</h2><p>Use the Issues page in the VidPlayer-CSharp-Rebuild repository and include the version, steps, logs, and screenshots when possible.</p></div></div><div id="sidebar"><div class="panel panel-visible"><h2>C# Rebuild Links</h2><ul>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild" target="_blank">C# Repository</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-Build.zip" target="_blank">Download CS V1.0 Build</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-source.zip" target="_blank">Download CS V1.0 Source</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/tag/v2.0.9.2-cs-v1.0" target="_blank">Release Page</a></li></ul></div></div></div>
+<div id="footer">&copy; 2000–2026 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech</div>
+</div><script src="vidplayer.js"></script></body></html>

@@ -1,0 +1,24 @@
+VidPlayer website update — C# Rebuild CS V1.0
+
+Updated:
+- Homepage
+- Downloads
+- New full Features page
+- VPTheme Editor page
+- Changelogs
+- About/Credits
+- Archive
+- Screenshots
+- Manuals
+- FAQ
+- Theme Packs
+- Thanks
+- Contact
+- License information
+- Shared navigation and C# styling
+
+C# repository: https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild
+C# build: https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-Build.zip
+C# source: https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-source.zip
+
+All C++ port promotion was replaced with the completed C# / WPF rebuild.

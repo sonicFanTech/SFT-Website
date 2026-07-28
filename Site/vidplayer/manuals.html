@@ -1,60 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>VidPlayer Manuals &amp; Install Guides</title>
-  <meta name="description" content="Manuals and install guides for VidPlayer.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="vidplayer.css">
-</head>
-<body>
-<canvas id="starfield"></canvas>
-<div id="wrapper">
-  <div id="header">
-    <div id="header-grid"></div><div id="header-gfx"></div>
-    <div id="header-inner">
-      <div id="logo-area">
-        <div id="logo-icon"><img src="logo.png" alt="VidPlayer Logo" onerror="this.style.display='none';this.parentElement.textContent='▶'"></div>
-        <div id="logo-text"><h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1><div class="tagline">// MANUALS &amp; INSTALL GUIDES</div></div>
-      </div>
-      <div id="header-right">
-        <div id="header-note">DOCUMENTATION COMING SOON™</div>
-        <div class="header-badges"><span class="hbadge hbadge-cyan">DOCS</span></div>
-      </div>
-    </div>
-  </div>
-  <div id="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="downloads.html">Downloads</a></li>
-      <li><a href="screenshots.html">Screenshots</a></li>
-      <li><a href="changelogs.html">Changelogs</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="manuals.html" class="active">Manuals</a></li>
-      <li><a href="about.html">About / Credits</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-  <div id="content" class="full">
-    <div class="panel coming-soon-panel">
-      <div class="cs-title">README.TXT <span class="blink">_</span></div>
-      <p>The Manuals &amp; Install Guides page is still being worked on. Once it's ready, you'll find:</p>
-      <ul class="cs-list">
-        <li>Step-by-step install guides for each VidPlayer version</li>
-        <li>Instructions for running the Retro fork on Windows 95–XP and 3.1</li>
-        <li>Physical CD / floppy install instructions</li>
-        <li>Info about the software box, manual, and CD release</li>
-        <li>Developer notes and build instructions</li>
-      </ul>
-      <p style="margin-top:16px;" class="small-note">
-        For now, if you need help installing VidPlayer, check the
-        <a href="downloads.html">Downloads</a> page or contact the devs via the
-        <a href="contact.html">Contact</a> page.
-      </p>
-    </div>
-  </div>
-  <div id="footer">&copy; 2000–2025 VidPlayer Team &nbsp;·&nbsp; Manuals &amp; guides are under construction.</div>
-</div>
-<script src="vidplayer.js"></script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>VidPlayer Manuals and Install Guides</title><meta name="description" content="Installation, usage, theme testing, CD ripping, and source-build guidance for VidPlayer CS V1.0."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="vidplayer.css"></head><body><canvas id="starfield"></canvas><div id="wrapper">
+<div id="header"><div id="header-grid"></div><div id="header-gfx"></div><div id="header-inner">
+      <div id="logo-area"><div id="logo-icon">▶</div><div id="logo-text"><h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1><div class="tagline">// MANUALS AND INSTALL GUIDES</div></div></div>
+      <div id="header-right"><div id="header-note">INSTALL · PLAY · THEME · RIP · BUILD</div><div class="header-badges"><span class="hbadge hbadge-cyan">MANUALS</span><span class="hbadge hbadge-purple">CS V1.0</span></div></div>
+    </div></div>
+<div id="navbar"><ul><li><a href="index.html">Home</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="features.html">Features</a></li><li><a href="vptheme-editor.html">VPTheme Editor</a></li><li><a href="screenshots.html">Screenshots</a></li><li><a href="changelogs.html">Changelogs</a></li><li><a href="faq.html">FAQ</a></li><li><a href="manuals.html" class="active">Manuals</a></li><li><a href="about.html">About / Credits</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+<div id="content"><div id="main">
+<div class="panel panel-visible"><h2>Install VidPlayer C# Rebuild</h2><ol class="feature-list"><li>Download the complete build ZIP.</li><li>Extract all files to a writable folder such as <code>C:\Apps\VidPlayer-CS</code>.</li><li>Keep every portable folder beside <code>VidPlayer.exe</code>.</li><li>Launch <code>VidPlayer.exe</code>.</li></ol><div class="cta-row"><a class="dl-btn" href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-Build.zip" target="_blank">Download Build</a></div></div>
+<div class="panel panel-visible"><h2>Use the Player</h2><ul class="feature-list"><li>Open audio with File → Open Files, drag-and-drop, or command-line paths.</li><li>Open the playlist from View → Playlist.</li><li>Enable docked playlist mode in Settings and choose a docking area.</li><li>Use File → Play Audio CD for CDDA playback.</li><li>Use Tools → Open CD Ripping Tool for WAV, FLAC, or MP3 ripping.</li><li>Use Tools → VPTheme Editor to create or modify themes.</li></ul></div>
+<div class="panel panel-visible"><h2>Theme Testing</h2><ol class="feature-list"><li>Open or create a theme in VPTheme Editor.</li><li>Edit colors, fonts, icons, sounds, gradients, and dimensions.</li><li>Choose Test Run Theme.</li><li>Inspect the mock main window and subwindows.</li><li>Keep the editor open; unsaved edits continue updating in the tester.</li></ol></div>
+<div class="panel panel-visible"><h2>Build from Source</h2><p>Download the C# source package, place the complete <code>runtime-assets</code> folder beside <code>Build-Release.cmd</code>, and run the build script. The repository README contains the complete source layout and requirements.</p><div class="cta-row"><a class="dl-btn btn-secondary" href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-source.zip" target="_blank">Download Source</a><a class="dl-btn btn-secondary" href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild" target="_blank">Read Repository README</a></div></div>
+</div><div id="sidebar"><div class="panel panel-visible"><h2>C# Rebuild Links</h2><ul>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild" target="_blank">C# Repository</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-Build.zip" target="_blank">Download CS V1.0 Build</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-source.zip" target="_blank">Download CS V1.0 Source</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/tag/v2.0.9.2-cs-v1.0" target="_blank">Release Page</a></li></ul></div></div></div>
+<div id="footer">&copy; 2000–2026 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech</div>
+</div><script src="vidplayer.js"></script></body></html>

@@ -1,72 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Thanks for your feedback! — VidPlayer HQ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="vidplayer.css">
-  <style>
-    .thanks-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-    }
-    .thanks-box {
-      background: rgba(4,10,22,0.95);
-      border: 1px solid var(--accent1);
-      box-shadow: var(--glow-cyan);
-      padding: 40px 50px;
-      text-align: center;
-      animation: panelIn 0.5s ease both;
-    }
-    .thanks-icon { font-size: 48px; margin-bottom: 16px; }
-    .thanks-title {
-      font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      color: var(--yellow);
-      text-shadow: 0 0 16px rgba(255,224,102,0.5);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .thanks-box p { font-size: 14px; margin-bottom: 10px; }
-  </style>
-</head>
-<body>
-<canvas id="starfield"></canvas>
-<div id="wrapper">
-  <div id="header">
-    <div id="header-grid"></div><div id="header-gfx"></div>
-    <div id="header-inner">
-      <div id="logo-area">
-        <div id="logo-icon"><img src="logo.png" alt="VidPlayer Logo" onerror="this.style.display='none';this.parentElement.textContent='▶'"></div>
-        <div id="logo-text"><h1>VIDPLAYER HQ</h1><div class="tagline">// FEEDBACK RECEIVED</div></div>
-      </div>
-      <div id="header-right">
-        <div class="header-badges"><span class="hbadge hbadge-green">SENT ✓</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="content" class="full">
-    <div class="thanks-wrap">
-      <div class="thanks-box">
-        <div class="thanks-icon">📡</div>
-        <div class="thanks-title">Message Received!</div>
-        <p>Your VidPlayer feedback has been transmitted to the devs.</p>
-        <p>We'll get back to you if needed — thanks for helping make VidPlayer better!</p>
-        <div style="margin-top:20px">
-          <a href="index.html" class="dl-btn">← Back to Home</a>
-          <a href="downloads.html" class="dl-btn btn-secondary">Downloads →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="footer">&copy; 2000–2025 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech &amp; axel613</div>
-</div>
-<script src="vidplayer.js"></script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Thank You — VidPlayer</title><meta name="description" content="Thanks and technology acknowledgements for the VidPlayer project."><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="vidplayer.css"></head><body><canvas id="starfield"></canvas><div id="wrapper">
+<div id="header"><div id="header-grid"></div><div id="header-gfx"></div><div id="header-inner">
+      <div id="logo-area"><div id="logo-icon">▶</div><div id="logo-text"><h1 data-glitch="VIDPLAYER HQ">VIDPLAYER HQ</h1><div class="tagline">// THANK YOU</div></div></div>
+      <div id="header-right"><div id="header-note">TO TESTERS, CONTRIBUTORS, AND OPEN-SOURCE PROJECTS</div><div class="header-badges"><span class="hbadge hbadge-cyan">THANKS</span><span class="hbadge hbadge-purple">VIDPLAYER</span></div></div>
+    </div></div>
+<div id="navbar"><ul><li><a href="index.html">Home</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="features.html">Features</a></li><li><a href="vptheme-editor.html">VPTheme Editor</a></li><li><a href="screenshots.html">Screenshots</a></li><li><a href="changelogs.html">Changelogs</a></li><li><a href="faq.html">FAQ</a></li><li><a href="manuals.html">Manuals</a></li><li><a href="about.html">About / Credits</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+<div id="content"><div id="main"><div class="panel panel-visible"><h2>Thank You</h2><p>Thanks to everyone who tested VidPlayer, reported crashes, shared logs, suggested features, created themes, preserved old builds, and helped move the project from the original Python edition into the complete C# rebuild.</p></div><div class="panel panel-visible"><h2>Technology Acknowledgements</h2><ul class="feature-list"><li>Microsoft .NET and WPF.</li><li>VideoLAN VLC, LibVLC, and LibVLCSharp.</li><li>FFmpeg and ffprobe.</li><li>TagLibSharp and Discord RPC libraries.</li><li>Un4seen BASS, BASSCD, and BASSenc components.</li><li>7-Zip.</li><li>Python, PySide6/Qt, python-vlc, mutagen, Pillow, numpy, pypresence, and py7zr for the original edition.</li></ul></div></div><div id="sidebar"><div class="panel panel-visible"><h2>C# Rebuild Links</h2><ul>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild" target="_blank">C# Repository</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-Build.zip" target="_blank">Download CS V1.0 Build</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/download/v2.0.9.2-cs-v1.0/VidPlayer-v2.0.9.2-CS-V1.0-source.zip" target="_blank">Download CS V1.0 Source</a></li>
+<li><a href="https://github.com/sonicFanTech/VidPlayer-CSharp-Rebuild/releases/tag/v2.0.9.2-cs-v1.0" target="_blank">Release Page</a></li></ul></div></div></div>
+<div id="footer">&copy; 2000–2026 VidPlayer Team &nbsp;·&nbsp; Sonic Fan Tech</div>
+</div><script src="vidplayer.js"></script></body></html>
