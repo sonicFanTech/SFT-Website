@@ -1,9 +1,7 @@
-"plugins": [
-  {
-    "pluginId": "org.sonicfantech.vidplayer.sample.hello",
-    "name": "Hello Codec Test Plugin",
-    "pluginVersion": "1.0.0",
-    "packageUrl": "packages/HelloCodecTest.vpcodec",
-    "sha256": "4A8747C46C5283055C41D5BA191CB9C86986EF2946DF33A2CF9C08C92D30DADC"
-  }
-]
+{
+  "schemaVersion": 1,
+  "repositoryId": "org.sonicfantech.vidplayer.codecs",
+  "name": "VidPlayer Official Codec Repository",
+  "generatedUtc": "2026-07-29T00:00:00Z",
+  "plugins": []
+}
