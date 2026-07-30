@@ -1,0 +1,10 @@
+# Optional Apache protection for index.json and codec packages.
+# Rename this file to .htaccess only if sonicfantech.org permits overrides.
+# VidPlayer sends: X-VidPlayer-Plugin-Client: 1
+#
+# This blocks ordinary browser requests, but it is NOT authentication: a user
+# can reproduce the header after inspecting VidPlayer or its network traffic.
+
+RewriteEngine On
+RewriteCond %{HTTP:X-VidPlayer-Plugin-Client} !^1$
+RewriteRule ^(?:index\.json|packages/.*\.(?:vpcodec|zip))$ - [F,L,NC]

@@ -1,7 +1,32 @@
 {
-  "schemaVersion": 1,
-  "repositoryId": "org.sonicfantech.vidplayer.codecs",
-  "name": "VidPlayer Official Codec Repository",
-  "generatedUtc": "2026-07-29T00:00:00Z",
-  "plugins": []
+    "schemaVersion":  1,
+    "repositoryId":  "org.sonicfantech.vidplayer.codecs",
+    "name":  "VidPlayer Official Codec Repository",
+    "generatedUtc":  "2026-07-30T00:30:30.9003295Z",
+    "plugins":  [
+                    {
+                        "pluginId":  "org.sonicfantech.vidplayer.sample.hello",
+                        "name":  "Hello Codec Test Plugin",
+                        "pluginVersion":  "1.0.0",
+                        "pluginApiVersion":  1,
+                        "minimumVidPlayerVersion":  "2.0.9.3",
+                        "packageUrl":  "packages/HelloCodecTest.vpcodec",
+                        "sha256":  "ad438b5e6b22ca0a8b192e592b56eaee5fb3d35903095bca97a239fe83671b79",
+                        "packageSizeBytes":  3541,
+                        "author":  "sonic Fan Tech",
+                        "website":  "https://sonicfantech.org/",
+                        "license":  "MIT",
+                        "description":  "Phase 1.5 loader test. It registers the .vptest extension but intentionally does not play media.",
+                        "releaseNotes":  "Repository package version 1.0.0.",
+                        "publishedUtc":  "2026-07-30T00:30:30.6853322Z",
+                        "supportedExtensions":  [
+                                                    ".vptest"
+                                                ],
+                        "features":  [
+                                         "Loader Test",
+                                         "Manifest Test",
+                                         "API v1 Test"
+                                     ]
+                    }
+                ]
 }
