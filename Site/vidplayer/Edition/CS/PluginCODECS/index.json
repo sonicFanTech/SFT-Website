@@ -2,30 +2,35 @@
     "schemaVersion":  1,
     "repositoryId":  "org.sonicfantech.vidplayer.codecs",
     "name":  "VidPlayer Official Codec Repository",
-    "generatedUtc":  "2026-07-30T00:30:30.9003295Z",
+    "generatedUtc":  "2026-07-30T01:52:23.4294383Z",
     "plugins":  [
                     {
-                        "pluginId":  "org.sonicfantech.vidplayer.sample.hello",
-                        "name":  "Hello Codec Test Plugin",
+                        "pluginId":  "org.sonicfantech.vidplayer.codec.midi",
+                        "name":  "MIDI Support",
                         "pluginVersion":  "1.0.0",
                         "pluginApiVersion":  1,
                         "minimumVidPlayerVersion":  "2.0.9.3",
-                        "packageUrl":  "packages/HelloCodecTest.vpcodec",
-                        "sha256":  "ad438b5e6b22ca0a8b192e592b56eaee5fb3d35903095bca97a239fe83671b79",
-                        "packageSizeBytes":  3541,
+                        "packageUrl":  "packages/MIDISupport.vpcodec",
+                        "sha256":  "d2160b9a37514fed40c1e3feb87a40b1ec804db9140f5c21d1f35f56382f6993",
+                        "packageSizeBytes":  167350181,
                         "author":  "sonic Fan Tech",
                         "website":  "https://sonicfantech.org/",
-                        "license":  "MIT",
-                        "description":  "Phase 1.5 loader test. It registers the .vptest extension but intentionally does not play media.",
+                        "license":  "MIT (plugin, MeltySynth, NAudio); bundled SoundFont keeps its own license",
+                        "description":  "Adds real Standard MIDI File playback through MeltySynth and NAudio. A SoundFont (.sf2) supplies the instrument sounds.",
                         "releaseNotes":  "Repository package version 1.0.0.",
-                        "publishedUtc":  "2026-07-30T00:30:30.6853322Z",
+                        "publishedUtc":  "2026-07-30T01:52:20.3263356Z",
                         "supportedExtensions":  [
-                                                    ".vptest"
+                                                    ".mid",
+                                                    ".midi"
                                                 ],
                         "features":  [
-                                         "Loader Test",
-                                         "Manifest Test",
-                                         "API v1 Test"
+                                         "MIDI Playback",
+                                         "SoundFont Synthesis",
+                                         "Play / Pause / Resume / Stop",
+                                         "Seeking",
+                                         "Duration and Position",
+                                         "Volume",
+                                         "Live PCM Visualizer Samples"
                                      ]
                     }
                 ]
