@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SplitGM</title>
+<style>
+body{font-family:Arial,sans-serif;background:#202020;color:#fff;max-width:900px;margin:0 auto;padding:20px}
+h1,h2{color:#7fd0ff}
+img{max-width:100%%;height:auto;border:1px solid #555}
+a{color:#7fd0ff}
+.box{background:#2d2d2d;padding:16px;margin:20px 0;border:1px solid #444}
+</style>
+</head>
+<body>
+
+<div class="box">
+
+<h2>Troubleshooting:</h2>
+
+<h2>SplitGM does not start</h2>
+
+<h2>Confirm that:</h2>
+
+<p>the complete release was extracted</p>
+<p>SGMVMDLauncher.exe is being used</p>
+<p>all release files remain together</p>
+<p>the correct Windows x64 package was downloaded</p>
+<p>and the .NET 10 Desktop Runtime is installed for a framework-dependent package.</p>
+<p>Check the Logs folder for a crash report.</p>
+
+<h2>The main EXE says the launcher is required</h2>
+
+<p>This is expected.</p>
+
+<h2>Start:</h2>
+
+<h2>SGMVMDLauncher.exe</h2>
+
+<h2>Do not start:</h2>
+
+<p>SplitGM-VM-Decompiler.exe</p>
+<p>Run Game from TEMP cannot find a runner</p>
+<p>Use the file-selection dialog to choose the original Windows GameMaker game executable.</p>
+
+<p>The runner normally needs to remain in its original installation directory so its runtime DLLs and other dependencies can be found.</p>
+
+<p>A TEMP-run game starts without Steam features</p>
+<p>This can be expected.</p>
+
+<p>For Steam-enabled games, SplitGM may disable Steam metadata only in the temporary data copy so the original runner accepts the custom TEMP launch instead of handing control back to Steam.</p>
+
+<p>The original game installation is not changed.</p>
+
+<h2>A game will not open:</h2>
+
+<h2>The input may be:</h2>
+
+<p>unsupported</p>
+<p>YYC-only</p>
+<p>packed or encrypted</p>
+<p>damaged</p>
+<p>missing a neighboring data archive</p>
+<p>or using an unsupported platform or GameMaker generation.</p>
+<p>Include the activity log and detected format information in a bug report.</p>
+
+<p>Do not upload copyrighted game files.</p>
+
+<h2>The reconstructed .yyp command is missing</h2>
+
+<h2>Open:</h2>
+
+<h2>Tools → Settings → Experimental</h2>
+
+<h2>Enable:</h2>
+
+<p>Enable Decompile to .yyp Project</p>
+<p>The command is hidden by default.</p>
+
+<h2>The .yyp opens but does not compile</h2>
+
+<h2>Read:</h2>
+
+<p>GameMaker's compiler errors</p>
+<p>SplitGM-Reconstruction-Report.txt</p>
+<p>SplitGM-Reconstruction-Validation.txt</p>
+<p>SplitGM-Repair-Report.txt</p>
+<p>SplitGM-Unresolved-Functions.txt</p>
+<p>and files under __SplitGM_Unrepresented.</p>
+<p>Manual repair may still be required.</p>
+
+<h2>The project compiles but looks or behaves incorrectly</h2>
+
+<h2>Check:</h2>
+
+<p>sprite source dimensions and padding</p>
+<p>frame placement</p>
+<p>origins and collision masks</p>
+<p>room layers</p>
+<p>viewport settings</p>
+<p>application-surface scaling</p>
+<p>shaders</p>
+<p>extensions</p>
+<p>and dynamic drawing behavior.</p>
+
+</div>
+<div class="box">
+<h2>Other pages:</h2>
+
+<p><a href="index.html">Back</a>
+
+</div>
+
+</div>
+<p>© 2026 sonic Fan Tech - SplitGM: GPL-3.0 license</p>
+</body></html>

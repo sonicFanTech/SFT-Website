@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SplitGM</title>
+<style>
+body{font-family:Arial,sans-serif;background:#202020;color:#fff;max-width:900px;margin:0 auto;padding:20px}
+h1,h2{color:#7fd0ff}
+img{max-width:100%%;height:auto;border:1px solid #555}
+a{color:#7fd0ff}
+.box{background:#2d2d2d;padding:16px;margin:20px 0;border:1px solid #444}
+</style>
+</head>
+<body>
+
+<div class="box">
+
+<h2>Building from source:</h2>
+
+</h2>Run dependency setup:<h2>
+
+</p>powershell -ExecutionPolicy Bypass -File .\Setup-Dependencies.ps1</p>
+
+</h2>Then open:<h2>
+
+<p>SplitGM-VM-Decompiler.sln</p>
+
+<h2>Select:</h2>
+
+<p>Release | x64</p>
+
+<h2>Set this as the startup project:</h2>
+
+<p>SGMVMDLauncher</p>
+<p>Build the complete solution.</p>
+
+<boddy>
+
+<p>The main GUI project is launcher-authorized and is not the correct direct startup project.</p>
+
+<p>Framework-dependent release3</p>
+
+<p>powershell -ExecutionPolicy Bypass -File .\Build-Release.ps1
+<p>Self-contained release</p>
+
+<p>powershell -ExecutionPolicy Bypass -File .\Build-Release.ps1 -SelfContained</p>
+
+<h2>Published application output:</h2>
+
+<p>artifacts\win-x64\SplitGM\</p>
+
+<h2>Start the published application with:</h2>
+
+<p>artifacts\win-x64\SplitGM\SGMVMDLauncher.exe</p>
+
+<h2>Package the complete:</h2>
+
+<p>artifacts\win-x64\</p>
+<p>folder so the application, license, notices, and README remain together.</p>
+
+<h2>The build script:</h2>
+
+<p>uses a repository-local NuGet cache</p>
+<p>retries once after rebuilding that cache when restore fails</p>
+<p>builds Underanalyzer and UndertaleModLib first</p>
+<p>builds the full SplitGM solution</p>
+<p>publishes the GUI</p>
+<p>publishes the launcher as a single file with its embedded frame resources</p>
+<p>verifies both required EXEs</p>
+<p>and writes a timestamped build log.</p>
+
+<div class="box">
+<h2>Source package:</h2>
+
+<p>The v0.5.1.0 source release should correspond to the same version as the precompiled build.</p>
+
+<h2>The source package contains:</h2>
+
+<p>SplitGM.Core</p>
+<p>SplitGM.Gui</p>
+<p>SGMVMDLauncher</p>
+<p>SGMVMDLauncher.Playback</p>
+<p>build and dependency scripts</p>
+<p>documentation</p>
+<p>licenses and notices</p>
+<p>and the pinned UndertaleModTool / Underanalyzer source tree required by this release.</p>
+<p>Generated release binaries, NuGet caches, user game files, TEMP runs, and unrelated build output should not be included in the clean source archive.</p>
+
+<p><a href="https://github.com/sonicFanTech/SplitGM/releases/download/v0.5.1.0/SGM_v0.5.1.0-Source.7z">Leatest Source Code</a>
+
+
+</div>
+<div class="box">
+<h2>Other pages:</h2>
+
+<p><a href="index.html">Back</a>
+
+</div>
+
+</div>
+<p>© 2026 sonic Fan Tech - SplitGM: GPL-3.0 license</p>
+</body></html>
