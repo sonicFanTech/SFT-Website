@@ -1,0 +1,31 @@
+
+:root{
+  --bg:#111416; --bg2:#1b1f22; --panel:#242a2e; --panel2:#2c3338;
+  --line:#4b565c; --line2:#667177; --text:#dce1e3; --muted:#9da7ac;
+  --orange:#e47924; --orange2:#f5a052; --blue:#78a9cf; --blue2:#b6d4ea;
+  --black:#0b0d0e; --green:#75b873; --yellow:#e6c75b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(#0e1012,#1a1e21 160px,#111416);color:var(--text);font:13px Tahoma,Arial,sans-serif;min-width:760px}
+a{color:var(--blue);text-decoration:none} a:hover{color:#fff;text-decoration:underline}
+.site{width:1040px;margin:22px auto 42px;background:#161a1c;border:1px solid #556067;box-shadow:0 3px 0 #080a0b,0 12px 35px #000b}
+.topline{height:7px;background:linear-gradient(to right,#79390f,var(--orange),#79390f)}
+.header{padding:13px 20px 10px;background:linear-gradient(#343b40,#272d31);border-bottom:1px solid #0a0b0c;display:flex;align-items:center;gap:18px}
+.header-logo{width:280px;height:auto;display:block}.header-title{flex:1}.header-title h1{margin:0;font-size:24px;letter-spacing:.5px}.header-title p{margin:4px 0 0;color:var(--muted);font-size:11px}
+.nav{padding:0 10px;background:linear-gradient(#252b2f,#191d20);border-top:1px solid #485057;border-bottom:1px solid #080a0b}.nav a{display:inline-block;padding:10px 12px;border-left:1px solid #3b4449;color:#ccd3d7;font-size:11px;font-weight:bold}.nav a:last-child{border-right:1px solid #3b4449}.nav a:hover{background:#404a50;text-decoration:none}
+.crumb{padding:7px 12px;color:#7f8a8f;font-size:10px;border-bottom:1px solid #41494e;background:#181c1e}
+.content{padding:16px 18px 22px}.hero{padding:18px;border:1px solid #5a646a;background:linear-gradient(145deg,#323a3f,#22282b);box-shadow:inset 0 1px #6a7377,0 2px #0b0d0e}.hero h2{margin:0 0 8px;font-size:25px}.hero p{margin:7px 0;color:#c1c8cb;line-height:1.55}.hero-grid{display:grid;grid-template-columns:270px 1fr;gap:22px;align-items:center}.hero-grid img{width:270px;display:block;border:1px solid #667177;background:#111}
+.badge{display:inline-block;padding:3px 7px;margin:0 5px 4px 0;border:1px solid #5d676c;background:#1b2022;color:#cad1d4;font-size:10px;font-weight:bold;text-transform:uppercase}.badge.orange{border-color:#ad5e22;color:#f1a05b}.badge.green{border-color:#4b7e4a;color:#9bc899}.badge.yellow{border-color:#938124;color:#edd37b}.badge.blue{border-color:#4e7290;color:#9fc6e2}
+.section{margin-top:18px}.bar{padding:7px 10px;background:linear-gradient(#3a4247,#292f33);border:1px solid #59636a;color:#e7eaeb;font-weight:bold;font-size:13px;text-transform:uppercase;letter-spacing:.3px}.box{margin-top:8px;padding:13px 14px;background:#242a2d;border:1px solid #485257;line-height:1.55}.note{margin-top:10px;padding:10px 12px;border-left:4px solid var(--orange);background:#2a3033;color:#c4cbce}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{background:#22272a;border:1px solid #4b555a;padding:13px}.card h3{margin:0 0 6px;color:#eef1f2;font-size:16px}.card p{margin:6px 0;color:#b9c1c5;line-height:1.5}.mini{font-size:11px;color:#8f999d}
+.table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}.table th,.table td{border:1px solid #4a5358;padding:8px;vertical-align:top}.table th{background:#343c40;text-align:left;color:#f0f2f3}.table td{background:#23282b;color:#bcc4c8}.table tr:nth-child(even) td{background:#202528}.table .type{font-family:Consolas,"Courier New",monospace;color:#f2b47b;font-weight:bold;white-space:nowrap}.table .status{font-weight:bold}
+.button{display:inline-block;padding:8px 13px;margin:5px 7px 0 0;background:linear-gradient(#d87b2b,#b6500f);border:1px solid #f0a15d;color:#fff;font-weight:bold;text-shadow:0 1px #6d2d04;box-shadow:0 2px #0d0f10}.button:hover{background:linear-gradient(#e68838,#c45913);text-decoration:none}.button.alt{background:linear-gradient(#40484d,#2c3236);border-color:#69747a;text-shadow:none}.button.alt:hover{background:linear-gradient(#505a60,#363e43)}
+.tool-head{display:flex;align-items:center;gap:14px}.tool-icon{width:76px;height:76px;object-fit:contain;border:1px solid #59636a;background:#15191b}.tool-head h2{margin:0 0 4px;font-size:24px}.tool-head p{margin:0;color:var(--muted)}.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}.list{margin:7px 0 0 18px;padding:0}.list li{margin:5px 0;color:#c2c9cc}.muted{color:var(--muted)}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}.shot{padding:8px;background:#212629;border:1px solid #4a5459}.shot img{width:100%;display:block;border:1px solid #111}.shot b{display:block;margin-top:7px;font-size:11px;color:#dfe3e5}
+.footer{padding:15px 18px;border-top:1px solid #4c565b;text-align:center;background:#121517;color:#778287;font-size:10px}.footer img{width:190px;display:block;margin:10px auto 0;opacity:.75}
+.smallcaps{text-transform:uppercase;letter-spacing:.8px;font-size:10px;color:#899398;font-weight:bold}.center{text-align:center}.hero-link{margin-top:10px}.format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.format{padding:12px;background:#202528;border:1px solid #475156}.format .ext{font:700 18px Consolas,"Courier New",monospace;color:#f1a46d}.format h3{margin:5px 0;font-size:14px}.format p{margin:0;color:#acb6ba;line-height:1.45}.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#74ae72;margin-right:5px}.status-dot.orange{background:#de7928}.status-dot.yellow{background:#d8be55}
+@media(max-width:1080px){.site{width:94%}.hero-grid,.split,.cards,.gallery{grid-template-columns:1fr}.format-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.format-grid{grid-template-columns:1fr}.header-title{display:none}.header-logo{width:250px}}
+
+.button.disabled{background:linear-gradient(#555c60,#41474a);border-color:#697177;color:#8c9599;text-shadow:none;box-shadow:0 2px #0a0c0d;cursor:not-allowed;opacity:.72}.download-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.download-card{padding:12px;background:#202528;border:1px solid #475156}.download-card h3{margin:0 0 5px;font-size:14px}.download-card p{margin:5px 0;color:#aeb7bb;line-height:1.45}.code{font-family:Consolas,"Courier New",monospace;color:#f0ad74}
