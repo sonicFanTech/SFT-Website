@@ -1,0 +1,8 @@
+7-Zip — Third-Party License Notice
+
+Portal 2 BETA Launcher may use 7-Zip command-line tools for archive handling. The source package reserves bin/3RD-Party-Tools/7-Zip/ but does not bundle 7-Zip binaries in this source package.
+
+7-Zip is a separate third-party project. Keep the complete license and notice files that ship with the exact 7-Zip build distributed with a release. Different 7-Zip versions may include different components and license notices.
+
+Official site:
+https://www.7-zip.org/

@@ -1,0 +1,7 @@
+Portal 2 BETA Launcher
+GNU General Public License v3.0 (GPL-3.0)
+
+Project repository:
+https://github.com/sonicFanTech/Portal-2-BETA-Launcher---Windows
+
+This notice accompanies the full GPL-3.0 text in this directory.

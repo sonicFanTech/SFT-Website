@@ -1,0 +1,30 @@
+SBSPE — SOURCE BSP TOOLING
+CUSTOM END USER LICENSE AGREEMENT
+Version 1.0
+Copyright (c) 2026 sonic Fan Tech. All rights reserved.
+
+1. LICENSE GRANT
+The author grants the user a limited, non-exclusive, revocable license to use an authorized compiled copy of SBSPE for lawful personal, educational, testing, mapping, research, preservation, and development purposes.
+
+2. CLOSED SOURCE
+SBSPE source code and private development materials are not licensed for public redistribution unless a separate written license explicitly permits it.
+
+3. REDISTRIBUTION
+Do not redistribute modified or repackaged binaries as official SBSPE builds. Redistribution of an authorized build is permitted only where the applicable release terms allow it or written permission has been granted.
+
+4. REVERSE ENGINEERING
+Nothing in this EULA grants permission to reverse engineer, decompile, or disassemble SBSPE beyond rights that cannot lawfully be restricted.
+
+5. THIRD-PARTY AND VALVE PROPERTIES
+Source, Portal, Valve, and other third-party names, assets, and intellectual property belong to their respective owners. SBSPE is an independent project. Third-party libraries and assets remain under their own licenses.
+
+6. WARRANTY AND LIABILITY
+SBSPE is provided on an "as is" basis to the maximum extent permitted by applicable law. The author does not guarantee that map processing or exported files will be error-free. Maintain backups of source and output files.
+
+7. TERMINATION
+This license terminates upon material violation of its terms.
+
+8. VERSION
+This is Version 1.0 of the SBSPE custom EULA and replaces the previous draft wording.
+
+IMPORTANT: This document is project documentation and is not legal advice.

@@ -1,0 +1,348 @@
+PORTAL 2 BETA LAUNCHER
+ABOUT P2BL
+Website Content Reference
+Updated: September 21, 2026
+
+============================================================
+1. PROJECT NAME
+============================================================
+
+Project name:
+Portal 2 BETA Launcher
+
+Common abbreviation:
+P2BL
+
+Current development line:
+R-2
+
+The project is a Windows desktop application created as a dedicated tool for working with and researching historical Portal 2 beta builds.
+
+============================================================
+2. WHAT IS P2BL?
+============================================================
+
+Portal 2 BETA Launcher is a project focused on making historical Portal 2 beta builds easier to work with from a dedicated Windows application.
+
+The project was created around the needs of Portal 2 beta research, testing, preservation, experimentation, and general exploration of older Portal 2 development builds.
+
+P2BL is intended to serve as part of a larger collection of research-oriented tools and resources rather than simply being a generic game launcher.
+
+============================================================
+3. PROJECT PURPOSE
+============================================================
+
+The primary purpose of P2BL is to provide a centralized Windows application for the Portal 2 beta research workflow.
+
+The project is especially associated with the Portal Series BETA Research community, commonly referred to as PSBR.
+
+P2BL is intended to make historical Portal 2 development material easier to organize, access, test, and study while keeping the project useful as the surrounding research/tool ecosystem grows.
+
+============================================================
+4. PROJECT HISTORY
+============================================================
+
+P2BL began as an earlier prototype, referred to as R-1.
+
+The R-1 version established the original launcher concept and provided the basis for the later redesign.
+
+The project is now being developed as R-2.
+
+R-2 is a substantial redevelopment of the original prototype rather than only a minor update. The newer development direction includes a rebuilt user interface, reorganized project structure, additional tooling infrastructure, and a more complete presentation for the overall project.
+
+The R-1 prototype remains historically relevant to the project and may continue to be referenced in documentation even while R-2 is still under development.
+
+============================================================
+5. DEVELOPMENT STATUS
+============================================================
+
+P2BL R-2 is currently in development.
+
+The project is not considered a final finished release yet.
+
+Some systems and supporting components are already being developed or tested, while other parts of the overall project remain unfinished or planned for later development.
+
+Because R-2 is an active development branch, the final appearance, organization, licensing arrangements, and supporting-tool structure may change before release.
+
+============================================================
+6. PLATFORM
+============================================================
+
+Primary platform:
+Microsoft Windows
+
+The main application is being developed as a Windows desktop application.
+
+The main launcher software is written in C#.
+
+The project also includes separate native C++ components for parts of the broader P2BL software environment.
+
+============================================================
+7. TECHNOLOGY
+============================================================
+
+Primary development language for the launcher:
+C#
+
+Additional native development:
+C++
+
+The project is developed using Microsoft Visual Studio.
+
+P2BL's Windows application architecture is intended to provide a native desktop experience rather than functioning as a web application.
+
+============================================================
+8. PROJECT DESIGN
+============================================================
+
+P2BL is designed as a dedicated research-oriented application rather than a generic commercial launcher.
+
+The visual direction of the newer R-2 development places greater emphasis on:
+
+- A more polished desktop application appearance.
+- A stronger Portal/Valve-inspired visual identity.
+- Clear organization of project areas.
+- Custom project branding.
+- A more cohesive presentation across the application.
+- A dedicated About and legal-information area.
+
+The project also draws visual inspiration from older Windows interface aesthetics, including Aero-style concepts, while remaining its own application design.
+
+============================================================
+9. PROJECT IDENTITY
+============================================================
+
+P2BL uses custom project branding and artwork.
+
+A custom application icon concept was developed around Portal 2 beta imagery and the visual language of damaged Aperture test environments.
+
+The project also uses custom banners and additional artwork for its application and documentation.
+
+P2BL branding is intended to identify the project as an independent fan/research tool rather than official Valve software.
+
+============================================================
+10. RELATIONSHIP TO PORTAL 2 AND VALVE
+============================================================
+
+P2BL is an independent fan/research project.
+
+It is not presented as an official Valve product.
+
+Portal 2, Aperture, and other related names, artwork, software, and intellectual property belong to their respective rights holders.
+
+P2BL exists to support research, preservation, testing, and exploration of historical Portal 2 beta material.
+
+============================================================
+11. RELATIONSHIP TO PSBR
+============================================================
+
+P2BL is closely associated with the Portal Series BETA Research (PSBR) community.
+
+The project was designed with the PSBR research environment in mind and is intended to be useful to people participating in Portal 2 beta research and discussion.
+
+PSBR is a community and research-oriented environment, while P2BL is a software project developed to support that broader interest.
+
+The launcher may reference the PSBR Discord in its About information and project documentation.
+
+The separate PSBR Discord document contains information specifically about the community server.
+
+============================================================
+12. RESEARCH / PRESERVATION FOCUS
+============================================================
+
+P2BL is part of a broader interest in historical Portal 2 development material.
+
+The project is intended to help keep older beta builds and related research resources accessible in an organized environment.
+
+Its general focus includes:
+
+- Historical development builds.
+- Beta-era experimentation.
+- Research and documentation.
+- Preservation-oriented workflows.
+- Testing and technical investigation.
+- Community discussion and collaboration.
+
+This project should not be interpreted as an official Valve archival service.
+
+============================================================
+13. RELATED TOOL ECOSYSTEM
+============================================================
+
+P2BL is being developed alongside other tools and supporting projects associated with Portal/source research.
+
+Related or discussed projects include:
+
+SBSPE
+A Source/BSP-related research and tooling project.
+
+bsp2vmf-SDT
+A planned Source map decompilation/tooling project.
+
+RBGIFormat SDK
+A related first-party software development project associated with the project's custom format ecosystem.
+
+P2BL may interact with or reference supporting utilities as the overall ecosystem develops.
+
+============================================================
+14. CUSTOM FILE FORMATS
+============================================================
+
+The project ecosystem includes custom or project-specific file formats and related data structures.
+
+Known formats discussed in the project include:
+
+.RBGIFormat
+.SSDA
+.SBGL
+.SBL
+.GL
+
+One documented format concept is:
+
+.SSDA
+Style Sheet Data Array
+
+The project also uses GL-related saved/configuration data in its development structure.
+
+Custom file formats are part of the project's broader software/tooling ecosystem and are not intended to imply that P2BL is an official Valve file-format specification.
+
+============================================================
+15. THIRD-PARTY SOFTWARE AND TOOLS
+============================================================
+
+P2BL may include, depend on, or organize third-party tools where necessary.
+
+A known third-party tool discussed for the project is:
+
+7-Zip
+
+Third-party software remains subject to its own licenses and terms.
+
+The project's documentation is intended to distinguish third-party software from software created specifically for the P2BL ecosystem.
+
+============================================================
+16. FIRST-PARTY SOFTWARE
+============================================================
+
+The project ecosystem contains software and tools developed as part of the user's own project environment.
+
+Known first-party projects/tools discussed include:
+
+- P2BL itself.
+- SBSPE.
+- bsp2vmf-SDT.
+- RBGIFormat-related software/SDK components.
+
+First-party and third-party software should be identified separately in the project's documentation and website.
+
+============================================================
+17. LICENSING
+============================================================
+
+The project's licensing situation has changed during development and is still being organized for R-2.
+
+The earlier repository/project state used GPL-3.0.
+
+A different licensing/EULA approach has been considered for R-2, including a more restrictive distribution model.
+
+Because R-2 is still in development, the final licensing terms should be treated as subject to change until the official R-2 license/EULA is published.
+
+Third-party components remain under their respective licenses.
+
+Custom first-party formats and tools may have their own licensing/EULA documentation.
+
+============================================================
+18. RBGIFORMAT LICENSING
+============================================================
+
+The RBGIFormat SDK has been discussed as a first-party project associated with an MIT license.
+
+The launcher project's website/About area is intended to provide the appropriate first-party licensing information and links for related software and formats.
+
+Official licensing text should be taken from the final published license/EULA for each project rather than inferred from this overview.
+
+============================================================
+19. SOURCE AVAILABILITY
+============================================================
+
+Source availability may differ between project versions and components.
+
+The R-2 development line has included discussion of a more controlled distribution/source-access model.
+
+The final public source-availability policy for R-2 should be defined by the project's official release/license documentation.
+
+============================================================
+20. WEBSITE PURPOSE
+============================================================
+
+The planned P2BL website is intended to serve as a central public information site for the project.
+
+The website can be used to present:
+
+- What P2BL is.
+- Project history.
+- Development status.
+- Documentation.
+- Downloads/releases when available.
+- Legal and licensing information.
+- Credits and acknowledgements.
+- Related tools.
+- Information about custom formats.
+- PSBR community information.
+- Project images and branding.
+
+The website should distinguish factual project information from unfinished/planned development material.
+
+============================================================
+21. CREDITS AND ATTRIBUTION
+============================================================
+
+Project creator/developer identity:
+sonic Fan Tech
+
+Project/community identity:
+Portal 2 BETA Launcher / P2BL
+Portal Series BETA Research / PSBR
+
+Third-party software and related projects should receive the appropriate attribution required by their licenses.
+
+Valve/Portal-related trademarks and intellectual property remain the property of their respective owners.
+
+============================================================
+22. OFFICIAL COMMUNITY LINK
+============================================================
+
+Portal Series BETA Research (PSBR) Discord:
+
+https://discord.gg/ddBC3BVg5d
+
+This Discord is the community/research server associated with the project.
+
+A separate PSBR document is intended to describe the server itself without mixing it with the P2BL feature list.
+
+============================================================
+23. GENERAL DISCLAIMER
+============================================================
+
+P2BL is an independent fan-made/research-oriented project.
+
+It is not affiliated with, endorsed by, or officially supported by Valve Corporation unless an official statement says otherwise.
+
+Any third-party names, trademarks, game content, software, or other intellectual property referenced by the project remain the property of their respective owners.
+
+Use of beta material, game content, and third-party software remains subject to the applicable rights, licenses, and terms governing that material.
+
+============================================================
+24. WEBSITE CONTENT NOTE
+============================================================
+
+This document is intended as a source/reference for the P2BL website.
+
+It intentionally does not provide a feature list.
+
+For detailed functionality, the separate "Portal 2 BETA Launcher - Complete Feature List" document should be used instead.
+
+============================================================
+END OF ABOUT P2BL DOCUMENT
+============================================================

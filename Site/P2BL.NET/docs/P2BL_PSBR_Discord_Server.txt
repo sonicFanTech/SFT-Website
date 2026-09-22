@@ -1,0 +1,288 @@
+PORTAL SERIES BETA RESEARCH
+PSBR DISCORD SERVER
+Community / Website Content Reference
+Updated: September 21, 2026
+
+============================================================
+1. SERVER NAME
+============================================================
+
+Official/community name used by the project:
+
+Portal Series BETA Research
+
+Common abbreviation:
+
+PSBR
+
+PSBR is the community and research-oriented Discord server associated with Portal 2 beta research and related Source/Valve development research.
+
+============================================================
+2. WHAT IS PSBR?
+============================================================
+
+Portal Series BETA Research is a community centered around researching, discussing, documenting, and preserving information about beta and development material from the Portal series and related Valve/source-engine content.
+
+The server provides a place for people interested in Portal beta history and related research to communicate, share discoveries, discuss technical information, and work on research projects.
+
+============================================================
+3. PRIMARY PURPOSE
+============================================================
+
+The general purpose of PSBR is to support Portal-series beta research.
+
+The community can be used for discussion and collaboration involving subjects such as:
+
+- Historical beta builds.
+- Development history.
+- Unreleased or changed content.
+- Technical research.
+- Tools used for examining older builds.
+- Mapping and level research.
+- File formats and game data.
+- Preservation and documentation.
+- Screenshots, findings, observations, and discoveries.
+- Related Source/Valve development research.
+
+PSBR is a community/research space rather than an official Valve support channel.
+
+============================================================
+4. COMMUNITY ROLE
+============================================================
+
+PSBR provides a shared environment where researchers and interested community members can compare information and discuss historical material.
+
+The server can serve as a place to:
+
+- Share research findings.
+- Discuss beta content.
+- Ask technical questions.
+- Compare versions of game content.
+- Collaborate on tooling.
+- Discuss maps and game data.
+- Document historical information.
+- Share useful references and resources.
+- Coordinate community research projects.
+
+============================================================
+5. PORTAL 2 BETA RESEARCH
+============================================================
+
+A major area of interest within PSBR is Portal 2 beta research.
+
+Portal 2 went through substantial development before its final release, and historical builds can contain content, assets, systems, maps, interfaces, and other material that changed or disappeared during development.
+
+PSBR provides a community environment for studying that history.
+
+Research may involve comparing builds, examining files, testing behavior, documenting differences, studying maps, and preserving information about how Portal 2 developed over time.
+
+============================================================
+6. COMMUNITY AND COLLABORATION
+============================================================
+
+PSBR is designed around community discussion and collaborative research.
+
+Members can contribute different types of knowledge, including:
+
+- Technical knowledge.
+- Historical research.
+- Mapping knowledge.
+- Reverse-engineering or file-analysis knowledge.
+- Development-build knowledge.
+- Preservation work.
+- Documentation.
+- Software/tool development.
+- General Portal knowledge.
+
+Contributions do not have to come from a single type of researcher.
+
+============================================================
+7. CONNECTION TO P2BL
+============================================================
+
+The Portal 2 BETA Launcher (P2BL) is a separate software project that is closely associated with the PSBR community.
+
+P2BL was designed with Portal 2 beta research in mind and is intended to be useful to people working with historical builds and related research material.
+
+P2BL can therefore be considered part of the broader tool ecosystem surrounding the PSBR research community, while remaining its own software project.
+
+The launcher may provide links to the PSBR server so users can find the community associated with the project.
+
+============================================================
+8. CONNECTION TO OTHER RESEARCH TOOLS
+============================================================
+
+PSBR may also be relevant to or host discussion surrounding other Portal/source research tools and projects.
+
+Related projects discussed in the surrounding P2BL ecosystem include:
+
+- SBSPE.
+- bsp2vmf-SDT.
+- RBGIFormat-related tooling.
+- Other custom research utilities.
+
+The community exists to facilitate research and discussion; individual software projects may have their own creators, repositories, licenses, and release policies.
+
+============================================================
+9. SHARING RESEARCH
+============================================================
+
+Research shared through PSBR can include:
+
+- Screenshots.
+- Videos.
+- Build comparisons.
+- Technical notes.
+- Map research.
+- File analysis.
+- Historical references.
+- Development discoveries.
+- Tooling information.
+- Documentation.
+- Links to public resources.
+
+Members should provide appropriate context for research where practical, especially when information is uncertain or based on incomplete evidence.
+
+============================================================
+10. PRESERVATION
+============================================================
+
+Preservation is an important part of beta research.
+
+Historical information can become difficult to find as websites, files, tools, and old community posts disappear or become inaccessible.
+
+PSBR can function as a community space for keeping research knowledge organized and discussing ways to preserve important historical information.
+
+The server itself should not automatically be treated as the sole permanent archive for every resource; important material may also need independent preservation, documentation, or public archival copies.
+
+============================================================
+11. RESEARCH STANDARDS
+============================================================
+
+Research discussions benefit from distinguishing between:
+
+- Confirmed information.
+- Direct observations.
+- Information found in specific builds.
+- Documentation from reliable historical sources.
+- Community reports.
+- Unverified claims.
+- Personal interpretations.
+
+When practical, research should identify the relevant build/version and provide supporting evidence.
+
+This makes it easier for other researchers to reproduce, verify, or challenge findings.
+
+============================================================
+12. COMMUNITY CULTURE
+============================================================
+
+PSBR is intended to be a place for people who are genuinely interested in Portal-series beta research and related technical/historical subjects.
+
+The community benefits from:
+
+- Respectful discussion.
+- Sharing useful information.
+- Constructive technical conversation.
+- Proper attribution.
+- Clear distinction between confirmed facts and speculation.
+- Cooperation between researchers with different areas of expertise.
+
+============================================================
+13. SERVER MODERATION
+============================================================
+
+The PSBR server is a community space and is therefore subject to its own moderation policies and rules.
+
+The current server rules, staff information, and moderation procedures should be taken from the Discord server itself, since those details may change independently of this website document.
+
+This document intentionally does not invent or freeze a list of server rules.
+
+============================================================
+14. SERVER STATUS
+============================================================
+
+PSBR is used as a Discord-based community/research environment.
+
+The server may evolve over time as the community grows, new research subjects appear, and new projects are developed.
+
+Channels, categories, roles, and community organization may therefore change.
+
+============================================================
+15. OFFICIAL INVITE
+============================================================
+
+PSBR Discord invite:
+
+https://discord.gg/ddBC3BVg5d
+
+This link is the community invite associated with the Portal 2 BETA Launcher project's About information.
+
+============================================================
+16. WEBSITE PURPOSE
+============================================================
+
+This document is intended for the planned P2BL website.
+
+A dedicated PSBR page can use this information to explain:
+
+- What PSBR is.
+- What the community is for.
+- How it relates to P2BL.
+- What kinds of research are discussed.
+- Where to join the server.
+
+The website should direct visitors to the current Discord server for the latest community rules, staff information, and live server activity.
+
+============================================================
+17. RELATIONSHIP TO VALVE
+============================================================
+
+PSBR is an independent fan/community research server.
+
+It is not an official Valve Corporation community server or official Valve support channel unless an official statement says otherwise.
+
+Portal, Portal 2, Valve, Aperture, and other relevant intellectual property remain the property of their respective rights holders.
+
+PSBR exists to discuss and research historical material related to those works.
+
+============================================================
+18. RELATIONSHIP TO THE PORTAL COMMUNITY
+============================================================
+
+PSBR is part of the broader fan/research community surrounding Portal and related Valve/source-engine material.
+
+Its focus is specifically on beta, development, historical, and technical research rather than being a general-purpose Portal fan server.
+
+============================================================
+19. RELATIONSHIP TO PROJECT CREDITS
+============================================================
+
+The P2BL project may reference PSBR as its associated research community.
+
+The PSBR server should remain separately identifiable from the P2BL software itself.
+
+P2BL is a project/tool.
+PSBR is the community/research server.
+
+This distinction is useful for website navigation, credits, project documentation, and legal information.
+
+============================================================
+20. SHORT DESCRIPTION
+============================================================
+
+Portal Series BETA Research (PSBR) is a community-focused Discord server dedicated to researching, discussing, documenting, and preserving beta and development material from Portal and related Valve/source projects.
+
+The community provides a place for researchers and enthusiasts to share findings, discuss technical information, collaborate on projects, and explore the history of Portal development.
+
+============================================================
+21. WEBSITE DISCLAIMER
+============================================================
+
+This document describes the general purpose and relationship of the PSBR community.
+
+Live server information, rules, channel organization, staff, and membership requirements can change over time and should be confirmed from the Discord server itself.
+
+============================================================
+END OF PSBR DISCORD SERVER DOCUMENT
+============================================================

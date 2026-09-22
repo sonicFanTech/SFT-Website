@@ -1,0 +1,908 @@
+PORTAL 2 BETA LAUNCHER
+COMPLETE FEATURE LIST
+Plain-Text Feature Reference
+Updated: September 20, 2026
+
+STATUS KEY
+[WORKING]     Implemented and known to be working.
+[IN DEV]      Implemented or being actively developed, but still being changed/tested.
+[PLANNED]     Intended for a future version but not finished yet.
+[DEFERRED]    Discussed/planned, but intentionally postponed for now.
+[PROTOTYPE]   Part of the older R-1/prototype concept or previously implemented prototype work.
+[CONCEPT]     Designed/discussed as a future idea, but implementation has not started.
+[UNCERTAIN]   Mentioned previously, but the exact final implementation/status was not established.
+
+============================================================
+1. CORE PURPOSE
+============================================================
+
+[WORKING]
+- Dedicated launcher/management application for Portal 2 BETA builds.
+- Intended for Portal Series BETA Research (PSBR) use and related research/testing.
+- Designed to make launching, organizing, and working with multiple Portal 2 beta builds easier.
+- Supports the idea of keeping several different beta builds available in one launcher instead of handling each build manually.
+- Built as a Windows desktop application in C#.
+
+[IN DEV]
+- R-2 is the major redesign of the original R-1 prototype.
+- R-2 is intended to replace the basic/prototype UI with a significantly more complete launcher experience.
+
+============================================================
+2. PORTAL 2 BETA BUILD SUPPORT
+============================================================
+
+[WORKING / IN DEV]
+The launcher is intended to recognize/manage multiple Portal 2 beta builds, including:
+
+- 852_0 - July 2009
+- 841_0 - February 2010
+- 852_1 - March 2010
+- 852_2 - July 2010
+- 852_3 - August 2010
+- 841_1 - September 24, 2010
+- 841_2 - September 26, 2010
+- 852_4 - October 2010
+- 852_6 - December 2010
+- 841_3 - January 2011
+
+[PLANNED / IN DEV]
+- Automatic identification of discovered Portal 2 beta builds.
+- Organized build listing inside the launcher.
+- Per-build launching.
+- Build-specific resource handling.
+- Build-specific custom maps/mod organization.
+- Support for adding beta builds located outside the usual locations.
+- Connected-drive scanning for beta installations/builds.
+- User-selected custom folders/directories for scanning.
+
+============================================================
+3. BUILD DISCOVERY / SCANNING
+============================================================
+
+[IN DEV]
+- Scan connected drives for Portal 2 beta builds.
+- Scan user-added folders for Portal 2 beta builds.
+- Designed to scan quickly while still attempting to avoid missing valid folders/builds.
+- Build discovery feeds found installations into the launch list.
+
+[PLANNED]
+- Automatic scanning when the launcher opens.
+- User setting:
+  "Auto Scan when Mas Hammer QLaunch opens" was discussed for the separate Hammer launcher, while the Portal 2 BETA Launcher also has the broader concept of automatic startup scanning/build discovery.
+
+[PLANNED]
+- Persistent storage of previously discovered build/install locations.
+- Ability to reuse known build paths without requiring a complete rescan every time.
+- Smarter handling of already-known installations.
+
+[UNCERTAIN]
+- Additional scan optimization/error handling beyond the current fast-scanning approach.
+
+============================================================
+4. BUILD MANAGER
+============================================================
+
+[IN DEV]
+- Build Manager is intended to provide a dedicated way to manage discovered/known Portal 2 beta builds.
+- Build list can act as the main place for selecting which beta to launch.
+
+[PROTOTYPE]
+- An older/previous Build Manager mode existed.
+
+[IN DEV]
+- New Build Manager mode has been planned/implemented in the newer launcher UI.
+- New Build Manager mode has used a "Coming Soon" state while unfinished.
+
+[PLANNED]
+- Complete replacement of the temporary "Coming Soon" Build Manager screen with full functionality.
+- Improved build information and management tools.
+- More polished selection/organization of builds.
+
+[UNCERTAIN]
+- Full final feature set of the new Build Manager was not completely finalized in prior discussion.
+
+============================================================
+5. GAME LAUNCHING
+============================================================
+
+[WORKING / IN DEV]
+- Launch selected Portal 2 beta build directly from the launcher.
+- Build-specific executable/launch handling.
+- Support for different executable/command-line arrangements used by different beta builds.
+
+Known launch command variants discussed:
+
+[WORKING / IN DEV]
+- hl2.exe -tempcontent -console -steam -windowed
+- hl2.exe -game portal2 -tempcontent -console -windowed
+- portal2.exe -console -steam -windowed
+
+[PLANNED / IN DEV]
+- Optional +map launch parameter.
+- Support for launching directly into a selected map.
+- Map placeholder support.
+
+Previously discussed placeholders include:
+- %MAP%
+- %HIGHT%
+- %WHTHTS%
+
+[UNCERTAIN]
+- Final naming/validation of the resolution placeholders above.
+- Final behavior for arbitrary custom argument templates.
+
+============================================================
+6. EXTRA LAUNCH ARGUMENTS
+============================================================
+
+[PLANNED]
+- Dedicated "Extra Launch Args" page/tab.
+- Allow users to specify additional command-line arguments beyond the build's default launch configuration.
+- Intended to make special testing/debugging launch configurations easier.
+- Intended to integrate with per-build launching.
+
+[PLANNED]
+- Better organization of standard arguments versus user-added arguments.
+- Persistent saving of custom launch arguments.
+
+============================================================
+7. CUSTOM MAP MANAGER
+============================================================
+
+[PLANNED]
+- Dedicated "Custom Map Manager" page/tab.
+- Intended for organizing custom maps for different Portal 2 beta builds.
+- Build-specific map directories.
+
+Planned resource structure discussed:
+
+- Resources/C-Maps/841_1
+- Resources/C-Maps/841_2
+- Resources/C-Maps/841_3
+- Resources/C-Maps/852_0
+- Resources/C-Maps/852_1
+- Resources/C-Maps/852_2
+- Resources/C-Maps/852_3
+- Resources/C-Maps/852_4
+- Resources/C-Maps/852_6
+
+[PLANNED]
+- Select a custom map.
+- Launch a selected custom map through the launcher.
+- Keep maps separated by compatible beta build.
+
+[UNCERTAIN]
+- Full map metadata/preview/filtering features were not finalized.
+
+============================================================
+8. MOD MANAGER
+============================================================
+
+[DEFERRED]
+- Dedicated "Mod Manager" page/tab.
+- Intended for organizing and using mods with supported Portal 2 beta builds.
+- Build-specific mod organization.
+
+Planned resource structure discussed:
+
+- Resources/Mods/841_1
+- Resources/Mods/841_2
+- Resources/Mods/841_3
+- Resources/Mods/852_0
+- Resources/Mods/852_1
+- Resources/Mods/852_2
+- Resources/Mods/852_3
+- Resources/Mods/852_4
+- Resources/Mods/852_6
+
+[DEFERRED]
+- Mod installation/activation management.
+- Build-aware mod organization.
+
+Note:
+- Patch Manager and Mod Manager were specifically suggested/discussed in the PSBR Discord, but were deferred for the time being.
+
+============================================================
+9. PATCH MANAGER
+============================================================
+
+[DEFERRED]
+- Dedicated Patch Manager.
+- Intended to manage/apply patches for supported Portal 2 beta builds.
+- Intended to keep patching organized by build/version.
+- Discussed as a feature suggestion from the PSBR Discord.
+
+[UNCERTAIN]
+- Exact patch package format, patch application workflow, and rollback behavior were not finalized.
+
+============================================================
+10. GAME / BUILD-SPECIFIC RESOURCES
+============================================================
+
+[PLANNED / IN DEV]
+- Per-build resource folders.
+- Separation of custom maps and mods by beta build.
+- Intended to avoid accidentally using resources intended for a different beta version.
+
+[PLANNED]
+- Additional future build-specific support files/tools as the launcher grows.
+
+============================================================
+11. LAUNCHER USER INTERFACE
+============================================================
+
+[IN DEV]
+- Full UI rebuild for R-2.
+- Major layout changes from the original R-1 prototype.
+- More polished, modern, Valve-inspired visual design.
+- Goal of moving away from a basic Win32-looking application.
+- Overall launcher layout kept recognizable while being rebuilt substantially.
+
+[IN DEV]
+- Large persistent top-left "PORTAL 2 BETA LAUNCHER" branding/logo area.
+- Logo intended to persist across the application's relevant pages.
+- Larger logo treatment than older versions.
+
+[IN DEV]
+- Sidebar-based navigation.
+- Sidebar hide/show functionality.
+- Sidebar scrolling for larger numbers of pages/features.
+- Expandable sections/dropdowns, including Aero-style expandable page groups.
+- Debugger section/subpages planned under an expandable Aero-style dropdown.
+
+[IN DEV]
+- About and Settings treated as normal navigation pages/subpages rather than being permanently fixed to the bottom of the sidebar.
+
+[PLANNED / IN DEV]
+- Broader use of progress bars for operations such as scanning.
+- Visual effects/animations where appropriate.
+- Improved visual hierarchy and readability.
+- More polished controls and page transitions.
+- Better Valve-like presentation while remaining a native Windows desktop application.
+
+============================================================
+12. GUI MODE / CONSOLE MODE
+============================================================
+
+[IN DEV]
+- GUI-first launcher experience.
+- Console window is intended to remain hidden by default.
+
+[PLANNED]
+- Console can be enabled through the launcher's Settings page.
+- Launcher Settings control for enabling/disabling visible console behavior.
+
+[IN DEV]
+- GUI mode intended to be the normal/default operating mode.
+
+============================================================
+13. SETTINGS
+============================================================
+
+[IN DEV]
+- Dedicated Launcher Settings page.
+- Settings integrated into the main launcher navigation.
+
+[PLANNED]
+- Toggle to show/enable the console.
+- Automatic startup scanning option.
+- Persistent launcher behavior/preferences.
+- Additional launcher configuration options as more features are added.
+
+[UNCERTAIN]
+- Exact final list of settings was not fully finalized.
+
+============================================================
+14. ABOUT PAGE
+============================================================
+
+[IN DEV]
+- Dedicated About page/subpages.
+- About area intended to contain project information, credits, legal information, links, tools, and third-party information.
+
+[IN DEV]
+The About section is intended to include:
+- PSBR Discord information.
+- PSBR Discord invitation/link.
+- Banner/images.
+- "Coded in" information.
+- "Built with" information.
+- Third-party software/libraries/tools information.
+- Custom file types/formats information.
+- 1st-party EULAs.
+- 3rd-party EULAs/licenses.
+
+[IN DEV]
+- PSBR Discord invite discussed for the About page:
+  https://discord.gg/ddBC3BVg5d
+
+[IN DEV]
+- About background intended to extend across all About sub-tabs.
+- Background concept includes a blurred-code visual behind the About content.
+
+[PLANNED]
+- Clear project attribution/credits.
+- Organized legal/license information.
+- Better About presentation than the R-1 prototype.
+
+============================================================
+15. PSBR DISCORD INTEGRATION / PROJECT PURPOSE
+============================================================
+
+[WORKING / PLANNED]
+- Launcher designed around Portal Series BETA Research.
+- Intended as a useful tool for members of the PSBR Discord.
+- Project can also be used for general Portal 2 beta exploration/testing.
+
+[PLANNED]
+- Better in-launcher presentation of the PSBR Discord community.
+- Easy access to the server invite from the About section.
+
+============================================================
+16. CUSTOM FILE TYPES / FORMAT SUPPORT
+============================================================
+
+[PLANNED / IN DEV]
+The launcher/project ecosystem is intended to document, support, or ship tooling for custom/related file formats used by the project.
+
+Known format names discussed include:
+
+- .RBGIFormat
+- .SSDA
+- .SBGL
+- .SBL
+- .GL
+
+[IN DEV]
+- .SSDA described as "Style Sheet Data Array", replacing/serving the role of the older .ASF arrangement.
+- Custom format support intended to be part of the R-2 ecosystem rather than just a placeholder.
+
+[PLANNED]
+- Proper documentation of custom file types.
+- Format-specific DLL/tool support where required.
+- Legal/licensing information for custom formats in About.
+
+============================================================
+17. RBGIFormat
+============================================================
+
+[PLANNED / RELATED TOOLING]
+- .RBGIFormat is associated with the project's first-party format/tooling ecosystem.
+- A first-party EULA/license reference has been discussed for this format.
+- RBGIFormat SDK repository discussed:
+  sonicFanTech/RBGIFormat-SDK
+- The discussed first-party license for RBGIFormat was MIT.
+
+[PLANNED]
+- Link the relevant first-party EULA/license in About.
+- Explain the format and its associated SDK/tooling.
+
+============================================================
+18. DLL / TOOL BUNDLING
+============================================================
+
+[PLANNED / IN DEV]
+- Project DLLs stored under:
+  bin/DLLs/
+
+[PLANNED]
+- 7-Zip stored under:
+  bin/3RD-Party-Tools/
+
+[PLANNED]
+- First-party tools folder:
+  bin/1st-Party-Tools/
+
+[PLANNED]
+Specific first-party tools discussed include:
+- SBSPE
+- bsp2vmf-SDT
+
+Potential layout discussed:
+- bin/1st-Party-Tools/SBSPE/
+- bin/1st-Party-Tools/bsp2vmf-SDT/
+
+[PLANNED]
+- Launcher About section should identify bundled/used third-party tools.
+- Launcher About section should distinguish first-party from third-party tools.
+
+============================================================
+19. OVERLAY / IN-GAME UI SYSTEM
+============================================================
+
+[IN DEV]
+- Separate C++ overlay/UI-handler component associated with the launcher.
+- Project name discussed:
+  P2BOverlayUIHandler
+
+[IN DEV]
+- Helper executable/component discussed:
+  Ex-onP2B-UIHandoler.exe
+- Intended to support the in-game Portal 2 beta launcher UI/overlay functionality.
+
+[IN DEV]
+- In-game overlay concept for the Portal 2 beta launcher ecosystem.
+- Overlay is intended to provide launcher-related UI/tools without requiring the main launcher window to remain in front.
+
+[PLANNED]
+- More complete in-game overlay functionality.
+- Better integration between the launcher and the overlay helper.
+
+============================================================
+20. OVERLAY HOTKEYS
+============================================================
+
+[PLANNED / IN DEV]
+- Shift+Z:
+  Open the in-game launcher overlay/UI.
+
+[PLANNED / IN DEV]
+- Shift+9:
+  Take a screenshot.
+
+[PLANNED]
+- Screenshot output location discussed as:
+  "P2B Launcher Screenshots" folder.
+
+[UNCERTAIN]
+- Additional overlay hotkeys may be added later, but were not fully specified.
+
+============================================================
+21. SCREENSHOT SUPPORT
+============================================================
+
+[PLANNED]
+- In-game screenshot hotkey support.
+- Screenshot saving to a dedicated Portal 2 BETA Launcher screenshots folder.
+- Intended to make capturing beta research/testing footage easier.
+
+[UNCERTAIN]
+- Exact screenshot file naming scheme.
+- Exact image format/quality settings.
+
+============================================================
+22. DEBUGGER / ADVANCED TOOLS AREA
+============================================================
+
+[PLANNED]
+- Debugger-related pages/subpages in the launcher.
+- Debugger section intended to appear under an expandable navigation group.
+
+[PLANNED]
+- Future debugger integration with the broader launcher/tool ecosystem.
+
+[CONCEPT]
+- Potential use as a centralized research/testing toolbox alongside build launching.
+
+[UNCERTAIN]
+- Exact debugger features were not fully specified in the launcher discussions.
+
+============================================================
+23. RESOURCE / FILE MANAGEMENT
+============================================================
+
+[PLANNED]
+- Organized Resource directory structure for build-specific content.
+- Separation of custom maps, mods, tools, DLLs, and third-party software.
+
+Known areas:
+- Resources/C-Maps/
+- Resources/Mods/
+- Resources/SavedData/
+- bin/DLLs/
+- bin/3RD-Party-Tools/
+- bin/1st-Party-Tools/
+
+[IN DEV]
+- Saved launcher settings/data location discussed:
+  Resources/SavedData/Settings.GL
+
+[PLANNED]
+- Persistent storage of launcher configuration and discovered build information.
+
+============================================================
+24. SAVED DATA / CONFIGURATION
+============================================================
+
+[IN DEV]
+- Settings stored using:
+  Resources/SavedData/Settings.GL
+
+[PLANNED]
+- Persistent user settings.
+- Persistent launcher preferences.
+- Persistent discovery/build data as features are implemented.
+
+[UNCERTAIN]
+- Final structure/schema of Settings.GL was not fully documented in prior discussion.
+
+============================================================
+25. UI GRAPHICS / BRANDING
+============================================================
+
+[IN DEV]
+- Custom launcher icon/branding artwork.
+- App icon concept around Portal 2 BETA research/launcher identity.
+- 256x256 icon concept discussed.
+
+[CONCEPT / IN DEV]
+Icon concept details discussed:
+- No text in the icon.
+- Running stick-figure/chamber subject.
+- Right-running composition.
+- Collapsing/damaged chamber walls.
+- Exposed/broken pieces.
+- Damaged Aperture-style logo element.
+- Purple wall/floor gel visual.
+- Overall Portal 2 beta atmosphere.
+
+[IN DEV]
+- Program banner graphics.
+- Additional launcher imagery.
+- Custom visual presentation rather than stock Windows application artwork.
+
+============================================================
+26. UI BACKGROUND / VISUAL EFFECTS
+============================================================
+
+[PLANNED / IN DEV]
+- Code-blur visual effects in About.
+- More polished backgrounds.
+- Aero-inspired navigation/visual elements.
+- Valve-like UI feel.
+- Progress bars for long-running operations.
+- Visual polish/animation/effects.
+
+[UNCERTAIN]
+- Exact final animation/effect list.
+
+============================================================
+27. R-1 PROTOTYPE FEATURES / LEGACY
+============================================================
+
+[PROTOTYPE]
+- Original launcher prototype functionality.
+- Original simpler UI/layout.
+- Prototype build launching.
+- Prototype-style build selection/management.
+- Earlier basic launcher presentation.
+
+[PLANNED]
+- Preserve the useful R-1 concepts while continuing the R-2 rewrite.
+- R-2 README/documentation is intended to keep the old R-1 prototype information because R-2 is still in development.
+
+============================================================
+28. R-2 FEATURE SET / CURRENT DEVELOPMENT DIRECTION
+============================================================
+
+[IN DEV]
+- Full R-2 UI rebuild.
+- Layout redesign.
+- Better About system.
+- Better Settings system.
+- Build Manager redesign.
+- Expanded build scanning/discovery.
+- Custom Map Manager.
+- Extra Launch Args.
+- Overlay/UI handler integration.
+- Custom file type/tool ecosystem integration.
+- Better branding and graphics.
+- More Valve-inspired presentation.
+
+[DEFERRED]
+- Mod Manager.
+- Patch Manager.
+
+[PLANNED]
+- Full implementation of remaining unfinished management pages.
+- Full debugger/tooling integration.
+- More advanced build/resource management.
+
+============================================================
+29. LAUNCHER SCANNING / PROGRESS FEEDBACK
+============================================================
+
+[PLANNED / IN DEV]
+- Progress indication during scanning.
+- Progress bars for longer operations.
+- User-readable scan status rather than an apparently frozen UI.
+- Faster build discovery while retaining reliable coverage.
+
+[UNCERTAIN]
+- Exact progress percentage calculation and scan stages.
+
+============================================================
+30. ERROR HANDLING / ROBUSTNESS
+============================================================
+
+[PLANNED]
+- Better handling of missing build files/folders.
+- Better handling of unsupported/incomplete beta installations.
+- Clearer feedback when a launch configuration is invalid.
+- Safer handling of missing optional resources/tools.
+- Better separation between "not installed", "not found", and "not supported".
+
+[UNCERTAIN]
+- Exact final diagnostics/logging system was not finalized.
+
+============================================================
+31. WINDOWS APPLICATION EXPERIENCE
+============================================================
+
+[IN DEV]
+- Native Windows desktop launcher.
+- C# application architecture for the main GUI.
+- Separate C++ component for the overlay system.
+
+[IN DEV]
+- Designed to be a GUI application first instead of a console-first utility.
+
+[PLANNED]
+- More cohesive Windows visual integration.
+- Better polished title/navigation experience.
+
+============================================================
+32. RESEARCH / TESTING WORKFLOW
+============================================================
+
+[WORKING / PLANNED]
+- Centralized launching of historical Portal 2 beta builds.
+- Easier switching between build versions.
+- Easier testing with custom maps.
+- Easier use of build-specific mods/resources in the future.
+- Easier use of special command-line arguments.
+- Research-oriented workflow for PSBR members.
+
+[PLANNED]
+- Centralized toolbox approach for beta research.
+- Integration with related first-party research tools.
+
+============================================================
+33. LEGAL / LICENSING INFORMATION
+============================================================
+
+[PLANNED]
+About/legal section is intended to explain:
+- Project licensing.
+- First-party tool licensing.
+- First-party custom format licensing.
+- Third-party software/licenses.
+- Third-party tools used by the launcher.
+- EULA information.
+
+[IN DEV]
+- RBGIFormat first-party licensing information was discussed.
+- .RBGIFormat SDK was discussed as MIT licensed.
+
+[IN DEV / PLANNED]
+- About should clearly separate first-party and third-party material.
+
+============================================================
+34. THIRD-PARTY SOFTWARE
+============================================================
+
+[PLANNED]
+- Document third-party software bundled with or required by the launcher.
+- Document third-party licenses/EULAs.
+
+Known third-party tool discussed:
+- 7-Zip
+
+[UNCERTAIN]
+- Final complete third-party dependency list was not finalized.
+
+============================================================
+35. FIRST-PARTY SOFTWARE
+============================================================
+
+[PLANNED]
+- Document first-party tools shipped with or associated with the launcher.
+
+Known first-party tools discussed:
+- SBSPE
+- bsp2vmf-SDT
+- RBGIFormat SDK / related format tooling
+
+[PLANNED]
+- Dedicated first-party tools folder and documentation.
+
+============================================================
+36. FUTURE TOOL INTEGRATION
+============================================================
+
+[PLANNED]
+- SBSPE integration.
+- bsp2vmf-SDT integration.
+- Other custom Portal/source research utilities as the launcher ecosystem expands.
+- Centralized access to helper tools from the launcher.
+
+[UNCERTAIN]
+- Exact launch/configuration workflows for integrated tools were not finalized.
+
+============================================================
+37. DATA / INSTALLATION PATH SUPPORT
+============================================================
+
+[PLANNED / IN DEV]
+- Support for builds installed in arbitrary locations.
+- Support for multiple drives.
+- Support for user-selected directories.
+- Remember previously found installations in saved data.
+
+[PLANNED]
+- More robust path validation.
+- More persistent build recognition.
+
+============================================================
+38. BUILD COMPATIBILITY MANAGEMENT
+============================================================
+
+[PLANNED]
+- Track which maps/mods/resources are intended for which build.
+- Prevent accidental use of incompatible build-specific content where practical.
+- Build-aware resource organization.
+
+============================================================
+39. FUTURE UI/UX IMPROVEMENTS
+============================================================
+
+[PLANNED / CONCEPT]
+- Better interaction feedback.
+- Better visual state indicators.
+- Clearer selected/active navigation states.
+- Better spacing and readability.
+- More cohesive iconography.
+- Improved page organization as more tools are added.
+- Continued Valve-inspired/Aero-inspired visual design.
+
+============================================================
+40. FEATURES DISCUSSED BUT NOT FULLY SPECIFIED
+============================================================
+
+[UNCERTAIN]
+The following general areas have been discussed or implied as future directions, but the exact feature behavior was not locked down:
+
+- Advanced build metadata.
+- Build notes/descriptions.
+- More extensive custom map browsing features.
+- More extensive mod browsing/activation features.
+- Advanced debugger features.
+- More elaborate overlay controls.
+- Additional screenshot options.
+- More detailed logging/diagnostics.
+- More extensive tool integration.
+- More granular launcher settings.
+- Additional build types beyond the known Portal 2 beta set.
+
+============================================================
+41. KNOWN DIRECTORY / PROJECT STRUCTURE
+============================================================
+
+Known/discussed paths and directories:
+
+Resources/
+    C-Maps/
+    Mods/
+    SavedData/
+        Settings.GL
+
+bin/
+    DLLs/
+    3RD-Party-Tools/
+        7-Zip
+    1st-Party-Tools/
+        SBSPE/
+        bsp2vmf-SDT/
+
+Overlay/helper executable discussed:
+    Ex-onP2B-UIHandoler.exe
+
+Related overlay project:
+    P2BOverlayUIHandler
+
+============================================================
+42. KNOWN PROJECT COMPONENTS
+============================================================
+
+[IN DEV]
+Main launcher:
+- C# Windows desktop application.
+
+[IN DEV]
+Overlay:
+- C++ P2BOverlayUIHandler component.
+
+[IN DEV]
+Helper:
+- Ex-onP2B-UIHandoler.exe
+
+[PLANNED / RELATED]
+Supporting tools:
+- SBSPE
+- bsp2vmf-SDT
+- RBGIFormat-related tooling
+
+============================================================
+43. PRIMARY USER-FACING PAGES / AREAS DISCUSSED
+============================================================
+
+[IN DEV / PLANNED]
+- Main launcher/build selection
+- Build Manager
+- Custom Map Manager
+- Mod Manager (Deferred)
+- Patch Manager (Deferred)
+- Extra Launch Args
+- Settings
+- About
+- Debugger / advanced tool pages
+- Overlay/in-game UI
+
+============================================================
+44. FEATURE STATUS SUMMARY
+============================================================
+
+CURRENT / ACTIVE:
+- Portal 2 beta build discovery concept
+- Multiple historical beta builds
+- Build launching
+- Multiple launch-command variants
+- R-2 GUI rebuild
+- Sidebar navigation
+- Sidebar scrolling
+- Sidebar hide/show
+- About system
+- Settings system
+- GUI-first operation
+- Resource directory structure
+- Overlay development
+- Custom branding/images
+- Build Manager development
+- Build-specific resource organization
+
+IN DEVELOPMENT:
+- Expanded R-2 UI
+- Better build scanning
+- Improved Build Manager
+- Overlay integration
+- Extra launch arguments
+- Custom map support
+- About/license presentation
+- Custom format/tool ecosystem
+- Progress-bar/visual feedback work
+
+PLANNED:
+- Startup automatic scanning
+- Persistent discovered-build data
+- Full Custom Map Manager
+- Full Extra Launch Args system
+- Console toggle/settings
+- Full Debugger pages/integration
+- Better error handling
+- More advanced resource management
+- SBSPE integration
+- bsp2vmf-SDT integration
+- More complete legal/license information
+- Expanded overlay tools
+- Additional research utilities
+
+DEFERRED:
+- Mod Manager
+- Patch Manager
+
+PROTOTYPE / LEGACY:
+- R-1 prototype launcher/UI
+- Older Build Manager/prototype behavior
+
+============================================================
+45. IMPORTANT PROJECT NOTES
+============================================================
+
+- R-2 is not considered finished yet.
+- The launcher is being rebuilt substantially rather than simply receiving a small visual update.
+- The old R-1 prototype information is intentionally retained for documentation/history.
+- Several features are planned but are not yet implemented.
+- Mod Manager and Patch Manager were discussed as desired additions but are currently deferred.
+- Some exact implementation details, especially for the debugger, advanced map/mod handling, diagnostics, and future tool integration, remain subject to change.
+
+END OF FEATURE LIST

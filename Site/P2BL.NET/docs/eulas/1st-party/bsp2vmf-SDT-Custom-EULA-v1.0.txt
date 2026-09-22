@@ -1,0 +1,30 @@
+bsp2vmf-SDT — SOURCE DECOMPILER TOOL
+CUSTOM END USER LICENSE AGREEMENT
+Version 1.0
+Copyright (c) 2026 sonic Fan Tech. All rights reserved.
+
+1. LICENSE GRANT
+The author grants the user a limited, non-exclusive, revocable license to use an authorized compiled copy of bsp2vmf-SDT for lawful personal, educational, testing, mapping, research, preservation, and development purposes.
+
+2. CLOSED SOURCE
+The source code and private development materials are not licensed for public redistribution unless a separate written license explicitly permits it.
+
+3. REDISTRIBUTION
+Do not redistribute modified or repackaged binaries as official bsp2vmf-SDT builds. Redistribution of an authorized build is permitted only where the applicable release terms allow it or written permission has been granted.
+
+4. REVERSE ENGINEERING
+Nothing in this EULA grants permission to reverse engineer, decompile, or disassemble the software beyond rights that cannot lawfully be restricted.
+
+5. THIRD-PARTY AND VALVE PROPERTIES
+Source, Portal, Valve, and other third-party names and assets belong to their respective owners. This tool is an independent project. Third-party libraries and assets remain under their own licenses.
+
+6. WARRANTY AND LIABILITY
+bsp2vmf-SDT is provided on an "as is" basis to the maximum extent permitted by applicable law. The author is not responsible for data loss, corrupted map files, or other damage arising from use to the extent permitted by law. Maintain backups of source and output files.
+
+7. TERMINATION
+This license terminates upon material violation of its terms.
+
+8. VERSION
+This is Version 1.0 of the bsp2vmf-SDT custom EULA and replaces the previous draft wording.
+
+IMPORTANT: This document is project documentation and is not legal advice.
