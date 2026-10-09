@@ -1,0 +1,424 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Directory Index</title>
+  <meta name="description" content="A simple, modern directory index for files and folders.">
+  <style>
+    :root {
+      color-scheme: dark light;
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #1d212b;
+      --border: #2b3140;
+      --text: #edf1f7;
+      --muted: #98a2b3;
+      --accent: #6ea8fe;
+      --accent-soft: rgba(110, 168, 254, .13);
+      --hover: rgba(255,255,255,.045);
+      --shadow: 0 14px 40px rgba(0,0,0,.25);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f4f6f9;
+        --panel: #ffffff;
+        --panel-2: #f7f8fa;
+        --border: #dce1e8;
+        --text: #17202e;
+        --muted: #667085;
+        --accent: #2f6fed;
+        --accent-soft: rgba(47,111,237,.09);
+        --hover: rgba(23,32,46,.035);
+        --shadow: 0 14px 40px rgba(27,41,66,.10);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(110,168,254,.07), transparent 34%), var(--bg);
+      color: var(--text);
+      font: 14px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 32px auto 48px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .title-wrap { min-width: 0; }
+    .title {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 30px);
+      letter-spacing: -.02em;
+    }
+    .subtitle { color: var(--muted); margin-top: 4px; }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .search {
+      flex: 1 1 260px;
+      min-width: 220px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 11px;
+      padding: 11px 13px;
+      outline: none;
+      box-shadow: var(--shadow);
+    }
+    .search:focus { border-color: var(--accent); }
+
+    .button {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 11px;
+      padding: 10px 13px;
+      cursor: pointer;
+    }
+    .button:hover { background: var(--hover); }
+
+    .crumbs {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .crumbs a:hover { color: var(--text); }
+    .crumb-sep { opacity: .5; }
+
+    .card {
+      background: color-mix(in srgb, var(--panel) 92%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .thead, .item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px 170px;
+      align-items: center;
+    }
+    .thead {
+      min-height: 44px;
+      padding: 0 16px;
+      background: var(--panel-2);
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .item {
+      min-height: 58px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--border);
+      transition: background .12s ease;
+    }
+    .item:last-child { border-bottom: 0; }
+    .item:hover { background: var(--hover); }
+
+    .name-cell {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+    .icon {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+    }
+    .icon svg { width: 20px; height: 20px; }
+    .name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: 520;
+    }
+    .meta { color: var(--muted); }
+    .right { text-align: right; }
+
+    .empty {
+      padding: 44px 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .shell { width: min(100% - 18px, 1120px); margin-top: 18px; }
+      .thead, .item { grid-template-columns: minmax(0, 1fr) 90px; }
+      .thead > :last-child, .item > :last-child { display: none; }
+      .meta { font-size: 12px; }
+      .item { min-height: 54px; padding: 0 12px; }
+      .thead { padding: 0 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="title-wrap">
+        <h1 class="title">Directory Index</h1>
+        <div class="subtitle" id="directoryLabel">/C:/Users/sonic%20Fan%20Games/Desktop — files and folders</div>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <input id="search" class="search" type="search" placeholder="Search files and folders…" autocomplete="off">
+      <button id="sortName" class="button" type="button">Sort: Name</button>
+      <button id="sortType" class="button" type="button">Sort: Type</button>
+    </div>
+
+    <nav class="crumbs" id="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span class="crumb-sep">/</span><a href="/C:/">C:</a><span class="crumb-sep">/</span><a href="/C:/Users/">Users</a><span class="crumb-sep">/</span><a href="/C:/Users/sonic%20Fan%20Games/">sonic%20Fan%20Games</a><span class="crumb-sep">/</span><a href="/C:/Users/sonic%20Fan%20Games/Desktop/">Desktop</a></nav>
+
+    <section class="card" aria-label="Directory contents">
+      <div class="thead">
+        <div>Name</div>
+        <div>Size</div>
+        <div class="right">Modified</div>
+      </div>
+      <div id="list"><div class="item"><div class="name-cell"><span class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3.5 7.4A1.9 1.9 0 0 1 5.4 5.5h4l1.8 2h7.4a1.9 1.9 0 0 1 1.9 1.9v7.2a1.9 1.9 0 0 1-1.9 1.9H5.4a1.9 1.9 0 0 1-1.9-1.9z"></path>
+      </svg></span><a class="name" href="../">..</a></div><div class="meta">Folder</div><div class="meta right">—</div></div><div class="empty">No matching items.</div></div>
+    </section>
+
+    <footer class="footer">
+      <span id="count">0 items</span>
+      <span>Custom directory index</span>
+    </footer>
+  </main>
+
+  <script>
+    /*
+      IMPORTANT:
+      A normal index.html cannot ask the web server for a list of every file in a
+      directory. Put your real directory contents in this array, or generate this
+      array from your server in JSON. Each item should look like:
+
+        { name: "Downloads", type: "folder", href: "Downloads/" }
+        { name: "readme.txt", type: "file", href: "readme.txt", size: 2048, modified: "2026-10-06" }
+
+      Folders can point to another directory (ideally containing its own index.html).
+    */
+    const entries = [
+      // Example:
+      // { name: "Downloads", type: "folder", href: "Downloads/" },
+      // { name: "Resources", type: "folder", href: "Resources/" },
+      // { name: "index.html", type: "file", href: "index.html", size: 0, modified: "2026-10-06" },
+      // { name: "README.txt", type: "file", href: "README.txt", size: 4096, modified: "2026-10-05" },
+    ];
+
+    const list = document.getElementById('list');
+    const search = document.getElementById('search');
+    const breadcrumbs = document.getElementById('breadcrumbs');
+    const count = document.getElementById('count');
+    const directoryLabel = document.getElementById('directoryLabel');
+
+    let sortMode = 'name';
+    let descending = false;
+
+    const folderIcon = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3.5 7.4A1.9 1.9 0 0 1 5.4 5.5h4l1.8 2h7.4a1.9 1.9 0 0 1 1.9 1.9v7.2a1.9 1.9 0 0 1-1.9 1.9H5.4a1.9 1.9 0 0 1-1.9-1.9z"/>
+      </svg>`;
+
+    const fileIcon = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M7 3.8h6.4L18.5 9v10.2A1.9 1.9 0 0 1 16.6 21H7a1.9 1.9 0 0 1-1.9-1.9V5.7A1.9 1.9 0 0 1 7 3.8z"/>
+        <path d="M13.2 3.8V9h5.2"/>
+      </svg>`;
+
+    const upIcon = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m8 12 4-4 4 4M12 8v10"/>
+      </svg>`;
+
+    function formatBytes(bytes) {
+      if (bytes === null || bytes === undefined || bytes === '' || Number.isNaN(Number(bytes))) return '—';
+      let n = Number(bytes);
+      if (n < 1024) return `${n} B`;
+      const units = ['KB', 'MB', 'GB', 'TB'];
+      let unit = -1;
+      do { n /= 1024; unit++; } while (n >= 1024 && unit < units.length - 1);
+      return `${n.toFixed(n >= 10 ? 0 : 1)} ${units[unit]}`;
+    }
+
+    function formatDate(value) {
+      if (!value) return '—';
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? String(value) : date.toLocaleString();
+    }
+
+    function getPathParts() {
+      const path = location.pathname.replace(/\\/g, '/');
+      const parts = path.split('/').filter(Boolean);
+      if (parts.length && /index\.html?$/i.test(parts[parts.length - 1])) parts.pop();
+      return parts;
+    }
+
+    function renderBreadcrumbs() {
+      breadcrumbs.innerHTML = '';
+      const home = document.createElement('a');
+      home.href = './';
+      home.textContent = 'Home';
+      breadcrumbs.appendChild(home);
+
+      const parts = getPathParts();
+      let path = '';
+      parts.forEach((part) => {
+        const sep = document.createElement('span');
+        sep.className = 'crumb-sep';
+        sep.textContent = '/';
+        breadcrumbs.appendChild(sep);
+
+        path += `/${part}`;
+        const link = document.createElement('a');
+        link.href = `${path}/`;
+        link.textContent = part;
+        breadcrumbs.appendChild(link);
+      });
+
+      directoryLabel.textContent = parts.length ? `/${parts.join('/')} — files and folders` : 'Files and folders';
+    }
+
+    function sortedVisibleEntries() {
+      const q = search.value.trim().toLowerCase();
+      let filtered = entries.filter((entry) => !q || entry.name.toLowerCase().includes(q));
+
+      filtered.sort((a, b) => {
+        if (sortMode === 'type') {
+          const typeA = a.type === 'folder' ? 'folder' : (a.name.split('.').pop() || 'file');
+          const typeB = b.type === 'folder' ? 'folder' : (b.name.split('.').pop() || 'file');
+          return typeA.localeCompare(typeB) || a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
+        }
+        if (sortMode === 'size') return (Number(a.size) || 0) - (Number(b.size) || 0);
+        return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
+      });
+
+      if (descending) filtered.reverse();
+      return filtered;
+    }
+
+    function createItem(entry) {
+      const row = document.createElement('div');
+      row.className = 'item';
+
+      const nameCell = document.createElement('div');
+      nameCell.className = 'name-cell';
+
+      const icon = document.createElement('span');
+      icon.className = 'icon';
+      icon.innerHTML = entry.type === 'folder' ? folderIcon : fileIcon;
+
+      const link = document.createElement('a');
+      link.className = 'name';
+      link.href = entry.href || entry.name;
+      link.textContent = entry.name;
+      if (entry.type === 'file' && /\.(zip|7z|rar|exe|msi)$/i.test(entry.name)) {
+        link.setAttribute('download', '');
+      }
+
+      nameCell.append(icon, link);
+
+      const size = document.createElement('div');
+      size.className = 'meta';
+      size.textContent = entry.type === 'folder' ? 'Folder' : formatBytes(entry.size);
+
+      const modified = document.createElement('div');
+      modified.className = 'meta right';
+      modified.textContent = formatDate(entry.modified);
+
+      row.append(nameCell, size, modified);
+      return row;
+    }
+
+    function render() {
+      const visible = sortedVisibleEntries();
+      list.innerHTML = '';
+
+      // Only show "Parent directory" when this page is in a subdirectory.
+      if (getPathParts().length) {
+        const parent = { name: '..', type: 'folder', href: '../' };
+        list.appendChild(createItem(parent));
+      }
+
+      visible.forEach((entry) => list.appendChild(createItem(entry)));
+
+      if (!visible.length && !getPathParts().length) {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = entries.length ? 'No matching items.' : 'No items are configured yet. Edit the entries array in index.html.';
+        list.appendChild(empty);
+      } else if (!visible.length) {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = 'No matching items.';
+        list.appendChild(empty);
+      }
+
+      count.textContent = `${visible.length} item${visible.length === 1 ? '' : 's'}`;
+    }
+
+    document.getElementById('sortName').addEventListener('click', () => {
+      if (sortMode === 'name') descending = !descending;
+      else { sortMode = 'name'; descending = false; }
+      document.getElementById('sortName').textContent = `Sort: Name${sortMode === 'name' && descending ? ' ↓' : ''}`;
+      document.getElementById('sortType').textContent = 'Sort: Type';
+      render();
+    });
+
+    document.getElementById('sortType').addEventListener('click', () => {
+      if (sortMode === 'type') descending = !descending;
+      else { sortMode = 'type'; descending = false; }
+      document.getElementById('sortType').textContent = `Sort: Type${sortMode === 'type' && descending ? ' ↓' : ''}`;
+      document.getElementById('sortName').textContent = 'Sort: Name';
+      render();
+    });
+
+    search.addEventListener('input', render);
+
+    renderBreadcrumbs();
+    render();
+  </script>
+
+
+</body></html>
