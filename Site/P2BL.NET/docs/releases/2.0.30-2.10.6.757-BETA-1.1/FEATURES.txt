@@ -1,0 +1,42 @@
+PORTAL 2 BETA LAUNCHER
+FEATURE LIST
+Version: 2.0.30-2.10.6.757 - BETA 1.1
+
+BUILD MANAGEMENT
+- Scan for Portal 2 beta installations.
+- Review discovered build names, paths, and executables.
+- Launch supported beta builds using their configured executable and launch arguments.
+- Access Build Explorer, Build Comparison, and build-related tools.
+
+DOWNLOADS AND HASH IDENTIFICATION
+- Request a build download from the BETA Downloads page.
+- Check HostDownloads.GL for a direct hosted archive.
+- Fall back to the configured backup/Gofile link when no hosted entry is available.
+- Cancel an active download.
+- Use remote BHT data to identify builds from SHA-256 hashes.
+- Review per-file hash verification results when data is available.
+
+FIX INSTALLATION AND ARCHIVES
+- Install supported bundled No-Steam fixes.
+- Back up existing files before fix installation changes them.
+- Use 7-Zip for supported ZIP/7z archive operations.
+- Store download archives in the launcher's saved-data area and remove them after successful installation/extraction.
+
+EXTRA TOOLS
+- Scan the root-level 1st-Party-Tools directory for tool executables.
+- View and launch detected first-party tools from the Extra Tools page.
+
+IN-GAME OVERLAY
+- Custom C++ in-game overlay rendered over the Portal 2 beta.
+- Movable and resizable sub-windows.
+- Screenshot Manager and Screenshot Preview.
+- Shift + Z toggles the overlay.
+- Shift + 9 captures a screenshot.
+- Overlay input capture while the overlay is open.
+
+SCREENSHOTS
+- Save screenshots to the P2BL screenshot storage location.
+- View, refresh, preview, open, delete, and open the screenshot folder from the Screenshot Manager.
+
+STATUS NOTE
+P2BL BETA 1.1 is a Beta release. Build identification depends on the contents of the hash database, and not every possible repack/build layout is guaranteed to be identified.

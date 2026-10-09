@@ -1,0 +1,32 @@
+PORTAL 2 BETA LAUNCHER
+GETTING STARTED
+Version: 2.0.30-2.10.6.757 - BETA 1.1
+
+1. DOWNLOAD AND EXTRACT
+Download P2BL from the release page and extract the ZIP into a folder you can access. Keep the application files together.
+
+2. START P2BL
+Run the P2BL launcher executable from the extracted folder. If Windows displays a security confirmation, check the file and its source before allowing it to run.
+
+3. FIND A BETA BUILD
+Open the Build Manager and use the scan controls to search your drives or selected folders for Portal 2 beta installations. Select a detected build to review its information.
+
+4. DOWNLOAD A BUILD
+Open BETA Downloads and select the build you want. P2BL checks the hosted-download database first. If there is no hosted entry, it can use an available backup/Gofile link. Downloads can be stopped from the download interface.
+
+5. VERIFY BUILD IDENTIFICATION
+P2BL uses SHA-256 records from its build-hash database when identifying or verifying supported builds. An installation may remain UNKNOWN if its file hashes are not present in the database.
+
+6. USE THE IN-GAME OVERLAY
+Launch a supported beta build with the overlay enabled. Press Shift + Z to toggle the overlay and Shift + 9 to take a screenshot. Use the Screenshot Manager to preview and manage saved images.
+
+7. EXTRA TOOLS AND FIXES
+Use Extra Tools to view available first-party tools. Use the fix manager only with a supported build and review any prompts about file backups before applying a fix.
+
+HELPFUL LINKS
+P2BL Website: https://sonicfantech.org/Site/P2BL.NET
+GitHub Repository: https://github.com/sonicFanTech/Portal-2-BETA-Launcher---Windows
+PSBR Discord: linked from the P2BL website.
+
+DISCLAIMER
+P2BL is an independent fan/research project and is not official Valve software. Review the EULA included with your release.

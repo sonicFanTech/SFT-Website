@@ -1,0 +1,34 @@
+PORTAL 2 BETA LAUNCHER
+RELEASE NOTES
+Version: 2.0.30-2.10.6.757 - BETA 1.1
+Release line: R-2
+Platform: Windows x64
+
+DOWNLOAD
+https://github.com/sonicFanTech/Portal-2-BETA-Launcher---Windows/releases/download/2.0.30-2.10.6.757/P2BL_v2.0.30-B1.1.zip
+
+OVERVIEW
+P2BL is a Windows launcher and research utility for organizing, launching, and exploring historical Portal 2 beta builds. BETA 1.1 builds on the R-2 interface and brings together build management, hosted downloads, hash-based build identification, fix installation, first-party tools, and the in-game overlay.
+
+HIGHLIGHTS
+- Build Manager and build discovery workflow for local Portal 2 beta installations.
+- Build-specific launch handling and launch options.
+- Download button workflow that checks the hosted download list first and uses available backup/Gofile links when appropriate.
+- SHA-256 identification and verification using the remote BHT data file.
+- Download cancellation and managed archive handling.
+- Updated No-Steam fix installation with backups of files that are replaced.
+- 7-Zip integration for supported archive formats.
+- Extra Tools page for detected first-party utilities.
+- Custom in-game overlay with movable/resizable sub-windows.
+- Screenshot Manager, screenshot capture, and screenshot preview.
+
+IN-GAME CONTROLS
+Shift + Z  — Toggle the in-game overlay.
+Shift + 9  — Capture a screenshot.
+Escape      — Hide the overlay while it is open.
+
+IMPORTANT
+This is a Beta release. Build identification depends on available hash records; unsupported or unmatched installations may still be reported as unknown. Archive compatibility depends on the archive type and available extraction components.
+
+LICENSE / TRADEMARK NOTICE
+Use this release in accordance with the EULA included with the release and the applicable notices for bundled third-party components. Portal 2, Portal, Steam, and related Valve properties belong to their respective rights holders. P2BL is an independent community project and is not affiliated with, sponsored by, or endorsed by Valve Corporation.
